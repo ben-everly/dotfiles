@@ -1,0 +1,37 @@
+[user]
+	name = Ben Everly
+	email = @
+[github]
+	user = ben-everly
+[alias]
+	ch = checkout
+	d = diff
+	st = status --short
+	lg = log
+	graph = log --color --graph
+	discard = checkout -- .
+	bl = branch -l
+[core]
+	editor = vim
+	excludesFile = ~/.gitignore
+[color]
+	ui = true
+[format]
+	pretty = %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
+[push]
+	default = current
+[log]
+	abbrevCommit = true
+	date = iso
+[pull]
+	rebase = true
+[mergetool]
+	keepBackup = false
+[url "git@github.com:"]
+	insteadOf = "gh:"
+[url "git@gist.github.com:"]
+	insteadOf = "gist:"
