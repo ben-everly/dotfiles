@@ -25,7 +25,7 @@ syntax on
 set number
 set foldenable
 set wrap
-set expandtab
+set noexpandtab
 set tabstop=4
 set shiftwidth=4
 set smarttab
@@ -129,8 +129,8 @@ function! TabsOrSpaces()
 	let numTabs=len(filter(getbufline(bufname("%"), 1, 250), 'v:val =~ "^\\t"'))
 	let numSpaces=len(filter(getbufline(bufname("%"), 1, 250), 'v:val =~ "^ "'))
 
-	if numTabs > numSpaces
-		setlocal noexpandtab
+	if numTabs < numSpaces
+		setlocal expandtab
 	endif
 endfunction
 
