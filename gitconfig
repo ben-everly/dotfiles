@@ -11,6 +11,8 @@
 	graph = log --color --graph
 	discard = checkout -- .
 	bl = branch -l
+	bd = branch -d
+	track = branch --track
 [core]
 	editor = vim
 	excludesFile = ~/.gitignore
