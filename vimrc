@@ -111,9 +111,9 @@ nmap <leader><C-t> :enew<cr>
 nmap <leader>. :bnext<cr>
 nmap <leader>, :bprevious<cr>
 nmap <leader>n :NERDTreeToggle<cr>
-nmap <leader>g :Gstatus<cr>
-nmap <leader>b :Gblame<cr>
-nmap <leader>d :Gdiff<cr>
+nmap <leader>gs :Gstatus<cr>
+nmap <leader>gb :Gblame<cr>
+nmap <leader>gd :Gdiff<cr>
 nmap <leader>p :CtrlP<cr>
 
 nnoremap ; :
