@@ -34,9 +34,9 @@ prompt() {
     # set the terminal title to the current working directory
     PS1="\[\033]0;\w\007\]"
 
-    PS1+="\[$userStyle\]\u" # username
+    PS1+="$userStyle\u" # username
     PS1+="\[$reset$black\]@"
-    PS1+="\[$hostStyle\]\h" # host
+    PS1+="$hostStyle\h" # host
     PS1+="\[$reset$black\]:"
     PS1+="\[$cyan\]\w" # working directory
     PS1+="\[$reset$black\]\$ \[$reset\]" # $ (and reset color)

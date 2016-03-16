@@ -4,7 +4,7 @@ export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 export EDITOR=vim
 export PAGER=less
 
-export TERM=xterm-16color
+export TERM=xterm-256color
 
 export HISTCONTROL=ignoredups
 shopt -s histappend
