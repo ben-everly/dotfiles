@@ -7,13 +7,14 @@ if !empty(glob('~/.vim/bundle/Vundle.vim'))
 	call vundle#begin()
 
 	Plugin 'VundleVim/Vundle.vim'
-    Plugin 'scrooloose/nerdtree'
+	Plugin 'scrooloose/nerdtree'
 	Plugin 'tpope/vim-fugitive'
 	Plugin 'scrooloose/syntastic'
 	Plugin 'kien/ctrlp.vim'
 	Plugin 'tpope/vim-surround'
 	Plugin 'bling/vim-airline'
 	Plugin 'altercation/vim-colors-solarized'
+	Plugin 'kchmck/vim-coffee-script'
 
 	call vundle#end()
 endif
