@@ -8,6 +8,7 @@ fi
 vim -u $HOME/.vimrc +BundleInstall +qa
 
 RETURN_DIR="$(pwd)"
+rm -rf $HOME/.solarized
 mkdir $HOME/.solarized
 wget --no-check-certificate https://raw.github.com/seebi/dircolors-solarized/master/dircolors.ansi-dark
 mv dircolors.ansi-dark $HOME/.solarized/.dircolors
