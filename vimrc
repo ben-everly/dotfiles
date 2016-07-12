@@ -109,6 +109,7 @@ nmap <leader>w :w!<cr>
 nmap <leader>q :bd<cr>
 nmap <leader>l :ls<cr>
 nmap <leader><C-t> :enew<cr>
+nmap <leader><C-w> :bp\|bd #<cr>
 nmap <leader>. :bnext<cr>
 nmap <leader>, :bprevious<cr>
 nmap <leader>n :NERDTreeToggle<cr>
