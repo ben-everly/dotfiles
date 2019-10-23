@@ -9,6 +9,7 @@ if !empty(glob('~/.vim/bundle/Vundle.vim'))
 	Plugin 'VundleVim/Vundle.vim'
 	Plugin 'scrooloose/nerdtree'
 	Plugin 'tpope/vim-fugitive'
+	Plugin 'tpope/vim-dadbod'
 	Plugin 'scrooloose/syntastic'
 	Plugin 'kien/ctrlp.vim'
 	Plugin 'tpope/vim-surround'
