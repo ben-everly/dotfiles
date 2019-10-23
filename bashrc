@@ -1,11 +1,8 @@
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 export GREP_OPTIONS='--color=auto --exclude=*.min.js --exclude-dir=.git'
-
 export EDITOR=vim
 export PAGER=less
-
-export TERM=xterm-256color
 
 export HISTCONTROL=ignoredups
 shopt -s histappend
