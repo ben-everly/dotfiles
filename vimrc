@@ -17,6 +17,7 @@ if !empty(glob('~/.vim/bundle/Vundle.vim'))
 	Plugin 'kchmck/vim-coffee-script'
 	Plugin 'SirVer/ultisnips'
 	Plugin 'pgilad/vim-skeletons'
+	Plugin 'git-time-metric/gtm-vim-plugin'
 
 	call vundle#end()
 endif
@@ -92,6 +93,8 @@ autocmd BufReadPost *
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+
+let g:gtm_plugin_status_enabled = 1
 
 " sytastic
 let g:syntastic_always_populate_loc_list = 1
