@@ -140,6 +140,4 @@ function! TabsOrSpaces()
 		setlocal expandtab
 	endif
 endfunction
-
-" Call the function after opening a buffer
 autocmd BufReadPost * call TabsOrSpaces()
