@@ -15,6 +15,8 @@ if !empty(glob('~/.vim/bundle/Vundle.vim'))
 	Plugin 'bling/vim-airline'
 	Plugin 'altercation/vim-colors-solarized'
 	Plugin 'kchmck/vim-coffee-script'
+	Plugin 'SirVer/ultisnips'
+	Plugin 'pgilad/vim-skeletons'
 
 	call vundle#end()
 endif
@@ -102,6 +104,9 @@ let g:ctrlp_custom_ginore = {
 	\ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
 	\ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
 \}
+
+" vim-skeletons
+let skeletons#autoRegister = 1
 
 " map leader key
 let mapleader = " "
