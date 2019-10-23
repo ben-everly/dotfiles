@@ -21,3 +21,7 @@ if [ -d ~/bin ]; then
     PATH=~/bin:$PATH
     export PATH
 fi
+
+if [ -f "/usr/local/etc/profile.d/bash_completion.sh" ]; then
+    . "/usr/local/etc/profile.d/bash_completion.sh"
+fi
