@@ -19,6 +19,7 @@ if !empty(glob('~/.vim/bundle/Vundle.vim'))
 	Plugin 'SirVer/ultisnips'
 	Plugin 'pgilad/vim-skeletons'
 	Plugin 'git-time-metric/gtm-vim-plugin'
+	Plugin 'Valloric/YouCompleteMe'
 
 	call vundle#end()
 endif

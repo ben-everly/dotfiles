@@ -3,6 +3,7 @@ if [ ! -e $HOME/.vim/bundle/Vundle.vim ]; then
     git clone https://github.com/gmarik/vundle.git $HOME/.vim/bundle/Vundle.vim
 fi
 vim - -u $HOME/.vimrc +BundleInstall +qa
+~/.vim/bundle/YouCompleteMe/install.py
 
 RETURN_DIR="$(pwd)"
 rm -rf $HOME/.solarized
