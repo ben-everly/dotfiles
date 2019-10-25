@@ -39,6 +39,7 @@ set autoindent
 set cursorline
 set list
 set listchars=tab:\|\ ,trail:· " show a · for trailing whitespace and a | for tabs
+set termguicolors
 
 syntax enable
 set background=dark
