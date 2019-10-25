@@ -14,7 +14,7 @@ if !empty(glob('~/.vim/bundle/Vundle.vim'))
 	Plugin 'kien/ctrlp.vim'
 	Plugin 'tpope/vim-surround'
 	Plugin 'bling/vim-airline'
-	Plugin 'altercation/vim-colors-solarized'
+	Plugin 'morhetz/gruvbox'
 	Plugin 'kchmck/vim-coffee-script'
 	Plugin 'SirVer/ultisnips'
 	Plugin 'pgilad/vim-skeletons'
@@ -27,7 +27,8 @@ endif
 filetype plugin indent on
 
 " formatting and appearance
-syntax on
+" syntax on
+syntax enable
 set number
 set foldenable
 set wrap
@@ -41,11 +42,10 @@ set list
 set listchars=tab:\|\ ,trail:· " show a · for trailing whitespace and a | for tabs
 set termguicolors
 
-syntax enable
-set background=dark
-if !empty(glob('~/.vim/bundle/vim-colors-solarized'))
-	colorscheme solarized
+if !empty(glob("~/.vim/bundle/gruvbox"))
+	colorscheme gruvbox
 endif
+set background=dark
 
 " search settings
 set smartcase
