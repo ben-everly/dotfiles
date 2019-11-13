@@ -22,6 +22,7 @@ if !empty(glob('~/.vim/bundle/Vundle.vim'))
 	Plugin 'shawncplus/phpcomplete.vim'
 	Plugin 'Valloric/YouCompleteMe'
 	Plugin 'nblock/vim-dokuwiki'
+	Plugin 'majutsushi/tagbar'
 
 	call vundle#end()
 endif
@@ -41,6 +42,7 @@ set autoindent
 set cursorline
 set list
 set listchars=tab:\|\ ,trail:· " show a · for trailing whitespace and a | for tabs
+
 
 if !empty(glob("~/.vim/bundle/gruvbox"))
 	colorscheme gruvbox
@@ -137,6 +139,7 @@ nmap <leader>gs :Gstatus<cr>
 nmap <leader>gb :Gblame<cr>
 nmap <leader>gd :Gdiff<cr>
 nmap <leader>p :CtrlP<cr>
+nmap <leader>b :TagbarToggle<cr>
 
 nnoremap ; :
 cmap w!! w !sudo tee % >/dev/null
