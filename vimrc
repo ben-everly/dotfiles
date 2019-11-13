@@ -21,6 +21,7 @@ if !empty(glob('~/.vim/bundle/Vundle.vim'))
 	Plugin 'git-time-metric/gtm-vim-plugin'
 	Plugin 'shawncplus/phpcomplete.vim'
 	Plugin 'Valloric/YouCompleteMe'
+	Plugin 'nblock/vim-dokuwiki'
 
 	call vundle#end()
 endif
@@ -163,3 +164,5 @@ function! AirlineInit()
 	endif
 endfunction
 autocmd User AirlineAfterInit call AirlineInit()
+
+runtime vimrc.local
