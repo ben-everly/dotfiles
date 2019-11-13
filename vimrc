@@ -23,6 +23,7 @@ if !empty(glob('~/.vim/bundle/Vundle.vim'))
 	Plugin 'Valloric/YouCompleteMe'
 	Plugin 'nblock/vim-dokuwiki'
 	Plugin 'majutsushi/tagbar'
+	Plugin 'rayburgemeestre/phpfolding.vim'
 
 	call vundle#end()
 endif
