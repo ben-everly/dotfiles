@@ -1,0 +1,4 @@
+-R
+--tag-relative=yes
+--languages=php
+--PHP-kinds=+cfit-va

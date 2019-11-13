@@ -24,6 +24,8 @@ if !empty(glob('~/.vim/bundle/Vundle.vim'))
 	Plugin 'nblock/vim-dokuwiki'
 	Plugin 'majutsushi/tagbar'
 	Plugin 'rayburgemeestre/phpfolding.vim'
+	Plugin 'ludovicchabant/vim-gutentags'
+	Plugin 'FelikZ/ctrlp-py-matcher'
 
 	call vundle#end()
 endif
@@ -122,6 +124,14 @@ let g:ctrlp_custom_ginore = {
 	\ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
 	\ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
 \}
+if executable("ag")
+	let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+endif
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+
+" gutentags
+let g:gutentags_cache_dir = '~/.vim/gutentags'
+let g:gutentags_ctags_exclude = ['*.css', '*.html', '*.js', '*.json', '*.xml', '*.phar', '*.ini', '*.rst', '*.md', '*vendor/*/test*', '*vendor/*/Test*', '*vendor/*/fixture*', '*vendor/*/Fixture*', '*var/cache*', '*var/log*']
 
 " vim-skeletons
 let skeletons#autoRegister = 1
@@ -139,8 +149,9 @@ nmap <leader>n :NERDTreeToggle<cr>
 nmap <leader>gs :Gstatus<cr>
 nmap <leader>gb :Gblame<cr>
 nmap <leader>gd :Gdiff<cr>
-nmap <leader>p :CtrlP<cr>
+nmap <leader>p :CtrlPTag<cr>
 nmap <leader>b :TagbarToggle<cr>
+nmap <leader>v :CtrlPTag<cr><C-\>w
 
 nnoremap ; :
 cmap w!! w !sudo tee % >/dev/null
