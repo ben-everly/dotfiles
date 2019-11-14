@@ -30,10 +30,12 @@ if !empty(glob('~/.vim/bundle/Vundle.vim'))
 	call vundle#end()
 endif
 
-filetype plugin indent on
-
 " formatting and appearance
+filetype plugin indent on
 syntax enable
+autocmd BufRead,BufNewFile *.ts set ft=javascript
+autocmd BufRead,BufNewFile *.tsx set ft=javascript
+
 set number
 set foldenable
 set wrap
