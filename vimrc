@@ -26,6 +26,7 @@ if !empty(glob('~/.vim/bundle/Vundle.vim'))
 	Plugin 'rayburgemeestre/phpfolding.vim'
 	Plugin 'ludovicchabant/vim-gutentags'
 	Plugin 'FelikZ/ctrlp-py-matcher'
+	Plugin 'ruanyl/vim-gh-line'
 
 	call vundle#end()
 endif
@@ -138,6 +139,9 @@ let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 " gutentags
 let g:gutentags_cache_dir = '~/.vim/gutentags'
 let g:gutentags_ctags_exclude = ['*.css', '*.html', '*.js', '*.json', '*.xml', '*.phar', '*.ini', '*.rst', '*.md', '*vendor/*/test*', '*vendor/*/Test*', '*vendor/*/fixture*', '*vendor/*/Fixture*', '*var/cache*', '*var/log*']
+
+" gh line
+let g:gh_line_blame_map_default = 0
 
 " vim-skeletons
 let skeletons#autoRegister = 1
