@@ -19,8 +19,6 @@ if !empty(glob('~/.vim/bundle/Vundle.vim'))
 	Plugin 'SirVer/ultisnips'
 	Plugin 'pgilad/vim-skeletons'
 	Plugin 'git-time-metric/gtm-vim-plugin'
-	Plugin 'shawncplus/phpcomplete.vim'
-	Plugin 'Valloric/YouCompleteMe'
 	Plugin 'nblock/vim-dokuwiki'
 	Plugin 'majutsushi/tagbar'
 	Plugin 'rayburgemeestre/phpfolding.vim'
@@ -81,8 +79,6 @@ else
 endif
 set nobackup
 set nowb
-
-autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 
 " other random settings
 set autoread

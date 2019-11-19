@@ -3,6 +3,5 @@ if [ ! -e $HOME/.vim/bundle/Vundle.vim ]; then
     git clone https://github.com/gmarik/vundle.git $HOME/.vim/bundle/Vundle.vim
 fi
 vim - -u $HOME/.vimrc +BundleInstall +qa
-~/.vim/bundle/YouCompleteMe/install.py
 bash ~/.vim/bundle/gruvbox/gruvbox_256palette.sh
 ln ~/.config/kitty/kitty-themes/gruvbox_dark.conf ~/.config/kitty/theme.conf
