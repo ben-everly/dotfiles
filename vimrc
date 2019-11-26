@@ -1,32 +1,30 @@
 set nocompatible
 
 " vundle setup
-if !empty(glob('~/.vim/bundle/Vundle.vim'))
-	filetype off
-	set rtp+=~/.vim/bundle/Vundle.vim
-	call vundle#begin()
+if !empty(glob('~/.vim/autoload/plug.vim'))
+	call plug#begin('~/.vim/plug')
 
-	Plugin 'VundleVim/Vundle.vim'
-	Plugin 'scrooloose/nerdtree'
-	Plugin 'tpope/vim-fugitive'
-	Plugin 'tpope/vim-dadbod'
-	Plugin 'scrooloose/syntastic'
-	Plugin 'kien/ctrlp.vim'
-	Plugin 'tpope/vim-surround'
-	Plugin 'bling/vim-airline'
-	Plugin 'morhetz/gruvbox'
-	Plugin 'kchmck/vim-coffee-script'
-	Plugin 'SirVer/ultisnips'
-	Plugin 'pgilad/vim-skeletons'
-	Plugin 'git-time-metric/gtm-vim-plugin'
-	Plugin 'nblock/vim-dokuwiki'
-	Plugin 'majutsushi/tagbar'
-	Plugin 'rayburgemeestre/phpfolding.vim'
-	Plugin 'ludovicchabant/vim-gutentags'
-	Plugin 'FelikZ/ctrlp-py-matcher'
-	Plugin 'ruanyl/vim-gh-line'
+	Plug 'VundleVim/Vundle.vim'
+	Plug 'scrooloose/nerdtree'
+	Plug 'tpope/vim-fugitive'
+	Plug 'tpope/vim-dadbod'
+	Plug 'scrooloose/syntastic'
+	Plug 'kien/ctrlp.vim'
+	Plug 'tpope/vim-surround'
+	Plug 'bling/vim-airline'
+	Plug 'morhetz/gruvbox'
+	Plug 'kchmck/vim-coffee-script'
+	Plug 'SirVer/ultisnips'
+	Plug 'pgilad/vim-skeletons'
+	Plug 'git-time-metric/gtm-vim-plugin'
+	Plug 'nblock/vim-dokuwiki'
+	Plug 'majutsushi/tagbar'
+	Plug 'rayburgemeestre/phpfolding.vim'
+	Plug 'ludovicchabant/vim-gutentags'
+	Plug 'FelikZ/ctrlp-py-matcher'
+	Plug 'ruanyl/vim-gh-line'
 
-	call vundle#end()
+	call plug#end()
 endif
 
 " formatting and appearance
@@ -48,7 +46,7 @@ set list
 set listchars=tab:\|\ ,trail:· " show a · for trailing whitespace and a | for tabs
 
 
-if !empty(glob("~/.vim/bundle/gruvbox"))
+if !empty(glob("~/.vim/plug/gruvbox"))
 	colorscheme gruvbox
 endif
 set background=dark
