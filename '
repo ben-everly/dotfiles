@@ -7,10 +7,9 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
 	if has ('nvim')
 		Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 	endif
-	" directory tree
 	Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
-	" syntax errors
+	"syntax errors
 	Plug 'scrooloose/syntastic'
 
 	" tags
