@@ -19,6 +19,11 @@ if [ -d ~/bin ]; then
     export PATH
 fi
 
+if [ -d /usr/local/opt/coreutils/libexec/gnubin ]; then
+    PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
+    export PATH
+fi
+
 if [ -f "/usr/local/etc/profile.d/bash_completion.sh" ]; then
     . "/usr/local/etc/profile.d/bash_completion.sh"
 fi
