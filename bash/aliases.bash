@@ -7,3 +7,5 @@ alias la='ls -al'
 alias less='less -rSFX'
 
 alias :q='exit'
+
+alias vim='nvim'
