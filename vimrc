@@ -4,7 +4,9 @@ set nocompatible
 if !empty(glob('~/.vim/autoload/plug.vim'))
 	call plug#begin('~/.vim/plug')
 
-	Plug 'VundleVim/Vundle.vim'
+	if has ('nvim')
+		Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+	endif
 	Plug 'scrooloose/nerdtree'
 	Plug 'tpope/vim-fugitive'
 	Plug 'tpope/vim-dadbod'
@@ -139,6 +141,9 @@ let g:gh_line_blame_map_default = 0
 
 " vim-skeletons
 let skeletons#autoRegister = 1
+
+" autocomplete
+let g:deoplete#enable_at_startup = 1
 
 " map leader key
 let mapleader = " "
