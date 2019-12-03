@@ -1,3 +1,5 @@
+IGNOREEOF=10
+
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 export GREP_OPTIONS='--color=auto --exclude=*.min.js --exclude-dir=.git'
