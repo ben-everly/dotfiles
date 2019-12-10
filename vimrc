@@ -9,7 +9,8 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
 		Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 	endif
 	" directory tree
-	Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+	Plug 'scrooloose/nerdtree'
+	Plug 'Xuyuanp/nerdtree-git-plugin'
 
 	" syntax errors
 	Plug 'scrooloose/syntastic'
@@ -147,7 +148,7 @@ let g:ctrlp_max_files = 0
 let g:ctrlp_match_current_file = 1
 let g:ctrlp_lazy_update = 1
 let g:ctrlp_extensions = ['tag', 'buffertag']
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+"let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " gutentags
 let g:gutentags_cache_dir = '~/.vim/gutentags'
@@ -177,12 +178,29 @@ nmap <leader><C-w> :bp\|bd #<cr>
 nmap <leader>. :bnext<cr>
 nmap <leader>, :bprevious<cr>
 nmap <leader>n :NERDTreeToggle<cr>
+nmap <leader>N :NERDTreeFind<cr>
 nmap <leader>gs :Gstatus<cr>
 nmap <leader>gb :Gblame<cr>
 nmap <leader>gd :Gdiff<cr>
 nmap <leader>p :CtrlPTag<cr>
 nmap <leader>b :TagbarToggle<cr>
 nmap <leader>v :CtrlPTag<cr><C-\>w
+
+" nerdtree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let NERDTreeMinimalUI = 1
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "-",
+    \ "Staged"    : "+",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "-",
+    \ "Dirty"     : "-",
+    \ "Clean"     : '+',
+    \ 'Ignored'   : '',
+    \ "Unknown"   : ''
+    \ }
 
 " better grep
 if executable("ag")
