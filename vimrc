@@ -200,17 +200,17 @@ nmap <leader>b :TagbarToggle<cr>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeMinimalUI = 1
 let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "-",
-    \ "Staged"    : "+",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "-",
-    \ "Dirty"     : "-",
-    \ "Clean"     : '+',
-    \ 'Ignored'   : '',
-    \ "Unknown"   : ''
-    \ }
+	\ "Modified"  : "-",
+	\ "Staged"    : "+",
+	\ "Untracked" : "✭",
+	\ "Renamed"   : "➜",
+	\ "Unmerged"  : "═",
+	\ "Deleted"   : "-",
+	\ "Dirty"     : "-",
+	\ "Clean"     : '+',
+	\ 'Ignored'   : '',
+	\ "Unknown"   : ''
+	\ }
 
 " better grep
 if executable("ag")
@@ -224,9 +224,9 @@ endfunction
 command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr Grep(<q-args>)
 command! -nargs=+ -complete=file_in_path -bar Lgrep lgetexpr Grep(<q-args>)
 augroup quickfix
-    autocmd!
-    autocmd QuickFixCmdPost cgetexpr cwindow
-    autocmd QuickFixCmdPost lgetexpr lwindow
+	autocmd!
+	autocmd QuickFixCmdPost cgetexpr cwindow
+	autocmd QuickFixCmdPost lgetexpr lwindow
 augroup END
 
 nnoremap ; :
