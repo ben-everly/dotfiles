@@ -142,6 +142,7 @@ function! s:find_git_root()
 	return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
 endfunction
 command! ProjectFiles execute 'Files' s:find_git_root()
+command! TagUnderCursor execute 'call fzf#vim#tags(expand("<cword>"))'
 
 if executable("ag")
 	let $FZF_DEFAULT_COMMAND = 'ag -g ""'
@@ -181,7 +182,7 @@ nmap <leader>gb :Gblame<cr>
 nmap <leader>gd :Gdiff<cr>
 nmap <leader>p :ProjectFiles<cr>
 nmap <c-p> :Tags<cr>
-nmap <leader>v :Tags<cr><C-\>w
+nmap <leader>v :TagUnderCursor<cr>
 nmap <leader>b :TagbarToggle<cr>
 
 " nerdtree
