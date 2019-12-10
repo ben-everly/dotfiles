@@ -53,19 +53,27 @@ syntax enable
 autocmd BufRead,BufNewFile *.ts set ft=javascript
 autocmd BufRead,BufNewFile *.tsx set ft=javascript
 
+" other random settings
 set number
 set foldenable
 set wrap
-set noexpandtab
-set tabstop=4
-set shiftwidth=4
-set smarttab
-set autoindent
+set scrolloff=3 " always show 3 lines above/below cursor
+set sidescrolloff=3 " same for left/right
+set whichwrap+=hl
+set autoread
+set noautowrite
+set backspace=indent,eol,start
+set noerrorbells
+set lazyredraw
+set hidden " allow switching buffers without saving
+set cf " save confirmation when exiting unsaved file
+set ffs=unix,dos,mac " use unix line endings
+set nosol " dont move the cursor to start of line when using some commands
+
+" display
 set cursorline
 set list
 set listchars=tab:\|\ ,trail:· " show a · for trailing whitespace and a | for tabs
-
-
 if !empty(glob("~/.vim/plug/gruvbox"))
 	colorscheme gruvbox
 endif
@@ -75,13 +83,20 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set t_Co=256
 set termguicolors
 
-" search settings
+" indent
+set noexpandtab
+set tabstop=4
+set shiftwidth=4
+set smarttab
+set autoindent
+
+" search/command settings
 set smartcase
 set ignorecase
 set incsearch
 set hlsearch
 set showmatch
-set wildmenu
+set showcmd
 set history=1000
 set undolevels=1000
 
@@ -98,21 +113,6 @@ endif
 set nobackup
 set nowb
 
-" other random settings
-set autoread
-set noautowrite
-set backspace=indent,eol,start
-set noerrorbells
-set scrolloff=3 " always show 3 lines above/below cursor
-set sidescrolloff=3 " same for left/right
-set whichwrap+=hl
-set showcmd
-set ttyfast
-set hidden
-set lazyredraw
-set cf " save confirmation when exiting unsaved file
-set ffs=unix,dos,mac " use unix line endings
-set nosol " dont move the cursor to start of line when using some commands
 
 " return to last edit position
 autocmd BufReadPost *
@@ -126,6 +126,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tagbar#flags = 'f'
 
+" gtm
 let g:gtm_plugin_status_enabled = 1
 
 " sytastic
@@ -133,7 +134,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 
@@ -143,7 +143,6 @@ function! FindGitRoot()
 endfunction
 command! ProjectFiles execute 'Files' FindGitRoot()
 command! TagUnderCursor execute 'call fzf#vim#tags(expand("<cword>"))'
-
 if executable("ag")
 	let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 endif
@@ -166,7 +165,7 @@ let g:deoplete#enable_at_startup = 1
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
 
-" debug
+" vdebug
 let g:vdebug_options = {
 	\    'port' : 9000,
 	\    'on_close' : 'detach',
@@ -176,6 +175,22 @@ let g:vdebug_options = {
 	\    'continuous_mode'  : 1,
 	\    'layout': 'vertical',
 	\}
+
+" nerdtree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let NERDTreeMinimalUI = 1
+let g:NERDTreeIndicatorMapCustom = {
+	\ "Modified"  : "-",
+	\ "Staged"    : "+",
+	\ "Untracked" : "✭",
+	\ "Renamed"   : "➜",
+	\ "Unmerged"  : "═",
+	\ "Deleted"   : "-",
+	\ "Dirty"     : "-",
+	\ "Clean"     : '+',
+	\ 'Ignored'   : '',
+	\ "Unknown"   : ''
+	\ }
 
 " map leader key
 let mapleader = " "
@@ -196,21 +211,6 @@ nmap <c-p> :Tags<cr>
 nmap <leader>v :TagUnderCursor<cr>
 nmap <leader>b :TagbarToggle<cr>
 
-" nerdtree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-let NERDTreeMinimalUI = 1
-let g:NERDTreeIndicatorMapCustom = {
-	\ "Modified"  : "-",
-	\ "Staged"    : "+",
-	\ "Untracked" : "✭",
-	\ "Renamed"   : "➜",
-	\ "Unmerged"  : "═",
-	\ "Deleted"   : "-",
-	\ "Dirty"     : "-",
-	\ "Clean"     : '+',
-	\ 'Ignored'   : '',
-	\ "Unknown"   : ''
-	\ }
 
 " better grep
 if executable("ag")
