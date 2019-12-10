@@ -18,8 +18,10 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
 	" tags
 	Plug 'ludovicchabant/vim-gutentags'
 	Plug 'majutsushi/tagbar'
-	Plug 'kien/ctrlp.vim'
-	Plug 'FelikZ/ctrlp-py-matcher'
+
+	" search
+	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+	Plug 'junegunn/fzf.vim'
 
 	" xdebug
 	Plug 'vim-vdebug/vdebug'
@@ -135,20 +137,15 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 
-" ctrlp
-let g:ctrlp_custom_ginore = {
-	\ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
-	\ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
-\}
+" zfz
+function! s:find_git_root()
+	return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+command! ProjectFiles execute 'Files' s:find_git_root()
+
 if executable("ag")
-	let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+	let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 endif
-let g:ctrlp_clear_cache_on_exit = 0
-let g:ctrlp_max_files = 0
-let g:ctrlp_match_current_file = 1
-let g:ctrlp_lazy_update = 1
-let g:ctrlp_extensions = ['tag', 'buffertag']
-"let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " gutentags
 let g:gutentags_cache_dir = '~/.vim/gutentags'
@@ -182,9 +179,10 @@ nmap <leader>N :NERDTreeFind<cr>
 nmap <leader>gs :Gstatus<cr>
 nmap <leader>gb :Gblame<cr>
 nmap <leader>gd :Gdiff<cr>
-nmap <leader>p :CtrlPTag<cr>
+nmap <leader>p :ProjectFiles<cr>
+nmap <c-p> :Tags<cr>
+nmap <leader>v :Tags<cr><C-\>w
 nmap <leader>b :TagbarToggle<cr>
-nmap <leader>v :CtrlPTag<cr><C-\>w
 
 " nerdtree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif

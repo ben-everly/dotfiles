@@ -29,3 +29,5 @@ fi
 if [ -f "/usr/local/etc/profile.d/bash_completion.sh" ]; then
     . "/usr/local/etc/profile.d/bash_completion.sh"
 fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
