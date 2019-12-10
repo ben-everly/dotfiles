@@ -138,10 +138,10 @@ let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 
 " zfz
-function! s:find_git_root()
+function! FindGitRoot()
 	return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
 endfunction
-command! ProjectFiles execute 'Files' s:find_git_root()
+command! ProjectFiles execute 'Files' FindGitRoot()
 command! TagUnderCursor execute 'call fzf#vim#tags(expand("<cword>"))'
 
 if executable("ag")
@@ -165,6 +165,17 @@ let g:UltiSnipsExpandTrigger="<S-CR>"
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
+
+" debug
+let g:vdebug_options = {
+	\    'port' : 9000,
+	\    'on_close' : 'detach',
+	\    'break_on_open' : 0,
+	\    'path_maps' : { "/var/www/app": FindGitRoot() },
+	\    'watch_window_style' : 'compact',
+	\    'continuous_mode'  : 1,
+	\    'layout': 'vertical',
+	\}
 
 " map leader key
 let mapleader = " "
