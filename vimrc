@@ -159,7 +159,7 @@ let g:gh_line_blame_map_default = 0
 let skeletons#autoRegister = 1
 
 " ultisnips
-let g:UltiSnipsExpandTrigger="<leader><C-]>"
+let g:UltiSnipsExpandTrigger="<S-CR>"
 
 " autocomplete
 let g:deoplete#enable_at_startup = 1
