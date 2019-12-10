@@ -157,6 +157,9 @@ let g:gh_line_blame_map_default = 0
 " vim-skeletons
 let skeletons#autoRegister = 1
 
+" ultisnips
+let g:UltiSnipsExpandTrigger="<leader><C-]>"
+
 " autocomplete
 let g:deoplete#enable_at_startup = 1
 
