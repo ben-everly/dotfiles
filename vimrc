@@ -182,6 +182,23 @@ nmap <leader>p :CtrlPTag<cr>
 nmap <leader>b :TagbarToggle<cr>
 nmap <leader>v :CtrlPTag<cr><C-\>w
 
+" better grep
+if executable("ag")
+	set grepprg=ag\ --vimgrep\ $*
+	set grepformat=%f:%l:%c:%m
+endif
+function! Grep(args)
+	let args = split(a:args, ' ')
+	return system(join([&grepprg, shellescape(args[0]), len(args) > 1 ? join(args[1:-1], ' ') : ''], ' '))
+endfunction
+command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr Grep(<q-args>)
+command! -nargs=+ -complete=file_in_path -bar Lgrep lgetexpr Grep(<q-args>)
+augroup quickfix
+    autocmd!
+    autocmd QuickFixCmdPost cgetexpr cwindow
+    autocmd QuickFixCmdPost lgetexpr lwindow
+augroup END
+
 nnoremap ; :
 cmap w!! w !sudo tee % >/dev/null
 
