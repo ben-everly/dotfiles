@@ -20,6 +20,9 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
 	Plug 'kien/ctrlp.vim'
 	Plug 'FelikZ/ctrlp-py-matcher'
 
+	" xdebug
+	Plug 'vim-vdebug/vdebug'
+
 	" git/github integration
 	Plug 'tpope/vim-fugitive'
 	Plug 'ruanyl/vim-gh-line'
