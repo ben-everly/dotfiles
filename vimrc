@@ -5,6 +5,7 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
 	call plug#begin('~/.vim/plug')
 
 	if has ('nvim')
+		" autocomplete
 		Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 	endif
 	" directory tree
