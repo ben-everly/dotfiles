@@ -240,6 +240,9 @@ nmap <leader>p :ProjectFiles<cr>
 nmap <c-p> :Tags<cr>
 nmap <leader>v :call phpactor#GotoDefinition()<cr>
 nmap <leader>x :call phpactor#ContextMenu()<cr>
+vmap <leader>cf :call phpactor#ExtractMethod()<cr>
+nmap <leader>cv :call phpactor#ExtractExpression(v:false)<cr>
+vmap <leader>cv :call phpactor#ExtractExpression(v:true)<cr>
 nmap <leader>b :TagbarToggle<cr>
 nmap <leader>dq :BreakpointRemove *<cr><F7><F6>
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
