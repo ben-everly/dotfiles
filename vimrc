@@ -253,6 +253,14 @@ nmap <leader>b :TagbarToggle<cr>
 nmap <leader>dq :BreakpointRemove *<cr><F7><F6>
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
+" custom commands
+function! CleanXml()
+	%!tidy -q -i --show-errors 0 -xml --hide-comments 1
+	%!xmllint --format -
+	normal gg=G
+endfunction
+command! CleanXml exec CleanXml()
+
 " better grep
 if executable("ag")
 	set grepprg=ag\ --vimgrep\ $*
