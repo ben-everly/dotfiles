@@ -50,6 +50,7 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
 
 	Plug 'nblock/vim-dokuwiki'
 	Plug 'tpope/vim-surround'
+	Plug 'tpope/vim-commentary'
 	Plug 'kchmck/vim-coffee-script'
 
 	call plug#end()
