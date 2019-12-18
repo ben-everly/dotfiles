@@ -272,11 +272,24 @@ function! Grep(args)
 endfunction
 command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr Grep(<q-args>)
 command! -nargs=+ -complete=file_in_path -bar Lgrep lgetexpr Grep(<q-args>)
+
+
+function! RemoveQFItem()
+  let curqfidx = line('.') - 1
+  let qfall = getqflist()
+  call remove(qfall, curqfidx)
+  call setqflist(qfall, 'r')
+  execute curqfidx + 1 . "cfirst"
+  :copen
+endfunction
+:command! RemoveQFItem :call RemoveQFItem()
+" Use map <buffer> to only map dd in the quickfix window. Requires +localmap
 augroup quickfix
 	autocmd!
 	autocmd QuickFixCmdPost cgetexpr cwindow
 	autocmd QuickFixCmdPost lgetexpr lwindow
 	autocmd FileType qf set nobuflisted
+	autocmd FileType qf map <buffer> dd :RemoveQFItem<cr>
 augroup END
 
 nnoremap ; :
