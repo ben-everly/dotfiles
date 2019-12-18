@@ -17,8 +17,9 @@
 	editor = vim
 	excludesFile = ~/.gitignore
 	autocrlf = input
+	pager = 'less'
 [color]
-	ui = true
+	ui = always
 [format]
 	pretty = %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset
 [diff]
