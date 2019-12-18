@@ -177,6 +177,7 @@ inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
 let g:LanguageClient_serverCommands = {
 	\ 'php': ['php', '~/.composer/vendor/bin/php-language-server.php']
 	\ }
+let g:LanguageClient_diagnosticsEnable = 0
 
 " vdebug
 highlight DbgBreakptLine ctermbg=none ctermfg=none
