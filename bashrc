@@ -16,6 +16,13 @@ for file in ~/.bash/* ; do
     fi
 done
 
+if [ -d ~/.composer/vendor/bin ]; then
+    COMPOSER_MEMORY_LIMIT=-1
+    export COMPOSER_MEMORY_LIMIT
+    PATH=~/.composer/vendor/bin:$PATH
+    export PATH
+fi
+
 if [ -d ~/bin ]; then
     PATH=~/bin:$PATH
     export PATH
