@@ -118,11 +118,10 @@ if swap == 1
 		silent !mkdir -p ~/.vim/backup > /dev/null 2>&1
 	endif
 	set directory=~/.vim/backup " save .swp files in tmp dir
+	set backupdir=~/.vim/backup
 else
 	set noswapfile
 endif
-set nobackup
-set nowb
 
 
 " return to last edit position
