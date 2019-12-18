@@ -182,14 +182,31 @@ let g:LanguageClient_serverCommands = {
 	\ }
 
 " vdebug
+highlight DbgBreakptLine ctermbg=none ctermfg=none
+highlight DbgBreakptSign ctermbg=none ctermfg=10
+highlight DbgCurrentLine ctermbg=none ctermfg=none
+highlight DbgCurrentSign ctermbg=none ctermfg=red
 let g:vdebug_options = {
-	\    'port' : 9000,
-	\    'on_close' : 'detach',
-	\    'break_on_open' : 0,
-	\    'path_maps' : { "/var/www/app": FindGitRoot() },
+	\    'port'               : 9000,
+	\    'on_close'           : 'detach',
+	\    'break_on_open'      : 0,
+	\    'path_maps'          : { "/var/www/app": FindGitRoot() },
 	\    'watch_window_style' : 'compact',
-	\    'continuous_mode'  : 1,
-	\    'layout': 'vertical',
+	\    'continuous_mode'    : 1,
+	\    'layout'             : 'vertical',
+	\}
+let g:vdebug_keymap = {
+	\    'run'               : "<leader>d<cr>",
+	\    'run_to_cursor'     : "",
+	\    "step_over"         : "<leader>dj",
+	\    "step_into"         : "<leader>d.",
+	\    "step_out"          : "<leader>d,",
+	\    "close"             : "<F6>",
+	\    "detach"            : "<F7>",
+	\    "set_breakpoint"    : "<leader>db",
+	\    "get_context"       : "<F11>",
+	\    "eval_under_cursor" : "<F12>",
+	\    "eval_visual"       : "<Leader>e"
 	\}
 
 " nerdtree
@@ -229,7 +246,7 @@ nmap <leader>p :ProjectFiles<cr>
 nmap <c-p> :Tags<cr>
 nmap <leader>v :call LanguageClient#textDocument_definition()<cr>
 nmap <leader>b :TagbarToggle<cr>
-
+nmap <leader>dq :BreakpointRemove *<cr><F7><F6>
 
 " better grep
 if executable("ag")
