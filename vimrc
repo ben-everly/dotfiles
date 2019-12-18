@@ -251,6 +251,7 @@ nmap <c-p> :Tags<cr>
 nmap <leader>v :call LanguageClient#textDocument_definition()<cr>
 nmap <leader>b :TagbarToggle<cr>
 nmap <leader>dq :BreakpointRemove *<cr><F7><F6>
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 " better grep
 if executable("ag")
