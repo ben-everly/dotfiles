@@ -216,16 +216,16 @@ augroup nerdtreeinit
 augroup END
 let NERDTreeMinimalUI = 1
 let g:NERDTreeIndicatorMapCustom = {
-	\ "Modified"  : "-",
-	\ "Staged"    : "+",
-	\ "Untracked" : "✭",
-	\ "Renamed"   : "➜",
-	\ "Unmerged"  : "═",
-	\ "Deleted"   : "-",
-	\ "Dirty"     : "-",
-	\ "Clean"     : '+',
-	\ 'Ignored'   : '',
-	\ "Unknown"   : ''
+	\     "Modified"  : "-",
+	\     "Staged"    : "+",
+	\     "Untracked" : "✭",
+	\     "Renamed"   : "➜",
+	\     "Unmerged"  : "═",
+	\     "Deleted"   : "-",
+	\     "Dirty"     : "-",
+	\     "Clean"     : '+',
+	\     'Ignored'   : '',
+	\     "Unknown"   : ''
 	\ }
 
 " map leader key
