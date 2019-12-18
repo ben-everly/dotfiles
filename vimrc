@@ -15,7 +15,7 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
 	Plug 'Xuyuanp/nerdtree-git-plugin'
 
 	" syntax errors
-	Plug 'scrooloose/syntastic'
+	Plug 'neomake/neomake'
 
 	" tags
 	Plug 'ludovicchabant/vim-gutentags'
@@ -142,13 +142,9 @@ let g:airline#extensions#tagbar#flags = 'f'
 " gtm
 let g:gtm_plugin_status_enabled = 1
 
-" sytastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_cpp_compiler = 'clang++'
-let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+" neomake
+call neomake#configure#automake('nrw', 1000)
+let g:neomake_open_list = 2
 
 " zfz
 function! FindGitRoot()
