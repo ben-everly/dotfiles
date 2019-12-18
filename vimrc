@@ -58,8 +58,11 @@ endif
 " formatting and appearance
 filetype plugin indent on
 syntax enable
-autocmd BufRead,BufNewFile *.ts set ft=javascript
-autocmd BufRead,BufNewFile *.tsx set ft=javascript
+augroup filetypes
+	autocmd!
+	autocmd BufRead,BufNewFile *.ts set ft=javascript
+	autocmd BufRead,BufNewFile *.tsx set ft=javascript
+augroup END
 
 " other random settings
 set number
@@ -123,10 +126,13 @@ set nowb
 
 
 " return to last edit position
-autocmd BufReadPost *
-	\ if line("'\"") > 0 && line("'\"") <= line("$") |
-	\	exe "normal! g`\"" |
-	\ endif
+augroup lastedit
+	autocmd!
+	autocmd BufReadPost *
+		\ if line("'\"") > 0 && line("'\"") <= line("$") |
+		\	exe "normal! g`\"" |
+		\ endif
+augroup END
 
 " statusline
 set laststatus=2
@@ -188,7 +194,10 @@ let g:vdebug_options = {
 	\}
 
 " nerdtree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+augroup nerdtreeinit
+	autocmd!
+	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+augroup END
 let NERDTreeMinimalUI = 1
 let g:NERDTreeIndicatorMapCustom = {
 	\ "Modified"  : "-",
@@ -238,6 +247,7 @@ augroup quickfix
 	autocmd!
 	autocmd QuickFixCmdPost cgetexpr cwindow
 	autocmd QuickFixCmdPost lgetexpr lwindow
+	autocmd FileType qf set nobuflisted
 augroup END
 
 nnoremap ; :
@@ -257,7 +267,10 @@ function! TabsOrSpaces()
 		setlocal expandtab
 	endif
 endfunction
-autocmd BufReadPost * call TabsOrSpaces()
+augroup indent
+	autocmd!
+	autocmd BufReadPost * call TabsOrSpaces()
+augroup END
 
 function! AirlineInit()
 	if exists('*GTMStatusline')
@@ -265,6 +278,9 @@ function! AirlineInit()
 		let g:airline_section_b = airline#section#create([g:airline_section_b, ' ', '[', 'gtmstatus', ']'])
 	endif
 endfunction
-autocmd User AirlineAfterInit call AirlineInit()
+augroup airlineinit
+	autocmd!
+	autocmd User AirlineAfterInit call AirlineInit()
+augroup END
 
 runtime vimrc.local
