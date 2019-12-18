@@ -242,6 +242,10 @@ nmap <leader>N :NERDTreeFind<cr>
 nmap <leader>gs :Gstatus<cr>
 nmap <leader>gb :Gblame<cr>
 nmap <leader>gd :Gdiff<cr>
+nmap <leader>gp :Gpull <bar> :Gpush<cr>
+nmap <leader>gf :Gfetch<cr>
+nmap <leader>gl :Gclog -50<cr>
+vmap <leader>gl :'<,'>Gclog -50<cr>
 nmap <leader>p :ProjectFiles<cr>
 nmap <c-p> :Tags<cr>
 nmap <leader>v :call LanguageClient#textDocument_definition()<cr>
