@@ -7,6 +7,10 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
 	if has ('nvim')
 		" autocomplete
 		Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+		Plug 'autozimu/LanguageClient-neovim', {
+			\ 'branch': 'next',
+			\ 'do': 'bash install.sh',
+			\ }
 	endif
 	" directory tree
 	Plug 'scrooloose/nerdtree'
@@ -145,7 +149,6 @@ function! FindGitRoot()
 	return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
 endfunction
 command! ProjectFiles execute 'Files' FindGitRoot()
-command! TagUnderCursor execute 'call fzf#vim#tags(expand("<cword>"))'
 if executable("ag")
 	let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 endif
@@ -167,6 +170,10 @@ let g:snips_author='ben.everly@oberd.com'
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
+
+let g:LanguageClient_serverCommands = {
+	\ 'php': ['php', '~/.composer/vendor/bin/php-language-server.php']
+	\ }
 
 " vdebug
 let g:vdebug_options = {
@@ -211,7 +218,7 @@ nmap <leader>gb :Gblame<cr>
 nmap <leader>gd :Gdiff<cr>
 nmap <leader>p :ProjectFiles<cr>
 nmap <c-p> :Tags<cr>
-nmap <leader>v :TagUnderCursor<cr>
+nmap <leader>v :call LanguageClient#textDocument_definition()<cr>
 nmap <leader>b :TagbarToggle<cr>
 
 
