@@ -47,6 +47,7 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
 	Plug 'alvan/vim-php-manual', { 'for': ['php'] }
 
 	Plug 'nblock/vim-dokuwiki'
+	Plug 'bfredl/nvim-miniyank'
 	Plug 'tpope/vim-surround'
 	Plug 'tpope/vim-commentary'
 	Plug 'kchmck/vim-coffee-script'
@@ -246,6 +247,12 @@ nmap <leader>x :call phpactor#ContextMenu()<cr>
 nmap <leader>b :TagbarToggle<cr>
 nmap <leader>dq :BreakpointRemove *<cr><F7><F6>
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+
+"miniyank
+map p <Plug>(miniyank-startput)
+map P <Plug>(miniyank-startPut)
+map <leader>] <Plug>(miniyank-cycle)
+map <leader>[ <Plug>(miniyank-cycleback)
 
 " custom commands
 function! CleanXml()
