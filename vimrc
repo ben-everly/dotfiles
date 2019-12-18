@@ -32,7 +32,7 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
 
 	" git/github integration
 	Plug 'tpope/vim-fugitive'
-	Plug 'ruanyl/vim-gh-line'
+	Plug 'tpope/vim-rhubarb'
 
 	" snippets
 	Plug 'SirVer/ultisnips'
@@ -163,9 +163,6 @@ endif
 let g:gutentags_cache_dir = '~/.vim/gutentags'
 let g:gutentags_ctags_exclude = ['*.css', '*.html', '*.js', '*.json', '*.xml', '*.phar', '*.ini', '*.rst', '*.md', '*vendor/*/test*', '*vendor/*/Test*', '*vendor/*/fixture*', '*vendor/*/Fixture*', '*var/cache*', '*var/log*']
 
-" gh line
-let g:gh_line_blame_map_default = 0
-
 " ultisnips
 let g:UltiSnipsExpandTrigger="<c-cr>"
 let g:UltiSnipsJumpForwardTrigger="<c-]>"
@@ -246,6 +243,7 @@ nmap <leader>gp :Gpull <bar> :Gpush<cr>
 nmap <leader>gf :Gfetch<cr>
 nmap <leader>gl :Gclog -50<cr>
 vmap <leader>gl :'<,'>Gclog -50<cr>
+nmap <leader>gh :Gbrowse<cr>
 nmap <leader>p :ProjectFiles<cr>
 nmap <c-p> :Tags<cr>
 nmap <leader>v :call LanguageClient#textDocument_definition()<cr>
