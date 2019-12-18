@@ -7,10 +7,8 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
 	if has ('nvim')
 		" autocomplete
 		Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-		Plug 'autozimu/LanguageClient-neovim', {
-			\ 'branch': 'next',
-			\ 'do': 'bash install.sh',
-			\ }
+		Plug 'phpactor/phpactor', { 'dir': '~/.vim/plug/phpactor', 'do': 'composer -q -n install' }
+		Plug 'kristijanhusak/deoplete-phpactor'
 	endif
 	" directory tree
 	Plug 'scrooloose/nerdtree'
@@ -175,11 +173,6 @@ let g:deoplete#enable_at_startup = 1
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
 
-let g:LanguageClient_serverCommands = {
-	\ 'php': ['php', '~/.composer/vendor/bin/php-language-server.php']
-	\ }
-let g:LanguageClient_diagnosticsEnable = 0
-
 " vdebug
 highlight DbgBreakptLine ctermbg=none ctermfg=none
 highlight DbgBreakptSign ctermbg=none ctermfg=10
@@ -248,7 +241,8 @@ vmap <leader>gl :'<,'>Gclog -50<cr>
 nmap <leader>gh :Gbrowse<cr>
 nmap <leader>p :ProjectFiles<cr>
 nmap <c-p> :Tags<cr>
-nmap <leader>v :call LanguageClient#textDocument_definition()<cr>
+nmap <leader>v :call phpactor#GotoDefinition()<cr>
+nmap <leader>x :call phpactor#ContextMenu()<cr>
 nmap <leader>b :TagbarToggle<cr>
 nmap <leader>dq :BreakpointRemove *<cr><F7><F6>
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
