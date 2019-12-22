@@ -244,7 +244,11 @@ nmap <leader>cv :call phpactor#ExtractExpression(v:false)<cr>
 vmap <leader>cv :call phpactor#ExtractExpression(v:true)<cr>
 nmap <leader>b :TagbarToggle<cr>
 nmap <leader>dq :BreakpointRemove *<cr><F7><F6>
-vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+nmap <c-w><s-j> :res -10<cr>
+nmap <c-w><s-k> :res +10<cr>
+nmap <c-w><s-l> :vert res -10<cr>
+nmap <c-w><s-h> :vert res +10<cr>
+vnoremap // y/\V<c-r>=escape(@",'/\')<cr><cr>
 
 "miniyank
 map p <Plug>(miniyank-startput)
