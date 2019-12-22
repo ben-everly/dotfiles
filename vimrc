@@ -144,7 +144,6 @@ let g:gtm_plugin_status_enabled = 1
 
 " neomake
 call neomake#configure#automake('nrw', 1000)
-let g:neomake_open_list = 2
 
 " zfz
 function! FindGitRoot()
