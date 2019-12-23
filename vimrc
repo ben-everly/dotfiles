@@ -39,7 +39,10 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
 	Plug 'bling/vim-airline'
 	Plug 'morhetz/gruvbox'
 
-	Plug 'git-time-metric/gtm-vim-plugin'
+	if executable("gtm")
+		Plug 'git-time-metric/gtm-vim-plugin'
+		let g:gtm_plugin_status_enabled = 1
+	endif
 
 	" language specific
 	Plug 'rayburgemeestre/phpfolding.vim', { 'for': 'php' }
@@ -138,9 +141,6 @@ set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tagbar#flags = 'f'
-
-" gtm
-let g:gtm_plugin_status_enabled = 1
 
 " neomake
 call neomake#configure#automake('nrw', 1000)
