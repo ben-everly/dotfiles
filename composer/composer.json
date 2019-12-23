@@ -1,0 +1,12 @@
+{
+    "require": {
+        "phpmd/phpmd": "*",
+        "squizlabs/php_codesniffer": "*",
+        "phpstan/phpstan": "*",
+        "phpunit/phpunit": "*",
+        "phing/phing": "*",
+        "sebastian/phpcpd": "*",
+        "phploc/phploc": "*",
+        "phpdocumentor/phpdocumentor": "*"
+    }
+}
