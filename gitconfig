@@ -6,11 +6,11 @@
 [alias]
 	ch = checkout
 	d = diff
-	st = status --short
+	st = status
 	lg = log
-	graph = log --color --graph
+	graph = log --graph --format='%C(red)%h%C(reset) - %C(green)%cd  %C(bold blue)%an%C(reset) %C(yellow)%d%C(reset) %s'
 	discard = checkout -- .
-	bl = branch -l
+	bl = branch -l --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) %(color:red)%(objectname:short)%(color:reset) %(color:green)(%(committerdate:relative))%(color:reset) %(color:bold blue)<%(authorname)>%(color:reset) %(contents:subject)'
 	bd = branch -d
 	track = branch --track
 [core]
@@ -21,20 +21,25 @@
 [color]
 	ui = always
 [format]
-	pretty = %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset
+	pretty = %C(red)%h%C(reset)  %C(green)%cd  %C(bold blue)%<(15,trunc)%an%C(reset) %C(yellow)%d%C(reset) %s
+[branch]
+	sort = -committerdate
 [diff]
 	tool = vimdiff
+[log]
+	abbrevCommit = true
+	date = iso
 [merge]
 	tool = vimdiff
 [push]
 	default = current
-[log]
-	abbrevCommit = true
-	date = iso
 [pull]
 	rebase = true
 [mergetool]
 	keepBackup = false
+[status]
+	short = true
+	branch = true
 [url "git@github.com:"]
 	insteadOf = "gh:"
 [url "git@gist.github.com:"]
