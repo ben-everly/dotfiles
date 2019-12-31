@@ -234,7 +234,9 @@ nmap <leader>gp :Gpull <bar> :Gpush<cr>
 nmap <leader>gf :Gfetch<cr>
 nmap <leader>gl :Gclog -50<cr>
 vmap <leader>gl :'<,'>Gclog -50<cr>
-nmap <leader>gh :Gbrowse<cr>
+nmap <leader>gH :Gbrowse<cr>
+nmap <leader>gh :.Gbrowse<cr>
+vmap <leader>gh :'<,'>Gbrowse<cr>
 nmap <leader>p :ProjectFiles<cr>
 nmap <c-p> :Tags<cr>
 nmap <leader>v :call phpactor#GotoDefinition()<cr>
