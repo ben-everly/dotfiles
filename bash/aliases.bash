@@ -10,3 +10,10 @@ alias less='less -rSFX'
 alias :q='exit'
 
 alias vim='nvim'
+
+tabtocsv() {
+	sed -i 's/\"/\"\"/g' $1
+	sed -i 's/$/\"/g' $1
+	sed -i 's/^/\"/g' $1
+	sed -i 's/\t/\",\"/g' $1
+}
