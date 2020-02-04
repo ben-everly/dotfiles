@@ -54,6 +54,7 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
 	Plug 'tpope/vim-surround'
 	Plug 'tpope/vim-commentary'
 	Plug 'kchmck/vim-coffee-script'
+	Plug 'roman/golden-ratio'
 
 	call plug#end()
 endif
