@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/sh
+
 export LESS='RSFXm'
 
 alias ls='ls -F --color=always'
