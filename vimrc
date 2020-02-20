@@ -35,6 +35,8 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
 	" snippets
 	Plug 'SirVer/ultisnips'
 	Plug 'honza/vim-snippets'
+	Plug 'tobyS/vmustache'
+	Plug 'tobyS/pdv'
 
 	Plug 'bling/vim-airline'
 	Plug 'morhetz/gruvbox'
@@ -166,6 +168,10 @@ let g:UltiSnipsExpandTrigger="<c-cr>"
 let g:UltiSnipsJumpForwardTrigger="<c-]>"
 let g:UltiSnipsJumpBackwardTrigger="<c-[>"
 let g:snips_author='ben.everly@oberd.com'
+
+" pdv
+let g:pdv_template_dir = $HOME . "/.vim/plug/pdv/templates_snip"
+nmap /** :call pdv#DocumentWithSnip()<cr>
 
 " autocomplete
 let g:deoplete#enable_at_startup = 1
