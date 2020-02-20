@@ -10,9 +10,13 @@
 	lg = log
 	graph = log --graph --format='%C(red)%h%C(reset) - %C(green)%cd  %C(bold blue)%an%C(reset) %C(yellow)%d%C(reset) %s'
 	discard = checkout -- .
-	bl = branch -l --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) %(color:red)%(objectname:short)%(color:reset) %(color:green)(%(committerdate:relative))%(color:reset) %(color:bold blue)<%(authorname)>%(color:reset) %(contents:subject)'
 	bd = branch -d
 	track = branch --track
+	bl = "!f() { \
+		git branch -l \
+		--format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset):%(color:red)%(objectname:short)%(color:reset):%(color:green)(%(committerdate:relative))%(color:reset):%(color:bold blue)%(authorname)%(color:reset):%(contents:subject)' \
+		$@ | column -t -s ':'; \
+	}; f"
 [core]
 	editor = vim
 	excludesFile = ~/.gitignore
