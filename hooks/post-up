@@ -4,6 +4,7 @@ if [ ! -e $HOME/.vim/autoload/plug.vim ]; then
 fi
 vim - -u $HOME/.vimrc +PlugInstall +qa --not-a-term
 bash $HOME/.vim/plug/gruvbox/gruvbox_256palette.sh
+composer install --working-dir=$HOME/.vim/plug/phpactor
 if [ ! -e $HOME/.config/kitty/theme.conf ]; then
     ln $HOME/.config/kitty/kitty-themes/gruvbox_dark.conf $HOME/.config/kitty/theme.conf
 fi
