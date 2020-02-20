@@ -17,6 +17,8 @@
 		--format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset):%(color:red)%(objectname:short)%(color:reset):%(color:green)(%(committerdate:relative))%(color:reset):%(color:bold blue)%(authorname)%(color:reset):%(contents:subject)' \
 		$@ | column -t -s ':'; \
 	}; f"
+	pr = "!f() { gh pr $@; }; f"
+	issue = "!f() { gh issue $@; }; f"
 [core]
 	editor = vim
 	excludesFile = ~/.gitignore
