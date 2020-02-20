@@ -1,11 +1,10 @@
 #!/bin/zsh
 
-source ~/.shrc
+autoload -Uz compinit && compinit
+autoload -U colors && colors
+autoload bashcompinit && bashcompinit
 
-autoload bashcompinit
-bashcompinit
-autoload -U colors
-colors
+source ~/.shrc
 
 for file in ~/.zsh/* ; do
     if [ -f "$file" ]; then
