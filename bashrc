@@ -10,10 +10,6 @@ for file in ~/.bash/* ; do
     fi
 done
 
-if [ -f "/usr/local/etc/profile.d/bash_completion.sh" ]; then
-    . "/usr/local/etc/profile.d/bash_completion.sh"
-fi
-
 export PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
