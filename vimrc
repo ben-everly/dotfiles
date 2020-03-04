@@ -50,6 +50,7 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
 	Plug 'rayburgemeestre/phpfolding.vim', { 'for': 'php' }
 	Plug 'tpope/vim-dadbod', { 'for': ['sql', 'mysql'] }
 	Plug 'alvan/vim-php-manual', { 'for': ['php'] }
+	Plug 'sheerun/vim-polyglot'
 
 	Plug 'nblock/vim-dokuwiki'
 	Plug 'bfredl/nvim-miniyank'
