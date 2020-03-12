@@ -260,7 +260,7 @@ nmap <c-w><s-j> :res -10<cr>
 nmap <c-w><s-k> :res +10<cr>
 nmap <c-w><s-l> :vert res -10<cr>
 nmap <c-w><s-h> :vert res +10<cr>
-vnoremap // y/\V<c-r>=escape(@",'/\')<cr><cr>
+vmap // y/\V<c-r>=escape(@",'/\')<cr><cr>
 
 "miniyank
 map p <Plug>(miniyank-startput)
