@@ -12,6 +12,10 @@
 	discard = checkout -- .
 	bd = branch -d
 	track = branch --track
+	standup = lg --all --no-merges -10 --author='ben.everly@oberd.com' --abbrev-commit --oneline --since='1 week ago'
+	clean-merged = !git-clean-merged
+	trash = !git-trash
+	recurse = !git-recurse
 	bl = "!f() { \
 		git branch -l \
 		--format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset)˘%(color:red)%(objectname:short)%(color:reset)˘%(color:green)(%(committerdate:relative))%(color:reset)˘%(color:bold blue)%(authorname)%(color:reset)˘%(contents:subject)' \

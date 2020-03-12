@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# TODO figure out if branches are remote/local individually instead of using the -r option and support -a
+
+while getopts "r" opt; do
+	case $opt in
+		r ) isRemote=true;;
+		* ) exit 0;;
+	esac
+done
+
+head=`git rev-parse --abbrev-ref HEAD`;
+branches=`git branch --merged master $@ | grep -vE "(develop|master|${head})"`;
+[ -z "$branches" ] && echo 'No merged branches to clean' && exit 0;
+git bl --merged master $@ | grep -vE "(develop|master|${head})";
+
+read -p 'Branches will be deleted. Continue (y/N)? ' choice;
+case $choice in
+	y|Y ) ;;
+	* ) exit 0;;
+esac
+
+for branch in $branches; do
+	branch=`echo $branch | sed 's/\x1b\[[0-9;]*m//g'`;
+	if [ $isRemote ]; then
+		remote=`echo $branch | sed -n -e 's/^\([^\/]*\)\/.*$/\1/p'`;
+		branch=`echo $branch | sed -n -e 's/^[^\/]*\/\(.*\)$/\1/p'`;
+		git push $remote :$branch
+	else
+		git branch -d $branch;
+	fi
+done

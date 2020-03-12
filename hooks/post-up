@@ -8,3 +8,5 @@ composer install --working-dir=$HOME/.vim/plug/phpactor
 if [ ! -e $HOME/.config/kitty/theme.conf ]; then
     ln $HOME/.config/kitty/kitty-themes/gruvbox_dark.conf $HOME/.config/kitty/theme.conf
 fi
+
+ln -s $(dirname $(pwd))/.git-scripts/* ~/bin/

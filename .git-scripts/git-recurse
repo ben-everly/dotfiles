@@ -1,0 +1,11 @@
+#!/bin/bash
+
+find . -path *vendor* -prune -o -name .git -type d \
+	-execdir sh -c '
+		if [[ ! -z `git $0 $@` ]]; then
+			dir=`pwd | sed -n "s/\(.*\)$/\1/p"`
+			echo "$(tput bold)$(tput setaf 2)$dir$(tput sgr0)"
+			git $0 $@
+			printf \\n
+		fi
+	' $@ \;
