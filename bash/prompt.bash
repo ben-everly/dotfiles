@@ -62,8 +62,9 @@ git_prompt() {
     if branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null); then
         if [ "$branch" "==" "HEAD" ]; then
             branch='detached*'
+            local tag="[$(git describe --tags)]"
         fi
-        printf '\n'"$(raw_color purple)"'%s'"$(raw_color reset)"'\n' "[$branch]"
+        printf "\n$(raw_color purple)[%s]%s$(raw_color reset)\n" $branch $tag
     fi
 }
 
