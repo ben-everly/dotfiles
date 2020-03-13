@@ -9,7 +9,7 @@
 	d = diff
 	st = status
 	lg = log
-	amend = git commit --amend
+	amend = commit --amend
 	graph = log --graph --format='%C(red)%h%C(reset) - %C(green)%cd  %C(bold blue)%an%C(reset) %C(yellow)%d%C(reset) %s'
 	discard = checkout -- .
 	bd = branch -d
