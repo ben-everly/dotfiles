@@ -12,6 +12,8 @@ for file in ~/.zsh/* ; do
     fi
 done
 
+setopt GLOB_COMPLETE
+
 precmd() { eval "$PROMPT_COMMAND" }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
