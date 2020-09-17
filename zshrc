@@ -13,6 +13,7 @@ for file in ~/.zsh/* ; do
 done
 
 setopt GLOB_COMPLETE
+setopt interactivecomments
 
 precmd() { eval "$PROMPT_COMMAND" }
 
