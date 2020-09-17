@@ -9,10 +9,12 @@
 	d = diff
 	st = status
 	lg = log
+	bd = branch -d
+	ss = stash save -u
 	amend = commit --amend
 	graph = log --graph --format='%C(red)%h%C(reset) - %C(green)%cd  %C(bold blue)%an%C(reset) %C(yellow)%d%C(reset) %s'
 	discard = checkout -- .
-	bd = branch -d
+	merged = bl --merged
 	track = branch --track
 	standup = lg --all --no-merges -10 --author='ben.everly@oberd.com' --abbrev-commit --oneline --since='1 week ago'
 	clean-merged = !git-clean-merged
