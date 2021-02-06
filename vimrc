@@ -213,7 +213,7 @@ augroup nerdtreeinit
 	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 augroup END
 let NERDTreeMinimalUI = 1
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom = {
 	\     "Modified"  : "-",
 	\     "Staged"    : "+",
 	\     "Untracked" : "✭",
