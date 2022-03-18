@@ -1,233 +1,163 @@
-set nocompatible
+let mapleader = " "
 
-" vundle setup
-if !empty(glob('~/.vim/autoload/plug.vim'))
-	call plug#begin('~/.vim/plug')
+call plug#begin('~/.vim/plug')
 
-	if has ('nvim')
-		" autocomplete
-		Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-		Plug 'phpactor/phpactor', { 'dir': '~/.vim/plug/phpactor', 'do': 'composer -q -n install' }
-		Plug 'kristijanhusak/deoplete-phpactor'
-	endif
-	" directory tree
-	Plug 'scrooloose/nerdtree'
-	Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tpope/vim-sensible'
+Plug 'morhetz/gruvbox'
+Plug 'neomake/neomake'
 
-	" syntax errors
-	Plug 'neomake/neomake'
+Plug 'preservim/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+nmap <leader>n :NERDTreeToggle<cr>
+nmap <leader>N :NERDTreeFind<cr>
 
-	" tags
-	Plug 'ludovicchabant/vim-gutentags'
-	Plug 'majutsushi/tagbar'
+Plug 'tpope/vim-fugitive'
+nmap <leader>gs :Git<cr>
+nmap <leader>gb :Git blame<cr>
+nmap <leader>gd :Git diff<cr>
+nmap <leader>gp :Git pull <bar> :Gpush<cr>
+nmap <leader>gf :Git fetch<cr>
+nmap <leader>gl :Gclog -50<cr>
+vmap <leader>gl :'<,'>Gclog -50<cr>
 
-	" search
-	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-	Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-rhubarb'
+nmap <leader>gH :GBrowse<cr>
+nmap <leader>gh :.GBrowse<cr>
+vmap <leader>gh :'<,'>GBrowse<cr>
 
-	" xdebug
-	Plug 'vim-vdebug/vdebug'
-
-	" git/github integration
-	Plug 'tpope/vim-fugitive'
-	Plug 'tpope/vim-rhubarb'
-
-	" snippets
-	Plug 'SirVer/ultisnips'
-	Plug 'honza/vim-snippets'
-	Plug 'tobyS/vmustache'
-	Plug 'tobyS/pdv'
-
-	Plug 'bling/vim-airline'
-	Plug 'morhetz/gruvbox'
-
-	if executable("gtm")
-		Plug 'git-time-metric/gtm-vim-plugin'
-		let g:gtm_plugin_status_enabled = 1
-	endif
-
-	" language specific
-	Plug 'rayburgemeestre/phpfolding.vim', { 'for': 'php' }
-	Plug 'tpope/vim-dadbod', { 'for': ['sql', 'mysql'] }
-	Plug 'alvan/vim-php-manual', { 'for': ['php'] }
-	Plug 'sheerun/vim-polyglot'
-
-	Plug 'nblock/vim-dokuwiki'
-	Plug 'bfredl/nvim-miniyank'
-	Plug 'tpope/vim-surround'
-	Plug 'tpope/vim-commentary'
-	Plug 'kchmck/vim-coffee-script'
-	Plug 'roman/golden-ratio'
-
-	call plug#end()
-endif
-
-" formatting and appearance
-filetype plugin indent on
-syntax enable
-augroup filetypes
-	autocmd!
-	autocmd BufRead,BufNewFile *.ts set ft=javascript
-	autocmd BufRead,BufNewFile *.tsx set ft=javascript
-augroup END
-
-" other random settings
-set number
-set foldenable
-set wrap
-set scrolloff=3 " always show 3 lines above/below cursor
-set sidescrolloff=3 " same for left/right
-set whichwrap+=hl
-set autoread
-set noautowrite
-set backspace=indent,eol,start
-set noerrorbells
-set lazyredraw
-set hidden " allow switching buffers without saving
-set cf " save confirmation when exiting unsaved file
-set ffs=unix,dos,mac " use unix line endings
-set nosol " dont move the cursor to start of line when using some commands
-
-" display
-set cursorline
-set list
-set listchars=tab:\|\ ,trail:· " show a · for trailing whitespace and a | for tabs
-if !empty(glob("~/.vim/plug/gruvbox"))
-	colorscheme gruvbox
-endif
-set background=dark
-set t_Co=256
-set termguicolors
-
-" tmux fix
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-
-" indent
-set noexpandtab
-set tabstop=4
-set shiftwidth=4
-set smarttab
-set autoindent
-
-" search/command settings
-set smartcase
-set ignorecase
-set incsearch
-set hlsearch
-set showmatch
-set showcmd
-set history=1000
-set undolevels=1000
-
-" backup directory
-let swap = 0
-if swap == 1
-	if empty(glob('~/.vim/backup'))
-		silent !mkdir -p ~/.vim/backup > /dev/null 2>&1
-	endif
-	set directory=~/.vim/backup " save .swp files in tmp dir
-	set backupdir=~/.vim/backup
-else
-	set noswapfile
-endif
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+let g:deoplete#enable_at_startup = 1
+augroup deoplete
+	au!
+	au VimEnter * call deoplete#custom#option('sources', {
+			\ '_': ['omni', 'around', 'buffer', 'tag', 'member', 'file', 'snippet'],
+			\ 'php': ['phpactor',  'omni', 'around', 'buffer', 'member', 'file', 'snippet']
+			\})
+augroup end
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
 
-" return to last edit position
-augroup lastedit
-	autocmd!
-	autocmd BufReadPost *
-		\ if line("'\"") > 0 && line("'\"") <= line("$") |
-		\	exe "normal! g`\"" |
-		\ endif
-augroup END
+Plug 'phpactor/phpactor', { 'for': 'php', 'dir': '~/.vim/plug/phpactor', 'do': 'composer -q -n install' }
+augroup phpactor
+	au!
+	au User phpactor nmap <leader>v :call phpactor#GotoDefinition()<cr>
+	au User phpactor nmap <leader>x :call phpactor#ContextMenu()<cr>
+	au User phpactor vmap <leader>cf :call phpactor#ExtractMethod()<cr>
+	au User phpactor nmap <leader>cv :call phpactor#ExtractExpression(v:false)<cr>
+	au User phpactor vmap <leader>cv :call phpactor#ExtractExpression(v:true)<cr>
+augroup end
 
-" statusline
-set laststatus=2
+Plug 'kristijanhusak/deoplete-phpactor', { 'for': 'php' }
+
+Plug 'preservim/tagbar'
+nmap <leader>b :TagbarToggle<cr>
+
+Plug 'vim-airline/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tagbar#flags = 'f'
 
-" neomake
-call neomake#configure#automake('nrw', 1000)
-
-" zfz
-function! FindGitRoot()
-	return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
-endfunction
-command! ProjectFiles execute 'Files' FindGitRoot()
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 if executable("ag")
 	let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 endif
+nmap <leader>p :GFiles<cr>
+nmap <c-p> :Tags<cr>
 
-" gutentags
+Plug 'ludovicchabant/vim-gutentags'
 let g:gutentags_cache_dir = '~/.vim/gutentags'
 let g:gutentags_ctags_exclude = ['*.css', '*.html', '*.js', '*.json', '*.xml', '*.phar', '*.ini', '*.rst', '*.md', '*vendor/*/test*', '*vendor/*/Test*', '*vendor/*/fixture*', '*vendor/*/Fixture*', '*var/cache*', '*var/log*']
 
-" ultisnips
+Plug 'SirVer/ultisnips'
 let g:UltiSnipsExpandTrigger="<c-cr>"
-let g:UltiSnipsJumpForwardTrigger="<c-]>"
+let g:UltiSnipsJumpForwardTrigger="<cr>"
 let g:UltiSnipsJumpBackwardTrigger="<c-[>"
-let g:snips_author='ben.everly@oberd.com'
 
-" pdv
-let g:pdv_template_dir = $HOME . "/.vim/plug/pdv/templates_snip"
+Plug 'ncm2/ncm2-ultisnips'
+inoremap <silent> <expr> <CR> (pumvisible() ? ncm2_ultisnips#expand_or("\<CR>", 'n') : "\<CR>")
+
+Plug 'tobyS/pdv'
+let g:pdv_template_dir=$HOME . "/.vim/plug/pdv/templates_snip"
 nmap /** :call pdv#DocumentWithSnip()<cr>
 
-" autocomplete
-let g:deoplete#enable_at_startup = 1
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
+Plug 'ben-everly/vim-snippets'
+let g:ultisnips_php_scalar_types=1
 
-" vdebug
-highlight DbgBreakptLine ctermbg=none ctermfg=none
-highlight DbgBreakptSign ctermbg=none ctermfg=10
-highlight DbgCurrentLine ctermbg=none ctermfg=none
-highlight DbgCurrentSign ctermbg=none ctermfg=red
+Plug 'svermeulen/vim-yoink'
+nmap <leader>] <plug>(YoinkPostPasteSwapBack)
+nmap <leader>[ <plug>(YoinkPostPasteSwapForward)
+nmap p <plug>(YoinkPaste_p)
+nmap P <plug>(YoinkPaste_P)
+nmap gp <plug>(YoinkPaste_gp)
+nmap gP <plug>(YoinkPaste_gP)
+let g:yoinkMaxItems=100
+let g:yoinkIncludeDeleteOperations=1
+let g:yoinkSavePersistently=1
+let g:yoinkAutoFormatPaste=1
+let g:yoinkSwapClampAtEnds=0
+
+Plug 'vim-vdebug/vdebug'
 let g:vdebug_options = {
-	\    'port'               : 9000,
-	\    'on_close'           : 'detach',
-	\    'break_on_open'      : 0,
-	\    'path_maps'          : { "/var/www/app": FindGitRoot() },
-	\    'watch_window_style' : 'compact',
-	\    'continuous_mode'    : 1,
-	\    'layout'             : 'vertical',
-	\}
+	\ 'break_on_open'      : 0,
+	\ 'continuous_mode'    : 1,
+	\ 'path_maps'          : { "/var/www/app": system('git rev-parse --show-toplevel 2> /dev/null')[:-2] },
+	\ 'sign_breakpoint'    : '▶',
+	\ 'watch_window_style' : 'compact',
+\}
 let g:vdebug_keymap = {
-	\    'run'               : "<leader>d<cr>",
-	\    'run_to_cursor'     : "",
-	\    "step_over"         : "<leader>dj",
-	\    "step_into"         : "<leader>d.",
-	\    "step_out"          : "<leader>d,",
-	\    "close"             : "<F6>",
-	\    "detach"            : "<F7>",
-	\    "set_breakpoint"    : "<leader>db",
-	\    "get_context"       : "<F11>",
-	\    "eval_under_cursor" : "<F12>",
-	\    "eval_visual"       : "<Leader>e"
-	\}
+	\ 'run'               : "<leader>d<cr>",
+	\ 'run_to_cursor'     : "<leader>dc",
+	\ "step_over"         : "<leader>dj",
+	\ "step_into"         : "<leader>d]",
+	\ "step_out"          : "<leader>d[",
+	\ "close"             : "<leader>dq",
+	\ "set_breakpoint"    : "<leader>db",
+	\ "get_context"       : "<F11>",
+	\ "eval_under_cursor" : "<leader>e",
+	\ "eval_visual"       : "<leader>ve",
+\}
+augroup vdebug
+	au!
+	au ColorScheme *
+		\ highlight! clear DbgCurrentLine |
+		\ highlight! clear DbgBreakptLine |
+		\ highlight! link DbgBreakptSign GruvboxRedSign |
+		\ highlight! link DbgCurrentSign GruvboxGreenSign |
+augroup end
 
-" nerdtree
-augroup nerdtreeinit
-	autocmd!
-	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-augroup END
-let NERDTreeMinimalUI = 1
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-	\     "Modified"  : "-",
-	\     "Staged"    : "+",
-	\     "Untracked" : "✭",
-	\     "Renamed"   : "➜",
-	\     "Unmerged"  : "═",
-	\     "Deleted"   : "-",
-	\     "Dirty"     : "-",
-	\     "Clean"     : '+',
-	\     'Ignored'   : '',
-	\     "Unknown"   : ''
-	\ }
+Plug 'tobyS/vmustache'
+Plug 'sheerun/vim-polyglot'
+Plug 'rayburgemeestre/phpfolding.vim', { 'for': ['php'] }
+Plug 'StanAngeloff/php.vim', { 'for': ['php'] }
+Plug 'alvan/vim-php-manual', { 'for': ['php'] }
+Plug 'tpope/vim-dadbod', { 'for': ['sql', 'mysql'] }
+Plug 'jiangmiao/auto-pairs'
+Plug 'romainl/vim-qf'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 
-" map leader key
-let mapleader = " "
+call plug#end()
+
+colorscheme gruvbox
+call neomake#configure#automake('nrwi', 500)
+set number
+set scrolloff=3
+set lazyredraw
+set autoread
+set hidden
+set cf
+set nosol
+set cursorline
+set ignorecase
+set shellcmdflag=-ic
+set tabstop=4
+set nowrap
+set clipboard^=unnamed,unnamedplus
+" show a · for trailing whitespace and a | for tabs
+set list
+set listchars=tab:\|\ ,trail:·
+
 nmap <leader>w :w!<cr>
 nmap <leader>q :bd<cr>
 nmap <leader>l :ls<cr>
@@ -235,109 +165,12 @@ nmap <leader><C-t> :enew<cr>
 nmap <leader><C-w> :bp\|bd #<cr>
 nmap <leader>. :bnext<cr>
 nmap <leader>, :bprevious<cr>
-nmap <leader>n :NERDTreeToggle<cr>
-nmap <leader>N :NERDTreeFind<cr>
-nmap <leader>gs :Gstatus<cr>
-nmap <leader>gb :Gblame<cr>
-nmap <leader>gd :Gdiff<cr>
-nmap <leader>gp :Gpull <bar> :Gpush<cr>
-nmap <leader>gf :Gfetch<cr>
-nmap <leader>gl :Gclog -50<cr>
-vmap <leader>gl :'<,'>Gclog -50<cr>
-nmap <leader>gH :Gbrowse<cr>
-nmap <leader>gh :.Gbrowse<cr>
-vmap <leader>gh :'<,'>Gbrowse<cr>
-nmap <leader>p :ProjectFiles<cr>
-nmap <c-p> :Tags<cr>
-nmap <leader>v :call phpactor#GotoDefinition()<cr>
-nmap <leader>x :call phpactor#ContextMenu()<cr>
-vmap <leader>cf :call phpactor#ExtractMethod()<cr>
-nmap <leader>cv :call phpactor#ExtractExpression(v:false)<cr>
-vmap <leader>cv :call phpactor#ExtractExpression(v:true)<cr>
-nmap <leader>b :TagbarToggle<cr>
-nmap <leader>dq :BreakpointRemove *<cr><F7><F6>
 nmap <c-w><s-j> :res -10<cr>
 nmap <c-w><s-k> :res +10<cr>
 nmap <c-w><s-l> :vert res -10<cr>
 nmap <c-w><s-h> :vert res +10<cr>
 vmap // y/\V<c-r>=escape(@",'/\')<cr><cr>
-
-"miniyank
-map p <Plug>(miniyank-startput)
-map P <Plug>(miniyank-startPut)
-map <leader>] <Plug>(miniyank-cycle)
-map <leader>[ <Plug>(miniyank-cycleback)
-
-" custom commands
-function! CleanXml()
-	%!tidy -q -i --show-errors 0 -xml --hide-comments 1
-	%!xmllint --format -
-	normal gg=G
-endfunction
-command! CleanXml exec CleanXml()
-
-" better grep
-if executable("ag")
-	set grepprg=ag\ --vimgrep\ $*
-	set grepformat=%f:%l:%c:%m
-endif
-function! Grep(args)
-	let args = split(a:args, ' ')
-	return system(join([&grepprg, shellescape(args[0]), len(args) > 1 ? join(args[1:-1], ' ') : ''], ' '))
-endfunction
-command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr Grep(<q-args>)
-command! -nargs=+ -complete=file_in_path -bar Lgrep lgetexpr Grep(<q-args>)
-
-
-function! RemoveQFItem()
-  let curqfidx = line('.') - 1
-  let qfall = getqflist()
-  call remove(qfall, curqfidx)
-  call setqflist(qfall, 'r')
-  execute curqfidx + 1 . "cfirst"
-  :copen
-endfunction
-:command! RemoveQFItem :call RemoveQFItem()
-" Use map <buffer> to only map dd in the quickfix window. Requires +localmap
-augroup quickfix
-	autocmd!
-	autocmd QuickFixCmdPost cgetexpr cwindow
-	autocmd QuickFixCmdPost lgetexpr lwindow
-	autocmd FileType qf set nobuflisted
-	autocmd FileType qf map <buffer> dd :RemoveQFItem<cr>
-augroup END
-
 nnoremap ; :
 cmap w!! w !sudo tee % >/dev/null
-
-function! TabsOrSpaces()
-	" Determines whether to use spaces or tabs on the current buffer.
-	if getfsize(bufname("%")) > 256000
-		" File is very large, just use the default.
-		return
-	endif
-
-	let numTabs=len(filter(getbufline(bufname("%"), 1, 250), 'v:val =~ "^\\t"'))
-	let numSpaces=len(filter(getbufline(bufname("%"), 1, 250), 'v:val =~ "^ "'))
-
-	if numTabs < numSpaces
-		setlocal expandtab
-	endif
-endfunction
-augroup indent
-	autocmd!
-	autocmd BufReadPost * call TabsOrSpaces()
-augroup END
-
-function! AirlineInit()
-	if exists('*GTMStatusline')
-		call airline#parts#define_function('gtmstatus', 'GTMStatusline')
-		let g:airline_section_b = airline#section#create([g:airline_section_b, ' ', '[', 'gtmstatus', ']'])
-	endif
-endfunction
-augroup airlineinit
-	autocmd!
-	autocmd User AirlineAfterInit call AirlineInit()
-augroup END
 
 runtime vimrc.local
