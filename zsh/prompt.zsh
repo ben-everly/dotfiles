@@ -19,8 +19,20 @@ git_prompt() {
             branch='detached*'
             local tag="[$(git describe --tags)]"
         fi
-        printf "\n${fg_bold[magenta]}[%s]%s\n" $branch $tag
+        echo "%{$fg_bold[magenta]%}[$branch]$tag%{$reset_color%}"
     fi
 }
 
-export PROMPT_COMMAND="git_prompt;"
+function vi_mode_prompt() {
+    local VIM_NORMAL="%{$fg_bold[yellow]%}[NORMAL]%{$reset_color%}"
+    local VIM_INSERT="%{$fg_bold[green]%}[INSERT]%{$reset_color%}"
+    echo "${${KEYMAP/vicmd/$VIM_NORMAL}/(main|viins)/$VIM_INSERT}"
+}
+
+function zle-line-init zle-keymap-select {
+    RPS1="$(git_prompt)$(vi_mode_prompt)"
+    zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
