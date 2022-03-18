@@ -21,6 +21,10 @@ alias gc='git commit'
 alias gd='git diff'
 alias gl='git lg'
 
+alias xml='xmlstarlet'
+alias xmlformat='xml format'
+alias jsonformat='jq'
+
 tabtocsv() {
 	sed -i 's/\"/\"\"/g' $1
 	sed -i 's/$/\"/g' $1
