@@ -9,5 +9,10 @@
         "phploc/phploc": "*",
         "phpdocumentor/phpdocumentor": "*",
         "psy/psysh": "@stable"
+    },
+    "config": {
+        "allow-plugins": {
+            "symfony/flex": true
+        }
     }
 }
