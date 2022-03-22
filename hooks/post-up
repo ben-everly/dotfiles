@@ -1,6 +1,6 @@
 #!/bin/bash
-composer global update
-composer global install
+composer global -qn update
+composer global -qn install
 
 if [ ! -e $HOME/.vim/autoload/plug.vim ]; then
     curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
