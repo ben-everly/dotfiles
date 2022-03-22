@@ -1,15 +1,16 @@
 {
     "require": {
+        "friendsofphp/php-cs-fixer": "*",
+        "phing/phing": "*",
+        "phpdocumentor/phpdocumentor": "*",
+        "phploc/phploc": "*",
         "phpmd/phpmd": "*",
-        "squizlabs/php_codesniffer": "*",
         "phpstan/phpstan": "*",
         "phpunit/phpunit": "*",
-        "phing/phing": "*",
-        "sebastian/phpcpd": "*",
-        "phploc/phploc": "*",
-        "phpdocumentor/phpdocumentor": "*",
         "psy/psysh": "@stable",
-        "friendsofphp/php-cs-fixer": "*"
+        "sebastian/phpcpd": "*",
+        "squizlabs/php_codesniffer": "*",
+        "symfony/flex": "*"
     },
     "config": {
         "allow-plugins": {
