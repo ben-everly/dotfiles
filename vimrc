@@ -37,7 +37,7 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
 
-Plug 'phpactor/phpactor', { 'for': 'php', 'dir': '~/.vim/plug/phpactor', 'do': 'composer -q -n install' }
+Plug 'phpactor/phpactor', { 'for': 'php', 'dir': '~/.vim/plug/phpactor', 'do': 'composer -qn update && composer -qn install' }
 augroup phpactor
 	au!
 	au User phpactor nmap <leader>v :call phpactor#GotoDefinition()<cr>
