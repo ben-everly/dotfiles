@@ -1,8 +1,11 @@
 #!/bin/bash
+composer global update
+composer global install
+
 if [ ! -e $HOME/.vim/autoload/plug.vim ]; then
     curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
-vim +PlugInstall +qa --not-a-term
+nvim +PlugUpdate +qa
 bash $HOME/.vim/plug/gruvbox/gruvbox_256palette.sh
 composer install --working-dir=$HOME/.vim/plug/phpactor
 if [ ! -e $HOME/.config/kitty/theme.conf ]; then
