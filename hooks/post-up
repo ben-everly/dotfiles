@@ -2,7 +2,7 @@
 composer global -qn update
 composer global -qn install
 
-nvim -u $HOME/.config/nvim/init.vim +PlugInstall +qa
+nvim --headless -u $HOME/.config/nvim/init.vim +qa # starting vim run PlugUpdate
 
 bash $HOME/.vim/plug/gruvbox/gruvbox_256palette.sh
 if [ ! -e $HOME/.config/kitty/theme.conf ]; then
