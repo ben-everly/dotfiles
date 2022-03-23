@@ -2,9 +2,9 @@
 composer global -qn update
 composer global -qn install
 
-nvim -u $HOME/.config/nvim/init.vim +qa
+nvim -u $HOME/.config/nvim/init.vim +PlugInstall +qa
+
 bash $HOME/.vim/plug/gruvbox/gruvbox_256palette.sh
-composer install --working-dir=$HOME/.vim/plug/phpactor
 if [ ! -e $HOME/.config/kitty/theme.conf ]; then
     ln $HOME/.config/kitty/kitty-themes/gruvbox_dark.conf $HOME/.config/kitty/theme.conf
 fi
