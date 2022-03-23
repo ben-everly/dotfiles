@@ -17,15 +17,12 @@ if [ -d ~/.composer/vendor/bin ]; then
     COMPOSER_MEMORY_LIMIT=-1
     export COMPOSER_MEMORY_LIMIT
     PATH=~/.composer/vendor/bin:$PATH
-    export PATH
 fi
 
 if [ -d ~/bin ]; then
     PATH=~/bin:$PATH
-    export PATH
 fi
 
-if [ -d /usr/local/opt/coreutils/libexec/gnubin ]; then
-    PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
-    export PATH
+if which ruby >/dev/null && which gem >/dev/null; then
+    PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
