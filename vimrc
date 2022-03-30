@@ -170,6 +170,11 @@ set clipboard^=unnamed,unnamedplus
 set list
 set listchars=tab:\|\ ,trail:·
 
+xnoremap il g_o^
+onoremap il :normal vil<CR>
+xnoremap al $o^
+onoremap al :normal val<CR>
+
 nmap <leader>w :w!<cr>
 nmap <leader>q :bd<cr>
 nmap <leader>l :ls<cr>
