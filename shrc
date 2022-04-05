@@ -3,7 +3,7 @@
 export IGNOREEOF=10
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
-export EDITOR=vim
+export EDITOR=nvim
 export PAGER=less
 export HISTCONTROL=ignoredups
 
