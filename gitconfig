@@ -28,7 +28,7 @@
 	pr = "!f() { gh pr $@; }; f"
 	issue = "!f() { gh issue $@; }; f"
 [core]
-	editor = vim
+	editor = nvim
 	excludesFile = ~/.gitignore
 	autocrlf = input
 	pager = 'less'
@@ -43,8 +43,12 @@
 [log]
 	abbrevCommit = true
 	date = iso
+[mergetool "nvim"]
+	cmd = nvim -f -c \"Gvdiffsplit!\" \"$MERGED\"
 [merge]
-	tool = vimdiff
+	tool = nvim
+[mergetool]
+	prompt = false
 [push]
 	default = current
 [pull]
