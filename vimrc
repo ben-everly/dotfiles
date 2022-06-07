@@ -169,6 +169,12 @@ set clipboard^=unnamed,unnamedplus
 " show a · for trailing whitespace and a | for tabs
 set list
 set listchars=tab:\|\ ,trail:·
+set foldmethod=syntax
+
+augroup folding
+	au!
+	autocmd Syntax * normal zR
+augroup end
 
 xnoremap il g_o^
 onoremap il :normal vil<CR>
