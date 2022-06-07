@@ -10,9 +10,9 @@ while getopts "r" opt; do
 done
 
 head=`git rev-parse --abbrev-ref HEAD`;
-branches=`git branch --merged master $@ | grep -vE "(develop|master|${head})"`;
+branches=`git branch --merged ${head} $@ | grep -vE "(develop|master|${head})"`;
 [ -z "$branches" ] && echo 'No merged branches to clean' && exit 0;
-git bl --merged master $@ | grep -vE "(develop|master|${head})";
+git bl --merged ${head} $@ | grep -vE "(develop|master|${head})";
 
 read -p 'Branches will be deleted. Continue (y/N)? ' choice;
 case $choice in
