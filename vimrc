@@ -36,30 +36,61 @@ nmap <leader>gH :GBrowse<cr>
 nmap <leader>gh :.GBrowse<cr>
 vmap <leader>gh :'<,'>GBrowse<cr>
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-let g:deoplete#enable_at_startup = 1
-augroup deoplete
-	au!
-	au VimEnter * call deoplete#custom#option('sources', {
-			\ '_': ['omni', 'around', 'buffer', 'tag', 'member', 'file', 'snippet'],
-			\ 'php': ['phpactor',  'omni', 'around', 'buffer', 'member', 'file', 'snippet']
-			\})
-augroup end
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-
-
-Plug 'phpactor/phpactor', { 'for': 'php', 'dir': '~/.vim/plug/phpactor', 'do': 'composer -qn update && composer -qn install' }
-augroup phpactor
-	au!
-	au User phpactor nmap <leader>v :call phpactor#GotoDefinition()<cr>
-	au User phpactor nmap <leader>x :call phpactor#ContextMenu()<cr>
-	au User phpactor vmap <leader>cf :call phpactor#ExtractMethod()<cr>
-	au User phpactor nmap <leader>cv :call phpactor#ExtractExpression(v:false)<cr>
-	au User phpactor vmap <leader>cv :call phpactor#ExtractExpression(v:true)<cr>
-augroup end
-
-Plug 'kristijanhusak/deoplete-phpactor', { 'for': 'php' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions = ['coc-phpls', 'coc-tsserver']
+set shortmess+=c
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+inoremap <silent><expr> <TAB>
+			\ pumvisible() ? "\<C-n>" :
+			\ CheckBackspace() ? "\<TAB>" :
+			\ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+function! CheckBackspace() abort
+	let col = col('.') - 1
+	return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+inoremap <silent><expr> <c-space> coc#refresh()
+nnoremap <silent> K :call ShowDocumentation()<CR>
+function! ShowDocumentation()
+	if CocAction('hasProvider', 'hover')
+		call CocActionAsync('doHover')
+	else
+		call feedkeys('K', 'in')
+	endif
+endfunction
+autocmd CursorHold * silent call CocActionAsync('highlight')
+nmap <leader>rn <Plug>(coc-rename)
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>ac  <Plug>(coc-codeaction)
+nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <leader>cl  <Plug>(coc-codelens-action)
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+	nnoremap <silent><nowait><expr> <C-j> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+	nnoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+	inoremap <silent><nowait><expr> <C-j> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+	inoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+	vnoremap <silent><nowait><expr> <C-j> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+	vnoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
+command! -nargs=0 Format :call CocActionAsync('format')
+command! -nargs=? Fold :call CocAction('fold', <f-args>)
+command! -nargs=0 OR   :call CocActionAsync('runCommand', 'editor.action.organizeImport')
 
 Plug 'preservim/tagbar'
 nmap <leader>b :TagbarToggle<cr>
@@ -142,7 +173,6 @@ Plug 'tobyS/vmustache'
 Plug 'sheerun/vim-polyglot'
 Plug 'rayburgemeestre/phpfolding.vim', { 'for': ['php'] }
 Plug 'StanAngeloff/php.vim', { 'for': ['php'] }
-Plug 'alvan/vim-php-manual', { 'for': ['php'] }
 Plug 'tpope/vim-dadbod', { 'for': ['sql', 'mysql'] }
 Plug 'jiangmiao/auto-pairs'
 Plug 'romainl/vim-qf'
@@ -170,6 +200,8 @@ set clipboard^=unnamed,unnamedplus
 set list
 set listchars=tab:\|\ ,trail:·
 set foldmethod=syntax
+set cmdheight=2
+set updatetime=300
 
 augroup folding
 	au!
