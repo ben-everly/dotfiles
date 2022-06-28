@@ -36,7 +36,7 @@ nmap <leader>gh :.GBrowse<cr>
 vmap <leader>gh :'<,'>GBrowse<cr>
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-phpls', 'coc-tsserver', 'coc-snippets', 'coc-php-cs-fixer']
+let g:coc_global_extensions = ['coc-phpls', 'coc-tsserver', 'coc-snippets', 'coc-php-cs-fixer', 'coc-lists']
 set shortmess+=c
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -98,18 +98,12 @@ command! -nargs=? Fold :call CocAction('fold', <f-args>)
 command! -nargs=0 OR   :call CocActionAsync('runCommand', 'editor.action.organizeImport')
 nmap <leader>b :CocList outline<cr>
 nmap <c-p> :CocList symbols<cr>
+nmap <leader>p :CocList files<cr>
 
 Plug 'vim-airline/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tagbar#flags = 'f'
-
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-if executable("ag")
-	let $FZF_DEFAULT_COMMAND = 'ag -g ""'
-endif
-nmap <leader>p :GFiles<cr>
 
 Plug 'ludovicchabant/vim-gutentags'
 let g:gutentags_cache_dir = '~/.vim/gutentags'
