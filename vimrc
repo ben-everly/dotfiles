@@ -32,7 +32,15 @@ nmap <leader>gh :.GBrowse<cr>
 vmap <leader>gh :'<,'>GBrowse<cr>
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-phpls', 'coc-tsserver', 'coc-snippets', 'coc-php-cs-fixer', 'coc-lists', 'coc-git']
+let g:coc_global_extensions = [
+	\ 'coc-phpls',
+	\ 'coc-tsserver',
+	\ 'coc-snippets',
+	\ 'coc-php-cs-fixer',
+	\ 'coc-lists',
+	\ 'coc-git',
+	\ 'coc-eslint'
+	\ ]
 set shortmess+=c
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
