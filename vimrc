@@ -97,9 +97,8 @@ xmap <silent> <C-s> <Plug>(coc-range-select)
 command! -nargs=0 Format :call CocActionAsync('format')
 command! -nargs=? Fold :call CocAction('fold', <f-args>)
 command! -nargs=0 OR   :call CocActionAsync('runCommand', 'editor.action.organizeImport')
-
-Plug 'preservim/tagbar'
-nmap <leader>b :TagbarToggle<cr>
+nmap <leader>b :CocList outline<cr>
+nmap <c-p> :CocList symbols<cr>
 
 Plug 'vim-airline/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
@@ -112,7 +111,6 @@ if executable("ag")
 	let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 endif
 nmap <leader>p :GFiles<cr>
-nmap <c-p> :Tags<cr>
 
 Plug 'ludovicchabant/vim-gutentags'
 let g:gutentags_cache_dir = '~/.vim/gutentags'
