@@ -109,6 +109,7 @@ nmap <leader>p :CocList files<cr>
 Plug 'vim-airline/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#coc#enabled = 0
 
 Plug 'ludovicchabant/vim-gutentags'
 let g:gutentags_cache_dir = '~/.vim/gutentags'
