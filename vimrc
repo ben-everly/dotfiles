@@ -42,6 +42,9 @@ let g:coc_global_extensions = [
 	\ 'coc-eslint'
 	\ ]
 set shortmess+=c
+nmap <silent> [e <Plug>(coc-diagnostic-prev)
+nmap <silent> ]e <Plug>(coc-diagnostic-next)
+nmap <leader>e :CocList diagnostics<cr>
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
@@ -171,7 +174,7 @@ let g:vdebug_keymap = {
 	\ "close"             : "<leader>dq",
 	\ "set_breakpoint"    : "<leader>db",
 	\ "get_context"       : "<F11>",
-	\ "eval_under_cursor" : "<leader>e",
+	\ "eval_under_cursor" : "<leader>de",
 	\ "eval_visual"       : "<leader>ve",
 \}
 augroup vdebug
