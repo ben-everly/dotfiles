@@ -37,7 +37,7 @@ nmap <leader>gh :.GBrowse<cr>
 vmap <leader>gh :'<,'>GBrowse<cr>
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-phpls', 'coc-tsserver']
+let g:coc_global_extensions = ['coc-phpls', 'coc-tsserver', 'coc-snippets']
 set shortmess+=c
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -45,6 +45,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 inoremap <silent><expr> <TAB>
 			\ pumvisible() ? "\<C-n>" :
+			\ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
 			\ CheckBackspace() ? "\<TAB>" :
 			\ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
@@ -111,14 +112,6 @@ nmap <c-p> :Tags<cr>
 Plug 'ludovicchabant/vim-gutentags'
 let g:gutentags_cache_dir = '~/.vim/gutentags'
 let g:gutentags_ctags_exclude = ['*.css', '*.html', '*.js', '*.json', '*.xml', '*.phar', '*.ini', '*.rst', '*.md', '*vendor/*/test*', '*vendor/*/Test*', '*vendor/*/fixture*', '*vendor/*/Fixture*', '*var/cache*', '*var/log*']
-
-Plug 'SirVer/ultisnips'
-let g:UltiSnipsExpandTrigger="<c-cr>"
-let g:UltiSnipsJumpForwardTrigger="<cr>"
-let g:UltiSnipsJumpBackwardTrigger="<c-[>"
-
-Plug 'ncm2/ncm2-ultisnips'
-inoremap <silent> <expr> <CR> (pumvisible() ? ncm2_ultisnips#expand_or("\<CR>", 'n') : "\<CR>")
 
 Plug 'tobyS/pdv'
 let g:pdv_template_dir=$HOME . "/.vim/plug/pdv/templates_snip"
