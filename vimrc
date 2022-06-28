@@ -22,12 +22,8 @@ nmap <leader>n :NERDTreeToggle<cr>
 nmap <leader>N :NERDTreeFind<cr>
 
 Plug 'tpope/vim-fugitive'
-nmap <leader>gs :Git<cr>
-nmap <leader>gb :Git blame<cr>
-nmap <leader>gd :Git diff<cr>
 nmap <leader>gp :Git pull <bar> :Gpush<cr>
 nmap <leader>gf :Git fetch<cr>
-nmap <leader>gl :Gclog -50<cr>
 vmap <leader>gl :'<,'>Gclog -50<cr>
 
 Plug 'tpope/vim-rhubarb'
@@ -36,7 +32,7 @@ nmap <leader>gh :.GBrowse<cr>
 vmap <leader>gh :'<,'>GBrowse<cr>
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-phpls', 'coc-tsserver', 'coc-snippets', 'coc-php-cs-fixer', 'coc-lists']
+let g:coc_global_extensions = ['coc-phpls', 'coc-tsserver', 'coc-snippets', 'coc-php-cs-fixer', 'coc-lists', 'coc-git']
 set shortmess+=c
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -104,7 +100,23 @@ command! -nargs=? Fold :call CocAction('fold', <f-args>)
 command! -nargs=0 OR   :call CocActionAsync('runCommand', 'editor.action.organizeImport')
 nmap <leader>b :CocList outline<cr>
 nmap <c-p> :CocList symbols<cr>
-nmap <leader>p :CocList files<cr>
+nmap <leader>p :CocList gfiles<cr>
+nmap [g <Plug>(coc-git-prevchunk)
+nmap ]g <Plug>(coc-git-nextchunk)
+nmap [c <Plug>(coc-git-prevconflict)
+nmap ]c <Plug>(coc-git-nextconflict)
+nmap gs <Plug>(coc-git-chunkinfo)
+nmap gc <Plug>(coc-git-commit)
+omap ig <Plug>(coc-git-chunk-inner)
+xmap ig <Plug>(coc-git-chunk-inner)
+omap ag <Plug>(coc-git-chunk-outer)
+xmap ag <Plug>(coc-git-chunk-outer)
+nmap <leader>gl :CocList commits<cr>
+nmap <leader>gs :CocList gstatus<cr>
+nmap <leader>gb :CocList branches<cr>
+nmap <leader>ga :CocCommand git.chunkStage<cr>
+nmap <leader>gx :CocCommand git.chunkUndo<cr>
+nmap <leader>gf :CocCommand git.foldUnchanged<cr>
 
 Plug 'vim-airline/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
