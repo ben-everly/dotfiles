@@ -16,7 +16,6 @@ call plug#begin('~/.vim/plug')
 
 Plug 'tpope/vim-sensible'
 Plug 'morhetz/gruvbox'
-Plug 'neomake/neomake'
 
 Plug 'preservim/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 nmap <leader>n :NERDTreeToggle<cr>
@@ -37,7 +36,7 @@ nmap <leader>gh :.GBrowse<cr>
 vmap <leader>gh :'<,'>GBrowse<cr>
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-phpls', 'coc-tsserver', 'coc-snippets']
+let g:coc_global_extensions = ['coc-phpls', 'coc-tsserver', 'coc-snippets', 'coc-php-cs-fixer']
 set shortmess+=c
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -178,7 +177,6 @@ Plug 'tpope/vim-surround'
 call plug#end()
 
 colorscheme gruvbox
-call neomake#configure#automake('nrwi', 500)
 set number
 set scrolloff=3
 set lazyredraw
