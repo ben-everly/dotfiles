@@ -39,7 +39,8 @@ let g:coc_global_extensions = [
 	\ 'coc-php-cs-fixer',
 	\ 'coc-lists',
 	\ 'coc-git',
-	\ 'coc-eslint'
+	\ 'coc-eslint',
+	\ 'coc-go'
 	\ ]
 set shortmess+=c
 nmap <silent> [e <Plug>(coc-diagnostic-prev)
