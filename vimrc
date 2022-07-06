@@ -40,7 +40,8 @@ let g:coc_global_extensions = [
 	\ 'coc-lists',
 	\ 'coc-git',
 	\ 'coc-eslint',
-	\ 'coc-go'
+	\ 'coc-go',
+	\ 'coc-css'
 	\ ]
 set shortmess+=c
 nmap <silent> [e <Plug>(coc-diagnostic-prev)
