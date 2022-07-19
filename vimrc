@@ -196,6 +196,12 @@ Plug 'tpope/vim-dadbod', { 'for': ['sql', 'mysql'] }
 Plug 'jiangmiao/auto-pairs'
 Plug 'romainl/vim-qf'
 Plug 'tpope/vim-commentary'
+xmap <leader>c  <Plug>Commentary
+nmap <leader>c  <Plug>Commentary
+omap <leader>c  <Plug>Commentary
+nmap <leader>cc <Plug>CommentaryLine
+nmap <leader>cu <Plug>Commentary<Plug>Commentary
+
 Plug 'tpope/vim-surround'
 
 call plug#end()
