@@ -10,23 +10,25 @@ while getopts "r" opt; do
 done
 
 head=`git rev-parse --abbrev-ref HEAD`;
-branches=`git branch --merged ${head} $@ | grep -vE "(develop|master|main|trunk|${head})"`;
+# TODO specify formatting so user defined formatting wont break regex matching
+branches=`git bl --merged ${head} $@ | grep -vE "(develop|master|main|trunk|${head}|HEAD)"`;
 [ -z "$branches" ] && echo 'No merged branches to clean' && exit 0;
-git bl --merged ${head} $@ | grep -vE "(develop|master|main|trunk|${head})";
 
+echo "$branches"
 read -p 'Branches will be deleted. Continue (y/N)? ' choice;
 case $choice in
 	y|Y ) ;;
 	* ) exit 0;;
 esac
 
-for branch in $branches; do
+while IFS= read -r branch; do
 	branch=`echo $branch | sed 's/\x1b\[[0-9;]*m//g'`;
 	if [ $isRemote ]; then
 		remote=`echo $branch | sed -n -e 's/^\([^\/]*\)\/.*$/\1/p'`;
-		branch=`echo $branch | sed -n -e 's/^[^\/]*\/\(.*\)$/\1/p'`;
+		branch=`echo $branch | sed -n -e 's/^[^\/]*\/\(\S*\).*$/\1/p'`;
 		git push $remote :$branch
 	else
+		branch=`echo $branch | sed -n -e 's/^\(\S*\).*$/\1/p'`;
 		git branch -d $branch;
 	fi
-done
+done <<< "$branches"
