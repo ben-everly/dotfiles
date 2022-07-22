@@ -24,6 +24,7 @@ alias gl='git lg'
 alias xml='xmlstarlet'
 alias xmlformat='xml format'
 alias jsonformat='jq'
+alias sqlformat='sql-formatter-cli'
 
 tabtocsv() {
 	sed -i 's/\"/\"\"/g' $1
