@@ -19,8 +19,8 @@ if [ -d ~/.composer/vendor/bin ]; then
     PATH=~/.composer/vendor/bin:$PATH
 fi
 
-if [ -d ~/bin ]; then
-    PATH=~/bin:$PATH
+if [ -d ~/.local/bin ]; then
+    PATH=~/.local/bin:$PATH
 fi
 
 if which ruby >/dev/null && which gem >/dev/null; then
