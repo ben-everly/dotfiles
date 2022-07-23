@@ -3,6 +3,7 @@
 autoload -Uz compinit && compinit
 autoload -U colors && colors
 autoload bashcompinit && bashcompinit
+typeset -U path
 
 source ~/.shrc
 
@@ -37,5 +38,8 @@ bindkey -M viins '\e.' insert-last-word
 
 bindkey '^?' backward-delete-char
 bindkey '^h' backward-delete-char
-#
+
 precmd() { (retval=$?;tput cup "$LINES";exit $retval) }
+
+export PNPM_HOME="/home/beneverly/.local/share/pnpm"
+path+=("$PNPM_HOME")
