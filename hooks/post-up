@@ -12,4 +12,4 @@ fi
 [ -d ~/.local/bin ] || mkdir ~/.local/bin
 ln -fs $(dirname $(pwd))/.git-scripts/* ~/.local/bin/
 
-git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
+[ -d ~/.zsh/pure ] || git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
