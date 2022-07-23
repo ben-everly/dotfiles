@@ -11,3 +11,5 @@ fi
 
 [ -d ~/bin ] || mkdir ~/bin
 ln -fs $(dirname $(pwd))/.git-scripts/* ~/bin/
+
+git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"

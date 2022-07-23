@@ -1,17 +1,14 @@
 #!/bin/zsh
 
+fpath+=($HOME/.zsh/pure)
 autoload -Uz compinit && compinit
 autoload -U colors && colors
 autoload bashcompinit && bashcompinit
+autoload -U promptinit; promptinit
+prompt pure
 typeset -U path
 
 source ~/.shrc
-
-for file in ~/.zsh/* ; do
-    if [ -f "$file" ]; then
-        source "$file"
-    fi
-done
 
 setopt globcomplete
 setopt interactivecomments
