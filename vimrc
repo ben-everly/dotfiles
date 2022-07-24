@@ -226,6 +226,7 @@ set listchars=tab:\|\ ,trail:·
 set foldmethod=syntax
 set cmdheight=2
 set updatetime=300
+set inccommand=nosplit
 
 augroup folding
 	au!
