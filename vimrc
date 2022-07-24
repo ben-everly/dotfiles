@@ -33,17 +33,17 @@ vmap <leader>gh :'<,'>GBrowse<cr>
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
-	\ 'coc-phpls',
-	\ 'coc-tsserver',
 	\ 'coc-snippets',
-	\ 'coc-php-cs-fixer',
 	\ 'coc-lists',
 	\ 'coc-git',
-	\ 'coc-eslint',
+	\ 'coc-phpls',
+	\ 'coc-php-cs-fixer',
 	\ 'coc-go',
+	\ 'coc-tsserver',
+	\ 'coc-eslint',
+	\ 'coc-json',
 	\ 'coc-html',
 	\ 'coc-css',
-	\ 'coc-json',
 	\ 'coc-sql'
 	\ ]
 set shortmess+=c
