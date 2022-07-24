@@ -216,7 +216,7 @@ set cf
 set nosol
 set cursorline
 set ignorecase
-set shellcmdflag=-ic
+set shell=zsh
 set tabstop=4
 set nowrap
 set clipboard^=unnamed,unnamedplus

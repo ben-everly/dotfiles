@@ -8,8 +8,6 @@ autoload -U promptinit; promptinit
 prompt pure
 typeset -U path
 
-source ~/.shrc
-
 setopt globcomplete
 setopt interactivecomments
 
