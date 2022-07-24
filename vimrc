@@ -41,7 +41,10 @@ let g:coc_global_extensions = [
 	\ 'coc-git',
 	\ 'coc-eslint',
 	\ 'coc-go',
-	\ 'coc-css'
+	\ 'coc-html',
+	\ 'coc-css',
+	\ 'coc-json',
+	\ 'coc-sql'
 	\ ]
 set shortmess+=c
 nmap <silent> [e <Plug>(coc-diagnostic-prev)
