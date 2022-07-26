@@ -222,7 +222,7 @@ Plug 'tpope/vim-surround'
 call plug#end()
 
 colorscheme gruvbox
-set number
+set number relativenumber
 set scrolloff=3
 set lazyredraw
 set autoread
