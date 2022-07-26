@@ -41,11 +41,23 @@ let g:coc_global_extensions = [
 	\ 'coc-go',
 	\ 'coc-tsserver',
 	\ 'coc-eslint',
+	\ 'coc-sql',
 	\ 'coc-json',
+	\ 'coc-yaml',
+	\ 'coc-xml',
 	\ 'coc-html',
 	\ 'coc-css',
-	\ 'coc-sql'
+	\ 'coc-sh',
+	\ 'coc-docker',
+	\ 'coc-vimlsp',
+	\ 'coc-lua',
+	\ 'coc-markdownlint',
+	\ 'coc-markdown-preview-enhanced',
 	\ ]
+	" \ 'coc-spell-checker',
+	" \ 'coc-phpstan',
+	" \ '@yeagassy/coc-tailwindcss3',
+	" \ '@yeagassy/coc-ansible',
 set shortmess+=c
 nmap <silent> [e <Plug>(coc-diagnostic-prev)
 nmap <silent> ]e <Plug>(coc-diagnostic-next)
