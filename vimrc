@@ -31,7 +31,7 @@ nmap <leader>gH :GBrowse<cr>
 nmap <leader>gh :.GBrowse<cr>
 vmap <leader>gh :'<,'>GBrowse<cr>
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 let g:coc_global_extensions = [
 	\ 'coc-snippets',
 	\ 'coc-lists',
