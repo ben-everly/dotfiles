@@ -66,13 +66,17 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-inoremap <silent><expr> <TAB>
+imap <silent><expr> <TAB>
+			\ coc#pum#visible() ? coc#pum#next(1):
 			\ pumvisible() ? "\<C-n>" :
-			\ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-			\ CheckBackspace() ? "\<TAB>" :
+			\ coc#jumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>":
+			\ PreviousCharIsWhitespace() ? "\<TAB>" :
 			\ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-function! CheckBackspace() abort
+imap <expr><S-TAB>
+			\ coc#pum#visible() ? coc#pum#prev(1):
+			\ pumvisible() ? "\<C-p>":
+			\ "\<C-h>"
+function! PreviousCharIsWhitespace() abort
 	let col = col('.') - 1
 	return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
@@ -81,8 +85,11 @@ if has('nvim')
 else
 	inoremap <silent><expr> <c-@> coc#refresh()
 endif
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-			\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <cr>
+			\ coc#pum#visible() ? coc#_select_confirm():
+			\ pumvisible() ? coc#_select_confirm():
+			\ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+			\ "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 nnoremap <silent> K :call ShowDocumentation()<CR>
 function! ShowDocumentation()
 	if CocAction('hasProvider', 'hover')
