@@ -21,7 +21,8 @@ export HISTFILE=~/.zsh_history
 export HISTSIZE=1000000000
 export SAVEHIST=1000000000
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
 
 export WORDCHARS=${WORDCHARS//[\/]}
 
