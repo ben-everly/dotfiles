@@ -6,7 +6,6 @@ autoload -U colors && colors
 autoload bashcompinit && bashcompinit
 autoload -U promptinit; promptinit
 prompt pure
-typeset -U path
 
 setopt globcomplete
 setopt interactivecomments
@@ -25,6 +24,8 @@ export SAVEHIST=1000000000
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export WORDCHARS=${WORDCHARS//[\/]}
+
+typeset -U path
 
 export VOLTA_HOME="$HOME/.volta"
 path+=("$VOLTA_HOME/bin")
