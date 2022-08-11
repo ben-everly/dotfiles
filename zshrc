@@ -24,6 +24,8 @@ export SAVEHIST=1000000000
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+export WORDCHARS=${WORDCHARS//[\/]}
+
 export VOLTA_HOME="$HOME/.volta"
 path+=("$VOLTA_HOME/bin")
 
