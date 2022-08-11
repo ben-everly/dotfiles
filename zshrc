@@ -11,6 +11,9 @@ typeset -U path
 setopt globcomplete
 setopt interactivecomments
 
+setopt correct
+SPROMPT='%F{red}%R%f -> %F{green}%r%f [nyae]? '
+
 setopt sharehistory
 setopt histignorealldups
 setopt histreduceblanks
