@@ -25,7 +25,10 @@ export SAVEHIST=1000000000
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
+path+=("$VOLTA_HOME/bin")
+
+export PNPM_HOME="/home/beneverly/.local/share/pnpm"
+path+=("$PNPM_HOME")
 
 if [ -f /home/beneverly/.oberd/env ]; then #oberd_env
   source /home/beneverly/.oberd/env #oberd_env
@@ -39,6 +42,3 @@ bindkey '^k' history-substring-search-up
 bindkey '^j' history-substring-search-down
 
 precmd() { (retval=$?;tput cup "$LINES";exit $retval) }
-
-export PNPM_HOME="/home/beneverly/.local/share/pnpm"
-path+=("$PNPM_HOME")
