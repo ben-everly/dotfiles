@@ -33,9 +33,10 @@ fi #oberd_env
 
 bindkey -v
 bindkey -M viins '\e.' insert-last-word
-
-bindkey '^?' backward-delete-char
-bindkey '^h' backward-delete-char
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+bindkey '^k' history-substring-search-up
+bindkey '^j' history-substring-search-down
 
 precmd() { (retval=$?;tput cup "$LINES";exit $retval) }
 
