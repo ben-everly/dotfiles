@@ -1,12 +1,7 @@
 #!/bin/sh
 
-export LESS='RSFXm'
+alias la='l'
 
-alias ls='ls -F --color=always'
-alias ll='ls -l'
-alias la='ls -al'
-
-alias grep='grep --color=always'
 alias ag='ag --pager="less"'
 
 alias :q='exit'
@@ -15,11 +10,6 @@ alias vim='nvim'
 alias myvim='nvim +"set filetype=mysql"'
 
 alias dc='docker-compose'
-
-alias gs='git st'
-alias gc='git commit'
-alias gd='git diff'
-alias gl='git lg'
 
 alias xml='xmlstarlet'
 alias xmlformat='xml format'

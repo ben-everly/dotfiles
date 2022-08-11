@@ -1,11 +1,50 @@
 #!/bin/zsh
 
-fpath+=($HOME/.zsh/pure)
-autoload -Uz compinit && compinit
-autoload -U colors && colors
+skip_global_compinit=1
+
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
+
+zstyle ':zim:git' aliases-prefix 'g'
+zstyle ':zim:input' double-dot-expand yes
+
+# Set what highlighters will be used.
+# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
+# Customize the main highlighter styles.
+# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md#how-to-tweak-it
+typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[comment]='fg=242'
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+
+# See https://github.com/zsh-users/zsh-autosuggestions/blob/master/README.md#suggestion-highlight-style
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
+ZSH_AUTOSUGGEST_MANUAL_REBIND=1
+
+# ------------------
+# Initialize modules
+# ------------------
+
+ZIM_HOME=${HOME}/.zim
+# Download zimfw plugin manager if missing.
+if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
+  curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+fi
+
+# Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
+if [[ ! ${ZIM_HOME}/init.zsh -nt ${HOME}/.zimrc ]]; then
+  source ${ZIM_HOME}/zimfw.zsh init -q
+fi
+
+# Initialize modules.
+source ${ZIM_HOME}/init.zsh
+
+zmodload -F zsh/terminfo +p:terminfo
+
+# ------------------------------
+# Post-init module configuration
+# ------------------------------
+
 autoload bashcompinit && bashcompinit
-autoload -U promptinit; promptinit
-prompt pure
 
 setopt globcomplete
 setopt interactivecomments
@@ -20,9 +59,6 @@ setopt histreduceblanks
 export HISTFILE=~/.zsh_history
 export HISTSIZE=1000000000
 export SAVEHIST=1000000000
-
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-source /usr/share/doc/fzf/examples/completion.zsh
 
 export WORDCHARS=${WORDCHARS//[\/]}
 
