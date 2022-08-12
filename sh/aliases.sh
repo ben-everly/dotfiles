@@ -1,5 +1,6 @@
 #!/bin/sh
 
+export LESS='RSFXm'
 alias la='l'
 
 alias ag='ag --pager="less"'
