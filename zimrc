@@ -9,6 +9,7 @@ zmodule git
 zmodule input
 zmodule utility
 zmodule exa
+zmodule archive
 
 #
 # Prompt
