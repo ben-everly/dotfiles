@@ -13,3 +13,5 @@ fi
 ln -fs $(dirname $(pwd))/.git-scripts/* ~/.local/bin/
 
 [ -d ~/.zsh/pure ] || git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
+
+dconf load / < $(dirname $(pwd))/.gnome-settings.ini
