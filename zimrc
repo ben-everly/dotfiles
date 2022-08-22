@@ -10,6 +10,7 @@ zmodule input
 zmodule utility
 zmodule exa
 zmodule archive
+zmodule asdf
 
 #
 # Prompt

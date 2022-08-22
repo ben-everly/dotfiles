@@ -64,9 +64,6 @@ export WORDCHARS=${WORDCHARS//[\/]}
 
 typeset -U path
 
-export VOLTA_HOME="$HOME/.volta"
-path+=("$VOLTA_HOME/bin")
-
 export PNPM_HOME="/home/beneverly/.local/share/pnpm"
 path+=("$PNPM_HOME")
 
