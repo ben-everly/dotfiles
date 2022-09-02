@@ -249,6 +249,7 @@ set foldmethod=syntax
 set cmdheight=2
 set updatetime=300
 set inccommand=nosplit
+let g:vimsyn_embed = 'l'
 
 augroup folding
 	au!
