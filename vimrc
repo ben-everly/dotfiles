@@ -181,34 +181,8 @@ let g:yoinkSavePersistently=1
 let g:yoinkAutoFormatPaste=1
 let g:yoinkSwapClampAtEnds=0
 
-Plug 'vim-vdebug/vdebug'
-let g:vdebug_options = {
-	\ 'break_on_open'      : 0,
-	\ 'continuous_mode'    : 1,
-	\ 'path_maps'          : { "/var/www/app": system('git rev-parse --show-toplevel 2> /dev/null')[:-2] },
-	\ 'sign_breakpoint'    : '▶',
-	\ 'watch_window_style' : 'compact',
-\}
-let g:vdebug_keymap = {
-	\ 'run'               : "<leader>d<cr>",
-	\ 'run_to_cursor'     : "<leader>dc",
-	\ "step_over"         : "<leader>dj",
-	\ "step_into"         : "<leader>d]",
-	\ "step_out"          : "<leader>d[",
-	\ "close"             : "<leader>dq",
-	\ "set_breakpoint"    : "<leader>db",
-	\ "get_context"       : "<F11>",
-	\ "eval_under_cursor" : "<leader>de",
-	\ "eval_visual"       : "<leader>ve",
-\}
-augroup vdebug
-	au!
-	au ColorScheme *
-		\ highlight! clear DbgCurrentLine |
-		\ highlight! clear DbgBreakptLine |
-		\ highlight! link DbgBreakptSign GruvboxRedSign |
-		\ highlight! link DbgCurrentSign GruvboxGreenSign |
-augroup end
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
 
 Plug 'tobyS/vmustache'
 Plug 'sheerun/vim-polyglot'
@@ -227,6 +201,47 @@ nmap <leader>cu <Plug>Commentary<Plug>Commentary
 Plug 'tpope/vim-surround'
 
 call plug#end()
+
+lua << EOF
+local dap, dapui = require('dap'), require('dapui')
+dap.adapters.php = {
+	type = 'executable',
+	command = 'node',
+	args = { '/home/beneverly/.ansible/pull/work-XPS-15-9520/tmp/php-debug-client/out/phpDebug.js' }
+}
+
+dap.configurations.php = {
+	{
+		type = 'php',
+		request = 'launch',
+		name = 'Listen for Xdebug',
+		port = 9000,
+		log = true,
+		pathMappings = {
+			['/var/www/app/'] = '${workspaceFolder}'
+		}
+	}
+}
+
+dapui.setup()
+dap.listeners.after.event_initialized["dapui_config"] = function()
+	dapui.open()
+end
+dap.listeners.before.event_terminated["dapui_config"] = function()
+	dapui.close()
+end
+dap.listeners.before.event_exited["dapui_config"] = function()
+	dapui.close()
+end
+EOF
+nmap <leader>d<cr> :lua require'dap'.continue()<CR>
+nmap <leader>db :lua require'dap'.toggle_breakpoint()<CR>
+nmap <leader>dj :lua require'dap'.step_over()<CR>
+nmap <leader>dl :lua require'dap'.step_into()<CR>
+nmap <leader>dh :lua require'dap'.step_out()<CR>
+nmap <leader>dn :lua require'dapui'.toggle()<CR>
+nmap <M-k> <Cmd>lua require("dapui").eval()<CR>
+vmap <M-k> <Cmd>lua require("dapui").eval()<CR>
 
 colorscheme gruvbox
 set number relativenumber
