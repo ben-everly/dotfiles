@@ -181,6 +181,9 @@ let g:yoinkSavePersistently=1
 let g:yoinkAutoFormatPaste=1
 let g:yoinkSwapClampAtEnds=0
 
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter-context'
+
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
 
