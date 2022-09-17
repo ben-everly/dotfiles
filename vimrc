@@ -239,6 +239,9 @@ end
 
 require'nvim-treesitter.configs'.setup {
 	auto_install = true,
+	highlight = {
+		enable = true,
+	}
 }
 EOF
 nmap <leader>d<cr> :lua require'dap'.continue()<CR>
