@@ -240,7 +240,10 @@ require'nvim-treesitter.configs'.setup {
 	auto_install = true,
 	highlight = {
 		enable = true,
-	}
+	},
+	indent = {
+		enable = true,
+	},
 }
 EOF
 nmap <leader>d<cr> :lua require'dap'.continue()<CR>
@@ -264,6 +267,8 @@ set cursorline
 set ignorecase
 set shell=zsh
 set tabstop=4
+set shiftwidth=4
+set expandtab
 set nowrap
 set clipboard^=unnamed,unnamedplus
 " show a · for trailing whitespace and a | for tabs
