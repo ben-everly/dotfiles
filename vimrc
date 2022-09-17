@@ -236,6 +236,10 @@ end
 dap.listeners.before.event_exited["dapui_config"] = function()
 	dapui.close()
 end
+
+require'nvim-treesitter.configs'.setup {
+	auto_install = true,
+}
 EOF
 nmap <leader>d<cr> :lua require'dap'.continue()<CR>
 nmap <leader>db :lua require'dap'.toggle_breakpoint()<CR>
