@@ -161,10 +161,6 @@ Plug 'ludovicchabant/vim-gutentags'
 let g:gutentags_cache_dir = '~/.vim/gutentags'
 let g:gutentags_ctags_exclude = ['*.css', '*.html', '*.js', '*.json', '*.xml', '*.phar', '*.ini', '*.rst', '*.md', '*vendor/*/test*', '*vendor/*/Test*', '*vendor/*/fixture*', '*vendor/*/Fixture*', '*var/cache*', '*var/log*']
 
-Plug 'tobyS/pdv'
-let g:pdv_template_dir=$HOME . "/.vim/plug/pdv/templates_snip"
-nmap /** :call pdv#DocumentWithSnip()<cr>
-
 Plug 'ben-everly/vim-snippets'
 let g:ultisnips_php_scalar_types=1
 
@@ -187,7 +183,6 @@ Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
 
-Plug 'tobyS/vmustache'
 Plug 'tpope/vim-dadbod', { 'for': ['sql', 'mysql'] }
 Plug 'jiangmiao/auto-pairs'
 Plug 'romainl/vim-qf'
