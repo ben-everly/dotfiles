@@ -274,7 +274,8 @@ set clipboard^=unnamed,unnamedplus
 " show a · for trailing whitespace and a | for tabs
 set list
 set listchars=tab:\|\ ,trail:·
-set foldmethod=syntax
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 set cmdheight=2
 set updatetime=300
 set inccommand=nosplit
