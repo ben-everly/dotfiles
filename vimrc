@@ -188,7 +188,6 @@ Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
 
 Plug 'tobyS/vmustache'
-Plug 'sheerun/vim-polyglot'
 Plug 'rayburgemeestre/phpfolding.vim', { 'for': ['php'] }
 Plug 'StanAngeloff/php.vim', { 'for': ['php'] }
 Plug 'tpope/vim-dadbod', { 'for': ['sql', 'mysql'] }
