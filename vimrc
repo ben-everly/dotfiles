@@ -191,6 +191,8 @@ nmap <leader>cu <Plug>Commentary<Plug>Commentary
 
 Plug 'tpope/vim-surround'
 
+Plug 'github/copilot.vim'
+
 call plug#end()
 
 call coc#config("intelephense.licenceKey", $INTELEPHENSE_KEY)
