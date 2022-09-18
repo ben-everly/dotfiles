@@ -305,7 +305,6 @@ nmap <c-w><s-k> :res +10<cr>
 nmap <c-w><s-l> :vert res -10<cr>
 nmap <c-w><s-h> :vert res +10<cr>
 vmap // y/\V<c-r>=escape(@",'/\')<cr><cr>
-nnoremap ; :
 cmap w!! w !sudo tee % >/dev/null
 
 runtime vimrc.local
