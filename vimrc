@@ -197,6 +197,8 @@ Plug 'tpope/vim-surround'
 
 call plug#end()
 
+call coc#config("intelephense.licenceKey", $INTELEPHENSE_KEY)
+
 lua << EOF
 local dap, dapui = require('dap'), require('dapui')
 dap.adapters.php = {
