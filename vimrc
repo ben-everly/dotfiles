@@ -56,6 +56,7 @@ let g:coc_global_extensions = [
 	\ ]
 	" \ 'coc-spell-checker',
 	" \ 'coc-phpstan',
+	" \ 'coc-jsonc',
 	" \ '@yeagassy/coc-tailwindcss3',
 	" \ '@yeagassy/coc-ansible',
 set shortmess+=c
