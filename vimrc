@@ -192,6 +192,7 @@ nmap <leader>cu <Plug>Commentary<Plug>Commentary
 Plug 'tpope/vim-surround'
 
 Plug 'github/copilot.vim'
+Plug 'danth/pathfinder.vim'
 
 call plug#end()
 
