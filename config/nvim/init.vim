@@ -272,9 +272,6 @@ set nosol
 set cursorline
 set ignorecase
 set shell=zsh
-set tabstop=4
-set shiftwidth=4
-set expandtab
 set nowrap
 set clipboard^=unnamed,unnamedplus
 " show a · for trailing whitespace and a | for tabs
