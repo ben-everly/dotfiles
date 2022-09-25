@@ -196,7 +196,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sleuth'
 
 Plug 'github/copilot.vim'
-Plug 'danth/pathfinder.vim'
 
 call plug#end()
 
