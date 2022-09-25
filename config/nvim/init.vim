@@ -275,37 +275,37 @@ set shell=zsh
 set nowrap
 set clipboard^=unnamed,unnamedplus
 " show a · for trailing whitespace and a | for tabs
-    set list
-    set listchars=tab:\|\ ,trail:·
-    set foldmethod=expr
-    set foldexpr=nvim_treesitter#foldexpr()
-    set cmdheight=2
-    set updatetime=300
-    set inccommand=nosplit
-    let g:vimsyn_embed = 'l'
+set list
+set listchars=tab:\|\ ,trail:·
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+set cmdheight=2
+set updatetime=300
+set inccommand=nosplit
+let g:vimsyn_embed = 'l'
 
-    augroup folding
-        au!
-        autocmd Syntax * normal zR
-    augroup end
+augroup folding
+    au!
+    autocmd Syntax * normal zR
+augroup end
 
-    xnoremap il g_o^
-    onoremap il :normal vil<CR>
-    xnoremap al $o^
-    onoremap al :normal val<CR>
+xnoremap il g_o^
+onoremap il :normal vil<CR>
+xnoremap al $o^
+onoremap al :normal val<CR>
 
-    nmap <leader>w :w!<cr>
-    nmap <leader>q :bd<cr>
-    nmap <leader>l :ls<cr>
-    nmap <leader><C-t> :enew<cr>
-    nmap <leader><C-w> :bp\|bd #<cr>
-    nmap <leader>. :bnext<cr>
-    nmap <leader>, :bprevious<cr>
-    nmap <c-w><s-j> :res -10<cr>
-    nmap <c-w><s-k> :res +10<cr>
-    nmap <c-w><s-l> :vert res -10<cr>
-    nmap <c-w><s-h> :vert res +10<cr>
-    vmap // y/\V<c-r>=escape(@",'/\')<cr><cr>
-    cmap w!! w !sudo tee % >/dev/null
+nmap <leader>w :w!<cr>
+nmap <leader>q :bd<cr>
+nmap <leader>l :ls<cr>
+nmap <leader><C-t> :enew<cr>
+nmap <leader><C-w> :bp\|bd #<cr>
+nmap <leader>. :bnext<cr>
+nmap <leader>, :bprevious<cr>
+nmap <c-w><s-j> :res -10<cr>
+nmap <c-w><s-k> :res +10<cr>
+nmap <c-w><s-l> :vert res -10<cr>
+nmap <c-w><s-h> :vert res +10<cr>
+vmap // y/\V<c-r>=escape(@",'/\')<cr><cr>
+cmap w!! w !sudo tee % >/dev/null
 
-    runtime vimrc.local
+runtime vimrc.local
