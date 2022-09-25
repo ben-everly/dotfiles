@@ -193,6 +193,7 @@ nmap <leader>cc <Plug>CommentaryLine
 nmap <leader>cu <Plug>Commentary<Plug>Commentary
 
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-sleuth'
 
 Plug 'github/copilot.vim'
 Plug 'danth/pathfinder.vim'
