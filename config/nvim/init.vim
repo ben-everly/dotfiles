@@ -267,8 +267,8 @@ set scrolloff=3
 set lazyredraw
 set autoread
 set hidden
-set cf
-set nosol
+set completefunc
+set nostartofline
 set cursorline
 set ignorecase
 set shell=zsh
