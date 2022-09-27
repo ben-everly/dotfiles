@@ -14,8 +14,13 @@ call plug#begin('~/.vim/plug')
 
 Plug 'tpope/vim-sensible'
 Plug 'morhetz/gruvbox'
+Plug 'tpope/vim-sleuth'
 
 call plug#end()
 
 colorscheme gruvbox
 set bg=dark
+
+" show a · for trailing whitespace and a | for tabs
+set list
+set listchars=tab:\|\ ,trail:·
