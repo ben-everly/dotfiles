@@ -16,6 +16,7 @@ Plug 'tpope/vim-sensible'
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
 
 call plug#end()
 
@@ -25,3 +26,9 @@ set bg=dark
 " show a · for trailing whitespace and a | for tabs
 set list
 set listchars=tab:\|\ ,trail:·
+
+xmap <leader>c  <Plug>Commentary
+nmap <leader>c  <Plug>Commentary
+omap <leader>c  <Plug>Commentary
+nmap <leader>cc <Plug>CommentaryLine
+nmap <leader>cu <Plug>Commentary<Plug>Commentary
