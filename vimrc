@@ -15,6 +15,7 @@ call plug#begin('~/.vim/plug')
 Plug 'tpope/vim-sensible'
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-surround'
 
 call plug#end()
 
