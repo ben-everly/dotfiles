@@ -7,7 +7,6 @@ alias ag='ag --pager="less"'
 
 alias :q='exit'
 
-alias vim='nvim'
 alias myvim='nvim +"set filetype=mysql"'
 
 alias dc='docker-compose'
