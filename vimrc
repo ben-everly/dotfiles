@@ -20,6 +20,8 @@ Plug 'tpope/vim-commentary'
 
 call plug#end()
 
+let mapleader = " "
+
 colorscheme gruvbox
 set bg=dark
 
