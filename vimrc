@@ -13,5 +13,9 @@ augroup end
 call plug#begin('~/.vim/plug')
 
 Plug 'tpope/vim-sensible'
+Plug 'morhetz/gruvbox'
 
 call plug#end()
+
+colorscheme gruvbox
+set bg=dark
