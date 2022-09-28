@@ -204,8 +204,6 @@ call plug#end()
 
 call coc#config("intelephense.licenceKey", $INTELEPHENSE_KEY)
 
-lua << EOF
-EOF
 nmap <leader>d<cr> :lua require'dap'.continue()<CR>
 nmap <leader>db :lua require'dap'.toggle_breakpoint()<CR>
 nmap <leader>dj :lua require'dap'.step_over()<CR>
