@@ -17,6 +17,7 @@ Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
