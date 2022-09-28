@@ -18,25 +18,41 @@ augroup plug
 augroup end
 
 call plug#begin('~/.vim/plug')
-
 Plug 'tpope/vim-sensible'
 Plug 'morhetz/gruvbox'
-
 Plug 'preservim/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'vim-airline/vim-airline'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'ben-everly/vim-snippets'
+Plug 'svermeulen/vim-yoink'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter-context'
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'tpope/vim-dadbod', { 'for': ['sql', 'mysql'] }
+Plug 'jiangmiao/auto-pairs'
+Plug 'romainl/vim-qf'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-sleuth'
+Plug 'github/copilot.vim'
+call plug#end()
+
+
 nmap <leader>n :NERDTreeToggle<cr>
 nmap <leader>N :NERDTreeFind<cr>
 
-Plug 'tpope/vim-fugitive'
 nmap <leader>gp :Git pull <bar> :Gpush<cr>
 nmap <leader>gf :Git fetch<cr>
 vmap <leader>gl :'<,'>Gclog -50<cr>
 
-Plug 'tpope/vim-rhubarb'
 nmap <leader>gH :GBrowse<cr>
 nmap <leader>gh :.GBrowse<cr>
 vmap <leader>gh :'<,'>GBrowse<cr>
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
 	\ 'coc-snippets',
 	\ 'coc-lists',
@@ -155,18 +171,14 @@ nmap <leader>ga :CocCommand git.chunkStage<cr>
 nmap <leader>gx :CocCommand git.chunkUndo<cr>
 nmap <leader>gf :CocCommand git.foldUnchanged<cr>
 
-Plug 'vim-airline/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
-Plug 'ludovicchabant/vim-gutentags'
 let g:gutentags_cache_dir = '~/.vim/gutentags'
 let g:gutentags_ctags_exclude = ['*.css', '*.html', '*.js', '*.json', '*.xml', '*.phar', '*.ini', '*.rst', '*.md', '*vendor/*/test*', '*vendor/*/Test*', '*vendor/*/fixture*', '*vendor/*/Fixture*', '*var/cache*', '*var/log*']
 
-Plug 'ben-everly/vim-snippets'
 let g:ultisnips_php_scalar_types=1
 
-Plug 'svermeulen/vim-yoink'
 nmap <leader>] <plug>(YoinkPostPasteSwapBack)
 nmap <leader>[ <plug>(YoinkPostPasteSwapForward)
 nmap p <plug>(YoinkPaste_p)
@@ -179,28 +191,11 @@ let g:yoinkSavePersistently=1
 let g:yoinkAutoFormatPaste=1
 let g:yoinkSwapClampAtEnds=0
 
-Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'nvim-treesitter/nvim-treesitter-context'
-
-Plug 'mfussenegger/nvim-dap'
-Plug 'rcarriga/nvim-dap-ui'
-
-Plug 'tpope/vim-dadbod', { 'for': ['sql', 'mysql'] }
-Plug 'jiangmiao/auto-pairs'
-Plug 'romainl/vim-qf'
-Plug 'tpope/vim-commentary'
 xmap <leader>c  <Plug>Commentary
 nmap <leader>c  <Plug>Commentary
 omap <leader>c  <Plug>Commentary
 nmap <leader>cc <Plug>CommentaryLine
 nmap <leader>cu <Plug>Commentary<Plug>Commentary
-
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-sleuth'
-
-Plug 'github/copilot.vim'
-
-call plug#end()
 
 call coc#config("intelephense.licenceKey", $INTELEPHENSE_KEY)
 
