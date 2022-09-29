@@ -56,34 +56,35 @@ vim.keymap.set('n', '<leader>gH', ':GBrowse<CR>')
 vim.keymap.set('n', '<leader>gh', ':.GBrowse<CR>')
 vim.keymap.set('v', '<leader>gh', ":'<,'>GBrowse<cr>")
 
+vim.g.coc_global_extensions = {
+	'coc-snippets',
+	'coc-lists',
+	'coc-git',
+	'coc-phpls',
+	'coc-php-cs-fixer',
+	'coc-go',
+	'coc-tsserver',
+	'coc-eslint',
+	'coc-sql',
+	'coc-json',
+	'coc-yaml',
+	'coc-xml',
+	'coc-html',
+	'coc-css',
+	'coc-sh',
+	'coc-docker',
+	'coc-vimlsp',
+	'coc-lua',
+	'coc-markdownlint',
+	'coc-markdown-preview-enhanced',
+}
+-- 'coc-spell-checker',
+-- 'coc-phpstan',
+-- 'coc-jsonc',
+-- '@yeagassy/coc-tailwindcss3',
+-- '@yeagassy/coc-ansible',
+
 vim.cmd([[
-let g:coc_global_extensions = [
-	\ 'coc-snippets',
-	\ 'coc-lists',
-	\ 'coc-git',
-	\ 'coc-phpls',
-	\ 'coc-php-cs-fixer',
-	\ 'coc-go',
-	\ 'coc-tsserver',
-	\ 'coc-eslint',
-	\ 'coc-sql',
-	\ 'coc-json',
-	\ 'coc-yaml',
-	\ 'coc-xml',
-	\ 'coc-html',
-	\ 'coc-css',
-	\ 'coc-sh',
-	\ 'coc-docker',
-	\ 'coc-vimlsp',
-	\ 'coc-lua',
-	\ 'coc-markdownlint',
-	\ 'coc-markdown-preview-enhanced',
-\ ]
-	" \ 'coc-spell-checker',
-	" \ 'coc-phpstan',
-	" \ 'coc-jsonc',
-	" \ '@yeagassy/coc-tailwindcss3',
-	" \ '@yeagassy/coc-ansible',
 set shortmess+=c
 nmap <silent> [e <Plug>(coc-diagnostic-prev)
 nmap <silent> ]e <Plug>(coc-diagnostic-next)
@@ -114,11 +115,11 @@ inoremap <silent><expr> <cr>
 	\ "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 nnoremap <silent> K :call ShowDocumentation()<CR>
 function! ShowDocumentation()
-if CocAction('hasProvider', 'hover')
-	call CocActionAsync('doHover')
-else
-	call feedkeys('K', 'in')
-endif
+	if CocAction('hasProvider', 'hover')
+		call CocActionAsync('doHover')
+	else
+		call feedkeys('K', 'in')
+	endif
 endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
