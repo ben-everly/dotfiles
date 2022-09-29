@@ -56,6 +56,7 @@ vim.keymap.set('n', '<leader>gH', ':GBrowse<CR>')
 vim.keymap.set('n', '<leader>gh', ':.GBrowse<CR>')
 vim.keymap.set('v', '<leader>gh', ":'<,'>GBrowse<cr>")
 
+-- Coc settings
 vim.g.coc_global_extensions = {
 	'coc-snippets',
 	'coc-lists',
@@ -83,6 +84,7 @@ vim.g.coc_global_extensions = {
 -- 'coc-jsonc',
 -- '@yeagassy/coc-tailwindcss3',
 -- '@yeagassy/coc-ansible',
+vim.opt.shortmess:append('c')
 
 vim.cmd([[
 set shortmess+=c
