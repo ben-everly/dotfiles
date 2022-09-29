@@ -41,18 +41,22 @@ Plug 'tpope/vim-sleuth'
 Plug 'github/copilot.vim'
 call plug#end()
 
+]])
 
-nmap <leader>n :NERDTreeToggle<cr>
-nmap <leader>N :NERDTreeFind<cr>
+-- NERDTree settings
+vim.keymap.set('n', '<leader>n', ':NERDTreeToggle<CR>')
+vim.keymap.set('n', '<leader>N', ':NERDTreeFind<CR>')
 
-nmap <leader>gp :Git pull <bar> :Gpush<cr>
-nmap <leader>gf :Git fetch<cr>
-vmap <leader>gl :'<,'>Gclog -50<cr>
+-- Fugitive settings
+vim.keymap.set('n', '<leader>gp', ':Git push<CR>')
+vim.keymap.set('n', '<leader>gf', ':Git fetch<CR>')
+vim.keymap.set('n', '<leader>gl', ":Gclog -50<CR>")
+vim.keymap.set('v', '<leader>gl', ":'<,'>Gclog -50<CR>")
+vim.keymap.set('n', '<leader>gH', ':GBrowse<CR>')
+vim.keymap.set('n', '<leader>gh', ':.GBrowse<CR>')
+vim.keymap.set('v', '<leader>gh', ":'<,'>GBrowse<cr>")
 
-nmap <leader>gH :GBrowse<cr>
-nmap <leader>gh :.GBrowse<cr>
-vmap <leader>gh :'<,'>GBrowse<cr>
-
+vim.cmd([[
 let g:coc_global_extensions = [
 	\ 'coc-snippets',
 	\ 'coc-lists',
