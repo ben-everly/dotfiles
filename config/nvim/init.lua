@@ -87,7 +87,6 @@ vim.g.coc_global_extensions = {
 vim.opt.shortmess:append('c')
 
 vim.cmd([[
-set shortmess+=c
 nmap <silent> [e <Plug>(coc-diagnostic-prev)
 nmap <silent> ]e <Plug>(coc-diagnostic-next)
 nmap <leader>e :CocList diagnostics<cr>
@@ -106,8 +105,8 @@ imap <expr><S-TAB>
 	\ pumvisible() ? "\<C-p>":
 	\ "\<C-h>"
 function! PreviousCharIsWhitespace() abort
-let col = col('.') - 1
-return !col || getline('.')[col - 1]  =~# '\s'
+	let col = col('.') - 1
+	return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 inoremap <silent><expr> <c-space> coc#pum#visible() ? coc#pum#cancel(): coc#refresh()
 inoremap <silent><expr> <cr>
