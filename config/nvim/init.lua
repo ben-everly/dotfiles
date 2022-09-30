@@ -149,7 +149,7 @@ map({ 'n', 'v' }, '<C-k>', 'coc#float#has_scroll() ? coc#float#scroll(0) : "\\<C
 map('i', '<C-k>', 'coc#float#has_scroll() ? "\\<c-r>=coc#float#scroll(0)\\<cr>" : "\\<C-k>"', { silent = true, nowait = true, expr = true })
 
 -- Copilot settings
-vim.g.copilot_no_default_mappings = true
+vim.g.copilot_no_tab_map = true
 map('i', '<C-Enter>', 'copilot#Accept("\\<CR>")', { silent = true, script = true, expr = true })
 
 vim.cmd([[
