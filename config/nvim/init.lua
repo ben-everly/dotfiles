@@ -89,6 +89,7 @@ vim.g.coc_global_extensions = {
 vim.opt.shortmess:append('c')
 
 -- Coc lsp mappings
+vim.api.nvim_create_user_command("Fold", "call CocAction('fold', <f-args>)", {nargs = '?'})
 map('n', '[e', '<Plug>(coc-diagnostic-prev)', { silent = true })
 map('n', ']e', '<Plug>(coc-diagnostic-next)', { silent = true })
 map('n', '<leader>e', ':CocList diagnostics<cr>')
@@ -105,6 +106,8 @@ map('n', '<leader>b', ':CocList outline<cr>')
 map('n', '<c-p>', ':CocList symbols<cr>')
 
 -- Coc refactoring mappings
+vim.api.nvim_create_user_command("Format", "call CocAction('format')", {})
+vim.api.nvim_create_user_command("OR", "call CocActionAsync('runCommand', 'editor.action.organizeImport')", {})
 map('n', '<leader>rn', '<Plug>(coc-rename)')
 map('x', '<leader>f', ' <Plug>(coc-format-selected)')
 map('n', '<leader>f', ' <Plug>(coc-format)')
@@ -171,9 +174,6 @@ inoremap <silent><expr> <cr>
 	\ pumvisible() ? coc#_select_confirm():
 	\ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
 	\ "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-command! -nargs=0 Format :call CocActionAsync('format')
-command! -nargs=? Fold :call CocAction('fold', <f-args>)
-command! -nargs=0 OR   :call CocActionAsync('runCommand', 'editor.action.organizeImport')
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
