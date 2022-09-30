@@ -167,11 +167,6 @@ function! ShowDocumentation()
 	endif
 endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
-if has("nvim-0.5.0") || has("patch-8.1.1564")
-	set signcolumn=number
-else
-	set signcolumn=yes
-endif
 if has('nvim-0.4.0') || has('patch-8.2.0750')
 	nnoremap <silent><nowait><expr> <C-j> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-j>"
 	nnoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-k>"
@@ -222,6 +217,7 @@ nmap <M-k> <Cmd>lua require("dapui").eval()<CR>
 vmap <M-k> <Cmd>lua require("dapui").eval()<CR>
 
 colorscheme gruvbox
+set signcolumn=auto:1-9
 set number relativenumber
 set scrolloff=3
 set lazyredraw
