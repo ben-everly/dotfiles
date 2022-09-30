@@ -142,6 +142,14 @@ vim.api.nvim_create_autocmd("CursorHold", {
 	command = "silent call CocActionAsync('highlight')"
 })
 
+-- Coc floating window mappings
+map('n', 'K', ':call CocActionAsync("doHover")<CR>', { silent = true })
+map('v', 'K', ':<C-U>call CocActionAsync("doHover")<CR>', { silent = true })
+map({ 'n', 'v' }, '<C-j>', 'coc#float#has_scroll() ? coc#float#scroll(1) : "\\<C-j>"', { silent = true, nowait = true, expr = true })
+map('i', '<C-j>', 'coc#float#has_scroll() ? "\\<c-r>=coc#float#scroll(1)\\<cr>" : "\\<C-j>"', { silent = true, nowait = true, expr = true })
+map({ 'n', 'v' }, '<C-k>', 'coc#float#has_scroll() ? coc#float#scroll(0) : "\\<C-k>"', { silent = true, nowait = true, expr = true })
+map('i', '<C-k>', 'coc#float#has_scroll() ? "\\<c-r>=coc#float#scroll(0)\\<cr>" : "\\<C-k>"', { silent = true, nowait = true, expr = true })
+
 -- Copilot settings
 vim.g.copilot_no_default_mappings = true
 map('i', '<C-Enter>', 'copilot#Accept("\\<CR>")', { silent = true, script = true, expr = true })
@@ -168,22 +176,6 @@ inoremap <silent><expr> <cr>
 	\ pumvisible() ? coc#_select_confirm():
 	\ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
 	\ "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-nnoremap <silent> K :call ShowDocumentation()<CR>
-function! ShowDocumentation()
-	if CocAction('hasProvider', 'hover')
-		call CocActionAsync('doHover')
-	else
-		call feedkeys('K', 'in')
-	endif
-endfunction
-if has('nvim-0.4.0') || has('patch-8.2.0750')
-	nnoremap <silent><nowait><expr> <C-j> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-j>"
-	nnoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-k>"
-	inoremap <silent><nowait><expr> <C-j> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<C-j>"
-	inoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<C-k>"
-	vnoremap <silent><nowait><expr> <C-j> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-j>"
-	vnoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-k>"
-endif
 command! -nargs=0 Format :call CocActionAsync('format')
 command! -nargs=? Fold :call CocAction('fold', <f-args>)
 command! -nargs=0 OR   :call CocActionAsync('runCommand', 'editor.action.organizeImport')
