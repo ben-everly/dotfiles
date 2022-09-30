@@ -138,6 +138,12 @@ map('n', '<leader>ga', ':CocCommand git.chunkStage<cr>')
 map('n', '<leader>gx', ':CocCommand git.chunkUndo<cr>')
 map('n', '<leader>gf', ':CocCommand git.foldUnchanged<cr>')
 
+-- Coc hover highlighting
+vim.api.nvim_create_autocmd("CursorHold", {
+	pattern = "*",
+	command = "silent call CocActionAsync('highlight')"
+})
+
 vim.cmd([[
 
 imap <silent><expr> <TAB>
@@ -168,7 +174,6 @@ function! ShowDocumentation()
 		call feedkeys('K', 'in')
 	endif
 endfunction
-autocmd CursorHold * silent call CocActionAsync('highlight')
 if has('nvim-0.4.0') || has('patch-8.2.0750')
 	nnoremap <silent><nowait><expr> <C-j> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-j>"
 	nnoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-k>"
