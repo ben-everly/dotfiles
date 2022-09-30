@@ -86,14 +86,58 @@ vim.g.coc_global_extensions = {
 -- '@yeagassy/coc-ansible',
 vim.opt.shortmess:append('c')
 
+-- Coc lsp mappings
+vim.keymap.set('n', '[e', '<Plug>(coc-diagnostic-prev)', { silent = true })
+vim.keymap.set('n', ']e', '<Plug>(coc-diagnostic-next)', { silent = true })
+vim.keymap.set('n', '<leader>e', ':CocList diagnostics<cr>')
+vim.keymap.set('n', 'gd', '<Plug>(coc-definition)', { silent = true })
+vim.keymap.set('n', 'gy', '<Plug>(coc-type-definition)', { silent = true })
+vim.keymap.set('n', 'gi', '<Plug>(coc-implementation)', { silent = true })
+vim.keymap.set('n', 'gr', '<Plug>(coc-references)', { silent = true })
+vim.keymap.set('x', 'if', '<Plug>(coc-funcobj-i)')
+vim.keymap.set('o', 'if', '<Plug>(coc-funcobj-i)')
+vim.keymap.set('x', 'af', '<Plug>(coc-funcobj-a)')
+vim.keymap.set('o', 'af', '<Plug>(coc-funcobj-a)')
+vim.keymap.set('x', 'ic', '<Plug>(coc-classobj-i)')
+vim.keymap.set('o', 'ic', '<Plug>(coc-classobj-i)')
+vim.keymap.set('x', 'ac', '<Plug>(coc-classobj-a)')
+vim.keymap.set('o', 'ac', '<Plug>(coc-classobj-a)')
+vim.keymap.set('n', '<C-s>', '<Plug>(coc-range-select)', { silent = true })
+vim.keymap.set('x', '<C-s>', '<Plug>(coc-range-select)', { silent = true })
+vim.keymap.set('n', '<leader>b', ':CocList outline<cr>')
+vim.keymap.set('n', '<c-p>', ':CocList symbols<cr>')
+
+-- Coc refactoring mappings
+vim.keymap.set('n', '<leader>rn', '<Plug>(coc-rename)')
+vim.keymap.set('x', '<leader>f', ' <Plug>(coc-format-selected)')
+vim.keymap.set('n', '<leader>f', ' <Plug>(coc-format)')
+vim.keymap.set('x', '<leader>a', ' <Plug>(coc-codeaction-selected)')
+vim.keymap.set('n', '<leader>a', ' <Plug>(coc-codeaction-selected)')
+vim.keymap.set('n', '<leader>ac', ' <Plug>(coc-codeaction)')
+vim.keymap.set('n', '<leader>qf', ' <Plug>(coc-fix-current)')
+vim.keymap.set('n', '<leader>cl', ' <Plug>(coc-codelens-action)')
+
+-- Coc git mappings
+vim.keymap.set('n', '<leader>p', ':CocList gfiles<cr>')
+vim.keymap.set('n', '[g', '<Plug>(coc-git-prevchunk)')
+vim.keymap.set('n', ']g', '<Plug>(coc-git-nextchunk)')
+vim.keymap.set('n', '[c', '<Plug>(coc-git-prevconflict)')
+vim.keymap.set('n', ']c', '<Plug>(coc-git-nextconflict)')
+vim.keymap.set('n', 'gs', '<Plug>(coc-git-chunkinfo)')
+vim.keymap.set('n', 'gc', '<Plug>(coc-git-commit)')
+vim.keymap.set('o', 'ig', '<Plug>(coc-git-chunk-inner)')
+vim.keymap.set('x', 'ig', '<Plug>(coc-git-chunk-inner)')
+vim.keymap.set('o', 'ag', '<Plug>(coc-git-chunk-outer)')
+vim.keymap.set('x', 'ag', '<Plug>(coc-git-chunk-outer)')
+vim.keymap.set('n', '<leader>gl', ':CocList commits<cr>')
+vim.keymap.set('n', '<leader>gs', ':CocList gstatus<cr>')
+vim.keymap.set('n', '<leader>gb', ':CocList branches<cr>')
+vim.keymap.set('n', '<leader>ga', ':CocCommand git.chunkStage<cr>')
+vim.keymap.set('n', '<leader>gx', ':CocCommand git.chunkUndo<cr>')
+vim.keymap.set('n', '<leader>gf', ':CocCommand git.foldUnchanged<cr>')
+
 vim.cmd([[
-nmap <silent> [e <Plug>(coc-diagnostic-prev)
-nmap <silent> ]e <Plug>(coc-diagnostic-next)
-nmap <leader>e :CocList diagnostics<cr>
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+
 imap <silent><expr> <TAB>
 	\ coc#pum#visible() ? coc#pum#next(1):
 	\ pumvisible() ? "\<C-n>" :
@@ -123,22 +167,6 @@ function! ShowDocumentation()
 	endif
 endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
-nmap <leader>rn <Plug>(coc-rename)
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format)
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>ac  <Plug>(coc-codeaction)
-nmap <leader>qf  <Plug>(coc-fix-current)
-nmap <leader>cl  <Plug>(coc-codelens-action)
-xmap if <Plug>(coc-funcobj-i)
-omap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap af <Plug>(coc-funcobj-a)
-xmap ic <Plug>(coc-classobj-i)
-omap ic <Plug>(coc-classobj-i)
-xmap ac <Plug>(coc-classobj-a)
-omap ac <Plug>(coc-classobj-a)
 if has("nvim-0.5.0") || has("patch-8.1.1564")
 	set signcolumn=number
 else
@@ -152,30 +180,9 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
 	vnoremap <silent><nowait><expr> <C-j> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-j>"
 	vnoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-k>"
 endif
-nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
 command! -nargs=0 Format :call CocActionAsync('format')
 command! -nargs=? Fold :call CocAction('fold', <f-args>)
 command! -nargs=0 OR   :call CocActionAsync('runCommand', 'editor.action.organizeImport')
-nmap <leader>b :CocList outline<cr>
-nmap <c-p> :CocList symbols<cr>
-nmap <leader>p :CocList gfiles<cr>
-nmap [g <Plug>(coc-git-prevchunk)
-nmap ]g <Plug>(coc-git-nextchunk)
-nmap [c <Plug>(coc-git-prevconflict)
-nmap ]c <Plug>(coc-git-nextconflict)
-nmap gs <Plug>(coc-git-chunkinfo)
-nmap gc <Plug>(coc-git-commit)
-omap ig <Plug>(coc-git-chunk-inner)
-xmap ig <Plug>(coc-git-chunk-inner)
-omap ag <Plug>(coc-git-chunk-outer)
-xmap ag <Plug>(coc-git-chunk-outer)
-nmap <leader>gl :CocList commits<cr>
-nmap <leader>gs :CocList gstatus<cr>
-nmap <leader>gb :CocList branches<cr>
-nmap <leader>ga :CocCommand git.chunkStage<cr>
-nmap <leader>gx :CocCommand git.chunkUndo<cr>
-nmap <leader>gf :CocCommand git.foldUnchanged<cr>
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
