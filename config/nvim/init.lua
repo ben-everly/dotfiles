@@ -148,32 +148,49 @@ map('i', '<C-j>', 'coc#float#has_scroll() ? "\\<c-r>=coc#float#scroll(1)\\<cr>" 
 map({ 'n', 'v' }, '<C-k>', 'coc#float#has_scroll() ? coc#float#scroll(0) : "\\<C-k>"', { silent = true, nowait = true, expr = true })
 map('i', '<C-k>', 'coc#float#has_scroll() ? "\\<c-r>=coc#float#scroll(0)\\<cr>" : "\\<C-k>"', { silent = true, nowait = true, expr = true })
 
+-- Coc Autocomplete mappings
+local function previous_char_is_whitespace()
+	local col = vim.fn.col('.') - 1
+	return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s')
+end
+local function replace_termcodes(str)
+	return vim.api.nvim_replace_termcodes(str, true, false, true)
+end
+local function do_snippet_jump()
+	return replace_termcodes("<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])<CR>")
+end
+function _G.tab()
+	if vim.fn['coc#pum#visible']() == 1 then return vim.fn['coc#pum#next'](1)
+	elseif vim.fn.pumvisible() == 1 then return replace_termcodes('<C-n>')
+	elseif vim.fn['coc#jumpable']() then return do_snippet_jump()
+	elseif previous_char_is_whitespace() then return replace_termcodes('<Tab>')
+	else return vim.fn['coc#refresh']()
+	end
+end
+function _G.shift_tab()
+	if vim.fn['coc#pum#visible']() == 1 then return vim.fn['coc#pum#prev'](1)
+	elseif vim.fn.pumvisible() == 1 then return replace_termcodes('<C-p>')
+	-- TODO add support for coc#jumpable
+	else return replace_termcodes('<C-h>')
+	end
+end
+function _G.enter()
+	if vim.fn['coc#pum#visible']() == 1 then return vim.fn['coc#_select_confirm']()
+	elseif vim.fn.pumvisible() == 1 then return replace_termcodes('<C-y>')
+	elseif vim.fn['coc#expandableOrJumpable']() == 1 then return do_snippet_jump()
+	else return replace_termcodes('<C-g>u<CR><c-r>=coc#on_enter()<CR>')
+	end
+end
+map('i', '<TAB>', 'v:lua.tab()', { silent = true, expr = true })
+map('i', '<S-TAB>', 'v:lua.shift_tab()', { silent = true, expr = true })
+map('i', '<C-Space>', 'coc#pum#visible() ? coc#pum#cancel(): coc#refresh()', { silent = true, expr = true })
+map('i', '<CR>', 'v:lua.enter()', { silent = true, expr = true })
+
 -- Copilot settings
 vim.g.copilot_no_tab_map = true
 map('i', '<C-Enter>', 'copilot#Accept("\\<CR>")', { silent = true, script = true, expr = true })
 
 vim.cmd([[
-
-imap <silent><expr> <TAB>
-	\ coc#pum#visible() ? coc#pum#next(1):
-	\ pumvisible() ? "\<C-n>" :
-	\ coc#jumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>":
-	\ PreviousCharIsWhitespace() ? "\<TAB>" :
-	\ coc#refresh()
-imap <expr><S-TAB>
-	\ coc#pum#visible() ? coc#pum#prev(1):
-	\ pumvisible() ? "\<C-p>":
-	\ "\<C-h>"
-function! PreviousCharIsWhitespace() abort
-	let col = col('.') - 1
-	return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-inoremap <silent><expr> <c-space> coc#pum#visible() ? coc#pum#cancel(): coc#refresh()
-inoremap <silent><expr> <cr>
-	\ coc#pum#visible() ? coc#_select_confirm():
-	\ pumvisible() ? coc#_select_confirm():
-	\ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-	\ "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
