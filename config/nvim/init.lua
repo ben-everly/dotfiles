@@ -144,6 +144,10 @@ vim.api.nvim_create_autocmd("CursorHold", {
 	command = "silent call CocActionAsync('highlight')"
 })
 
+-- Copilot settings
+vim.g.copilot_no_default_mappings = true
+map('i', '<C-Enter>', 'copilot#Accept("\\<CR>")', { silent = true, script = true, expr = true })
+
 vim.cmd([[
 
 imap <silent><expr> <TAB>
