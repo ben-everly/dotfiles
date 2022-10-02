@@ -132,9 +132,11 @@ map('n', '<leader>gx', ':CocCommand git.chunkUndo<cr>')
 map('n', '<leader>gf', ':CocCommand git.foldUnchanged<cr>')
 
 -- Coc hover highlighting
+vim.api.nvim_create_augroup("CocGroup", {})
 vim.api.nvim_create_autocmd("CursorHold", {
-	pattern = "*",
-	command = "silent call CocActionAsync('highlight')"
+	group = "CocGroup",
+	command = "silent call CocActionAsync('highlight')",
+	desc = "Highlight symbol under cursor on CursorHold",
 })
 
 -- Coc floating window mappings
