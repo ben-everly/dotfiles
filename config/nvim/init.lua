@@ -236,33 +236,32 @@ map('n', '<c-w><s-l>', ':vert res -10<cr>')
 map('n', '<c-w><s-h>', ':vert res +10<cr>')
 map('v', '//', 'y/\\V<c-r>=escape(@","/\")<cr><cr>')
 map('c', 'w!!', 'w !sudo tee % >/dev/null')
+vim.opt.signcolumn = 'auto:1-9'
+vim.opt.scrolloff = 3
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.lazyredraw = true
+vim.opt.autoread = true
+vim.opt.hidden = true
+vim.opt.startofline = false
+vim.opt.cursorline = true
+vim.opt.ignorecase = true
+vim.opt.shell = 'zsh'
+vim.opt.wrap = false
+vim.opt.list = true
+vim.opt.cmdheight = 2
+vim.opt.updatetime = 300
+vim.opt.inccommand = 'nosplit'
 
 vim.cmd([[
 
-
-
 colorscheme gruvbox
-set signcolumn=auto:1-9
-set number relativenumber
-set scrolloff=3
-set lazyredraw
-set autoread
-set hidden
 set completefunc
-set nostartofline
-set cursorline
-set ignorecase
-set shell=zsh
-set nowrap
 set clipboard^=unnamed,unnamedplus
 " show a · for trailing whitespace and a | for tabs
-set list
 set listchars=tab:\|\ ,trail:·
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
-set cmdheight=2
-set updatetime=300
-set inccommand=nosplit
 let g:vimsyn_embed = 'l'
 
 augroup folding
