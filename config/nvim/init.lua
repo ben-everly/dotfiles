@@ -194,10 +194,11 @@ map('i', '<C-Enter>', 'copilot#Accept("\\<CR>")', { silent = true, script = true
 vim.g.airline_powerline_fonts = 1
 vim.g['airline#extensions#tabline#enabled'] = 1
 
-vim.cmd([[
+-- gutentags settings
+vim.g.gutentags_cache_dir = '~/.cache/gutentags'
+vim.g.gutentags_ctags_exclude = { '*.css', '*.html', '*.js', '*.json', '*.xml', '*.phar', '*.ini', '*.rst', '*.md', '*vendor/*/test*', '*vendor/*/Test*', '*vendor/*/fixture*', '*vendor/*/Fixture*', '*var/cache*', '*var/log*' }
 
-let g:gutentags_cache_dir = '~/.vim/gutentags'
-let g:gutentags_ctags_exclude = ['*.css', '*.html', '*.js', '*.json', '*.xml', '*.phar', '*.ini', '*.rst', '*.md', '*vendor/*/test*', '*vendor/*/Test*', '*vendor/*/fixture*', '*vendor/*/Fixture*', '*var/cache*', '*var/log*']
+vim.cmd([[
 
 let g:ultisnips_php_scalar_types=1
 
