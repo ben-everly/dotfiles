@@ -249,21 +249,18 @@ vim.opt.ignorecase = true
 vim.opt.shell = 'zsh'
 vim.opt.wrap = false
 vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', eol = '↵' }
 vim.opt.cmdheight = 2
 vim.opt.updatetime = 300
 vim.opt.inccommand = 'nosplit'
 vim.opt.tabstop = 4
+vim.opt.clipboard = 'unnamed,unnamedplus'
+vim.opt.foldmethod = 'expr'
+vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.g.vimsyn_embed = 'l'
+vim.cmd('colorscheme gruvbox')
 
 vim.cmd([[
-
-colorscheme gruvbox
-set completefunc
-set clipboard^=unnamed,unnamedplus
-" show a · for trailing whitespace and a | for tabs
-set listchars=tab:\|\ ,trail:·
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
-let g:vimsyn_embed = 'l'
 
 augroup folding
 au!
