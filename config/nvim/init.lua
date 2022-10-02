@@ -263,14 +263,13 @@ vim.cmd('colorscheme gruvbox')
 local folding_group = vim.api.nvim_create_augroup('folding', {clear = true})
 vim.api.nvim_create_autocmd('Syntax', { pattern = '*', group = folding_group, command = 'normal zR' })
 
+-- custom text object
+map('x', 'il', 'g_o^')
+map('o', 'il', ':normal vil<CR>')
+map('x', 'al', '$o^')
+map('o', 'al', ':normal val<CR>')
+
 vim.cmd([[
-
-xnoremap il g_o^
-onoremap il :normal vil<CR>
-xnoremap al $o^
-onoremap al :normal val<CR>
-
-
 runtime vimrc.local
 ]])
 
