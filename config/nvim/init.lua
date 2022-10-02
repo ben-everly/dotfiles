@@ -13,7 +13,7 @@ augroup plug
 		\| endif
 augroup end
 
-call plug#begin('~/.vim/plug')
+call plug#begin()
 Plug 'tpope/vim-sensible'
 Plug 'morhetz/gruvbox'
 Plug 'preservim/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
