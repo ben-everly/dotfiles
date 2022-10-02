@@ -198,9 +198,10 @@ vim.g['airline#extensions#tabline#enabled'] = 1
 vim.g.gutentags_cache_dir = '~/.cache/gutentags'
 vim.g.gutentags_ctags_exclude = { '*.css', '*.html', '*.js', '*.json', '*.xml', '*.phar', '*.ini', '*.rst', '*.md', '*vendor/*/test*', '*vendor/*/Test*', '*vendor/*/fixture*', '*vendor/*/Fixture*', '*var/cache*', '*var/log*' }
 
-vim.cmd([[
+-- snippets settings
+vim.g.ultisnips_php_scalar_types = 1
 
-let g:ultisnips_php_scalar_types=1
+vim.cmd([[
 
 nmap <leader>] <plug>(YoinkPostPasteSwapBack)
 nmap <leader>[ <plug>(YoinkPostPasteSwapForward)
