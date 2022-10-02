@@ -201,19 +201,20 @@ vim.g.gutentags_ctags_exclude = { '*.css', '*.html', '*.js', '*.json', '*.xml', 
 -- snippets settings
 vim.g.ultisnips_php_scalar_types = 1
 
-vim.cmd([[
+-- yoink settings
+map('n', '<leader>]', '<plug>(YoinkPostPasteSwapBack)')
+map('n', '<leader>[', '<plug>(YoinkPostPasteSwapForward)')
+map('n', 'p', '<plug>(YoinkPaste_p)')
+map('n', 'P', '<plug>(YoinkPaste_P)')
+map('n', 'gp', '<plug>(YoinkPaste_gp)')
+map('n', 'gP', '<plug>(YoinkPaste_gP)')
+vim.g.yoinkMaxItems = 100
+vim.g.yoinkIncludeDeleteOperations = 1
+vim.g.yoinkSavePersistently = 1
+vim.g.yoinkAutoFormatPaste = 1
+vim.g.yoinkSwapClampAtEnds = 0
 
-nmap <leader>] <plug>(YoinkPostPasteSwapBack)
-nmap <leader>[ <plug>(YoinkPostPasteSwapForward)
-nmap p <plug>(YoinkPaste_p)
-nmap P <plug>(YoinkPaste_P)
-nmap gp <plug>(YoinkPaste_gp)
-nmap gP <plug>(YoinkPaste_gP)
-let g:yoinkMaxItems=100
-let g:yoinkIncludeDeleteOperations=1
-let g:yoinkSavePersistently=1
-let g:yoinkAutoFormatPaste=1
-let g:yoinkSwapClampAtEnds=0
+vim.cmd([[
 
 xmap <leader>c  <Plug>Commentary
 nmap <leader>c  <Plug>Commentary
