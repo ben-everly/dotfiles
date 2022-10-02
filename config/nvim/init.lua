@@ -214,13 +214,14 @@ vim.g.yoinkSavePersistently = 1
 vim.g.yoinkAutoFormatPaste = 1
 vim.g.yoinkSwapClampAtEnds = 0
 
-vim.cmd([[
+-- commentary settings
+map('x', '<leader>c', ' <Plug>Commentary')
+map('n', '<leader>c', ' <Plug>Commentary')
+map('o', '<leader>c', ' <Plug>Commentary')
+map('n', '<leader>cc', '<Plug>CommentaryLine')
+map('n', '<leader>cu', '<Plug>Commentary<Plug>Commentary')
 
-xmap <leader>c  <Plug>Commentary
-nmap <leader>c  <Plug>Commentary
-omap <leader>c  <Plug>Commentary
-nmap <leader>cc <Plug>CommentaryLine
-nmap <leader>cu <Plug>Commentary<Plug>Commentary
+vim.cmd([[
 
 call coc#config("intelephense.licenceKey", $INTELEPHENSE_KEY)
 
