@@ -221,6 +221,21 @@ map('o', '<leader>c', ' <Plug>Commentary')
 map('n', '<leader>cc', '<Plug>CommentaryLine')
 map('n', '<leader>cu', '<Plug>Commentary<Plug>Commentary')
 
+-- general settings
+map('n', '<leader>w', ':w!<cr>')
+map('n', '<leader>q', ':bd<cr>')
+map('n', '<leader>l', ':ls<cr>')
+map('n', '<leader><C-t>', ':enew<cr>')
+map('n', '<leader><C-w>', ':bp\\|bd #<cr>')
+map('n', '<leader>.', ':bnext<cr>')
+map('n', '<leader>,', ':bprevious<cr>')
+map('n', '<c-w><s-j>', ':res -10<cr>')
+map('n', '<c-w><s-k>', ':res +10<cr>')
+map('n', '<c-w><s-l>', ':vert res -10<cr>')
+map('n', '<c-w><s-h>', ':vert res +10<cr>')
+map('v', '//', 'y/\\V<c-r>=escape(@","/\")<cr><cr>')
+map('c', 'w!!', 'w !sudo tee % >/dev/null')
+
 vim.cmd([[
 
 call coc#config("intelephense.licenceKey", $INTELEPHENSE_KEY)
@@ -260,19 +275,6 @@ onoremap il :normal vil<CR>
 xnoremap al $o^
 onoremap al :normal val<CR>
 
-nmap <leader>w :w!<cr>
-nmap <leader>q :bd<cr>
-nmap <leader>l :ls<cr>
-nmap <leader><C-t> :enew<cr>
-nmap <leader><C-w> :bp\|bd #<cr>
-nmap <leader>. :bnext<cr>
-nmap <leader>, :bprevious<cr>
-nmap <c-w><s-j> :res -10<cr>
-nmap <c-w><s-k> :res +10<cr>
-nmap <c-w><s-l> :vert res -10<cr>
-nmap <c-w><s-h> :vert res +10<cr>
-vmap // y/\V<c-r>=escape(@",'/\')<cr><cr>
-cmap w!! w !sudo tee % >/dev/null
 
 runtime vimrc.local
 ]])
