@@ -252,6 +252,7 @@ vim.opt.list = true
 vim.opt.cmdheight = 2
 vim.opt.updatetime = 300
 vim.opt.inccommand = 'nosplit'
+vim.opt.tabstop = 4
 
 vim.cmd([[
 
