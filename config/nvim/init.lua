@@ -225,14 +225,6 @@ vim.cmd([[
 
 call coc#config("intelephense.licenceKey", $INTELEPHENSE_KEY)
 
-nmap <leader>d<cr> :lua require'dap'.continue()<CR>
-nmap <leader>db :lua require'dap'.toggle_breakpoint()<CR>
-nmap <leader>dj :lua require'dap'.step_over()<CR>
-nmap <leader>dl :lua require'dap'.step_into()<CR>
-nmap <leader>dh :lua require'dap'.step_out()<CR>
-nmap <leader>dn :lua require'dapui'.toggle()<CR>
-nmap <M-k> <Cmd>lua require("dapui").eval()<CR>
-vmap <M-k> <Cmd>lua require("dapui").eval()<CR>
 
 colorscheme gruvbox
 set signcolumn=auto:1-9
@@ -284,6 +276,17 @@ cmap w!! w !sudo tee % >/dev/null
 
 runtime vimrc.local
 ]])
+
+-- dap settings
+map('n', '<leader>d<cr>', ":lua require'dap'.continue()<CR>")
+map('n', '<leader>db', ":lua require'dap'.toggle_breakpoint()<CR>")
+map('n', '<leader>dj', ":lua require'dap'.step_over()<CR>")
+map('n', '<leader>dl', ":lua require'dap'.step_into()<CR>")
+map('n', '<leader>dh', ":lua require'dap'.step_out()<CR>")
+map('n', '<leader>dn', ":lua require'dapui'.toggle()<CR>")
+map('n', '<M-k>', "<Cmd>lua require('dapui').eval()<CR>")
+map('v', '<M-k>', "<Cmd>lua require('dapui').eval()<CR>")
+
 local dap, dapui = require('dap'), require('dapui')
 dap.adapters.php = {
 	type = 'executable',
