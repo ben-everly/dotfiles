@@ -26,6 +26,8 @@ let mapleader = " "
 colorscheme gruvbox
 set bg=dark
 
+set tabstop=4
+
 " show a · for trailing whitespace and a | for tabs
 set list
 set listchars=tab:\|\ ,trail:·
