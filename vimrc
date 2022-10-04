@@ -1,16 +1,13 @@
 if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim &> /dev/null
 endif
 
 augroup plug
     au!
-    autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-        \| PlugInstall --sync | source $MYVIMRC
-        \| endif
+    autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)')) | PlugInstall --sync | source $MYVIMRC | endif
 augroup end
 
-call plug#begin('~/.vim/plug')
+call plug#begin()
 
 Plug 'tpope/vim-sensible'
 Plug 'morhetz/gruvbox'

@@ -1,43 +1,6 @@
+require 'packer-config'
+
 vim.g.mapleader = " "
-
-vim.cmd([[
-if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-	silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-	\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-endif
-
-augroup plug
-	au!
-	autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-		\| PlugInstall --sync | source $MYVIMRC
-		\| endif
-augroup end
-
-call plug#begin()
-Plug 'tpope/vim-sensible'
-Plug 'morhetz/gruvbox'
-Plug 'preservim/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'vim-airline/vim-airline'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'ben-everly/vim-snippets'
-Plug 'svermeulen/vim-yoink'
-Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'nvim-treesitter/nvim-treesitter-context'
-Plug 'mfussenegger/nvim-dap'
-Plug 'rcarriga/nvim-dap-ui'
-Plug 'tpope/vim-dadbod', { 'for': ['sql', 'mysql'] }
-Plug 'jiangmiao/auto-pairs'
-Plug 'romainl/vim-qf'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-sleuth'
-Plug 'github/copilot.vim'
-call plug#end()
-
-]])
 
 local map = vim.keymap.set
 

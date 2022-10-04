@@ -2,9 +2,10 @@
 composer global -qn update
 composer global -qn install
 
-nvim -es -u $HOME/.config/nvim/init.vim -i NONE -c "PlugInstall" -c "qa"
+vim -es -u $HOME/.vimrc +PlugInstall +qa
+nvim --headless -u $HOME/.config/nvim/lua/packer-config.lua -c 'autocmd User PackerComplete quitall'
 
-bash $HOME/.vim/plug/gruvbox/gruvbox_256palette.sh
+bash $HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh
 if [ ! -e $HOME/.config/kitty/theme.conf ]; then
     ln $HOME/.config/kitty/kitty-themes/gruvbox_dark.conf $HOME/.config/kitty/theme.conf
 fi
