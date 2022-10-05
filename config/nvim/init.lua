@@ -230,9 +230,7 @@ map('o', 'il', ':normal vil<CR>')
 map('x', 'al', '$o^')
 map('o', 'al', ':normal val<CR>')
 
-vim.cmd([[
-runtime vimrc.local
-]])
+vim.cmd([[ source ~/.vim/vimrc.local ]])
 
 -- dap settings
 map('n', '<leader>d<cr>', ":lua require'dap'.continue()<CR>")
