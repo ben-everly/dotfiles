@@ -14,7 +14,7 @@ rg() {
 
 alias :q='exit'
 
-alias myvim='nvim +"set filetype=mysql"'
+alias myvim='nvim +"set filetype=sql"'
 
 alias dc='docker-compose'
 
