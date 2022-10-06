@@ -4,6 +4,13 @@ export LESS='RSFXm'
 alias la='l'
 
 alias ag='ag --pager="less"'
+rg() {
+	if [ -t 1 ]; then
+		command rg -p "$@" | less
+	else
+		command rg "$@"
+	fi
+}
 
 alias :q='exit'
 
