@@ -204,7 +204,8 @@ map('n', '<c-w><s-j>', ':res -10<cr>')
 map('n', '<c-w><s-k>', ':res +10<cr>')
 map('n', '<c-w><s-l>', ':vert res -10<cr>')
 map('n', '<c-w><s-h>', ':vert res +10<cr>')
-map('v', '//', 'y/\\V<c-r>=escape(@","/\")<cr><cr>')
+map('v', '*', 'y/\\V<c-r>=escape(@",\'/\\\')<cr><cr>')
+map('v', '#', 'y?\\V<c-r>=escape(@",\'/\\\')<cr><cr>')
 map('c', 'w!!', 'w !sudo tee % >/dev/null')
 vim.opt.signcolumn = 'auto:1-9'
 vim.opt.scrolloff = 3
