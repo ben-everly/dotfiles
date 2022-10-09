@@ -42,6 +42,9 @@ return packer.startup(function(use)
 	use 'tpope/vim-commentary'
 	use 'tpope/vim-surround'
 	use 'tpope/vim-sleuth'
+	use { 'nvim-telescope/telescope.nvim', tag = '0.1.0', requires = {
+		'nvim-lua/plenary.nvim'
+	} }
 	use 'github/copilot.vim'
 	if packer_bootstrap then
 		packer.sync()

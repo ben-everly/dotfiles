@@ -78,7 +78,6 @@ map('n', '<leader>qf', ' <Plug>(coc-fix-current)')
 map('n', '<leader>cl', ' <Plug>(coc-codelens-action)')
 
 -- Coc git mappings
-map('n', '<leader>p', ':CocList gfiles<cr>')
 map('n', '[g', '<Plug>(coc-git-prevchunk)')
 map('n', ']g', '<Plug>(coc-git-nextchunk)')
 map('n', '[c', '<Plug>(coc-git-prevconflict)')
@@ -89,7 +88,6 @@ map({ 'o', 'x' }, 'ig', '<Plug>(coc-git-chunk-inner)')
 map({ 'o', 'x' }, 'ag', '<Plug>(coc-git-chunk-outer)')
 map('n', '<leader>gl', ':CocList commits<cr>')
 map('n', '<leader>gs', ':CocList gstatus<cr>')
-map('n', '<leader>gb', ':CocList branches<cr>')
 map('n', '<leader>ga', ':CocCommand git.chunkStage<cr>')
 map('n', '<leader>gx', ':CocCommand git.chunkUndo<cr>')
 map('n', '<leader>gf', ':CocCommand git.foldUnchanged<cr>')
@@ -191,6 +189,28 @@ map('n', '<leader>c', ' <Plug>Commentary')
 map('o', '<leader>c', ' <Plug>Commentary')
 map('n', '<leader>cc', '<Plug>CommentaryLine')
 map('n', '<leader>cu', '<Plug>Commentary<Plug>Commentary')
+
+-- telescope settings
+local builtin = require('telescope.builtin')
+map('n', '<leader>ff', builtin.git_files)
+map('n', '<leader>fF', builtin.find_files)
+map('n', '<leader>fg', builtin.live_grep)
+map('n', '<leader>fb', builtin.buffers)
+map('n', '<leader>fh', builtin.help_tags)
+map('n', '<leader>fj', builtin.jumplist)
+map('n', '<leader>fr', builtin.registers)
+map('n', '<leader>f/', builtin.search_history)
+map('n', '<leader>gb', builtin.git_branches)
+require'telescope'.setup {
+	defaults = {
+		mappings = {
+			i = {
+				['<C-j>'] = 'move_selection_next',
+				['<C-k>'] = 'move_selection_previous',
+			},
+		},
+	},
+}
 
 -- general settings
 map('n', '<leader>w', ':w!<cr>')
