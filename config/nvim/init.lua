@@ -204,10 +204,18 @@ map('n', '<c-w><s-j>', ':res -10<cr>')
 map('n', '<c-w><s-k>', ':res +10<cr>')
 map('n', '<c-w><s-l>', ':vert res -10<cr>')
 map('n', '<c-w><s-h>', ':vert res +10<cr>')
--- this is multi
--- line somethign
-map('v', '*', 'y/\\V<c-r>=escape(@",\'/\\\')<cr><cr>')
-map('v', '#', 'y?\\V<c-r>=escape(@",\'/\\\')<cr><cr>')
+vim.cmd([[
+vnoremap <silent> * :<C-U>
+	\let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+	\gvy/<C-R>=&ic?'\c':'\C'<CR><C-R><C-R>=substitute(
+	\escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+	\gVzv:call setreg('"', old_reg, old_regtype)<CR>
+vnoremap <silent> # :<C-U>
+	\let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+	\gvy?<C-R>=&ic?'\c':'\C'<CR><C-R><C-R>=substitute(
+	\escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+	\gVzv:call setreg('"', old_reg, old_regtype)<CR>
+]])
 map('c', 'w!!', 'w !sudo tee % >/dev/null')
 vim.opt.signcolumn = 'auto:1-9'
 vim.opt.scrolloff = 3
