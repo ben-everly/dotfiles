@@ -200,7 +200,12 @@ map('n', '<leader>fh', builtin.help_tags)
 map('n', '<leader>fj', builtin.jumplist)
 map('n', '<leader>fr', builtin.registers)
 map('n', '<leader>f/', builtin.search_history)
-map('n', '<leader>gb', builtin.git_branches)
+map('n', '<leader>gbl', builtin.git_branches)
+map('n', '<leader>glg', builtin.git_commits)
+map('n', '<leader>glb', builtin.git_bcommits)
+map('n', '<leader>gws', builtin.git_status)
+map('n', '<leader>gsl', builtin.git_stash)
+map('n', '<leader>b', builtin.treesitter)
 require'telescope'.setup {
 	defaults = {
 		mappings = {
