@@ -46,6 +46,9 @@ return packer.startup(function(use)
 		'nvim-lua/plenary.nvim'
 	} }
 	use 'github/copilot.vim'
+
+	-- treesitter doesn't have a grammar for blade yet
+	use 'jwalton512/vim-blade'
 	if packer_bootstrap then
 		packer.sync()
 	else
