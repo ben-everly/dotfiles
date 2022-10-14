@@ -157,6 +157,7 @@ map('i', '<C-Space>', 'v:lua.ctrl_space()', { silent = true, expr = true })
 map('i', '<CR>', 'v:lua.enter()', { silent = true, expr = true })
 
 -- Copilot settings
+vim.g.copilot_node_command = '~/.asdf/installs/nodejs/12.22.12/bin/node'
 vim.g.copilot_no_tab_map = true
 map('i', '<C-Enter>', 'copilot#Accept("\\<CR>")', { silent = true, script = true, expr = true })
 
