@@ -36,11 +36,11 @@ vim.g.coc_global_extensions = {
 	'coc-sh',
 	'coc-snippets',
 	'coc-sql',
-	'@yaegassy/coc-tailwindcss3',
 	'coc-tsserver',
 	'coc-vimlsp',
 	'coc-xml',
 	'coc-yaml',
+	'@yaegassy/coc-tailwindcss3',
 }
 -- 'coc-spell-checker',
 -- 'coc-phpstan',
