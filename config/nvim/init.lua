@@ -42,9 +42,9 @@ vim.g.coc_global_extensions = {
 	'coc-yaml',
 	'@yaegassy/coc-ansible',
 	'@yaegassy/coc-tailwindcss3',
+	'@yaegassy/coc-phpstan',
 }
 -- 'coc-spell-checker',
--- 'coc-phpstan',
 -- 'coc-jsonc',
 vim.opt.shortmess:append('c')
 
