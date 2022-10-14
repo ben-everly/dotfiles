@@ -40,12 +40,12 @@ vim.g.coc_global_extensions = {
 	'coc-vimlsp',
 	'coc-xml',
 	'coc-yaml',
+	'@yaegassy/coc-ansible',
 	'@yaegassy/coc-tailwindcss3',
 }
 -- 'coc-spell-checker',
 -- 'coc-phpstan',
 -- 'coc-jsonc',
--- '@yeagassy/coc-ansible',
 vim.opt.shortmess:append('c')
 
 -- Coc lsp mappings
