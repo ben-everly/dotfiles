@@ -36,6 +36,7 @@ vim.g.coc_global_extensions = {
 	'coc-sh',
 	'coc-snippets',
 	'coc-sql',
+	'coc-tailwindcss',
 	'coc-tsserver',
 	'coc-vimlsp',
 	'coc-xml',
@@ -44,7 +45,6 @@ vim.g.coc_global_extensions = {
 -- 'coc-spell-checker',
 -- 'coc-phpstan',
 -- 'coc-jsonc',
--- '@yeagassy/coc-tailwindcss3',
 -- '@yeagassy/coc-ansible',
 vim.opt.shortmess:append('c')
 
