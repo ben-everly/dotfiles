@@ -159,7 +159,7 @@ map('i', '<CR>', 'v:lua.enter()', { silent = true, expr = true })
 -- Copilot settings
 vim.g.copilot_node_command = '~/.asdf/installs/nodejs/12.22.12/bin/node'
 vim.g.copilot_no_tab_map = true
-map('i', '<C-Enter>', 'copilot#Accept("\\<CR>")', { silent = true, script = true, expr = true })
+map('i', '<C-Enter>', 'copilot#Accept("")', { silent = true, script = true, expr = true })
 
 -- airline settings
 vim.g.airline_powerline_fonts = 1
