@@ -20,6 +20,7 @@ map('v', '<leader>gh', ":'<,'>GBrowse<cr>")
 -- Coc settings
 vim.g.coc_global_extensions = {
 	'coc-css',
+	'coc-blade',
 	'coc-docker',
 	'coc-eslint',
 	'coc-git',
