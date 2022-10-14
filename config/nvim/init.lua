@@ -36,7 +36,7 @@ vim.g.coc_global_extensions = {
 	'coc-sh',
 	'coc-snippets',
 	'coc-sql',
-	'coc-tailwindcss',
+	'@yaegassy/coc-tailwindcss3',
 	'coc-tsserver',
 	'coc-vimlsp',
 	'coc-xml',
