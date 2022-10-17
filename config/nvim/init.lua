@@ -26,6 +26,7 @@ vim.g.coc_global_extensions = {
 	'coc-git',
 	'coc-go',
 	'coc-html',
+	'coc-java',
 	'coc-json',
 	'coc-lists',
 	'coc-sumneko-lua',

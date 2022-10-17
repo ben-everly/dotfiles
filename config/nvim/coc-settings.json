@@ -2,5 +2,12 @@
     "suggest.noselect": true,
     "suggest.reversePumAboveCursor": true,
     "sumneko-lua.enableNvimLuaDev": true,
-    "Lua.telemetry.enable": false
+    "Lua.telemetry.enable": false,
+    "java.configuration.runtimes": [
+        {
+            "name": "JavaSE-17",
+            "path": "/usr/lib/jvm/jdk-17",
+            "default": true
+        }
+    ]
 }
