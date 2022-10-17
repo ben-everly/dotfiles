@@ -1,5 +1,6 @@
 {
     "suggest.noselect": true,
     "suggest.reversePumAboveCursor": true,
-    "sumneko-lua.enableNvimLuaDev": true
+    "sumneko-lua.enableNvimLuaDev": true,
+    "Lua.telemetry.enable": false
 }

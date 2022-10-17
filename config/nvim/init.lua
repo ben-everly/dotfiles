@@ -28,7 +28,7 @@ vim.g.coc_global_extensions = {
 	'coc-html',
 	'coc-json',
 	'coc-lists',
-	'coc-lua',
+	'coc-sumneko-lua',
 	'coc-markdownlint',
 	'coc-markdown-preview-enhanced',
 	'coc-phpls',
