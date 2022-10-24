@@ -223,7 +223,7 @@ map('n', '<leader>glb', builtin.git_bcommits)
 map('n', '<leader>gws', builtin.git_status)
 map('n', '<leader>gsl', builtin.git_stash)
 map('n', '<leader>b', builtin.treesitter)
-map('n', '<space>fb', require'telescope'.extensions.file_browser.file_browser, { noremap = true })
+map('n', '<space>ft', require'telescope'.extensions.file_browser.file_browser, { noremap = true })
 require'telescope'.setup {
 	defaults = {
 		mappings = {
