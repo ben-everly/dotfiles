@@ -34,3 +34,11 @@ bind-key B open-in-browser
 bind-key a toggle-article-read
 bind-key i sort
 bind-key I rev-sort
+
+color background         default   default
+color listnormal         default   default
+color listnormal_unread  default   default bold
+color listfocus          black     cyan
+color listfocus_unread   black     cyan bold
+color info               default   black
+color article            default   default
