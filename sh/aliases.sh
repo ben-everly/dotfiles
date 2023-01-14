@@ -15,6 +15,7 @@ rg() {
 alias :q='exit'
 alias myvim='nvim +"set filetype=sql"'
 alias dc='docker-compose'
+alias fd='fdfind'
 
 tabtocsv() {
 	sed -i 's/\"/\"\"/g' $1
