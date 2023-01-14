@@ -13,15 +13,8 @@ rg() {
 }
 
 alias :q='exit'
-
 alias myvim='nvim +"set filetype=sql"'
-
 alias dc='docker-compose'
-
-alias xml='xmlstarlet'
-alias xmlformat='xml format'
-alias jsonformat='jq'
-alias sqlformat='sql-formatter-cli'
 
 tabtocsv() {
 	sed -i 's/\"/\"\"/g' $1
