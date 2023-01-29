@@ -120,35 +120,31 @@ local function do_snippet_jump()
 	return replace_termcodes("<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])<CR>")
 end
 function _G.tab()
-	if vim.fn['coc#pum#visible']() == 1 then vim.fn['coc#pum#next'](1)
+	if vim.fn['coc#pum#visible']() == 1 then return vim.fn['coc#pum#next'](1)
 	elseif vim.fn.pumvisible() == 1 then return replace_termcodes('<C-n>')
 	elseif vim.fn['coc#jumpable']() then return do_snippet_jump()
 	elseif previous_char_is_whitespace() then return replace_termcodes('<Tab>')
-	else vim.fn['coc#refresh']()
+	else return vim.fn['coc#refresh']()
 	end
-	return ''
 end
 function _G.shift_tab()
-	if vim.fn['coc#pum#visible']() == 1 then vim.fn['coc#pum#prev'](1)
+	if vim.fn['coc#pum#visible']() == 1 then return vim.fn['coc#pum#prev'](1)
 	elseif vim.fn.pumvisible() == 1 then return replace_termcodes('<C-p>')
 	-- TODO add support for coc#jumpable
 	else return replace_termcodes('<C-h>')
 	end
-	return ''
 end
 function _G.enter()
-	if vim.fn['coc#pum#visible']() == 1 then vim.fn['coc#_select_confirm']()
+	if vim.fn['coc#pum#visible']() == 1 then return vim.fn['coc#_select_confirm']()
 	elseif vim.fn.pumvisible() == 1 then return replace_termcodes('<C-y>')
 	elseif vim.fn['coc#expandableOrJumpable']() == 1 then return do_snippet_jump()
 	else return replace_termcodes('<C-g>u<CR><c-r>=coc#on_enter()<CR>')
 	end
-	return ''
 end
 function _G.ctrl_space()
-	if vim.fn['coc#pum#visible']() == 1 then vim.fn['coc#pum#cancel']()
+	if vim.fn['coc#pum#visible']() == 1 then return vim.fn['coc#pum#cancel']()
 	else return vim.fn['coc#refresh']()
 	end
-	return ''
 end
 map('i', '<TAB>', 'v:lua.tab()', { silent = true, expr = true })
 map('i', '<S-TAB>', 'v:lua.shift_tab()', { silent = true, expr = true })
