@@ -309,7 +309,7 @@ local dap, dapui = require('dap'), require('dapui')
 dap.adapters.php = {
 	type = 'executable',
 	command = 'node',
-	args = { '/home/beneverly/.ansible/pull/work-XPS-15-9520/tmp/php-debug-client/out/phpDebug.js' }
+	args = { '/home/beneverly/.local/lib/php-debug-client/out/phpDebug.js' }
 }
 
 dap.configurations.php = {
