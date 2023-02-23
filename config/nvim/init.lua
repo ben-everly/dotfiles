@@ -297,6 +297,8 @@ end
 
 -- dap settings
 map('n', '<leader>d<cr>', ":lua require'dap'.continue()<CR>")
+map('n', '<leader>dq', ":lua require'dap'.terminate()<CR>:lua require'dap'.close()<CR>")
+map('n', '<leader>dr', ":lua require'dap'.restart()<CR>")
 map('n', '<leader>db', ":lua require'dap'.toggle_breakpoint()<CR>")
 map('n', '<leader>dj', ":lua require'dap'.step_over()<CR>")
 map('n', '<leader>dl', ":lua require'dap'.step_into()<CR>")
