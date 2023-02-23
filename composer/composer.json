@@ -1,6 +1,8 @@
 {
     "require": {
         "friendsofphp/php-cs-fixer": "*",
+        "laravel/pint": "^1.0",
+        "laravel/sail": "^1.0.1",
         "phing/phing": "*",
         "phpdocumentor/phpdocumentor": "*",
         "phploc/phploc": "*",
