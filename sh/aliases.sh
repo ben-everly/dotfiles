@@ -14,7 +14,7 @@ rg() {
 
 alias :q='exit'
 alias myvim='nvim +"set filetype=sql"'
-alias dc='docker-compose'
+alias dc='docker compose'
 alias fd='fdfind'
 
 tabtocsv() {
