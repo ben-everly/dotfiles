@@ -47,6 +47,9 @@ return packer.startup(function(use)
 	} }
 	use "nvim-telescope/telescope-file-browser.nvim"
 	use 'github/copilot.vim'
+	use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+		require("toggleterm").setup()
+	end}
 
 	-- treesitter doesn't have a grammar for blade yet
 	use 'jwalton512/vim-blade'
