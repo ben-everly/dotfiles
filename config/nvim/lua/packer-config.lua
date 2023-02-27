@@ -50,6 +50,7 @@ return packer.startup(function(use)
 	use {"akinsho/toggleterm.nvim", tag = '*', config = function()
 		require("toggleterm").setup()
 	end}
+	use { 'mg979/vim-visual-multi', branch = 'master' }
 
 	-- treesitter doesn't have a grammar for blade yet
 	use 'jwalton512/vim-blade'
