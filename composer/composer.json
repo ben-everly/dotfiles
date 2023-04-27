@@ -2,7 +2,7 @@
     "require": {
         "friendsofphp/php-cs-fixer": "*",
         "laravel/pint": "^1.0",
-        "laravel/sail": "^1.0.1",
+        "laravel/sail": "^1.18",
         "phing/phing": "*",
         "phpdocumentor/phpdocumentor": "*",
         "phploc/phploc": "*",
