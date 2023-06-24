@@ -51,6 +51,7 @@ return packer.startup(function(use)
 		require("toggleterm").setup()
 	end}
 	use { 'mg979/vim-visual-multi', branch = 'master' }
+	use { 'lambdalisue/suda.vim' }
 
 	-- treesitter doesn't have a grammar for blade yet
 	use 'jwalton512/vim-blade'

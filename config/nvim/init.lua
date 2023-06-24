@@ -255,7 +255,6 @@ vnoremap <silent> # :<C-U>
 	\escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
 	\gVzv:call setreg('"', old_reg, old_regtype)<CR>
 ]])
-map('c', 'w!!', 'w !sudo tee % >/dev/null')
 vim.opt.signcolumn = 'auto:1-9'
 vim.opt.scrolloff = 3
 vim.opt.number = true
