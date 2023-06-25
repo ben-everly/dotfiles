@@ -403,3 +403,8 @@ require'toggleterm'.setup{
 	insert_mappings = true,
 	terminal_mappings = true,
 }
+
+local neotest = require('neotest').run
+map('n', '<C-Enter>', neotest.run(vim.fn.expand('%')))
+--To test a directory run lua require('neotest').run.run("path/to/directory")
+--To test the full test suite run lua require('neotest').run.run({ suite = true })

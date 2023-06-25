@@ -57,6 +57,23 @@ return packer.startup(function(use)
 	end}
 	use { 'mg979/vim-visual-multi', branch = 'master' }
 	use { 'lambdalisue/suda.vim' }
+	use({
+		'nvim-neotest/neotest',
+		requires = {
+			'theutz/neotest-pest',
+		},
+		config = function()
+			require('neotest').setup({
+				adapters = {
+					require('neotest-pest')({
+						pest_cmd = function()
+							return "sail pest"
+						end
+					}),
+				}
+			})
+		end
+	})
 
 	-- treesitter doesn't have a grammar for blade yet
 	use 'jwalton512/vim-blade'
