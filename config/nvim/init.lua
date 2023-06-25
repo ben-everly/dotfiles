@@ -426,15 +426,6 @@ require 'toggleterm'.setup {
 	terminal_mappings = true,
 }
 
-require('neotest').setup({
-	adapters = {
-		require('neotest-pest')({
-			pest_cmd = function()
-				return "sail pest"
-			end
-		}),
-	}
-})
 map('n', '<C-Enter>', ":lua require('neotest').run.run(vim.fn.expand('%'))<CR>")
 --To test a directory run lua require('neotest').run.run("path/to/directory")
 --To test the full test suite run lua require('neotest').run.run({ suite = true })

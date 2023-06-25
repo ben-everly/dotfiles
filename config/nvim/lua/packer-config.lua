@@ -66,6 +66,17 @@ return packer.startup(function(use)
 			"antoinemadec/FixCursorHold.nvim",
 			'theutz/neotest-pest',
 		},
+		config = {
+			require('neotest').setup({
+				adapters = {
+					require('neotest-pest')({
+						pest_cmd = function()
+							return "sail pest"
+						end
+					}),
+				}
+			})
+		}
 	}
 
 	-- treesitter doesn't have a grammar for blade yet
