@@ -82,8 +82,8 @@ map('n', '<leader>cl', ' <Plug>(coc-codelens-action)')
 -- Coc git mappings
 map('n', '[g', '<Plug>(coc-git-prevchunk)')
 map('n', ']g', '<Plug>(coc-git-nextchunk)')
-map('n', '[c', '<Plug>(coc-git-prevconflict)')
-map('n', ']c', '<Plug>(coc-git-nextconflict)')
+map('n', '[m', '<Plug>(coc-git-prevconflict)')
+map('n', ']m', '<Plug>(coc-git-nextconflict)')
 map('n', 'gs', '<Plug>(coc-git-chunkinfo)')
 map('n', 'gc', '<Plug>(coc-git-commit)')
 map({ 'o', 'x' }, 'ig', '<Plug>(coc-git-chunk-inner)')
@@ -282,12 +282,6 @@ vim.cmd('colorscheme gruvbox')
 local folding_group = vim.api.nvim_create_augroup('folding', {clear = true})
 vim.api.nvim_create_autocmd('Syntax', { pattern = '*', group = folding_group, command = 'normal zR' })
 
--- custom text object
-map('x', 'il', 'g_o^')
-map('o', 'il', ':normal vil<CR>')
-map('x', 'al', '$o^')
-map('o', 'al', ':normal val<CR>')
-
 if vim.fn.filereadable(vim.env.HOME .. '/.vim/vimrc.local') ~= 0
 then
 	vim.cmd([[ source ~/.vim/vimrc.local ]])
@@ -353,7 +347,56 @@ require'nvim-treesitter.configs'.setup {
 			node_decremental = ",",
 		},
 	},
+	textobjects = {
+		select = {
+			enable = true,
+			lookahead = true,
+			keymaps = {
+				["af"] = "@function.outer",
+				["if"] = "@function.inner",
+				["ac"] = "@class.outer",
+				["ic"] = "@class.inner",
+				["ao"] = "@loop.outer",
+				["io"] = "@loop.inner",
+				["as"] = "@scope",
+				["al"] = "@statement.outer"
+			},
+		},
+		move = {
+			enable = true,
+			set_jumps = false,
+			goto_next_start = {
+				["]f"] = "@function.outer",
+				["]c"] = "@class.outer",
+				["]o"] = "@loop.outer",
+				["]s"] = "@scope",
+			},
+			goto_next_end = {
+				["]F"] = "@function.outer",
+				["]C"] = "@class.outer",
+				["]O"] = "@loop.outer",
+				["[s"] = "@scope",
+			},
+			goto_previous_start = {
+				["[f"] = "@function.outer",
+				["[c"] = "@class.outer",
+				["[o"] = "@loop.outer",
+			},
+			goto_previous_end = {
+				["[F"] = "@function.outer",
+				["[C"] = "@class.outer",
+				["[O"] = "@loop.outer",
+			},
+		},
+	},
 }
+local ts_repeat_move = require "nvim-treesitter.textobjects.repeatable_move"
+vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move_next)
+vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_previous)
+vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat_move.builtin_f)
+vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F)
+vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t)
+vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T)
 
 require'toggleterm'.setup{
 	open_mapping = [[<c-\>]],

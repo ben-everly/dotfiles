@@ -10,5 +10,8 @@
             "path": "/usr/lib/jvm/jdk-17",
             "default": true
         }
+    ],
+    "Lua.workspace.library": [
+        "${3rd}/luv/library"
     ]
 }

@@ -31,9 +31,13 @@ return packer.startup(function(use)
 	use 'ludovicchabant/vim-gutentags'
 	use 'ben-everly/vim-snippets'
 	use 'svermeulen/vim-yoink'
-	use { 'nvim-treesitter/nvim-treesitter-context', requires = {
-		'nvim-treesitter/nvim-treesitter'
-	} }
+	use { 'nvim-treesitter/nvim-treesitter-context',
+		requires = 'nvim-treesitter/nvim-treesitter'
+	}
+	use {
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		requires = "nvim-treesitter/nvim-treesitter",
+	}
 	use 'mfussenegger/nvim-dap'
 	use 'rcarriga/nvim-dap-ui'
 	use { 'tpope/vim-dadbod', ft = { 'sql', 'mysql' } }
