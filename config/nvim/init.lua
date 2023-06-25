@@ -398,13 +398,21 @@ vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F)
 vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t)
 vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T)
 
-require'toggleterm'.setup{
+require 'toggleterm'.setup {
 	open_mapping = [[<c-\>]],
 	insert_mappings = true,
 	terminal_mappings = true,
 }
 
-local neotest = require('neotest').run
-map('n', '<C-Enter>', neotest.run(vim.fn.expand('%')))
+require('neotest').setup({
+	adapters = {
+		require('neotest-pest')({
+			pest_cmd = function()
+				return "sail pest"
+			end
+		}),
+	}
+})
+map('n', '<C-Enter>', ":lua require('neotest').run.run(vim.fn.expand('%'))<CR>")
 --To test a directory run lua require('neotest').run.run("path/to/directory")
 --To test the full test suite run lua require('neotest').run.run({ suite = true })
