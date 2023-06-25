@@ -7,9 +7,9 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 })
 
 local ensure_packer = function()
-	local install_path = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+	local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 	if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-		vim.fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+		vim.fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
 		vim.cmd [[packadd packer.nvim]]
 		return true
 	end
@@ -31,7 +31,8 @@ return packer.startup(function(use)
 	use 'ludovicchabant/vim-gutentags'
 	use 'ben-everly/vim-snippets'
 	use 'svermeulen/vim-yoink'
-	use { 'nvim-treesitter/nvim-treesitter-context',
+	use {
+		'nvim-treesitter/nvim-treesitter-context',
 		requires = 'nvim-treesitter/nvim-treesitter'
 	}
 	use {
@@ -52,9 +53,9 @@ return packer.startup(function(use)
 	} }
 	use "nvim-telescope/telescope-file-browser.nvim"
 	use 'github/copilot.vim'
-	use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+	use { "akinsho/toggleterm.nvim", tag = '*', config = function()
 		require("toggleterm").setup()
-	end}
+	end }
 	use { 'mg979/vim-visual-multi', branch = 'master' }
 	use { 'lambdalisue/suda.vim' }
 	use {

@@ -51,7 +51,7 @@ vim.opt.shortmess:append('c')
 
 -- Coc lsp mappings
 vim.fn['coc#config']("intelephense.licenceKey", vim.env.INTELEPHENSE_KEY)
-vim.api.nvim_create_user_command("Fold", "call CocAction('fold', <f-args>)", {nargs = '?'})
+vim.api.nvim_create_user_command("Fold", "call CocAction('fold', <f-args>)", { nargs = '?' })
 map('n', '[e', '<Plug>(coc-diagnostic-prev)', { silent = true })
 map('n', ']e', '<Plug>(coc-diagnostic-next)', { silent = true })
 map('n', '<leader>e', ':CocList diagnostics<cr>')
@@ -103,10 +103,14 @@ vim.api.nvim_create_autocmd("CursorHold", {
 -- Coc floating window mappings
 map('n', 'K', ':call CocActionAsync("doHover")<CR>', { silent = true })
 map('v', 'K', ':<C-U>call CocActionAsync("doHover")<CR>', { silent = true })
-map({ 'n', 'v' }, '<C-j>', 'coc#float#has_scroll() ? coc#float#scroll(1) : "\\<C-j>"', { silent = true, nowait = true, expr = true })
-map('i', '<C-j>', 'coc#float#has_scroll() ? "\\<c-r>=coc#float#scroll(1)\\<cr>" : "\\<C-j>"', { silent = true, nowait = true, expr = true })
-map({ 'n', 'v' }, '<C-k>', 'coc#float#has_scroll() ? coc#float#scroll(0) : "\\<C-k>"', { silent = true, nowait = true, expr = true })
-map('i', '<C-k>', 'coc#float#has_scroll() ? "\\<c-r>=coc#float#scroll(0)\\<cr>" : "\\<C-k>"', { silent = true, nowait = true, expr = true })
+map({ 'n', 'v' }, '<C-j>', 'coc#float#has_scroll() ? coc#float#scroll(1) : "\\<C-j>"',
+	{ silent = true, nowait = true, expr = true })
+map('i', '<C-j>', 'coc#float#has_scroll() ? "\\<c-r>=coc#float#scroll(1)\\<cr>" : "\\<C-j>"',
+	{ silent = true, nowait = true, expr = true })
+map({ 'n', 'v' }, '<C-k>', 'coc#float#has_scroll() ? coc#float#scroll(0) : "\\<C-k>"',
+	{ silent = true, nowait = true, expr = true })
+map('i', '<C-k>', 'coc#float#has_scroll() ? "\\<c-r>=coc#float#scroll(0)\\<cr>" : "\\<C-k>"',
+	{ silent = true, nowait = true, expr = true })
 
 -- Coc Autocomplete mappings
 local function previous_char_is_whitespace()
@@ -120,32 +124,50 @@ local function do_snippet_jump()
 	return replace_termcodes("<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])<CR>")
 end
 function _G.tab()
-	if vim.fn['coc#pum#visible']() == 1 then return vim.fn['coc#pum#next'](1)
-	elseif vim.fn.pumvisible() == 1 then return replace_termcodes('<C-n>')
-	elseif vim.fn['coc#jumpable']() then return do_snippet_jump()
-	elseif previous_char_is_whitespace() then return replace_termcodes('<Tab>')
-	else return vim.fn['coc#refresh']()
+	if vim.fn['coc#pum#visible']() == 1 then
+		return vim.fn['coc#pum#next'](1)
+	elseif vim.fn.pumvisible() == 1 then
+		return replace_termcodes('<C-n>')
+	elseif vim.fn['coc#jumpable']() then
+		return do_snippet_jump()
+	elseif previous_char_is_whitespace() then
+		return replace_termcodes('<Tab>')
+	else
+		return vim.fn['coc#refresh']()
 	end
 end
+
 function _G.shift_tab()
-	if vim.fn['coc#pum#visible']() == 1 then return vim.fn['coc#pum#prev'](1)
-	elseif vim.fn.pumvisible() == 1 then return replace_termcodes('<C-p>')
-	-- TODO add support for coc#jumpable
-	else return replace_termcodes('<C-h>')
+	if vim.fn['coc#pum#visible']() == 1 then
+		return vim.fn['coc#pum#prev'](1)
+	elseif vim.fn.pumvisible() == 1 then
+		return replace_termcodes('<C-p>')
+		-- TODO add support for coc#jumpable
+	else
+		return replace_termcodes('<C-h>')
 	end
 end
+
 function _G.enter()
-	if vim.fn['coc#pum#visible']() == 1 then return vim.fn['coc#_select_confirm']()
-	elseif vim.fn.pumvisible() == 1 then return replace_termcodes('<C-y>')
-	elseif vim.fn['coc#expandableOrJumpable']() == 1 then return do_snippet_jump()
-	else return replace_termcodes('<C-g>u<CR><c-r>=coc#on_enter()<CR>')
+	if vim.fn['coc#pum#visible']() == 1 then
+		return vim.fn['coc#_select_confirm']()
+	elseif vim.fn.pumvisible() == 1 then
+		return replace_termcodes('<C-y>')
+	elseif vim.fn['coc#expandableOrJumpable']() == 1 then
+		return do_snippet_jump()
+	else
+		return replace_termcodes('<C-g>u<CR><c-r>=coc#on_enter()<CR>')
 	end
 end
+
 function _G.ctrl_space()
-	if vim.fn['coc#pum#visible']() == 1 then return vim.fn['coc#pum#cancel']()
-	else return vim.fn['coc#refresh']()
+	if vim.fn['coc#pum#visible']() == 1 then
+		return vim.fn['coc#pum#cancel']()
+	else
+		return vim.fn['coc#refresh']()
 	end
 end
+
 map('i', '<TAB>', 'v:lua.tab()', { silent = true, expr = true })
 map('i', '<S-TAB>', 'v:lua.shift_tab()', { silent = true, expr = true })
 map('i', '<C-Space>', 'v:lua.ctrl_space()', { silent = true, expr = true })
@@ -153,7 +175,7 @@ map('i', '<CR>', 'v:lua.enter()', { silent = true, expr = true })
 
 -- Copilot settings
 vim.g.copilot_no_tab_map = true
-map('i', '<C-Enter>', 'copilot#Accept("")', { noremap = true, silent = true, expr=true, replace_keycodes = false })
+map('i', '<C-Enter>', 'copilot#Accept("")', { noremap = true, silent = true, expr = true, replace_keycodes = false })
 
 -- airline settings
 vim.g.airline_powerline_fonts = 1
@@ -219,8 +241,8 @@ map('n', '<leader>gws', builtin.git_status)
 map('n', '<leader>gsl', builtin.git_stash)
 map('n', '<leader>b', builtin.treesitter)
 map('n', '<leader>fs', builtin.lsp_workspace_symbols)
-map('n', '<space>ft', require'telescope'.extensions.file_browser.file_browser, { noremap = true })
-require'telescope'.setup {
+map('n', '<space>ft', require 'telescope'.extensions.file_browser.file_browser, { noremap = true })
+require 'telescope'.setup {
 	defaults = {
 		mappings = {
 			i = {
@@ -279,7 +301,7 @@ vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.g.vimsyn_embed = 'l'
 vim.cmd('colorscheme gruvbox')
 
-local folding_group = vim.api.nvim_create_augroup('folding', {clear = true})
+local folding_group = vim.api.nvim_create_augroup('folding', { clear = true })
 vim.api.nvim_create_autocmd('Syntax', { pattern = '*', group = folding_group, command = 'normal zR' })
 
 if vim.fn.filereadable(vim.env.HOME .. '/.vim/vimrc.local') ~= 0
@@ -330,7 +352,7 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 	dapui.close()
 end
 
-require'nvim-treesitter.configs'.setup {
+require 'nvim-treesitter.configs'.setup {
 	auto_install = true,
 	highlight = {
 		enable = true,
