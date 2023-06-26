@@ -48,14 +48,20 @@ return packer.startup(function(use)
 	use 'tpope/vim-surround'
 	use 'tpope/vim-sleuth'
 	use 'tpope/vim-repeat'
-	use { 'nvim-telescope/telescope.nvim', tag = '0.1.0', requires = {
-		'nvim-lua/plenary.nvim'
-	} }
+	use {
+		'nvim-telescope/telescope.nvim',
+		tag = '0.1.0',
+		requires = 'nvim-lua/plenary.nvim',
+	}
 	use "nvim-telescope/telescope-file-browser.nvim"
 	use 'github/copilot.vim'
-	use { "akinsho/toggleterm.nvim", tag = '*', config = function()
-		require("toggleterm").setup()
-	end }
+	use {
+		"akinsho/toggleterm.nvim",
+		tag = '*',
+		config = function()
+			require("toggleterm").setup()
+		end
+	}
 	use { 'mg979/vim-visual-multi', branch = 'master' }
 	use { 'lambdalisue/suda.vim' }
 	use {
