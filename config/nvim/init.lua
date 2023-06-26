@@ -242,6 +242,7 @@ map('n', '<leader>gsl', builtin.git_stash)
 map('n', '<leader>b', builtin.treesitter)
 map('n', '<leader>fs', builtin.lsp_workspace_symbols)
 map('n', '<space>ft', require 'telescope'.extensions.file_browser.file_browser, { noremap = true })
+map("n", "<space>fT", function () require 'telescope'.extensions.file_browser.file_browser{path='%:p:h', select_buffer=true} end, { noremap = true })
 require 'telescope'.setup {
 	defaults = {
 		mappings = {
