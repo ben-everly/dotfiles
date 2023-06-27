@@ -36,8 +36,8 @@ return packer.startup(function(use)
 		requires = 'nvim-treesitter/nvim-treesitter'
 	}
 	use {
-		"nvim-treesitter/nvim-treesitter-textobjects",
-		requires = "nvim-treesitter/nvim-treesitter",
+		'nvim-treesitter/nvim-treesitter-textobjects',
+		requires = 'nvim-treesitter/nvim-treesitter',
 	}
 	use 'mfussenegger/nvim-dap'
 	use 'rcarriga/nvim-dap-ui'
@@ -53,13 +53,13 @@ return packer.startup(function(use)
 		tag = '0.1.0',
 		requires = 'nvim-lua/plenary.nvim',
 	}
-	use "nvim-telescope/telescope-file-browser.nvim"
+	use 'nvim-telescope/telescope-file-browser.nvim'
 	use 'github/copilot.vim'
 	use {
-		"akinsho/toggleterm.nvim",
+		'akinsho/toggleterm.nvim',
 		tag = '*',
 		config = function()
-			require("toggleterm").setup()
+			require('toggleterm').setup()
 		end
 	}
 	use { 'mg979/vim-visual-multi', branch = 'master' }
@@ -67,9 +67,9 @@ return packer.startup(function(use)
 	use {
 		'nvim-neotest/neotest',
 		requires = {
-			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
-			"antoinemadec/FixCursorHold.nvim",
+			'nvim-lua/plenary.nvim',
+			'nvim-treesitter/nvim-treesitter',
+			'antoinemadec/FixCursorHold.nvim',
 			'theutz/neotest-pest',
 		},
 		config = {
@@ -77,7 +77,7 @@ return packer.startup(function(use)
 				adapters = {
 					require('neotest-pest')({
 						pest_cmd = function()
-							return "sail pest"
+							return 'sail pest'
 						end
 					}),
 				}

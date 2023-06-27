@@ -1,6 +1,6 @@
 require 'packer-config'
 
-vim.g.mapleader = " "
+vim.g.mapleader = ' '
 
 local map = vim.keymap.set
 
@@ -11,7 +11,7 @@ map('n', '<leader>N', ':NERDTreeFind<CR>')
 -- Fugitive settings
 map('n', '<leader>gp', ':Git push<CR>')
 map('n', '<leader>gf', ':Git fetch<CR>')
-map('n', '<leader>gl', ":Gclog -50<CR>")
+map('n', '<leader>gl', ':Gclog -50<CR>')
 map('v', '<leader>gl', ":'<,'>Gclog -50<CR>")
 map('n', '<leader>gH', ':GBrowse<CR>')
 map('n', '<leader>gh', ':.GBrowse<CR>')
@@ -50,8 +50,8 @@ vim.g.coc_global_extensions = {
 vim.opt.shortmess:append('c')
 
 -- Coc lsp mappings
-vim.fn['coc#config']("intelephense.licenceKey", vim.env.INTELEPHENSE_KEY)
-vim.api.nvim_create_user_command("Fold", "call CocAction('fold', <f-args>)", { nargs = '?' })
+vim.fn['coc#config']('intelephense.licenceKey', vim.env.INTELEPHENSE_KEY)
+vim.api.nvim_create_user_command('Fold', "call CocAction('fold', <f-args>)", { nargs = '?' })
 map('n', '[e', '<Plug>(coc-diagnostic-prev)', { silent = true })
 map('n', ']e', '<Plug>(coc-diagnostic-next)', { silent = true })
 map('n', '<leader>e', ':CocList diagnostics<cr>')
@@ -68,8 +68,8 @@ map('n', '<leader>b', ':CocList outline<cr>')
 map('n', '<c-p>', ':CocList symbols<cr>')
 
 -- Coc refactoring mappings
-vim.api.nvim_create_user_command("Format", "call CocAction('format')", {})
-vim.api.nvim_create_user_command("OR", "call CocActionAsync('runCommand', 'editor.action.organizeImport')", {})
+vim.api.nvim_create_user_command('Format', "call CocAction('format')", {})
+vim.api.nvim_create_user_command('OR', "call CocActionAsync('runCommand', 'editor.action.organizeImport')", {})
 map('n', '<leader>rn', '<Plug>(coc-rename)')
 map('x', '<c-f>', ' <Plug>(coc-format-selected)')
 map('n', '<c-f>', '<Plug>(coc-format)')
@@ -93,11 +93,11 @@ map('n', '<leader>gx', ':CocCommand git.chunkUndo<cr>')
 map('n', '<leader>gf', ':CocCommand git.foldUnchanged<cr>')
 
 -- Coc hover highlighting
-vim.api.nvim_create_augroup("CocGroup", {})
-vim.api.nvim_create_autocmd("CursorHold", {
-	group = "CocGroup",
+vim.api.nvim_create_augroup('CocGroup', {})
+vim.api.nvim_create_autocmd('CursorHold', {
+	group = 'CocGroup',
 	command = "silent call CocActionAsync('highlight')",
-	desc = "Highlight symbol under cursor on CursorHold",
+	desc = 'Highlight symbol under cursor on CursorHold',
 })
 
 -- Coc floating window mappings
@@ -242,7 +242,7 @@ map('n', '<leader>gsl', builtin.git_stash)
 map('n', '<leader>b', builtin.treesitter)
 map('n', '<leader>fs', builtin.lsp_workspace_symbols)
 map('n', '<space>ft', require 'telescope'.extensions.file_browser.file_browser, { noremap = true })
-map("n", "<space>fT", function () require 'telescope'.extensions.file_browser.file_browser{path='%:p:h', select_buffer=true} end, { noremap = true })
+map('n', '<space>fT', function () require 'telescope'.extensions.file_browser.file_browser{path='%:p:h', select_buffer=true} end, { noremap = true })
 require 'telescope'.setup {
 	defaults = {
 		mappings = {
@@ -343,13 +343,13 @@ dap.configurations.php = {
 }
 
 dapui.setup()
-dap.listeners.after.event_initialized["dapui_config"] = function()
+dap.listeners.after.event_initialized['dapui_config'] = function()
 	dapui.open()
 end
-dap.listeners.before.event_terminated["dapui_config"] = function()
+dap.listeners.before.event_terminated['dapui_config'] = function()
 	dapui.close()
 end
-dap.listeners.before.event_exited["dapui_config"] = function()
+dap.listeners.before.event_exited['dapui_config'] = function()
 	dapui.close()
 end
 
@@ -364,10 +364,10 @@ require 'nvim-treesitter.configs'.setup {
 	incremental_selection = {
 		enable = true,
 		keymaps = {
-			init_selection = "gnn",
-			scope_incremental = "grc",
-			node_incremental = ";",
-			node_decremental = ",",
+			init_selection = 'gnn',
+			scope_incremental = 'grc',
+			node_incremental = ';',
+			node_decremental = ',',
 		},
 	},
 	textobjects = {
@@ -375,51 +375,51 @@ require 'nvim-treesitter.configs'.setup {
 			enable = true,
 			lookahead = true,
 			keymaps = {
-				["af"] = "@function.outer",
-				["if"] = "@function.inner",
-				["ac"] = "@class.outer",
-				["ic"] = "@class.inner",
-				["ao"] = "@loop.outer",
-				["io"] = "@loop.inner",
-				["as"] = "@scope",
-				["al"] = "@statement.outer"
+				['af'] = '@function.outer',
+				['if'] = '@function.inner',
+				['ac'] = '@class.outer',
+				['ic'] = '@class.inner',
+				['ao'] = '@loop.outer',
+				['io'] = '@loop.inner',
+				['as'] = '@scope',
+				['al'] = '@statement.outer'
 			},
 		},
 		move = {
 			enable = true,
 			set_jumps = false,
 			goto_next_start = {
-				["]f"] = "@function.outer",
-				["]c"] = "@class.outer",
-				["]o"] = "@loop.outer",
-				["]s"] = "@scope",
+				[']f'] = '@function.outer',
+				[']c'] = '@class.outer',
+				[']o'] = '@loop.outer',
+				[']s'] = '@scope',
 			},
 			goto_next_end = {
-				["]F"] = "@function.outer",
-				["]C"] = "@class.outer",
-				["]O"] = "@loop.outer",
-				["[s"] = "@scope",
+				[']F'] = '@function.outer',
+				[']C'] = '@class.outer',
+				[']O'] = '@loop.outer',
+				['[s'] = '@scope',
 			},
 			goto_previous_start = {
-				["[f"] = "@function.outer",
-				["[c"] = "@class.outer",
-				["[o"] = "@loop.outer",
+				['[f'] = '@function.outer',
+				['[c'] = '@class.outer',
+				['[o'] = '@loop.outer',
 			},
 			goto_previous_end = {
-				["[F"] = "@function.outer",
-				["[C"] = "@class.outer",
-				["[O"] = "@loop.outer",
+				['[F'] = '@function.outer',
+				['[C'] = '@class.outer',
+				['[O'] = '@loop.outer',
 			},
 		},
 	},
 }
-local ts_repeat_move = require "nvim-treesitter.textobjects.repeatable_move"
-vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move_next)
-vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_previous)
-vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat_move.builtin_f)
-vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F)
-vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t)
-vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T)
+local ts_repeat_move = require 'nvim-treesitter.textobjects.repeatable_move'
+vim.keymap.set({ 'n', 'x', 'o' }, ';', ts_repeat_move.repeat_last_move_next)
+vim.keymap.set({ 'n', 'x', 'o' }, ',', ts_repeat_move.repeat_last_move_previous)
+vim.keymap.set({ 'n', 'x', 'o' }, 'f', ts_repeat_move.builtin_f)
+vim.keymap.set({ 'n', 'x', 'o' }, 'F', ts_repeat_move.builtin_F)
+vim.keymap.set({ 'n', 'x', 'o' }, 't', ts_repeat_move.builtin_t)
+vim.keymap.set({ 'n', 'x', 'o' }, 'T', ts_repeat_move.builtin_T)
 
 require 'toggleterm'.setup {
 	open_mapping = [[<c-\>]],
