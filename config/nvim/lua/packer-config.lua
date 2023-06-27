@@ -18,7 +18,7 @@ end
 
 local packer_bootstrap = ensure_packer()
 
-local packer = require('packer')
+local packer = require 'packer'
 return packer.startup(function(use)
 	use 'wbthomason/packer.nvim'
 	use 'tpope/vim-sensible'
@@ -59,7 +59,7 @@ return packer.startup(function(use)
 		'akinsho/toggleterm.nvim',
 		tag = '*',
 		config = function()
-			require('toggleterm').setup()
+			require 'toggleterm'.setup()
 		end
 	}
 	use { 'mg979/vim-visual-multi', branch = 'master' }
@@ -73,9 +73,9 @@ return packer.startup(function(use)
 			'theutz/neotest-pest',
 		},
 		config = {
-			require('neotest').setup({
+			require 'neotest'.setup({
 				adapters = {
-					require('neotest-pest')({
+					require 'neotest-pest' ({
 						pest_cmd = function()
 							return 'sail pest'
 						end

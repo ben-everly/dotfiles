@@ -225,7 +225,7 @@ map('n', '<leader>cc', '<Plug>CommentaryLine')
 map('n', '<leader>cu', '<Plug>Commentary<Plug>Commentary')
 
 -- telescope settings
-local builtin = require('telescope.builtin')
+local builtin = require 'telescope.builtin'
 map('n', '<leader>ff', builtin.find_files)
 map('n', '<leader>fF', builtin.git_files)
 map('n', '<leader>fg', builtin.live_grep)
@@ -242,7 +242,9 @@ map('n', '<leader>gsl', builtin.git_stash)
 map('n', '<leader>b', builtin.treesitter)
 map('n', '<leader>fs', builtin.lsp_workspace_symbols)
 map('n', '<space>ft', require 'telescope'.extensions.file_browser.file_browser, { noremap = true })
-map('n', '<space>fT', function () require 'telescope'.extensions.file_browser.file_browser{path='%:p:h', select_buffer=true} end, { noremap = true })
+map('n', '<space>fT', function()
+	require 'telescope'.extensions.file_browser.file_browser { path = '%:p:h', select_buffer = true }
+end, { noremap = true })
 require 'telescope'.setup {
 	defaults = {
 		mappings = {
@@ -311,18 +313,21 @@ then
 end
 
 -- dap settings
-map('n', '<leader>d<cr>', ":lua require'dap'.continue()<CR>")
-map('n', '<leader>dq', ":lua require'dap'.terminate()<CR>:lua require'dap'.close()<CR>")
-map('n', '<leader>dr', ":lua require'dap'.restart()<CR>")
-map('n', '<leader>db', ":lua require'dap'.toggle_breakpoint()<CR>")
-map('n', '<leader>dj', ":lua require'dap'.step_over()<CR>")
-map('n', '<leader>dl', ":lua require'dap'.step_into()<CR>")
-map('n', '<leader>dh', ":lua require'dap'.step_out()<CR>")
-map('n', '<leader>dn', ":lua require'dapui'.toggle()<CR>")
-map('n', '<M-k>', "<Cmd>lua require('dapui').eval()<CR>")
-map('v', '<M-k>', "<Cmd>lua require('dapui').eval()<CR>")
+map('n', '<leader>d<cr>', require 'dap'.continue)
+map('n', '<leader>dq', function()
+	require 'dap'.terminate()
+	require 'dap'.close()
+end)
+map('n', '<leader>dr', require 'dap'.restart)
+map('n', '<leader>db', require 'dap'.toggle_breakpoint)
+map('n', '<leader>dj', require 'dap'.step_over)
+map('n', '<leader>dl', require 'dap'.step_into)
+map('n', '<leader>dh', require 'dap'.step_out)
+map('n', '<leader>dn', require 'dapui'.toggle)
+map('n', '<M-k>', require 'dapui'.eval)
+map('v', '<M-k>', require 'dapui'.eval)
 
-local dap, dapui = require('dap'), require('dapui')
+local dap, dapui = require 'dap', require 'dapui'
 dap.adapters.php = {
 	type = 'executable',
 	command = 'node',
@@ -427,6 +432,6 @@ require 'toggleterm'.setup {
 	terminal_mappings = true,
 }
 
-map('n', '<C-Enter>', ":lua require('neotest').run.run(vim.fn.expand('%'))<CR>")
---To test a directory run lua require('neotest').run.run("path/to/directory")
---To test the full test suite run lua require('neotest').run.run({ suite = true })
+map('n', '<C-Enter>', function() require 'neotest'.run.run(vim.fn.expand('%')) end)
+--To test a directory run lua require'neotest'.run.run("path/to/directory")
+--To test the full test suite run lua require'neotest'.run.run({ suite = true })
