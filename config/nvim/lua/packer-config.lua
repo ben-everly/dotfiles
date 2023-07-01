@@ -28,7 +28,6 @@ return packer.startup(function(use)
 	use 'tpope/vim-rhubarb'
 	use { 'neoclide/coc.nvim', branch = 'release' }
 	use 'vim-airline/vim-airline'
-	use 'ludovicchabant/vim-gutentags'
 	use 'ben-everly/vim-snippets'
 	use 'svermeulen/vim-yoink'
 	use { 'nvim-treesitter/nvim-treesitter-context', requires = 'nvim-treesitter/nvim-treesitter' }
