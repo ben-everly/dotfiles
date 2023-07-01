@@ -31,14 +31,8 @@ return packer.startup(function(use)
 	use 'ludovicchabant/vim-gutentags'
 	use 'ben-everly/vim-snippets'
 	use 'svermeulen/vim-yoink'
-	use {
-		'nvim-treesitter/nvim-treesitter-context',
-		requires = 'nvim-treesitter/nvim-treesitter'
-	}
-	use {
-		'nvim-treesitter/nvim-treesitter-textobjects',
-		requires = 'nvim-treesitter/nvim-treesitter',
-	}
+	use { 'nvim-treesitter/nvim-treesitter-context', requires = 'nvim-treesitter/nvim-treesitter' }
+	use { 'nvim-treesitter/nvim-treesitter-textobjects', requires = 'nvim-treesitter/nvim-treesitter' }
 	use 'mfussenegger/nvim-dap'
 	use 'rcarriga/nvim-dap-ui'
 	use { 'tpope/vim-dadbod', ft = { 'sql', 'mysql' } }
@@ -48,11 +42,7 @@ return packer.startup(function(use)
 	use 'tpope/vim-surround'
 	use 'tpope/vim-sleuth'
 	use 'tpope/vim-repeat'
-	use {
-		'nvim-telescope/telescope.nvim',
-		tag = '0.1.0',
-		requires = 'nvim-lua/plenary.nvim',
-	}
+	use { 'nvim-telescope/telescope.nvim', tag = '0.1.0', requires = 'nvim-lua/plenary.nvim' }
 	use 'nvim-telescope/telescope-file-browser.nvim'
 	use 'github/copilot.vim'
 	use {
@@ -63,7 +53,7 @@ return packer.startup(function(use)
 		end
 	}
 	use { 'mg979/vim-visual-multi', branch = 'master' }
-	use { 'lambdalisue/suda.vim' }
+	use 'lambdalisue/suda.vim'
 	use {
 		'nvim-neotest/neotest',
 		requires = {
