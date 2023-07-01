@@ -4,10 +4,6 @@ vim.g.mapleader = ' '
 
 local map = vim.keymap.set
 
--- NERDTree settings
-map('n', '<leader>n', ':NERDTreeToggle<CR>')
-map('n', '<leader>N', ':NERDTreeFind<CR>')
-
 -- Fugitive settings
 map('n', '<leader>gp', ':Git push<CR>')
 map('n', '<leader>gf', ':Git fetch<CR>')

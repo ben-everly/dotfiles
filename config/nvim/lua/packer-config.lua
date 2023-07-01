@@ -23,7 +23,6 @@ return packer.startup(function(use)
 	use 'wbthomason/packer.nvim'
 	use 'tpope/vim-sensible'
 	use 'morhetz/gruvbox'
-	use { 'preservim/nerdtree', opt = true, cmd = { 'NERDTreeToggle', 'NERDTreeFind' } }
 	use 'tpope/vim-fugitive'
 	use 'tpope/vim-rhubarb'
 	use { 'neoclide/coc.nvim', branch = 'release' }
