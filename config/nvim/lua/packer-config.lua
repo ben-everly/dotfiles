@@ -1,11 +1,3 @@
-local packer_augroup = vim.api.nvim_create_augroup('packer', { clear = true })
-vim.api.nvim_create_autocmd('BufWritePost', {
-	pattern = 'plugins.lua',
-	group = packer_augroup,
-	command = 'PackerSync',
-	desc = 'Sync packer on plugins.lua save'
-})
-
 local ensure_packer = function()
 	local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 	if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
