@@ -21,8 +21,11 @@ return packer.startup(function(use)
 	use 'vim-airline/vim-airline'
 	use 'ben-everly/vim-snippets'
 	use 'svermeulen/vim-yoink'
-	use { 'nvim-treesitter/nvim-treesitter-context', requires = 'nvim-treesitter/nvim-treesitter' }
-	use { 'nvim-treesitter/nvim-treesitter-textobjects', requires = 'nvim-treesitter/nvim-treesitter' }
+	use { 'nvim-treesitter/nvim-treesitter', run = function()
+		require('nvim-treesitter.install').update({ with_sync = true })()
+	end }
+	use { 'nvim-treesitter/nvim-treesitter-context' }
+	use { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' }
 	use 'mfussenegger/nvim-dap'
 	use 'rcarriga/nvim-dap-ui'
 	use { 'tpope/vim-dadbod', ft = { 'sql', 'mysql' } }
