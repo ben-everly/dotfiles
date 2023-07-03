@@ -20,7 +20,7 @@ return packer.startup(function(use)
 	use { 'neoclide/coc.nvim', branch = 'release', config = require 'ben-everly.plugins.coc' }
 	use 'vim-airline/vim-airline'
 	use 'ben-everly/vim-snippets'
-	use 'svermeulen/vim-yoink'
+	use { 'svermeulen/vim-yoink', config = require 'ben-everly.plugins.vim-yoink' }
 	use { 'nvim-treesitter/nvim-treesitter', run = function()
 		require('nvim-treesitter.install').update({ with_sync = true })()
 	end, config = require 'ben-everly.plugins.nvim-treesitter' }
