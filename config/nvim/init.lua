@@ -4,10 +4,6 @@ vim.g.mapleader = ' '
 
 vim.opt.shortmess:append('c')
 
--- airline settings
-vim.g.airline_powerline_fonts = 1
-vim.g['airline#extensions#tabline#enabled'] = 1
-
 -- snippets settings
 vim.g.ultisnips_php_scalar_types = 1
 
