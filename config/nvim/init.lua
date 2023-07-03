@@ -1,10 +1,8 @@
 require 'ben-everly'
 
 vim.g.mapleader = ' '
+vim.g.vimsyn_embed = 'l'
 
-vim.opt.shortmess:append('c')
-
--- general settings
 vim.keymap.set('n', '<leader>w', ':w!<cr>')
 vim.keymap.set('n', '<leader>q', ':bd<cr>')
 vim.keymap.set('n', '<leader>l', ':ls<cr>')
@@ -28,6 +26,8 @@ vnoremap <silent> # :<C-U>
 	\escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
 	\gVzv:call setreg('"', old_reg, old_regtype)<CR>
 ]])
+
+vim.opt.shortmess:append('c')
 vim.opt.signcolumn = 'auto:1-9'
 vim.opt.scrolloff = 3
 vim.opt.number = true
@@ -47,7 +47,6 @@ vim.opt.updatetime = 300
 vim.opt.inccommand = 'nosplit'
 vim.opt.tabstop = 4
 vim.opt.clipboard = 'unnamed,unnamedplus'
-vim.g.vimsyn_embed = 'l'
 
 local folding_group = vim.api.nvim_create_augroup('folding', { clear = true })
 vim.api.nvim_create_autocmd('Syntax', { pattern = '*', group = folding_group, command = 'normal zR' })
