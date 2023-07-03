@@ -243,7 +243,6 @@ vim.opt.clipboard = 'unnamed,unnamedplus'
 vim.opt.foldmethod = 'expr'
 vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.g.vimsyn_embed = 'l'
-vim.cmd('colorscheme gruvbox')
 
 local folding_group = vim.api.nvim_create_augroup('folding', { clear = true })
 vim.api.nvim_create_autocmd('Syntax', { pattern = '*', group = folding_group, command = 'normal zR' })
