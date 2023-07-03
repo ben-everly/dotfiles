@@ -38,7 +38,7 @@ return packer.startup(function(use)
 	use { 'nvim-telescope/telescope.nvim', tag = '0.1.0', requires = 'nvim-lua/plenary.nvim', config = require 'ben-everly.plugins.telescope' }
 	use(require 'ben-everly.plugins.telescope-file-browser')
 	use(require 'ben-everly.plugins.copilot')
-	use { 'akinsho/toggleterm.nvim', tag = '*', config = require 'ben-everly.plugins.toggleterm' }
+	use(require 'ben-everly.plugins.toggleterm')
 	use { 'mg979/vim-visual-multi', branch = 'master' }
 	use 'lambdalisue/suda.vim'
 	use(require 'ben-everly.plugins.vim-commentary')
