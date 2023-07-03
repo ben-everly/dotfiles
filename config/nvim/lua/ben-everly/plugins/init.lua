@@ -47,7 +47,8 @@ return packer.startup(function(use)
 			'nvim-lua/plenary.nvim',
 			'antoinemadec/FixCursorHold.nvim',
 			'theutz/neotest-pest',
-		}
+		},
+		config = require 'ben-everly.plugins.neotest'
 	}
 
 	-- treesitter doesn't have a grammar for blade yet
