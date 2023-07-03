@@ -4,9 +4,6 @@ vim.g.mapleader = ' '
 
 vim.opt.shortmess:append('c')
 
--- snippets settings
-vim.g.ultisnips_php_scalar_types = 1
-
 -- general settings
 vim.keymap.set('n', '<leader>w', ':w!<cr>')
 vim.keymap.set('n', '<leader>q', ':bd<cr>')
