@@ -31,7 +31,7 @@ return packer.startup(function(use)
 	use { 'tpope/vim-dadbod', ft = { 'sql', 'mysql' } }
 	use 'jiangmiao/auto-pairs'
 	use 'romainl/vim-qf'
-	use { 'tpope/vim-commentary', config = require 'ben-everly.plugins.vim-commentary' }
+	use(require 'ben-everly.plugins.vim-qf-quickfixsigns')
 	use 'tpope/vim-surround'
 	use 'tpope/vim-sleuth'
 	use 'tpope/vim-repeat'
