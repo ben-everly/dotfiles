@@ -17,7 +17,7 @@ return packer.startup(function(use)
 	use 'morhetz/gruvbox'
 	use 'tpope/vim-fugitive'
 	use 'tpope/vim-rhubarb'
-	use { 'neoclide/coc.nvim', branch = 'release', config = require 'plugins.coc' }
+	use { 'neoclide/coc.nvim', branch = 'release', config = require 'ben-everly.plugins.coc' }
 	use 'vim-airline/vim-airline'
 	use 'ben-everly/vim-snippets'
 	use 'svermeulen/vim-yoink'
@@ -25,7 +25,7 @@ return packer.startup(function(use)
 		require('nvim-treesitter.install').update({ with_sync = true })()
 	end }
 	use { 'nvim-treesitter/nvim-treesitter-context' }
-	use { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter', config = require 'plugins.nvim-treesitter-textobjects' }
+	use { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter', config = require 'ben-everly.plugins.nvim-treesitter-textobjects' }
 	use 'mfussenegger/nvim-dap'
 	use 'rcarriga/nvim-dap-ui'
 	use { 'tpope/vim-dadbod', ft = { 'sql', 'mysql' } }

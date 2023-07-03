@@ -1,4 +1,4 @@
-require 'plugins'
+require 'ben-everly'
 
 vim.g.mapleader = ' '
 
