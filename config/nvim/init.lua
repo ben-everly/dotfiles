@@ -253,12 +253,6 @@ then
 	vim.cmd([[ source ~/.vim/vimrc.local ]])
 end
 
-require 'toggleterm'.setup {
-	open_mapping = [[<c-\>]],
-	insert_mappings = true,
-	terminal_mappings = true,
-}
-
 require 'neotest'.setup({
 	adapters = {
 		require 'neotest-pest' ({
