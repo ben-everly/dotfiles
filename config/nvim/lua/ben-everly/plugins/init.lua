@@ -41,15 +41,7 @@ return packer.startup(function(use)
 	use { 'akinsho/toggleterm.nvim', tag = '*', config = require 'ben-everly.plugins.toggleterm' }
 	use { 'mg979/vim-visual-multi', branch = 'master' }
 	use 'lambdalisue/suda.vim'
-	use {
-		'nvim-neotest/neotest',
-		requires = {
-			'nvim-lua/plenary.nvim',
-			'antoinemadec/FixCursorHold.nvim',
-			'theutz/neotest-pest',
-		},
-		config = require 'ben-everly.plugins.neotest'
-	}
+	use(require 'ben-everly.plugins.vim-commentary')
 
 	-- treesitter doesn't have a grammar for blade yet
 	use 'jwalton512/vim-blade'
