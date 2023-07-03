@@ -46,7 +46,6 @@ vim.g.coc_global_extensions = {
 vim.opt.shortmess:append('c')
 
 -- Coc lsp mappings
-vim.fn['coc#config']('intelephense.licenceKey', vim.env.INTELEPHENSE_KEY)
 vim.api.nvim_create_user_command('Fold', "call CocAction('fold', <f-args>)", { nargs = '?' })
 map('n', '[e', '<Plug>(coc-diagnostic-prev)', { silent = true })
 map('n', ']e', '<Plug>(coc-diagnostic-next)', { silent = true })
