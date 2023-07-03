@@ -47,8 +47,6 @@ vim.opt.updatetime = 300
 vim.opt.inccommand = 'nosplit'
 vim.opt.tabstop = 4
 vim.opt.clipboard = 'unnamed,unnamedplus'
-vim.opt.foldmethod = 'expr'
-vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.g.vimsyn_embed = 'l'
 
 local folding_group = vim.api.nvim_create_augroup('folding', { clear = true })

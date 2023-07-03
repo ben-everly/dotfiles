@@ -31,7 +31,7 @@ return function()
 	-- 'coc-jsonc',
 
 	-- Coc lsp mappings
-	vim.api.nvim_create_user_command('Fold', "call CocAction('fold', <f-args>)", { nargs = '?' })
+	-- vim.api.nvim_create_user_command('Fold', "call CocAction('fold', <f-args>)", { nargs = '?' })
 	vim.keymap.set('n', '[e', '<Plug>(coc-diagnostic-prev)', { silent = true })
 	vim.keymap.set('n', ']e', '<Plug>(coc-diagnostic-next)', { silent = true })
 	vim.keymap.set('n', '<leader>e', ':CocList diagnostics<cr>')

@@ -61,4 +61,6 @@ return function()
 			},
 		},
 	}
+	vim.opt.foldmethod = 'expr'
+	vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
 end
