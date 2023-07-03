@@ -168,7 +168,8 @@ vim.keymap.set('i', '<CR>', 'v:lua.enter()', { silent = true, expr = true })
 
 -- Copilot settings
 vim.g.copilot_no_tab_map = true
-vim.keymap.set('i', '<C-Enter>', 'copilot#Accept("")', { noremap = true, silent = true, expr = true, replace_keycodes = false })
+vim.keymap.set('i', '<C-Enter>', 'copilot#Accept("")',
+	{ noremap = true, silent = true, expr = true, replace_keycodes = false })
 
 -- airline settings
 vim.g.airline_powerline_fonts = 1
@@ -250,52 +251,6 @@ vim.api.nvim_create_autocmd('Syntax', { pattern = '*', group = folding_group, co
 if vim.fn.filereadable(vim.env.HOME .. '/.vim/vimrc.local') ~= 0
 then
 	vim.cmd([[ source ~/.vim/vimrc.local ]])
-end
-
--- dap settings
-vim.keymap.set('n', '<leader>d<cr>', require 'dap'.continue)
-vim.keymap.set('n', '<leader>dq', function()
-	require 'dap'.terminate()
-	require 'dap'.close()
-end)
-vim.keymap.set('n', '<leader>dr', require 'dap'.restart)
-vim.keymap.set('n', '<leader>db', require 'dap'.toggle_breakpoint)
-vim.keymap.set('n', '<leader>dj', require 'dap'.step_over)
-vim.keymap.set('n', '<leader>dl', require 'dap'.step_into)
-vim.keymap.set('n', '<leader>dh', require 'dap'.step_out)
-vim.keymap.set('n', '<leader>dn', require 'dapui'.toggle)
-vim.keymap.set('n', '<M-k>', require 'dapui'.eval)
-vim.keymap.set('v', '<M-k>', require 'dapui'.eval)
-
-local dap, dapui = require 'dap', require 'dapui'
-dap.adapters.php = {
-	type = 'executable',
-	command = 'node',
-	args = { '/home/beneverly/.local/lib/php-debug-client/out/phpDebug.js' }
-}
-
-dap.configurations.php = {
-	{
-		type = 'php',
-		request = 'launch',
-		name = 'Listen for Xdebug',
-		port = 9000,
-		log = true,
-		pathMappings = {
-			['/var/www/app/'] = '${workspaceFolder}'
-		}
-	}
-}
-
-dapui.setup()
-dap.listeners.after.event_initialized['dapui_config'] = function()
-	dapui.open()
-end
-dap.listeners.before.event_terminated['dapui_config'] = function()
-	dapui.close()
-end
-dap.listeners.before.event_exited['dapui_config'] = function()
-	dapui.close()
 end
 
 require 'nvim-treesitter.configs'.setup {
