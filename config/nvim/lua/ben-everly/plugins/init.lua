@@ -35,8 +35,8 @@ return packer.startup(function(use)
 	use 'tpope/vim-surround'
 	use 'tpope/vim-sleuth'
 	use 'tpope/vim-repeat'
-	use { 'nvim-telescope/telescope.nvim', tag = '0.1.0', requires = 'nvim-lua/plenary.nvim' }
-	use 'nvim-telescope/telescope-file-browser.nvim'
+	use { 'nvim-telescope/telescope.nvim', tag = '0.1.0', requires = 'nvim-lua/plenary.nvim', config = require 'ben-everly.plugins.telescope' }
+	use { 'nvim-telescope/telescope-file-browser.nvim', after = 'telescope.nvim', config = require 'ben-everly.plugins.telescope-file-browser' }
 	use 'github/copilot.vim'
 	use { 'akinsho/toggleterm.nvim', tag = '*' }
 	use { 'mg979/vim-visual-multi', branch = 'master' }

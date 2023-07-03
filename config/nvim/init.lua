@@ -199,38 +199,6 @@ map('o', '<leader>c', ' <Plug>Commentary')
 map('n', '<leader>cc', '<Plug>CommentaryLine')
 map('n', '<leader>cu', '<Plug>Commentary<Plug>Commentary')
 
--- telescope settings
-local builtin = require 'telescope.builtin'
-map('n', '<leader>ff', builtin.find_files)
-map('n', '<leader>fF', builtin.git_files)
-map('n', '<leader>fg', builtin.live_grep)
-map('n', '<leader>fb', builtin.buffers)
-map('n', '<leader>fh', builtin.help_tags)
-map('n', '<leader>fj', builtin.jumplist)
-map('n', '<leader>fr', builtin.registers)
-map('n', '<leader>f/', builtin.search_history)
-map('n', '<leader>gbl', builtin.git_branches)
-map('n', '<leader>glg', builtin.git_commits)
-map('n', '<leader>glb', builtin.git_bcommits)
-map('n', '<leader>gws', builtin.git_status)
-map('n', '<leader>gsl', builtin.git_stash)
-map('n', '<leader>b', builtin.treesitter)
-map('n', '<leader>fs', builtin.lsp_workspace_symbols)
-map('n', '<space>ft', require 'telescope'.extensions.file_browser.file_browser, { noremap = true })
-map('n', '<space>fT', function()
-	require 'telescope'.extensions.file_browser.file_browser { path = '%:p:h', select_buffer = true }
-end, { noremap = true })
-require 'telescope'.setup {
-	defaults = {
-		mappings = {
-			i = {
-				['<C-j>'] = 'move_selection_next',
-				['<C-k>'] = 'move_selection_previous',
-			},
-		},
-	},
-}
-
 -- general settings
 map('n', '<leader>w', ':w!<cr>')
 map('n', '<leader>q', ':bd<cr>')
