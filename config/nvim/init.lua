@@ -13,11 +13,6 @@ vim.keymap.set('v', '<leader>gh', ":'<,'>GBrowse<cr>")
 
 vim.opt.shortmess:append('c')
 
--- Copilot settings
-vim.g.copilot_no_tab_map = true
-vim.keymap.set('i', '<C-Enter>', 'copilot#Accept("")',
-	{ noremap = true, silent = true, expr = true, replace_keycodes = false })
-
 -- airline settings
 vim.g.airline_powerline_fonts = 1
 vim.g['airline#extensions#tabline#enabled'] = 1
