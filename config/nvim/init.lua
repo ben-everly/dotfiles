@@ -11,13 +11,6 @@ vim.g['airline#extensions#tabline#enabled'] = 1
 -- snippets settings
 vim.g.ultisnips_php_scalar_types = 1
 
--- commentary settings
-vim.keymap.set('x', '<leader>c', ' <Plug>Commentary')
-vim.keymap.set('n', '<leader>c', ' <Plug>Commentary')
-vim.keymap.set('o', '<leader>c', ' <Plug>Commentary')
-vim.keymap.set('n', '<leader>cc', '<Plug>CommentaryLine')
-vim.keymap.set('n', '<leader>cu', '<Plug>Commentary<Plug>Commentary')
-
 -- general settings
 vim.keymap.set('n', '<leader>w', ':w!<cr>')
 vim.keymap.set('n', '<leader>q', ':bd<cr>')
