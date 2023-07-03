@@ -2,16 +2,14 @@ require 'ben-everly'
 
 vim.g.mapleader = ' '
 
-local map = vim.keymap.set
-
 -- Fugitive settings
-map('n', '<leader>gp', ':Git push<CR>')
-map('n', '<leader>gf', ':Git fetch<CR>')
-map('n', '<leader>gl', ':Gclog -50<CR>')
-map('v', '<leader>gl', ":'<,'>Gclog -50<CR>")
-map('n', '<leader>gH', ':GBrowse<CR>')
-map('n', '<leader>gh', ':.GBrowse<CR>')
-map('v', '<leader>gh', ":'<,'>GBrowse<cr>")
+vim.keymap.set('n', '<leader>gp', ':Git push<CR>')
+vim.keymap.set('n', '<leader>gf', ':Git fetch<CR>')
+vim.keymap.set('n', '<leader>gl', ':Gclog -50<CR>')
+vim.keymap.set('v', '<leader>gl', ":'<,'>Gclog -50<CR>")
+vim.keymap.set('n', '<leader>gH', ':GBrowse<CR>')
+vim.keymap.set('n', '<leader>gh', ':.GBrowse<CR>')
+vim.keymap.set('v', '<leader>gh', ":'<,'>GBrowse<cr>")
 
 -- Coc settings
 vim.g.coc_global_extensions = {
@@ -47,45 +45,45 @@ vim.opt.shortmess:append('c')
 
 -- Coc lsp mappings
 vim.api.nvim_create_user_command('Fold', "call CocAction('fold', <f-args>)", { nargs = '?' })
-map('n', '[e', '<Plug>(coc-diagnostic-prev)', { silent = true })
-map('n', ']e', '<Plug>(coc-diagnostic-next)', { silent = true })
-map('n', '<leader>e', ':CocList diagnostics<cr>')
-map('n', 'gd', '<Plug>(coc-definition)', { silent = true })
-map('n', 'gy', '<Plug>(coc-type-definition)', { silent = true })
-map('n', 'gi', '<Plug>(coc-implementation)', { silent = true })
-map('n', 'gr', '<Plug>(coc-references)', { silent = true })
-map({ 'x', 'o' }, 'if', '<Plug>(coc-funcobj-i)')
-map({ 'x', 'o' }, 'af', '<Plug>(coc-funcobj-a)')
-map({ 'x', 'o' }, 'ic', '<Plug>(coc-classobj-i)')
-map({ 'x', 'o' }, 'ac', '<Plug>(coc-classobj-a)')
-map({ 'n', 'x' }, '<C-s>', '<Plug>(coc-range-select)', { silent = true })
-map('n', '<leader>b', ':CocList outline<cr>')
-map('n', '<c-p>', ':CocList symbols<cr>')
+vim.keymap.set('n', '[e', '<Plug>(coc-diagnostic-prev)', { silent = true })
+vim.keymap.set('n', ']e', '<Plug>(coc-diagnostic-next)', { silent = true })
+vim.keymap.set('n', '<leader>e', ':CocList diagnostics<cr>')
+vim.keymap.set('n', 'gd', '<Plug>(coc-definition)', { silent = true })
+vim.keymap.set('n', 'gy', '<Plug>(coc-type-definition)', { silent = true })
+vim.keymap.set('n', 'gi', '<Plug>(coc-implementation)', { silent = true })
+vim.keymap.set('n', 'gr', '<Plug>(coc-references)', { silent = true })
+vim.keymap.set({ 'x', 'o' }, 'if', '<Plug>(coc-funcobj-i)')
+vim.keymap.set({ 'x', 'o' }, 'af', '<Plug>(coc-funcobj-a)')
+vim.keymap.set({ 'x', 'o' }, 'ic', '<Plug>(coc-classobj-i)')
+vim.keymap.set({ 'x', 'o' }, 'ac', '<Plug>(coc-classobj-a)')
+vim.keymap.set({ 'n', 'x' }, '<C-s>', '<Plug>(coc-range-select)', { silent = true })
+vim.keymap.set('n', '<leader>b', ':CocList outline<cr>')
+vim.keymap.set('n', '<c-p>', ':CocList symbols<cr>')
 
 -- Coc refactoring mappings
 vim.api.nvim_create_user_command('Format', "call CocAction('format')", {})
 vim.api.nvim_create_user_command('OR', "call CocActionAsync('runCommand', 'editor.action.organizeImport')", {})
-map('n', '<leader>rn', '<Plug>(coc-rename)')
-map('x', '<c-f>', ' <Plug>(coc-format-selected)')
-map('n', '<c-f>', '<Plug>(coc-format)')
-map('x', '<leader>a', ' <Plug>(coc-codeaction-selected)')
-map('n', '<leader>a', ' <Plug>(coc-codeaction-selected)')
-map('n', '<leader>ac', ' <Plug>(coc-codeaction)')
-map('n', '<leader>qf', ' <Plug>(coc-fix-current)')
-map('n', '<leader>cl', ' <Plug>(coc-codelens-action)')
+vim.keymap.set('n', '<leader>rn', '<Plug>(coc-rename)')
+vim.keymap.set('x', '<c-f>', ' <Plug>(coc-format-selected)')
+vim.keymap.set('n', '<c-f>', '<Plug>(coc-format)')
+vim.keymap.set('x', '<leader>a', ' <Plug>(coc-codeaction-selected)')
+vim.keymap.set('n', '<leader>a', ' <Plug>(coc-codeaction-selected)')
+vim.keymap.set('n', '<leader>ac', ' <Plug>(coc-codeaction)')
+vim.keymap.set('n', '<leader>qf', ' <Plug>(coc-fix-current)')
+vim.keymap.set('n', '<leader>cl', ' <Plug>(coc-codelens-action)')
 
 -- Coc git mappings
-map('n', '[g', '<Plug>(coc-git-prevchunk)')
-map('n', ']g', '<Plug>(coc-git-nextchunk)')
-map('n', '[m', '<Plug>(coc-git-prevconflict)')
-map('n', ']m', '<Plug>(coc-git-nextconflict)')
-map('n', 'gs', '<Plug>(coc-git-chunkinfo)')
-map('n', 'gc', '<Plug>(coc-git-commit)')
-map({ 'o', 'x' }, 'ig', '<Plug>(coc-git-chunk-inner)')
-map({ 'o', 'x' }, 'ag', '<Plug>(coc-git-chunk-outer)')
-map('n', '<leader>ga', ':CocCommand git.chunkStage<cr>')
-map('n', '<leader>gx', ':CocCommand git.chunkUndo<cr>')
-map('n', '<leader>gf', ':CocCommand git.foldUnchanged<cr>')
+vim.keymap.set('n', '[g', '<Plug>(coc-git-prevchunk)')
+vim.keymap.set('n', ']g', '<Plug>(coc-git-nextchunk)')
+vim.keymap.set('n', '[m', '<Plug>(coc-git-prevconflict)')
+vim.keymap.set('n', ']m', '<Plug>(coc-git-nextconflict)')
+vim.keymap.set('n', 'gs', '<Plug>(coc-git-chunkinfo)')
+vim.keymap.set('n', 'gc', '<Plug>(coc-git-commit)')
+vim.keymap.set({ 'o', 'x' }, 'ig', '<Plug>(coc-git-chunk-inner)')
+vim.keymap.set({ 'o', 'x' }, 'ag', '<Plug>(coc-git-chunk-outer)')
+vim.keymap.set('n', '<leader>ga', ':CocCommand git.chunkStage<cr>')
+vim.keymap.set('n', '<leader>gx', ':CocCommand git.chunkUndo<cr>')
+vim.keymap.set('n', '<leader>gf', ':CocCommand git.foldUnchanged<cr>')
 
 -- Coc hover highlighting
 vim.api.nvim_create_augroup('CocGroup', {})
@@ -96,15 +94,15 @@ vim.api.nvim_create_autocmd('CursorHold', {
 })
 
 -- Coc floating window mappings
-map('n', 'K', ':call CocActionAsync("doHover")<CR>', { silent = true })
-map('v', 'K', ':<C-U>call CocActionAsync("doHover")<CR>', { silent = true })
-map({ 'n', 'v' }, '<C-j>', 'coc#float#has_scroll() ? coc#float#scroll(1) : "\\<C-j>"',
+vim.keymap.set('n', 'K', ':call CocActionAsync("doHover")<CR>', { silent = true })
+vim.keymap.set('v', 'K', ':<C-U>call CocActionAsync("doHover")<CR>', { silent = true })
+vim.keymap.set({ 'n', 'v' }, '<C-j>', 'coc#float#has_scroll() ? coc#float#scroll(1) : "\\<C-j>"',
 	{ silent = true, nowait = true, expr = true })
-map('i', '<C-j>', 'coc#float#has_scroll() ? "\\<c-r>=coc#float#scroll(1)\\<cr>" : "\\<C-j>"',
+vim.keymap.set('i', '<C-j>', 'coc#float#has_scroll() ? "\\<c-r>=coc#float#scroll(1)\\<cr>" : "\\<C-j>"',
 	{ silent = true, nowait = true, expr = true })
-map({ 'n', 'v' }, '<C-k>', 'coc#float#has_scroll() ? coc#float#scroll(0) : "\\<C-k>"',
+vim.keymap.set({ 'n', 'v' }, '<C-k>', 'coc#float#has_scroll() ? coc#float#scroll(0) : "\\<C-k>"',
 	{ silent = true, nowait = true, expr = true })
-map('i', '<C-k>', 'coc#float#has_scroll() ? "\\<c-r>=coc#float#scroll(0)\\<cr>" : "\\<C-k>"',
+vim.keymap.set('i', '<C-k>', 'coc#float#has_scroll() ? "\\<c-r>=coc#float#scroll(0)\\<cr>" : "\\<C-k>"',
 	{ silent = true, nowait = true, expr = true })
 
 -- Coc Autocomplete mappings
@@ -163,14 +161,14 @@ function _G.ctrl_space()
 	end
 end
 
-map('i', '<TAB>', 'v:lua.tab()', { silent = true, expr = true })
-map('i', '<S-TAB>', 'v:lua.shift_tab()', { silent = true, expr = true })
-map('i', '<C-Space>', 'v:lua.ctrl_space()', { silent = true, expr = true })
-map('i', '<CR>', 'v:lua.enter()', { silent = true, expr = true })
+vim.keymap.set('i', '<TAB>', 'v:lua.tab()', { silent = true, expr = true })
+vim.keymap.set('i', '<S-TAB>', 'v:lua.shift_tab()', { silent = true, expr = true })
+vim.keymap.set('i', '<C-Space>', 'v:lua.ctrl_space()', { silent = true, expr = true })
+vim.keymap.set('i', '<CR>', 'v:lua.enter()', { silent = true, expr = true })
 
 -- Copilot settings
 vim.g.copilot_no_tab_map = true
-map('i', '<C-Enter>', 'copilot#Accept("")', { noremap = true, silent = true, expr = true, replace_keycodes = false })
+vim.keymap.set('i', '<C-Enter>', 'copilot#Accept("")', { noremap = true, silent = true, expr = true, replace_keycodes = false })
 
 -- airline settings
 vim.g.airline_powerline_fonts = 1
@@ -180,12 +178,12 @@ vim.g['airline#extensions#tabline#enabled'] = 1
 vim.g.ultisnips_php_scalar_types = 1
 
 -- yoink settings
-map('n', '<leader>]', '<plug>(YoinkPostPasteSwapBack)')
-map('n', '<leader>[', '<plug>(YoinkPostPasteSwapForward)')
-map('n', 'p', '<plug>(YoinkPaste_p)')
-map('n', 'P', '<plug>(YoinkPaste_P)')
-map('n', 'gp', '<plug>(YoinkPaste_gp)')
-map('n', 'gP', '<plug>(YoinkPaste_gP)')
+vim.keymap.set('n', '<leader>]', '<plug>(YoinkPostPasteSwapBack)')
+vim.keymap.set('n', '<leader>[', '<plug>(YoinkPostPasteSwapForward)')
+vim.keymap.set('n', 'p', '<plug>(YoinkPaste_p)')
+vim.keymap.set('n', 'P', '<plug>(YoinkPaste_P)')
+vim.keymap.set('n', 'gp', '<plug>(YoinkPaste_gp)')
+vim.keymap.set('n', 'gP', '<plug>(YoinkPaste_gP)')
 vim.g.yoinkMaxItems = 100
 vim.g.yoinkIncludeDeleteOperations = 1
 vim.g.yoinkSavePersistently = 1
@@ -193,24 +191,24 @@ vim.g.yoinkAutoFormatPaste = 1
 vim.g.yoinkSwapClampAtEnds = 0
 
 -- commentary settings
-map('x', '<leader>c', ' <Plug>Commentary')
-map('n', '<leader>c', ' <Plug>Commentary')
-map('o', '<leader>c', ' <Plug>Commentary')
-map('n', '<leader>cc', '<Plug>CommentaryLine')
-map('n', '<leader>cu', '<Plug>Commentary<Plug>Commentary')
+vim.keymap.set('x', '<leader>c', ' <Plug>Commentary')
+vim.keymap.set('n', '<leader>c', ' <Plug>Commentary')
+vim.keymap.set('o', '<leader>c', ' <Plug>Commentary')
+vim.keymap.set('n', '<leader>cc', '<Plug>CommentaryLine')
+vim.keymap.set('n', '<leader>cu', '<Plug>Commentary<Plug>Commentary')
 
 -- general settings
-map('n', '<leader>w', ':w!<cr>')
-map('n', '<leader>q', ':bd<cr>')
-map('n', '<leader>l', ':ls<cr>')
-map('n', '<leader><C-t>', ':enew<cr>')
-map('n', '<leader><C-w>', ':bp|bd #<cr>')
-map('n', '<leader>.', ':bnext<cr>')
-map('n', '<leader>,', ':bprevious<cr>')
-map('n', '<c-w><s-j>', ':res -10<cr>')
-map('n', '<c-w><s-k>', ':res +10<cr>')
-map('n', '<c-w><s-l>', ':vert res -10<cr>')
-map('n', '<c-w><s-h>', ':vert res +10<cr>')
+vim.keymap.set('n', '<leader>w', ':w!<cr>')
+vim.keymap.set('n', '<leader>q', ':bd<cr>')
+vim.keymap.set('n', '<leader>l', ':ls<cr>')
+vim.keymap.set('n', '<leader><C-t>', ':enew<cr>')
+vim.keymap.set('n', '<leader><C-w>', ':bp|bd #<cr>')
+vim.keymap.set('n', '<leader>.', ':bnext<cr>')
+vim.keymap.set('n', '<leader>,', ':bprevious<cr>')
+vim.keymap.set('n', '<c-w><s-j>', ':res -10<cr>')
+vim.keymap.set('n', '<c-w><s-k>', ':res +10<cr>')
+vim.keymap.set('n', '<c-w><s-l>', ':vert res -10<cr>')
+vim.keymap.set('n', '<c-w><s-h>', ':vert res +10<cr>')
 vim.cmd([[
 vnoremap <silent> * :<C-U>
 	\let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
@@ -256,19 +254,19 @@ then
 end
 
 -- dap settings
-map('n', '<leader>d<cr>', require 'dap'.continue)
-map('n', '<leader>dq', function()
+vim.keymap.set('n', '<leader>d<cr>', require 'dap'.continue)
+vim.keymap.set('n', '<leader>dq', function()
 	require 'dap'.terminate()
 	require 'dap'.close()
 end)
-map('n', '<leader>dr', require 'dap'.restart)
-map('n', '<leader>db', require 'dap'.toggle_breakpoint)
-map('n', '<leader>dj', require 'dap'.step_over)
-map('n', '<leader>dl', require 'dap'.step_into)
-map('n', '<leader>dh', require 'dap'.step_out)
-map('n', '<leader>dn', require 'dapui'.toggle)
-map('n', '<M-k>', require 'dapui'.eval)
-map('v', '<M-k>', require 'dapui'.eval)
+vim.keymap.set('n', '<leader>dr', require 'dap'.restart)
+vim.keymap.set('n', '<leader>db', require 'dap'.toggle_breakpoint)
+vim.keymap.set('n', '<leader>dj', require 'dap'.step_over)
+vim.keymap.set('n', '<leader>dl', require 'dap'.step_into)
+vim.keymap.set('n', '<leader>dh', require 'dap'.step_out)
+vim.keymap.set('n', '<leader>dn', require 'dapui'.toggle)
+vim.keymap.set('n', '<M-k>', require 'dapui'.eval)
+vim.keymap.set('v', '<M-k>', require 'dapui'.eval)
 
 local dap, dapui = require 'dap', require 'dapui'
 dap.adapters.php = {
@@ -378,6 +376,6 @@ require 'neotest'.setup({
 	}
 })
 
-map('n', '<C-Enter>', function() require 'neotest'.run.run(vim.fn.expand('%')) end)
+vim.keymap.set('n', '<C-Enter>', function() require 'neotest'.run.run(vim.fn.expand('%')) end)
 --To test a directory run lua require'neotest'.run.run("path/to/directory")
 --To test the full test suite run lua require'neotest'.run.run({ suite = true })
