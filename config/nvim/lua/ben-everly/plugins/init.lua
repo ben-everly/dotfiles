@@ -17,7 +17,7 @@ return packer.startup(function(use)
 	use { 'morhetz/gruvbox', config = require 'ben-everly.plugins.gruvbox' }
 	use { 'tpope/vim-fugitive', config = require 'ben-everly.plugins.vim-fugitive' }
 	use 'tpope/vim-rhubarb'
-	use { 'neoclide/coc.nvim', branch = 'release', config = require 'ben-everly.plugins.coc' }
+	use(require 'ben-everly.plugins.vim-commentary')
 	use(require 'ben-everly.plugins.vim-airline')
 	use(require 'ben-everly.plugins.vim-snippets')
 	use(require 'ben-everly.plugins.vim-yoink')
