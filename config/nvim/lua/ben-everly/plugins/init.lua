@@ -17,7 +17,7 @@ return packer.startup(function(use)
 	use(require 'ben-everly.plugins.gruvbox')
 	use(require 'ben-everly.plugins.vim-fugitive')
 	use 'tpope/vim-rhubarb'
-	use(require 'ben-everly.plugins.vim-commentary')
+	use(require 'ben-everly.plugins.coc')
 	use(require 'ben-everly.plugins.vim-airline')
 	use(require 'ben-everly.plugins.vim-snippets')
 	use(require 'ben-everly.plugins.vim-yoink')
@@ -29,7 +29,7 @@ return packer.startup(function(use)
 	use { 'tpope/vim-dadbod', ft = { 'sql', 'mysql' } }
 	use 'jiangmiao/auto-pairs'
 	use 'romainl/vim-qf'
-	use(require 'ben-everly.plugins.vim-qf-quickfixsigns')
+	use(require 'ben-everly.plugins.vim-commentary')
 	use 'tpope/vim-surround'
 	use 'tpope/vim-sleuth'
 	use 'tpope/vim-repeat'
@@ -39,7 +39,7 @@ return packer.startup(function(use)
 	use(require 'ben-everly.plugins.toggleterm')
 	use { 'mg979/vim-visual-multi', branch = 'master' }
 	use 'lambdalisue/suda.vim'
-	use(require 'ben-everly.plugins.vim-commentary')
+	use(require 'ben-everly.plugins.neotest')
 
 	-- treesitter doesn't have a grammar for blade yet
 	use 'jwalton512/vim-blade'
