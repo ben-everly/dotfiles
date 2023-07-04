@@ -19,11 +19,9 @@ return packer.startup(function(use)
 	use 'tpope/vim-rhubarb'
 	use { 'neoclide/coc.nvim', branch = 'release', config = require 'ben-everly.plugins.coc' }
 	use { 'vim-airline/vim-airline', config = require 'ben-everly.plugins.vim-airline' }
-	use { 'ben-everly/vim-snippets', config = require 'ben-everly.plugins.vim-snippets' }
-	use { 'svermeulen/vim-yoink', config = require 'ben-everly.plugins.vim-yoink' }
-	use { 'nvim-treesitter/nvim-treesitter', run = function()
-		require('nvim-treesitter.install').update({ with_sync = true })()
-	end, config = require 'ben-everly.plugins.nvim-treesitter' }
+	use(require 'ben-everly.plugins.vim-snippets')
+	use(require 'ben-everly.plugins.vim-yoink')
+	use(require 'ben-everly.plugins.nvim-treesitter')
 	use { 'nvim-treesitter/nvim-treesitter-context' }
 	use(require 'ben-everly.plugins.nvim-treesitter-textobjects')
 	use(require 'ben-everly.plugins.nvim-dap')
