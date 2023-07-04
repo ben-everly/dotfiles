@@ -14,7 +14,7 @@ local packer = require 'packer'
 return packer.startup(function(use)
 	use 'wbthomason/packer.nvim'
 	use 'tpope/vim-sensible'
-	use { 'morhetz/gruvbox', config = require 'ben-everly.plugins.gruvbox' }
+	use(require 'ben-everly.plugins.gruvbox')
 	use(require 'ben-everly.plugins.vim-fugitive')
 	use 'tpope/vim-rhubarb'
 	use(require 'ben-everly.plugins.vim-commentary')
