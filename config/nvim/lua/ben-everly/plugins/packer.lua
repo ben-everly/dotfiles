@@ -43,7 +43,6 @@ packer.setup = function()
 		use('tpope/vim-repeat')
 		use('lambdalisue/suda.vim')
 
-		use('tpope/vim-sensible')
 		use(require 'ben-everly.plugins.gruvbox')
 		use(require 'ben-everly.plugins.vim-airline')
 
