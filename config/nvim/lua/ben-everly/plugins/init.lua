@@ -25,7 +25,7 @@ return packer.startup(function(use)
 		require('nvim-treesitter.install').update({ with_sync = true })()
 	end, config = require 'ben-everly.plugins.nvim-treesitter' }
 	use { 'nvim-treesitter/nvim-treesitter-context' }
-	use { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter', config = require 'ben-everly.plugins.nvim-treesitter-textobjects' }
+	use(require 'ben-everly.plugins.nvim-treesitter-textobjects')
 	use(require 'ben-everly.plugins.nvim-dap')
 	use(require 'ben-everly.plugins.nvim-dap-ui')
 	use { 'tpope/vim-dadbod', ft = { 'sql', 'mysql' } }
