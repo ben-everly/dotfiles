@@ -36,12 +36,12 @@ packer.setup = function()
 		use('wellle/targets.vim')
 		use('tpope/vim-surround')
 		use('tpope/vim-sleuth')
+		use('tpope/vim-repeat')
 		use({ 'mg979/vim-visual-multi', branch = 'master' })
 
 		use(require 'ben-everly.plugins.toggleterm')
 		use({ 'tpope/vim-dadbod', ft = { 'sql', 'mysql' } })
 		use('romainl/vim-qf')
-		use('tpope/vim-repeat')
 		use('lambdalisue/suda.vim')
 
 		use(require 'ben-everly.plugins.colorschemes.tokyonight')
