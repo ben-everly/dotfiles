@@ -44,7 +44,7 @@ packer.setup = function()
 		use('tpope/vim-repeat')
 		use('lambdalisue/suda.vim')
 
-		use(require 'ben-everly.plugins.gruvbox')
+		use(require 'ben-everly.plugins.colorschemes.tokyonight')
 		use(require 'ben-everly.plugins.lualine')
 
 		-- treesitter doesn't have a grammar for blade yet
