@@ -20,3 +20,7 @@ vim.opt.updatetime = 300
 vim.opt.inccommand = 'nosplit'
 vim.opt.tabstop = 4
 vim.opt.clipboard = 'unnamed,unnamedplus'
+vim.opt.autowriteall = true
+
+local autowrite_group = vim.api.nvim_create_augroup('autowrite', { clear = true })
+vim.api.nvim_create_autocmd('FocusLost', { pattern = '*', group = autowrite_group, command = 'silent! wa' })
