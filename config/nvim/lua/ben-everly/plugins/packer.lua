@@ -45,7 +45,7 @@ packer.setup = function()
 		use('lambdalisue/suda.vim')
 
 		use(require 'ben-everly.plugins.gruvbox')
-		use(require 'ben-everly.plugins.vim-airline')
+		use(require 'ben-everly.plugins.lualine')
 
 		-- treesitter doesn't have a grammar for blade yet
 		use('jwalton512/vim-blade')
