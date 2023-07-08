@@ -26,7 +26,7 @@ packer.setup = function()
 		use(require 'ben-everly.plugins.telescope-file-browser')
 
 		use(require 'ben-everly.plugins.vim-fugitive')
-		use('tpope/vim-rhubarb')
+		use(require 'ben-everly.plugins.vim-rhubarb')
 
 		use(require 'ben-everly.plugins.copilot')
 		use(require 'ben-everly.plugins.vim-snippets')
