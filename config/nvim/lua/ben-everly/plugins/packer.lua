@@ -41,7 +41,6 @@ packer.setup = function()
 
 		use(require 'ben-everly.plugins.toggleterm')
 		use({ 'tpope/vim-dadbod', ft = { 'sql', 'mysql' } })
-		use('romainl/vim-qf')
 		use('lambdalisue/suda.vim')
 
 		use(require 'ben-everly.plugins.colorschemes.tokyonight')
