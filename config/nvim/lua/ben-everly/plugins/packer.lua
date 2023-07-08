@@ -1,14 +1,14 @@
-local packer = {}
-packer.install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-packer.is_installed = vim.fn.empty(vim.fn.glob(packer.install_path)) == 0
-packer.install = function()
+local module = {}
+module.install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+module.is_installed = vim.fn.empty(vim.fn.glob(module.install_path)) == 0
+module.install = function()
 	print('installing')
-	vim.fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', packer.install_path })
+	vim.fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', module.install_path })
 	vim.cmd [[packadd packer.nvim]]
 end
-packer.setup = function()
-	local lib = require 'packer'
-	return lib.startup(function(use)
+module.setup = function()
+	local packer = require 'packer'
+	return packer.startup(function(use)
 		use('wbthomason/packer.nvim')
 
 		use(require 'ben-everly.plugins.nvim-treesitter')
@@ -51,11 +51,11 @@ packer.setup = function()
 		-- treesitter doesn't have a grammar for blade yet
 		use('jwalton512/vim-blade')
 
-		if not packer.is_installed then
-			lib.sync()
+		if not module.is_installed then
+			packer.sync()
 		else
-			lib.on_complete()
+			packer.on_complete()
 		end
 	end)
 end
-return packer
+return module
