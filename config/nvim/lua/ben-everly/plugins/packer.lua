@@ -46,6 +46,7 @@ packer.setup = function()
 
 		use(require 'ben-everly.plugins.colorschemes.tokyonight')
 		use(require 'ben-everly.plugins.lualine')
+		use(require 'ben-everly.plugins.indent-blankline')
 
 		-- treesitter doesn't have a grammar for blade yet
 		use('jwalton512/vim-blade')
