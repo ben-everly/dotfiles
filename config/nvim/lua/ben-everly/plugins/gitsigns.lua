@@ -2,6 +2,13 @@ return {
 	'lewis6991/gitsigns.nvim',
 	config = function()
 		require('gitsigns').setup {
+			numhl = true,
+			linehl = true,
+			current_line_blame = true,
+			current_line_blame_opts = {
+				virt_text_pos = 'eol',
+				delay = 100,
+			},
 			on_attach = function(bufnr)
 				local gs = package.loaded.gitsigns
 
@@ -31,7 +38,6 @@ return {
 				map('n', '<leader>gX', gs.reset_buffer)
 				map('n', '<leader>gu', gs.undo_stage_hunk)
 				map('n', '<leader>gp', gs.preview_hunk)
-				map('n', '<leader>gb', gs.toggle_current_line_blame)
 				map('n', '<leader>gB', function() gs.blame_line { full = true } end)
 				map('n', '<leader>gd', gs.diffthis)
 				map('n', '<leader>gD', function() gs.diffthis('~') end)
