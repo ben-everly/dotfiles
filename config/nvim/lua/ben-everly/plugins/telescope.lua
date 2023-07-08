@@ -1,6 +1,6 @@
 return {
 	'nvim-telescope/telescope.nvim',
-	tag = '0.1.0',
+	tag = '0.1.2',
 	requires = 'nvim-lua/plenary.nvim',
 	config = function()
 		local builtin = require 'telescope.builtin'
@@ -12,11 +12,11 @@ return {
 		vim.keymap.set('n', '<leader>fj', builtin.jumplist)
 		vim.keymap.set('n', '<leader>fr', builtin.registers)
 		vim.keymap.set('n', '<leader>f/', builtin.search_history)
-		vim.keymap.set('n', '<leader>gbl', builtin.git_branches)
-		vim.keymap.set('n', '<leader>glg', builtin.git_commits)
-		vim.keymap.set('n', '<leader>glb', builtin.git_bcommits)
-		vim.keymap.set('n', '<leader>gws', builtin.git_status)
-		vim.keymap.set('n', '<leader>gsl', builtin.git_stash)
+		vim.keymap.set('n', '<leader>gb', builtin.git_branches)
+		vim.keymap.set('n', '<leader>gl', builtin.git_commits)
+		vim.keymap.set('n', '<leader>gL', builtin.git_bcommits)
+		vim.keymap.set('n', '<leader>fGs', builtin.git_status)
+		vim.keymap.set('n', '<leader>fGS', builtin.git_stash)
 		vim.keymap.set('n', '<leader>b', builtin.treesitter)
 		vim.keymap.set('n', '<leader>fs', builtin.lsp_workspace_symbols)
 		require 'telescope'.setup {

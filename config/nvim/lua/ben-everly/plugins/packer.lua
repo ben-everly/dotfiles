@@ -27,6 +27,7 @@ packer.setup = function()
 
 		use(require 'ben-everly.plugins.vim-fugitive')
 		use(require 'ben-everly.plugins.vim-rhubarb')
+		use(require 'ben-everly.plugins.gitsigns')
 
 		use(require 'ben-everly.plugins.copilot')
 		use(require 'ben-everly.plugins.vim-snippets')

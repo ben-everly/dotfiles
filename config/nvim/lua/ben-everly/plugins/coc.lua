@@ -8,7 +8,6 @@ return {
 			'coc-blade',
 			'coc-docker',
 			'coc-eslint',
-			'coc-git',
 			'coc-go',
 			'coc-html',
 			'coc-java',
@@ -61,19 +60,6 @@ return {
 		vim.keymap.set('n', '<leader>ac', ' <Plug>(coc-codeaction)')
 		vim.keymap.set('n', '<leader>qf', ' <Plug>(coc-fix-current)')
 		vim.keymap.set('n', '<leader>cl', ' <Plug>(coc-codelens-action)')
-
-		-- Coc git mappings
-		vim.keymap.set('n', '[g', '<Plug>(coc-git-prevchunk)')
-		vim.keymap.set('n', ']g', '<Plug>(coc-git-nextchunk)')
-		vim.keymap.set('n', '[m', '<Plug>(coc-git-prevconflict)')
-		vim.keymap.set('n', ']m', '<Plug>(coc-git-nextconflict)')
-		vim.keymap.set('n', 'gs', '<Plug>(coc-git-chunkinfo)')
-		vim.keymap.set('n', 'gc', '<Plug>(coc-git-commit)')
-		vim.keymap.set({ 'o', 'x' }, 'ig', '<Plug>(coc-git-chunk-inner)')
-		vim.keymap.set({ 'o', 'x' }, 'ag', '<Plug>(coc-git-chunk-outer)')
-		vim.keymap.set('n', '<leader>ga', ':CocCommand git.chunkStage<cr>')
-		vim.keymap.set('n', '<leader>gx', ':CocCommand git.chunkUndo<cr>')
-		vim.keymap.set('n', '<leader>gf', ':CocCommand git.foldUnchanged<cr>')
 
 		-- Coc hover highlighting
 		vim.api.nvim_create_augroup('CocGroup', {})
