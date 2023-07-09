@@ -2,7 +2,6 @@ local module = {}
 module.install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 module.is_installed = vim.fn.empty(vim.fn.glob(module.install_path)) == 0
 module.install = function()
-	print('installing')
 	vim.fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', module.install_path })
 	vim.cmd [[packadd packer.nvim]]
 end
