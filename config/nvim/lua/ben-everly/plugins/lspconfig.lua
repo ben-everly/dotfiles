@@ -36,15 +36,6 @@ return {
 			function (server_name)
 				lspconfig[server_name].setup {}
 			end,
-			['intelephense'] = function ()
-				lspconfig.intelephense.setup {
-					settings = {
-						intelephense = {
-							licenceKey = vim.env.INTELEPHENSE_KEY,
-						},
-					},
-				}
-			end,
 			["lua_ls"] = function ()
 				lspconfig.lua_ls.setup {
 					settings = {
