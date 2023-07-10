@@ -1,17 +1,12 @@
 {
     "require": {
-        "friendsofphp/php-cs-fixer": "*",
-        "laravel/pint": "^1.0",
         "laravel/sail": "^1.18",
         "phing/phing": "*",
         "phpdocumentor/phpdocumentor": "*",
         "phploc/phploc": "*",
-        "phpmd/phpmd": "*",
-        "phpstan/phpstan": "*",
         "phpunit/phpunit": "*",
         "psy/psysh": "@stable",
         "sebastian/phpcpd": "*",
-        "squizlabs/php_codesniffer": "*",
         "symfony/flex": "*"
     },
     "config": {
