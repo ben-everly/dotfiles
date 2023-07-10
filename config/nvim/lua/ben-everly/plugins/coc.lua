@@ -2,29 +2,8 @@ return {
 	'neoclide/coc.nvim',
 	branch = 'release',
 	config = function()
-		vim.fn['coc#config']('intelephense.licenceKey', vim.env.INTELEPHENSE_KEY)
 		vim.g.coc_global_extensions = {
-			'coc-css',
-			'coc-blade',
-			'coc-docker',
-			'coc-eslint',
-			'coc-go',
-			'coc-html',
-			'coc-java',
-			'coc-json',
-			'coc-lists',
-			'coc-markdownlint',
-			'coc-markdown-preview-enhanced',
-			'coc-sh',
 			'coc-snippets',
-			'coc-sql',
-			'coc-tsserver',
-			'coc-vimlsp',
-			'coc-xml',
-			'coc-yaml',
-			'@yaegassy/coc-ansible',
-			'@yaegassy/coc-tailwindcss3',
-			'@yaegassy/coc-phpstan',
 		}
 		-- 'coc-spell-checker',
 		-- 'coc-jsonc',
@@ -59,8 +38,9 @@ return {
 		end
 
 		function _G.enter()
-			elseif vim.fn['coc#expandableOrJumpable']() == 1 then
+			if vim.fn['coc#expandableOrJumpable']() == 1 then
 				return do_snippet_jump()
+			end
 		end
 	end
 }

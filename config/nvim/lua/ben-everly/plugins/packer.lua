@@ -19,6 +19,9 @@ module.setup = function()
 		use(require 'ben-everly.plugins.lspconfig')
 		use(require 'ben-everly.plugins.mason-lspconfig')
 
+		use(require 'ben-everly.plugins.null-ls')
+		use(require 'ben-everly.plugins.mason-null-ls')
+
 		use(require 'ben-everly.plugins.cmp')
 		use(require 'ben-everly.plugins.cmp-lsp')
 
