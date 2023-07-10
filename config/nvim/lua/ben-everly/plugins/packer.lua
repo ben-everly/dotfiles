@@ -14,10 +14,18 @@ module.setup = function()
 		use({ 'nvim-treesitter/nvim-treesitter-context' })
 		use(require 'ben-everly.plugins.nvim-treesitter-textobjects')
 
+		use(require 'ben-everly.plugins.mason')
+
+		use(require 'ben-everly.plugins.lspconfig')
+		use(require 'ben-everly.plugins.mason-lspconfig')
+
+		use(require 'ben-everly.plugins.cmp')
+		use(require 'ben-everly.plugins.cmp-lsp')
+
 		use(require 'ben-everly.plugins.nvim-dap')
 		use(require 'ben-everly.plugins.nvim-dap-ui')
 
-		use(require 'ben-everly.plugins.coc')
+		-- use(require 'ben-everly.plugins.coc')
 
 		use(require 'ben-everly.plugins.neotest')
 
