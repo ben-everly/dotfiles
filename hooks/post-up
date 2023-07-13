@@ -6,9 +6,6 @@ vim -es -u $HOME/.vimrc +PlugInstall +qa
 nvim --headless -c 'autocmd User PackerComplete quitall'
 
 bash $HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh
-if [ ! -e $HOME/.config/kitty/theme.conf ]; then
-    ln $HOME/.config/kitty/kitty-themes/gruvbox_dark.conf $HOME/.config/kitty/theme.conf
-fi
 
 [ -d ~/.local/bin ] || mkdir ~/.local/bin
 ln -fs $(dirname $(pwd))/.git-scripts/* ~/.local/bin/
