@@ -43,7 +43,7 @@ return {
 			mapping = cmp.mapping.preset.insert({
 				['<C-k>'] = cmp.mapping.scroll_docs(-4),
 				['<C-j>'] = cmp.mapping.scroll_docs(4),
-				['<C-Space>'] = function(fallback)
+				['<C-Space>'] = function()
 					if cmp.visible() then
 						cmp.mapping.abort()
 					else
