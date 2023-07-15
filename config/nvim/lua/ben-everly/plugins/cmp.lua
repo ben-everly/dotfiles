@@ -5,7 +5,6 @@ end
 
 return {
 	'hrsh7th/nvim-cmp',
-	after = 'cmp-nvim-lsp',
 	config = function()
 		local cmp = require 'cmp'
 		cmp.setup {

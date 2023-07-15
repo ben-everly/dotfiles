@@ -3,7 +3,7 @@ composer global -qn update
 composer global -qn install
 
 vim -es -u $HOME/.vimrc +PlugInstall +qa
-nvim --headless -c 'autocmd User PackerComplete quitall'
+#nvim --headless -c 'autocmd User PackerComplete quitall'
 
 bash $HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh
 
