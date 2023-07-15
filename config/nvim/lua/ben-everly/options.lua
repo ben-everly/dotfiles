@@ -1,3 +1,5 @@
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 vim.g.vimsyn_embed = 'l'
 vim.opt.shortmess:append('c')
 vim.opt.signcolumn = 'auto:1-9'
