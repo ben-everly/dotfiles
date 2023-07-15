@@ -1,5 +1,37 @@
+-- Unimplemented features:
+
+-- Coc lsp mappings
+-- vim.keymap.set('n', '<c-p>', ':CocList symbols<cr>')
+
+-- Coc refactoring mappings
+-- vim.keymap.set('n', '<leader>qf', ' <Plug>(coc-fix-current)')
+-- vim.keymap.set('n', '<leader>cl', ' <Plug>(coc-codelens-action)')
+
+-- Coc hover highlighting
+-- vim.api.nvim_create_augroup('CocGroup', {})
+--[[ vim.api.nvim_create_autocmd('CursorHold', {
+			group = 'CocGroup',
+			command = "silent call CocActionAsync('highlight')",
+			desc = 'Highlight symbol under cursor on CursorHold',
+}) ]]
+
+--[[ {
+	"php-cs-fixer.activateTool": "pint",
+	"Lua.telemetry.enable": false,
+	"java.configuration.runtimes": [
+		{
+			"name": "JavaSE-17",
+		"path": "/usr/lib/jvm/jdk-17",
+		"default": true
+		}
+	],
+} ]]
+
 return {
 	'neovim/nvim-lspconfig',
+	dependencies = {
+		{ "folke/neodev.nvim", opts = {} }
+	},
 	config = function()
 		vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
 		vim.keymap.set('n', '[e', vim.diagnostic.goto_prev)
@@ -13,7 +45,7 @@ return {
 				local opts = { buffer = ev.buf }
 				vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
 				vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-				vim.keymap.set({'n', 'v'}, 'K', vim.lsp.buf.hover, opts)
+				vim.keymap.set({ 'n', 'v' }, 'K', vim.lsp.buf.hover, opts)
 				vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
 				vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
 				vim.keymap.set('n', '<c-k>', vim.lsp.buf.signature_help, opts)
@@ -32,10 +64,10 @@ return {
 		})
 		local lspconfig = require 'lspconfig'
 		require('mason-lspconfig').setup_handlers {
-			function (server_name)
+			function(server_name)
 				lspconfig[server_name].setup {}
 			end,
-			["lua_ls"] = function ()
+			["lua_ls"] = function()
 				lspconfig.lua_ls.setup {
 					settings = {
 						Lua = {
