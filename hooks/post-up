@@ -13,3 +13,8 @@ ln -fs $(dirname $(pwd))/.git-scripts/* ~/.local/bin/
 [ -d ~/.zsh/pure ] || git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 
 dconf load / < $(dirname $(pwd))/.gnome-settings.ini
+
+curl -L -O https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraCode.zip
+mkdir ~/.local/share/fonts
+unzip FiraCode.zip -d ~/.local/share/fonts
+fc-cache -f -v
