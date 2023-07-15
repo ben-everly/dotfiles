@@ -44,15 +44,15 @@ return {
 				['<C-k>'] = cmp.mapping.scroll_docs(-4),
 				['<C-j>'] = cmp.mapping.scroll_docs(4),
 				['<C-Space>'] = function()
-					if cmp.visible() then
-						cmp.mapping.abort()
+				if cmp.visible() then
+					cmp.mapping.abort()
 					else
 						cmp.mapping.complete()
 					end
 				end,
 				['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 				['<Tab>'] = function(fallback)
-					if cmp.visible() then
+				if cmp.visible() then
 						cmp.select_next_item()
 					elseif not previous_char_is_whitespace() then
 						cmp.complete()
@@ -61,7 +61,7 @@ return {
 					end
 				end,
 				['<S-Tab>'] = function(fallback)
-					if cmp.visible() then
+				if cmp.visible() then
 						cmp.select_prev_item()
 					elseif not previous_char_is_whitespace() then
 						cmp.complete()
@@ -72,7 +72,13 @@ return {
 			}),
 			sources = cmp.config.sources({
 				{ name = 'nvim_lsp' },
-			})
+				{ name = 'luasnip' },
+			}),
+			snippet = {
+				expand = function(args)
+					require('luasnip').lsp_expand(args.body)
+				end,
+			}
 		}
 	end
 }
