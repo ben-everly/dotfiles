@@ -14,13 +14,15 @@ ln -fs $(dirname $(pwd))/.git-scripts/* ~/.local/bin/
 
 dconf load / < $(dirname $(pwd))/.gnome-settings.ini
 
-curl -L -O https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraCode.zip
-mkdir ~/.local/share/fonts
-unzip FiraCode.zip -d ~/.local/share/fonts
-rm FiraCode.zip
-fc-cache -f -v
-
 # if file readable then make wallpaper
 if [ -f ~/Dropbox/wallpapers/dragon-tamer.jpg ]; then
 	gsettings set org.gnome.desktop.background picture-uri-dark "file://${HOME}/Dropbox/wallpapers/dragon-tamer.jpg"
+fi
+
+if [ -f ~/.local/share/font/FiraCodeNerdFont-Regular.ttf ]; then
+		curl -L -O https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraCode.zip
+		mkdir ~/.local/share/fonts
+		unzip FiraCode.zip -d ~/.local/share/fonts
+		rm FiraCode.zip
+		fc-cache -f -v
 fi
