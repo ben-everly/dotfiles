@@ -29,9 +29,6 @@
 
 return {
 	'neovim/nvim-lspconfig',
-	dependencies = {
-		{ "folke/neodev.nvim", opts = {} }
-	},
 	config = function()
 		vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
 		vim.keymap.set('n', '[e', vim.diagnostic.goto_prev)
