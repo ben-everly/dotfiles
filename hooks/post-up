@@ -14,7 +14,7 @@ dconf load / < $(dirname $(pwd))/.gnome-settings.ini
 
 # if file readable then make wallpaper
 if [ -f ~/Dropbox/wallpapers/dragon-tamer.jpg ]; then
-	gsettings set org.gnome.desktop.background picture-uri-dark "file://${HOME}/Dropbox/wallpapers/dragon-tamer.jpg"
+	gsettings set org.gnome.desktop.background picture-uri-dark "file://${HOME}/Dropbox/wallpapers/moon.jpg"
 fi
 
 if [ -f ~/.local/share/font/FiraCodeNerdFont-Regular.ttf ]; then
