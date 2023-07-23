@@ -1,6 +1,6 @@
 return {
 	"williamboman/mason.nvim",
-	run = ":MasonUpdate",
+	build = ":MasonUpdate",
 	config = function()
 		require('mason').setup()
 	end
