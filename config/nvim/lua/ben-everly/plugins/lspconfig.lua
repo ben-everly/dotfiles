@@ -73,7 +73,13 @@ return {
 				vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
 				vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
 				vim.keymap.set('n', '<c-f>', function()
-					vim.lsp.buf.format { async = true }
+					vim.lsp.buf.format { async = true, filter = function(client)
+						if vim.bo.filetype == 'blade' or
+							vim.bo.filetype == 'php' then
+							return client.name == 'null-ls'
+						end
+						return true
+					end }
 				end, opts)
 			end,
 		})
