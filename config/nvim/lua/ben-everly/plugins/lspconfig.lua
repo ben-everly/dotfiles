@@ -34,6 +34,24 @@ return {
 		vim.keymap.set('n', '[e', vim.diagnostic.goto_prev)
 		vim.keymap.set('n', ']e', vim.diagnostic.goto_next)
 		vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
+		local signs = {
+			Error = "",
+			Warn = "",
+			Hint = "",
+			Info= ""
+		}
+		for type, icon in pairs(signs) do
+			local hl = "DiagnosticSign" .. type
+			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+		end
+		vim.diagnostic.config ({
+			virtual_text = {
+				spacing = 2,
+				prefix = "",
+			},
+			severity_sort = true,
+			float = { float = "if_many" },
+		})
 		vim.api.nvim_create_autocmd('LspAttach', {
 			group = vim.api.nvim_create_augroup('UserLspConfig', {}),
 			callback = function(ev)
