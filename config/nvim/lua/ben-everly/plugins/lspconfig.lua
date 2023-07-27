@@ -73,15 +73,33 @@ return {
 				vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
 				vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
 				vim.keymap.set('n', '<c-f>', function()
-					vim.lsp.buf.format { async = true, filter = function(client)
-						local filetype = vim.bo[ev.buf].filetype
-						if filetype == 'blade' or
-							filetype == 'php' then
-							return client.name == 'null-ls'
+					vim.lsp.buf.format {
+						async = true,
+						filter = function(client)
+							if vim.lsp.get_active_clients({
+								bufnr = ev.buf,
+								name = 'null-ls',
+							})[1].server_capabilities.documentFormattingProvider then
+								return client.name == 'null-ls'
+							end
+							return true
 						end
-						return true
-					end }
+					}
 				end, opts)
+				vim.keymap.set('v', '<c-f>', function ()
+					vim.lsp.buf.format {
+						async = true,
+						filter = function(client)
+							if vim.lsp.get_active_clients({
+								bufnr = ev.buf,
+								name = 'null-ls',
+							})[1].server_capabilities.documentRangeFormattingProvider then
+								return client.name == 'null-ls'
+							end
+							return true
+						end
+					}
+				end)
 			end,
 		})
 		local lspconfig = require 'lspconfig'
