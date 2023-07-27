@@ -74,8 +74,9 @@ return {
 				vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
 				vim.keymap.set('n', '<c-f>', function()
 					vim.lsp.buf.format { async = true, filter = function(client)
-						if vim.bo.filetype == 'blade' or
-							vim.bo.filetype == 'php' then
+						local filetype = vim.bo[ev.buf].filetype
+						if filetype == 'blade' or
+							filetype == 'php' then
 							return client.name == 'null-ls'
 						end
 						return true
