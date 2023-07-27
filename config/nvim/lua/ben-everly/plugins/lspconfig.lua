@@ -35,10 +35,10 @@ return {
 		vim.keymap.set('n', ']e', vim.diagnostic.goto_next)
 		vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 		local signs = {
-			Error = "",
-			Warn = "",
-			Hint = "",
-			Info = ""
+			Error = "󰀩",
+			Warn = "",
+			Hint = "󱧡",
+			Info = "󰭺"
 		}
 		for type, icon in pairs(signs) do
 			local hl = "DiagnosticSign" .. type
