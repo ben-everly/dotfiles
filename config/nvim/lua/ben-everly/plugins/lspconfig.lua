@@ -38,13 +38,13 @@ return {
 			Error = "",
 			Warn = "",
 			Hint = "",
-			Info= ""
+			Info = ""
 		}
 		for type, icon in pairs(signs) do
 			local hl = "DiagnosticSign" .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 		end
-		vim.diagnostic.config ({
+		vim.diagnostic.config({
 			virtual_text = {
 				spacing = 2,
 				prefix = "",
@@ -77,23 +77,23 @@ return {
 						async = true,
 						filter = function(client)
 							if vim.lsp.get_active_clients({
-								bufnr = ev.buf,
-								name = 'null-ls',
-							})[1].server_capabilities.documentFormattingProvider then
+									bufnr = ev.buf,
+									name = 'null-ls',
+								})[1].server_capabilities.documentFormattingProvider then
 								return client.name == 'null-ls'
 							end
 							return true
 						end
 					}
 				end, opts)
-				vim.keymap.set('v', '<c-f>', function ()
+				vim.keymap.set('v', '<c-f>', function()
 					vim.lsp.buf.format {
 						async = true,
 						filter = function(client)
 							if vim.lsp.get_active_clients({
-								bufnr = ev.buf,
-								name = 'null-ls',
-							})[1].server_capabilities.documentRangeFormattingProvider then
+									bufnr = ev.buf,
+									name = 'null-ls',
+								})[1].server_capabilities.documentRangeFormattingProvider then
 								return client.name == 'null-ls'
 							end
 							return true
