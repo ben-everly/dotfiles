@@ -2,6 +2,10 @@ return {
 	"williamboman/mason.nvim",
 	build = ":MasonUpdate",
 	config = function()
-		require('mason').setup()
+		require('mason').setup({
+			ui = {
+				border = 'single',
+			},
+		})
 	end
 }
