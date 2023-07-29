@@ -1,18 +1,19 @@
 return {
 	'mfussenegger/nvim-dap',
 	config = function()
-		vim.keymap.set('n', '<leader>d<cr>', require 'dap'.continue)
-		vim.keymap.set('n', '<leader>dq', function()
-			require 'dap'.terminate()
-			require 'dap'.close()
-		end)
-		vim.keymap.set('n', '<leader>dr', require 'dap'.restart)
-		vim.keymap.set('n', '<leader>db', require 'dap'.toggle_breakpoint)
-		vim.keymap.set('n', '<leader>dj', require 'dap'.step_over)
-		vim.keymap.set('n', '<leader>dl', require 'dap'.step_into)
-		vim.keymap.set('n', '<leader>dh', require 'dap'.step_out)
-
 		local dap = require 'dap'
+		vim.keymap.set('n', '<leader>d', function()
+			require'libmodal'.mode.enter('DEBUG', {
+				enter = function() dap.continue() end,
+				q = function() dap.disconnect() end,
+				r = function() dap.restart() end,
+				b = function() dap.toggle_breakpoint() end,
+				j = function() dap.step_over() end,
+				l = function() dap.step_into() end,
+				h = function() dap.step_out() end,
+			})
+		end)
+
 		dap.adapters.php = {
 			type = 'executable',
 			command = 'node',
