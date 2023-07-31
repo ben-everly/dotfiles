@@ -56,8 +56,8 @@ return {
 
 		require 'lualine'.setup({
 			options = {
-				component_separators = '│',
-				section_separators = { left = '', right = '' },
+				component_separators = { left = '', right = ''},
+				section_separators = { left = '', right = ''},
 				theme = 'tokyonight',
 			},
 			sections = {
@@ -79,16 +79,12 @@ return {
 
 						return mode_name
 					end,
-					separator = { left = ''},
+					separator = { right = ''},
 					color = MODE_HL_GROUP,
 				}},
 				lualine_b = {'branch', 'diff'},
 				lualine_x = {'filetype'},
-				lualine_z = {
-					{'selectioncount'},
-					{'searchcount'},
-					{'location', separator = { right = ''}},
-				}
+				lualine_z = {'selectioncount', 'searchcount', 'location'},
 			},
 			tabline = {
 				lualine_a = {'buffers'},
