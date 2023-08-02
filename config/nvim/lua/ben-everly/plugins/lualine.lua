@@ -2,24 +2,6 @@ return {
 	'nvim-lualine/lualine.nvim',
 	dependencies = { 'nvim-tree/nvim-web-devicons' },
 	config = function()
-		local BLUE         = '#7766ff'
-		local CYAN         = '#33dbc3'
-		local GREEN        = '#22ff22'
-		local GREEN_LIGHT  = '#99ff99'
-		local ICE          = '#95c5ff'
-		local ORANGE       = '#ff8900'
-		local ORANGE_LIGHT = '#f0af00'
-		local PINK         = '#ffa6ff'
-		local PINK_LIGHT   = '#ffb7b7'
-		local PURPLE       = '#cf55f0'
-		local PURPLE_LIGHT = '#af60af'
-		local RED          = '#ee4a59'
-		local RED_DARK     = '#a80000'
-		local RED_LIGHT    = '#ff4090'
-		local TEAL         = '#60afff'
-		local TURQOISE     = '#2bff99'
-		local YELLOW       = '#f0df33'
-
 		local modes =
 		{
 			['c']  = {'COMMAND', 'lualine_a_command'},
