@@ -15,7 +15,8 @@ vim.opt.shell = 'zsh'
 vim.opt.wrap = false
 vim.opt.list = true
 vim.opt.listchars = { tab = '  ', trail = '·', eol = '↵', extends = '>', precedes = '<' }
-vim.opt.cmdheight = 2
+vim.opt.cmdheight = 1
+vim.opt.showmode = false
 vim.opt.updatetime = 300
 vim.opt.inccommand = 'nosplit'
 vim.opt.tabstop = 4
