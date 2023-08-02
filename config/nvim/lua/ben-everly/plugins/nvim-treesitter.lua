@@ -17,8 +17,8 @@ return {
 				keymaps = {
 					init_selection = 'gnn',
 					scope_incremental = 'grc',
-					node_incremental = ';',
-					node_decremental = ',',
+					node_incremental = '>',
+					node_decremental = '<',
 				},
 			},
 			-- TODO this should move to the textobjects config but
