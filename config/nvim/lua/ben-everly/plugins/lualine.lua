@@ -60,7 +60,7 @@ return {
 			},
 			sections = {
 				lualine_a = {{
-					function() -- auto change color according the vim mode
+					function()
 						if vim.g.libmodalActiveModeName then
 							return modes[vim.g.libmodalActiveModeName][1]
 						else
