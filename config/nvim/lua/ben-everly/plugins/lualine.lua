@@ -93,10 +93,10 @@ return {
 					'diff',
 				}},
 				lualine_x = {'filetype'},
-				lualine_y = {
+				lualine_y = {{
 					'progress',
 					color = fg_color,
-				},
+				}},
 				lualine_z = {{
 					'selectioncount',
 					color = bg_color,
