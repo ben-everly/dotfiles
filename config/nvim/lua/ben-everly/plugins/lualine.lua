@@ -22,45 +22,47 @@ return {
 
 		local modes =
 		{
-			['c']  = {'COMMAND', YELLOW},
-			['ce'] = {'NORM EX', YELLOW},
-			['cv'] = {'EX     ', YELLOW},
-			['t']  = {'TERMNAL', YELLOW},
-			['!']  = {'SHELL  ', YELLOW},
-			['i']  = {'INSERT ', GREEN},
-			['ic'] = {'INS-CMP', GREEN},
-			['n']  = {'NORMAL ', BLUE},
-			['no'] = {'PENDING', BLUE},
-			['r']  = {'ENTER  ', BLUE},
-			['r?'] = {'CONFIRM', BLUE},
-			['rm'] = {'--MORE ', BLUE},
-			['R']  = {'REPLACE', RED},
-			['Rv'] = {'VIRTUAL', RED},
-			['s']  = {'SELECT ', PURPLE},
-			['S']  = {'S LINE ', PURPLE},
-			[''] = {'S BLK  ', PURPLE},
-			['v']  = {'VISUAL ', PURPLE},
-			['V']  = {'V LINE ', PURPLE},
-			[''] = {'V BLK  ', PURPLE},
+			['c']  = {'COMMAND', 'lualine_a_command'},
+			['ce'] = {'NORM EX', 'lualine_a_terminal'},
+			['cv'] = {'EX     ', 'lualine_a_terminal'},
+			['t']  = {'TERMNAL', 'lualine_a_terminal'},
+			['!']  = {'SHELL  ', 'lualine_a_terminal'},
+			['i']  = {'INSERT ', 'lualine_a_insert'},
+			['ic'] = {'INS-CMP', 'lualine_a_insert'},
+			['n']  = {'NORMAL ', 'lualine_a_normal'},
+			['no'] = {'PENDING', 'lualine_a_normal'},
+			['r']  = {'ENTER  ', 'lualine_a_normal'},
+			['r?'] = {'CONFIRM', 'lualine_a_normal'},
+			['rm'] = {'--MORE ', 'lualine_a_normal'},
+			['R']  = {'REPLACE', 'lualine_a_replace'},
+			['Rv'] = {'VIRTUAL', 'lualine_a_replace'},
+			['s']  = {'SELECT ', 'lualine_a_visual'},
+			['S']  = {'S LINE ', 'lualine_a_visual'},
+			[''] = {'S BLK  ', 'lualine_a_visual'},
+			['v']  = {'VISUAL ', 'lualine_a_visual'},
+			['V']  = {'V LINE ', 'lualine_a_visual'},
+			[''] = {'V BLK  ', 'lualine_a_visual'},
 
 			-- libmodal
-			['WINDOW'] = {'WINDOW ', ORANGE},
-			['DEBUG'] = {'DEBUG  ', TEAL},
+			['WINDOW'] = {'WINDOW ', 'lualine_a_replace'},
+			['DEBUG'] = {'DEBUG  ', 'lualine_a_command'},
 		}
 
-		local color = function ()
+		local function color ()
+			local hl;
 			if vim.g.libmodalActiveModeName then
-				return modes[vim.g.libmodalActiveModeName][2]
+				hl = modes[vim.g.libmodalActiveModeName][2]
 			else
-				return modes[vim.api.nvim_get_mode().mode][2]
+				hl = modes[vim.api.nvim_get_mode().mode][2]
 			end
+			return vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID(hl)), "bg#")
 		end
 
-		local fg_color = function()
+		local function fg_color ()
 			return { fg = color() }
 		end
 
-		local bg_color = function()
+		local function bg_color ()
 			return { bg = color() }
 		end
 
@@ -97,6 +99,7 @@ return {
 					'progress',
 					color = fg_color,
 				}},
+				-- synIDattr(synIDtrans(hlID("lualine_a_command")), "fg#")
 				lualine_z = {{
 					'selectioncount',
 					color = bg_color,
