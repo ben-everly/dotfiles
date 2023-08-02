@@ -20,35 +20,49 @@ return {
 		local TURQOISE     = '#2bff99'
 		local YELLOW       = '#f0df33'
 
-		local MODES =
+		local modes =
 		{
-			['c']  = {'CMD   ', 'lualine_a_command'},
-			['ce'] = {'NORM X', 'lualine_a_terminal'},
-			['cv'] = {'EX    ', 'lualine_a_terminal'},
-			['t']  = {'TRMNAL', 'lualine_a_terminal'},
-			['!']  = {'SHELL ', 'lualine_a_terminal'},
-			['i']  = {'INSERT', 'lualine_a_insert'},
-			['ic'] = {'IN-CMP', 'lualine_a_insert'},
-			['n']  = {'NORMAL', 'lualine_a_normal'},
-			['no'] = {'PNDING', 'lualine_a_normal'},
-			['r']  = {':ENTER', 'lualine_a_normal'},
-			['r?'] = {':CONF ', 'lualine_a_normal'},
-			['rm'] = {'--MORE', 'lualine_a_normal'},
-			['R']  = {'RPLACE', 'lualine_a_replace'},
-			['Rv'] = {'VRTUAL', 'lualine_a_replace'},
-			['s']  = {'SELECT', 'lualine_a_visual'},
-			['S']  = {'S LINE', 'lualine_a_visual'},
-			[''] = {'S BLK ', 'lualine_a_visual'},
-			['v']  = {'VISUAL', 'lualine_a_visual'},
-			['V']  = {'V LINE', 'lualine_a_visual'},
-			[''] = {'V BLK ', 'lualine_a_visual'},
+			['c']  = {'COMMAND', YELLOW},
+			['ce'] = {'NORM EX', YELLOW},
+			['cv'] = {'EX     ', YELLOW},
+			['t']  = {'TERMNAL', YELLOW},
+			['!']  = {'SHELL  ', YELLOW},
+			['i']  = {'INSERT ', GREEN},
+			['ic'] = {'INS-CMP', GREEN},
+			['n']  = {'NORMAL ', BLUE},
+			['no'] = {'PENDING', BLUE},
+			['r']  = {'ENTER  ', BLUE},
+			['r?'] = {'CONFIRM', BLUE},
+			['rm'] = {'--MORE ', BLUE},
+			['R']  = {'REPLACE', RED},
+			['Rv'] = {'VIRTUAL', RED},
+			['s']  = {'SELECT ', PURPLE},
+			['S']  = {'S LINE ', PURPLE},
+			[''] = {'S BLK  ', PURPLE},
+			['v']  = {'VISUAL ', PURPLE},
+			['V']  = {'V LINE ', PURPLE},
+			[''] = {'V BLK  ', PURPLE},
 
 			-- libmodal
-			['WINDOW'] = 'lualine_b_visual',
-			['DEBUG'] = 'lualine_a_command',
+			['WINDOW'] = {'WINDOW ', ORANGE},
+			['DEBUG'] = {'DEBUG  ', TEAL},
 		}
 
-		local MODE_HL_GROUP = 'LualineViMode'
+		local color = function ()
+			if vim.g.libmodalActiveModeName then
+				return modes[vim.g.libmodalActiveModeName][2]
+			else
+				return modes[vim.api.nvim_get_mode().mode][2]
+			end
+		end
+
+		local fg_color = function()
+			return { fg = color() }
+		end
+
+		local bg_color = function()
+			return { bg = color() }
+		end
 
 		vim.api.nvim_create_autocmd('ModeChanged', {callback = function()
 			require('lualine').refresh {scope = 'window',  place = {'statusline'}}
@@ -63,27 +77,36 @@ return {
 			sections = {
 				lualine_a = {{
 					function() -- auto change color according the vim mode
-						local mode_color, mode_name
-
 						if vim.g.libmodalActiveModeName then
-							mode_name = vim.g.libmodalActiveModeName
-							mode_color = MODES[mode_name]
+							return modes[vim.g.libmodalActiveModeName][1]
 						else
-							local current_mode = MODES[vim.api.nvim_get_mode().mode]
-							mode_name = current_mode[1]
-							mode_color = current_mode[2]
+							return modes[vim.api.nvim_get_mode().mode][1]
 						end
-
-						vim.api.nvim_set_hl(0, MODE_HL_GROUP, {link = mode_color})
-
-						return mode_name
 					end,
 					separator = { right = ''},
-					color = MODE_HL_GROUP,
+					color = bg_color,
 				}},
-				lualine_b = {'branch', 'diff'},
+				lualine_b = {{
+					'branch',
+					color = fg_color,
+				}, {
+					'diff',
+				}},
 				lualine_x = {'filetype'},
-				lualine_z = {'selectioncount', 'searchcount', 'location'},
+				lualine_y = {
+					'progress',
+					color = fg_color,
+				},
+				lualine_z = {{
+					'selectioncount',
+					color = bg_color,
+				}, {
+					'searchcount',
+					color = bg_color,
+				}, {
+					'location',
+					color = bg_color,
+				}},
 			},
 			tabline = {
 				lualine_a = {'buffers'},
