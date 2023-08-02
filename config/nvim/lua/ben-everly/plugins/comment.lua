@@ -6,10 +6,13 @@ return {
 				line = '//',
 				block = '/*',
 			},
+
 			opleader = {
-				block = '<leader>//',
+				line = '<leader>//',
+				block = '<leader>/*',
 			},
 		})
-		vim.keymap.set('v', '//', '<Plug>(comment_toggle_blockwise_visual)')
+		vim.keymap.set('v', '/*', '<Plug>(comment_toggle_blockwise_visual)')
+		vim.keymap.set('v', '//', '<Plug>(comment_toggle_linewise_visual)')
 	end,
 }
