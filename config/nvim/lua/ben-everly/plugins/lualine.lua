@@ -22,26 +22,26 @@ return {
 
 		local MODES =
 		{
-			['c']  = {'COMMAND-LINE', RED},
-			['ce'] = {'NORMAL EX', RED_DARK},
-			['cv'] = {'EX', RED_LIGHT},
+			['c']  = {'CMD   ', RED},
+			['ce'] = {'NORM X', RED_DARK},
+			['cv'] = {'EX    ', RED_LIGHT},
 			['i']  = {'INSERT', GREEN},
-			['ic'] = {'INS-COMPLETE', GREEN_LIGHT},
+			['ic'] = {'IN-CMP', GREEN_LIGHT},
 			['n']  = {'NORMAL', PURPLE_LIGHT},
-			['no'] = {'OPERATOR-PENDING', PURPLE},
-			['r']  = {'HIT-ENTER', CYAN},
-			['r?'] = {':CONFIRM', CYAN},
+			['no'] = {'PNDING', PURPLE},
+			['r']  = {':ENTER', CYAN},
+			['r?'] = {':CONF ', CYAN},
 			['rm'] = {'--MORE', ICE},
-			['R']  = {'REPLACE', PINK},
-			['Rv'] = {'VIRTUAL', PINK_LIGHT},
+			['R']  = {'RPLACE', PINK},
+			['Rv'] = {'VRTUAL', PINK_LIGHT},
 			['s']  = {'SELECT', TURQOISE},
-			['S']  = {'SELECT', TURQOISE},
-			--['�'] = {'SELECT', TURQOISE},
-			['t']  = {'TERMINAL', ORANGE},
+			['S']  = {'S LINE', TURQOISE},
+			[''] = {'S BLK ', TURQOISE},
+			['t']  = {'TRMNAL', ORANGE},
 			['v']  = {'VISUAL', BLUE},
-			['V']  = {'VISUAL LINE', BLUE},
-			['�'] = {'VISUAL BLOCK', BLUE},
-			['!']  = {'SHELL', YELLOW},
+			['V']  = {'V LINE', BLUE},
+			[''] = {'V BLK ', BLUE},
+			['!']  = {'SHELL ', YELLOW},
 
 			-- libmodal
 			['WINDOW'] = TEAL,
@@ -70,7 +70,6 @@ return {
 							mode_color = MODES[mode_name]
 						else
 							local current_mode = MODES[vim.api.nvim_get_mode().mode]
-
 							mode_name = current_mode[1]
 							mode_color = current_mode[2]
 						end
