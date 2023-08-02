@@ -22,30 +22,30 @@ return {
 
 		local MODES =
 		{
-			['c']  = {'CMD   ', RED},
-			['ce'] = {'NORM X', RED_DARK},
-			['cv'] = {'EX    ', RED_LIGHT},
-			['i']  = {'INSERT', GREEN},
-			['ic'] = {'IN-CMP', GREEN_LIGHT},
-			['n']  = {'NORMAL', PURPLE_LIGHT},
-			['no'] = {'PNDING', PURPLE},
-			['r']  = {':ENTER', CYAN},
-			['r?'] = {':CONF ', CYAN},
-			['rm'] = {'--MORE', ICE},
-			['R']  = {'RPLACE', PINK},
-			['Rv'] = {'VRTUAL', PINK_LIGHT},
-			['s']  = {'SELECT', TURQOISE},
-			['S']  = {'S LINE', TURQOISE},
-			[''] = {'S BLK ', TURQOISE},
-			['t']  = {'TRMNAL', ORANGE},
-			['v']  = {'VISUAL', BLUE},
-			['V']  = {'V LINE', BLUE},
-			[''] = {'V BLK ', BLUE},
-			['!']  = {'SHELL ', YELLOW},
+			['c']  = {'CMD   ', 'lualine_a_command'},
+			['ce'] = {'NORM X', 'lualine_a_terminal'},
+			['cv'] = {'EX    ', 'lualine_a_terminal'},
+			['t']  = {'TRMNAL', 'lualine_a_terminal'},
+			['!']  = {'SHELL ', 'lualine_a_terminal'},
+			['i']  = {'INSERT', 'lualine_a_insert'},
+			['ic'] = {'IN-CMP', 'lualine_a_insert'},
+			['n']  = {'NORMAL', 'lualine_a_normal'},
+			['no'] = {'PNDING', 'lualine_a_normal'},
+			['r']  = {':ENTER', 'lualine_a_normal'},
+			['r?'] = {':CONF ', 'lualine_a_normal'},
+			['rm'] = {'--MORE', 'lualine_a_normal'},
+			['R']  = {'RPLACE', 'lualine_a_replace'},
+			['Rv'] = {'VRTUAL', 'lualine_a_replace'},
+			['s']  = {'SELECT', 'lualine_a_visual'},
+			['S']  = {'S LINE', 'lualine_a_visual'},
+			[''] = {'S BLK ', 'lualine_a_visual'},
+			['v']  = {'VISUAL', 'lualine_a_visual'},
+			['V']  = {'V LINE', 'lualine_a_visual'},
+			[''] = {'V BLK ', 'lualine_a_visual'},
 
 			-- libmodal
-			['WINDOW'] = TEAL,
-			['DEBUG'] = ORANGE_LIGHT,
+			['WINDOW'] = 'lualine_b_visual',
+			['DEBUG'] = 'lualine_a_command',
 		}
 
 		local MODE_HL_GROUP = 'LualineViMode'
@@ -74,7 +74,7 @@ return {
 							mode_color = current_mode[2]
 						end
 
-						vim.api.nvim_set_hl(0, MODE_HL_GROUP, {bg = mode_color, bold = true})
+						vim.api.nvim_set_hl(0, MODE_HL_GROUP, {link = mode_color})
 
 						return mode_name
 					end,
