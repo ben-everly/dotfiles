@@ -7,6 +7,7 @@ return {
 	'hrsh7th/nvim-cmp',
 	config = function()
 		local cmp = require 'cmp'
+		local ls = require 'luasnip'
 		cmp.setup {
 			formatting = {
 				format = require('lspkind').cmp_format({
@@ -54,6 +55,8 @@ return {
 				['<Tab>'] = function(fallback)
 					if cmp.visible() then
 						cmp.select_next_item()
+					elseif ls.jumpable() then
+						ls.jump(1)
 					elseif not previous_char_is_whitespace() then
 						cmp.complete()
 					else
@@ -63,6 +66,8 @@ return {
 				['<S-Tab>'] = function(fallback)
 					if cmp.visible() then
 						cmp.select_prev_item()
+					elseif ls.jumpable(-1) then
+						ls.jump(-1)
 					elseif not previous_char_is_whitespace() then
 						cmp.complete()
 					else
@@ -78,12 +83,12 @@ return {
 				end
 			}),
 			sources = cmp.config.sources({
-				{ name = 'nvim_lsp' },
 				{ name = 'luasnip' },
+				{ name = 'nvim_lsp' },
 			}),
 			snippet = {
 				expand = function(args)
-					require('luasnip').lsp_expand(args.body)
+					ls.lsp_expand(args.body)
 				end,
 			}
 		}
