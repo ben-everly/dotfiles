@@ -46,9 +46,9 @@ return {
 				['<C-j>'] = cmp.mapping.scroll_docs(4),
 				['<C-Space>'] = function()
 					if cmp.visible() then
-						cmp.mapping.abort()
+						cmp.close()
 					else
-						cmp.mapping.complete()
+						cmp.complete()
 					end
 				end,
 				['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
