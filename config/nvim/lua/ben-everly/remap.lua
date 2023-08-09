@@ -1,6 +1,6 @@
 vim.g.mapleader = ' '
 vim.keymap.set('n', '<C-t>', vim.cmd.enew)
-vim.keymap.set('n', '<C-w>', ':bp|bd #<cr>')
+vim.keymap.set('n', '<C-w>', ':bd')
 vim.keymap.set('n', '<TAB>', vim.cmd.bnext)
 vim.keymap.set('n', '<S-TAB>', vim.cmd.bprevious)
 vim.cmd([[
