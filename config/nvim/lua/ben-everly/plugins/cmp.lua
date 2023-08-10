@@ -74,13 +74,6 @@ return {
 						fallback()
 					end
 				end,
-				['<Esc>'] = function(fallback)
-					if cmp.visible() then
-						cmp.close()
-					else
-						fallback()
-					end
-				end
 			}),
 			sources = cmp.config.sources({
 				{ name = 'luasnip' },
