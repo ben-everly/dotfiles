@@ -55,8 +55,6 @@ return {
 				['<Tab>'] = function(fallback)
 					if cmp.visible() then
 						cmp.select_next_item()
-					elseif ls.jumpable() then
-						ls.jump(1)
 					elseif not previous_char_is_whitespace() then
 						cmp.complete()
 					else
@@ -66,8 +64,6 @@ return {
 				['<S-Tab>'] = function(fallback)
 					if cmp.visible() then
 						cmp.select_prev_item()
-					elseif ls.jumpable(-1) then
-						ls.jump(-1)
 					elseif not previous_char_is_whitespace() then
 						cmp.complete()
 					else

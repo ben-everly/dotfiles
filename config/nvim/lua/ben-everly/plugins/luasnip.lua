@@ -4,10 +4,10 @@ return {
 	config = function()
 		vim.keymap.set('n', 'gs', require('luasnip.loaders').edit_snippet_files)
 		local ls = require('luasnip')
-		vim.keymap.set({"s"}, "<Tab>", function() ls.jump( 1) end, {silent = true})
-		vim.keymap.set({"s"}, "<S-Tab>", function() ls.jump(-1) end, {silent = true})
+		vim.keymap.set({"i", "s"}, "]j", function() ls.jump( 1) end, {silent = true})
+		vim.keymap.set({"i", "s"}, "[j", function() ls.jump(-1) end, {silent = true})
 
-		vim.keymap.set({"i", "s"}, "<C-E>", function()
+		vim.keymap.set({"i", "s"}, "<c-e>", function()
 			if ls.choice_active() then
 				ls.change_choice(1)
 			end
