@@ -13,13 +13,7 @@ return {
 				enable = true,
 			},
 			incremental_selection = {
-				enable = true,
-				keymaps = {
-					init_selection = 'gnn',
-					scope_incremental = 'grc',
-					node_incremental = '>',
-					node_decremental = '<',
-				},
+				enable = false,
 			},
 			-- TODO this should move to the textobjects config but
 			-- calling setup again will override the rest of this
