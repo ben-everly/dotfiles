@@ -1,8 +1,7 @@
 vim.g.mapleader = ' '
 vim.keymap.set('n', '<C-t>', vim.cmd.enew)
 vim.keymap.set('n', '<C-w>', vim.cmd.bd)
-vim.keymap.set('n', '<TAB>', vim.cmd.bnext)
-vim.keymap.set('n', '<S-TAB>', vim.cmd.bprevious)
+vim.keymap.set('n', '<TAB>', vim.cmd.bnext) vim.keymap.set('n', '<S-TAB>', vim.cmd.bprevious)
 vim.cmd([[
 vnoremap <silent> * :<C-U>
 \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
@@ -15,6 +14,11 @@ vnoremap <silent> # :<C-U>
 \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
 \gVzv:call setreg('"', old_reg, old_regtype)<CR>
 ]])
+
+local qf_group = vim.api.nvim_create_augroup('qf', { clear = true })
+vim.api.nvim_create_autocmd('FileType', { pattern = 'qf', group = qf_group, callback = function()
+	vim.keymap.set("n", "<CR>", "<CR>:ccl<CR>", { buffer = true })
+end })
 
 vim.keymap.set('n', '<leader>w', function()
 	require'libmodal'.mode.enter('WINDOW', {
