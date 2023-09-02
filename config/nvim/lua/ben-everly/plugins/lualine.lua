@@ -7,7 +7,6 @@ return {
 			['c']  = {'COMMAND', 'lualine_a_command'},
 			['ce'] = {'NORM EX', 'lualine_a_terminal'},
 			['cv'] = {'EX     ', 'lualine_a_terminal'},
-			['nt'] = {'TERMNAL', 'lualine_a_terminal'},
 			['t']  = {'TERMNAL', 'lualine_a_terminal'},
 			['!']  = {'SHELL  ', 'lualine_a_terminal'},
 			['i']  = {'INSERT ', 'lualine_a_insert'},
@@ -32,11 +31,17 @@ return {
 		}
 
 		local function color ()
-			local hl;
+			local mode;
 			if vim.g.libmodalActiveModeName then
-				hl = modes[vim.g.libmodalActiveModeName][2]
+				mode = vim.g.libmodalActiveModeName
 			else
-				hl = modes[vim.api.nvim_get_mode().mode][2]
+				mode = vim.api.nvim_get_mode().mode
+			end
+			local hl;
+			if modes[mode] == nil then
+				hl = 'lualine_a_normal'
+			else
+				hl = modes[mode][2]
 			end
 			return vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID(hl)), "bg#")
 		end
