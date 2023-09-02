@@ -7,6 +7,7 @@ return {
 			['c']  = {'COMMAND', 'lualine_a_command'},
 			['ce'] = {'NORM EX', 'lualine_a_terminal'},
 			['cv'] = {'EX     ', 'lualine_a_terminal'},
+			['nt'] = {'TERMNAL', 'lualine_a_terminal'},
 			['t']  = {'TERMNAL', 'lualine_a_terminal'},
 			['!']  = {'SHELL  ', 'lualine_a_terminal'},
 			['i']  = {'INSERT ', 'lualine_a_insert'},
