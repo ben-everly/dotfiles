@@ -3,7 +3,6 @@ return {
 	config = function()
 		require'null-ls'.setup {
 			border = 'single',
-			temp_dir = vim.fn.stdpath('cache'),
 		}
 	end
 }
