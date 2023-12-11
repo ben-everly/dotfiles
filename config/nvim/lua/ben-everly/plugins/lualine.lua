@@ -27,7 +27,6 @@ return {
 
 			-- libmodal
 			['WINDOW'] = {'WINDOW ', 'lualine_a_replace'},
-			['DEBUG'] = {'DEBUG  ', 'lualine_a_command'},
 		}
 
 		local function color ()
