@@ -2,6 +2,7 @@
 
 export LESS='RSFXm'
 alias la='l'
+alias j='jobs'
 
 alias ag='ag --pager="less"'
 rg() {
