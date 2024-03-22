@@ -82,3 +82,5 @@ bindkey '^k' history-substring-search-up
 bindkey '^j' history-substring-search-down
 
 precmd() { (retval=$?;tput cup "$LINES";exit $retval) }
+
+eval "$(zoxide init zsh)"
