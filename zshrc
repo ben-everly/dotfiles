@@ -67,7 +67,10 @@ typeset -U path
 export PNPM_HOME="/home/beneverly/.local/share/pnpm"
 path+=("$PNPM_HOME")
 if which ruby >/dev/null && which gem >/dev/null; then
-  PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+  path+=("$(ruby -r rubygems -e 'puts Gem.user_dir')/bin")
+fi
+if which go >/dev/null; then
+  path+=("$(go env GOPATH)/bin")
 fi
 
 if [ -f /home/beneverly/.oberd/env ]; then #oberd_env
