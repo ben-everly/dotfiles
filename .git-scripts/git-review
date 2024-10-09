@@ -1,0 +1,13 @@
+#!/bin/bash
+
+git pull --ff-only --all
+branch=$1
+if [ -z "$(git branch --list $branch)" ]; then
+  echo "Branch $branch does not exist"
+  exit 1
+fi
+# TODO find base for branch. with git 2.36 can do something like:
+# git rev-parse $(git rev-list --exclude-first-parent-only ^main $branch | tail -1)^
+# https://stackoverflow.com/questions/1527234/finding-a-branch-point-with-git/71193866#71193866
+git merge --no-ff --no-commit $branch
+git reset

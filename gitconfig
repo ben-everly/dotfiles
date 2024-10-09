@@ -21,6 +21,7 @@
 	clean-merged = !git-clean-merged
 	trash = !git-trash
 	recurse = !git-recurse
+	review = !git-review
 	bl = "!f() { \
 		git branch -l \
 		--format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset)˘%(color:red)%(objectname:short)%(color:reset)˘%(color:green)(%(committerdate:relative))%(color:reset)˘%(color:bold blue)%(authorname)%(color:reset)˘%(contents:subject)' \
