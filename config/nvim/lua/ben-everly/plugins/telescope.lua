@@ -1,6 +1,5 @@
 return {
 	'nvim-telescope/telescope.nvim',
-	version = '0.1.2',
 	dependencies = 'nvim-lua/plenary.nvim',
 	config = function()
 		local builtin = require 'telescope.builtin'
@@ -19,6 +18,12 @@ return {
 		vim.keymap.set('n', '<leader>fGS', builtin.git_stash)
 		vim.keymap.set('n', '<leader>b', builtin.treesitter)
 		vim.keymap.set('n', '<leader>fs', builtin.lsp_workspace_symbols)
+		vim.keymap.set('n', '<leader>fd', builtin.diagnostics)
+		vim.keymap.set('n', '<leader>fp', builtin.builtin)
+		vim.keymap.set('n', 'gd', builtin.lsp_definitions)
+		vim.keymap.set('n', 'gr', builtin.lsp_references)
+		vim.keymap.set('n', 'gi', builtin.lsp_implementations)
+		vim.keymap.set('n', '<leader>D', builtin.lsp_type_definitions)
 		require 'telescope'.setup {
 			defaults = {
 				mappings = {
