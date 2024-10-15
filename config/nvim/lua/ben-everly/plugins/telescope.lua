@@ -29,6 +29,8 @@ return {
 		vim.keymap.set('n', '<leader>D', builtin.lsp_type_definitions)
 		require 'telescope'.setup {
 			defaults = {
+				layout_strategy='center',
+				sorting_strategy = 'ascending',
 				mappings = {
 					i = {
 						['<C-j>'] = 'move_selection_next',
