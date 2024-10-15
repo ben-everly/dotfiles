@@ -25,7 +25,3 @@ vim.opt.autowriteall = true
 
 local autowrite_group = vim.api.nvim_create_augroup('autowrite', { clear = true })
 vim.api.nvim_create_autocmd('FocusLost', { pattern = '*', group = autowrite_group, command = 'silent! wa' })
-
-if vim.fn.filereadable(vim.env.HOME .. '/.vim/vimrc.local') ~= 0 then
-	vim.cmd([[ source ~/.vim/vimrc.local ]])
-end
