@@ -100,7 +100,13 @@ return {
 			},
 			tabline = {
 				lualine_a = {'buffers'},
-				lualine_z = {'tabs'}
+				lualine_z = {{
+					'tabs',
+					tabs_color = {
+						active = 'lualine_a_normal',
+						inactive = 'lualine_a_inactive',
+					},
+				}},
 			},
 		})
 	end
