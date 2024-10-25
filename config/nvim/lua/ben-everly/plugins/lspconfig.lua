@@ -64,6 +64,7 @@ return {
 			},
 			severity_sort = true,
 			float = {
+				source = true,
 				float = "if_many",
 				border = "single"
 			},
