@@ -6,6 +6,9 @@ return {
 		'nvim-tree/nvim-web-devicons'
 	},
 	config = function ()
-		require('octo').setup()
+		require('octo').setup({
+			default_to_projects_v2 = true
+		})
+		vim.keymap.set('n', '<leader>fp', require('octo.commands').commands.pr.list, { silent = true })
 	end,
 }

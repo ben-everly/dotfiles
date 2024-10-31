@@ -19,7 +19,7 @@ return {
 		vim.keymap.set('n', '<leader>b', builtin.treesitter)
 		vim.keymap.set('n', '<leader>fs', builtin.lsp_workspace_symbols)
 		vim.keymap.set('n', '<leader>fd', builtin.diagnostics)
-		vim.keymap.set('n', '<leader>fp', builtin.builtin)
+		vim.keymap.set('n', '<leader>fP', builtin.builtin)
 		vim.keymap.set('n', '<leader>fq', builtin.quickfix)
 		vim.keymap.set('n', '<leader>fl', builtin.loclist)
 		vim.keymap.set('n', '<leader>fa', builtin.resume)
