@@ -29,7 +29,7 @@ return {
 			['WINDOW'] = {'WINDOW ', 'lualine_a_replace'},
 		}
 
-		local function color ()
+		local function mode_color ()
 			local mode;
 			if vim.g.libmodalActiveModeName then
 				mode = vim.g.libmodalActiveModeName
@@ -45,61 +45,83 @@ return {
 			return vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID(hl)), "bg#")
 		end
 
-		local function fg_color ()
-			return { fg = color() }
-		end
-
-		local function bg_color ()
-			return { bg = color() }
-		end
-
 		vim.api.nvim_create_autocmd('ModeChanged', {callback = function()
 			require('lualine').refresh {scope = 'window',  place = {'statusline'}}
 		end})
 
 		require 'lualine'.setup({
 			options = {
-				component_separators = { left = '', right = ''},
-				section_separators = { left = '', right = ''},
+				component_separators = '',
+				section_separators = '',
 				theme = 'tokyonight',
 			},
 			sections = {
-				lualine_a = {{
-					function()
-						if vim.g.libmodalActiveModeName then
-							return modes[vim.g.libmodalActiveModeName][1]
-						else
-							return modes[vim.api.nvim_get_mode().mode][1]
-						end
-					end,
-					separator = { right = ''},
-					color = bg_color,
-				}},
-				lualine_b = {{
-					'branch',
-					color = fg_color,
-				}, {
-					'diff',
-				}},
-				lualine_x = {'filetype'},
-				lualine_y = {{
-					'progress',
-					color = fg_color,
-				}},
-				-- synIDattr(synIDtrans(hlID("lualine_a_command")), "fg#")
-				lualine_z = {{
-					'selectioncount',
-					color = bg_color,
-				}, {
-					'searchcount',
-					color = bg_color,
-				}, {
-					'location',
-					color = bg_color,
-				}},
+				lualine_a = {},
+				lualine_b = {},
+				lualine_c = {
+					{
+						function()
+							return '▊'
+						end,
+						color = function()
+							return { fg = mode_color() }
+						end,
+						padding = { left = 0, right = 0 },
+					},
+					{
+						'filetype',
+						icon_only = true,
+						padding = { left = 1, right = 0 },
+					},
+					{
+						'filename',
+						path = 1,
+						padding = { left = 0, right = 1 },
+					},
+					{
+						'progress',
+					},
+					{
+						'location',
+					},
+					{
+						'diagnostics',
+						sources = { 'nvim_diagnostic' },
+						symbols = { error = ' ', warn = ' ', info = ' ' },
+					},
+				},
+				lualine_x = {
+					{
+						'branch',
+						icon = '',
+					},
+					{
+						'diff',
+						symbols = { added = ' ', modified = '󰝤 ', removed = ' ' },
+					},
+					{
+						'selectioncount',
+					},
+					{
+						'searchcount',
+					},
+					{
+						function()
+							return '▊'
+						end,
+						color = function()
+							return { fg = mode_color() }
+						end,
+						padding = { left = 0, right = 0 },
+					},
+				},
+				lualine_y = {},
+				lualine_z = {},
 			},
 			tabline = {
-				lualine_a = {'buffers'},
+				lualine_a = {{
+					'buffers',
+				}},
 				lualine_z = {{
 					'tabs',
 					tabs_color = {
