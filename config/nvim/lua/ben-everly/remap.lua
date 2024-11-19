@@ -1,4 +1,5 @@
 vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 vim.keymap.set('n', '<C-t>', vim.cmd.enew)
 vim.keymap.set('n', '<C-w>', vim.cmd.bd)
 vim.keymap.set('n', '<TAB>', vim.cmd.bnext) vim.keymap.set('n', '<S-TAB>', vim.cmd.bprevious)

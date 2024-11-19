@@ -14,7 +14,6 @@ return {
 			pattern = {'octo'},
 			callback = function ()
 				vim.schedule(function ()
-					vim.g.maplocalleader = ' '
 					vim.keymap.set('i', '@', '@<C-x><C-o>', { silent = true, buffer = true })
 					vim.keymap.set('i', '#', '#<C-x><C-o>', { silent = true, buffer = true })
 				end)
