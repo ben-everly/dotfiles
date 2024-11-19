@@ -2,47 +2,49 @@ return {
 	'nvim-lualine/lualine.nvim',
 	dependencies = { 'nvim-tree/nvim-web-devicons' },
 	config = function()
+		local colors = {
+			bg = '#202328',
+			fg = '#bbc2cf',
+			yellow = '#ECBE7B',
+			cyan = '#008080',
+			darkblue = '#081633',
+			green = '#98be65',
+			orange = '#FF8800',
+			violet = '#a9a1e1',
+			magenta = '#c678dd',
+			blue = '#51afef',
+			red = '#ec5f67'
+		}
 		local modes =
 		{
-			['c']  = {'COMMAND', 'lualine_a_command'},
-			['ce'] = {'NORM EX', 'lualine_a_terminal'},
-			['cv'] = {'EX     ', 'lualine_a_terminal'},
-			['t']  = {'TERMNAL', 'lualine_a_terminal'},
-			['!']  = {'SHELL  ', 'lualine_a_terminal'},
-			['i']  = {'INSERT ', 'lualine_a_insert'},
-			['ic'] = {'INS-CMP', 'lualine_a_insert'},
-			['n']  = {'NORMAL ', 'lualine_a_normal'},
-			['no'] = {'PENDING', 'lualine_a_normal'},
-			['r']  = {'ENTER  ', 'lualine_a_normal'},
-			['r?'] = {'CONFIRM', 'lualine_a_normal'},
-			['rm'] = {'--MORE ', 'lualine_a_normal'},
-			['R']  = {'REPLACE', 'lualine_a_replace'},
-			['Rv'] = {'VIRTUAL', 'lualine_a_replace'},
-			['s']  = {'SELECT ', 'lualine_a_visual'},
-			['S']  = {'S LINE ', 'lualine_a_visual'},
-			[''] = {'S BLK  ', 'lualine_a_visual'},
-			['v']  = {'VISUAL ', 'lualine_a_visual'},
-			['V']  = {'V LINE ', 'lualine_a_visual'},
-			[''] = {'V BLK  ', 'lualine_a_visual'},
+			['c']  = {colors['yellow']},
+			['ce'] = {colors['orange']},
+			['cv'] = {colors['orange']},
+			['t']  = {colors['orange']},
+			['!']  = {colors['orange']},
+			['i']  = {colors['green']},
+			['ic'] = {colors['green']},
+			['n']  = {colors['blue']},
+			['no'] = {colors['blue']},
+			['r']  = {colors['blue']},
+			['r?'] = {colors['blue']},
+			['rm'] = {colors['blue']},
+			['R']  = {colors['magenta']},
+			['Rv'] = {colors['magenta']},
+			['s']  = {colors['purple']},
+			['S']  = {colors['purple']},
+			[''] = {colors['purple']},
+			['v']  = {colors['purple']},
+			['V']  = {colors['purple']},
+			[''] = {colors['purple']},
 
 			-- libmodal
-			['WINDOW'] = {'WINDOW ', 'lualine_a_replace'},
+			['WINDOW'] = {colors['red']},
 		}
 
 		local function mode_color ()
-			local mode;
-			if vim.g.libmodalActiveModeName then
-				mode = vim.g.libmodalActiveModeName
-			else
-				mode = vim.api.nvim_get_mode().mode
-			end
-			local hl;
-			if modes[mode] == nil then
-				hl = 'lualine_a_normal'
-			else
-				hl = modes[mode][2]
-			end
-			return vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID(hl)), "bg#")
+			local mode = vim.g.libmodalActiveModeName or vim.api.nvim_get_mode().mode;
+			return modes[mode] and modes[mode][1] or colors['blue']
 		end
 
 		vim.api.nvim_create_autocmd('ModeChanged', {callback = function()
@@ -53,7 +55,7 @@ return {
 			options = {
 				component_separators = '',
 				section_separators = '',
-				theme = 'tokyonight',
+				theme = 'gruvbox-material',
 			},
 			sections = {
 				lualine_a = {},
