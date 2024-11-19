@@ -121,14 +121,15 @@ return {
 				lualine_z = {},
 			},
 			tabline = {
-				lualine_a = {{
+				lualine_c = {{
 					'buffers',
+					symbols = { alternate_file = '' }
 				}},
-				lualine_z = {{
+				lualine_x = {{
 					'tabs',
 					tabs_color = {
-						active = 'lualine_a_normal',
-						inactive = 'lualine_a_inactive',
+						active = 'lualine_c_normal',
+						inactive = 'lualine_c_inactive',
 					},
 				}},
 			},
