@@ -16,7 +16,7 @@ return {
 		lazy = true,
 		config = function()
 			vim.cmd.colorscheme 'gruvbox'
-		end
+		end,
 	},
 	{
 		'sainnhe/gruvbox-material',
@@ -25,5 +25,5 @@ return {
 		config = function ()
 			vim.cmd.colorscheme 'gruvbox-material'
 		end,
-	}
+	},
 }
