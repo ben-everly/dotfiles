@@ -5,6 +5,9 @@ end
 
 return {
 	'hrsh7th/nvim-cmp',
+	dependencies = {
+		'onsails/lspkind.nvim',
+	},
 	config = function()
 		local cmp = require 'cmp'
 		local ls = require 'luasnip'
@@ -74,6 +77,7 @@ return {
 			sources = cmp.config.sources({
 				{ name = 'luasnip' },
 				{ name = 'nvim_lsp' },
+				{ name = 'lazydev', group_index = 0 }
 			}),
 			snippet = {
 				expand = function(args)
