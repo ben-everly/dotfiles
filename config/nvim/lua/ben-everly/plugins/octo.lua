@@ -9,7 +9,8 @@ return {
 		require('octo').setup({
 			default_to_projects_v2 = true
 		})
-		vim.keymap.set('n', '<leader>fp', require('octo.commands').commands.pr.list, { silent = true })
+		local octo = require('octo.commands').octo
+		vim.keymap.set('n', '<leader>fp', function () octo('pr', 'list') end, { silent = true })
 		vim.api.nvim_create_autocmd('FileType', {
 			pattern = {'octo'},
 			callback = function ()
