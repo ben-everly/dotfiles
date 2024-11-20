@@ -1,12 +1,5 @@
 -- Unimplemented features:
 
--- Coc lsp mappings
--- vim.keymap.set('n', '<c-p>', ':CocList symbols<cr>')
-
--- Coc refactoring mappings
--- vim.keymap.set('n', '<leader>qf', ' <Plug>(coc-fix-current)')
--- vim.keymap.set('n', '<leader>cl', ' <Plug>(coc-codelens-action)')
-
 -- Coc hover highlighting
 -- vim.api.nvim_create_augroup('CocGroup', {})
 --[[ vim.api.nvim_create_autocmd('CursorHold', {
@@ -14,18 +7,6 @@
 			command = "silent call CocActionAsync('highlight')",
 			desc = 'Highlight symbol under cursor on CursorHold',
 }) ]]
-
---[[ {
-	"php-cs-fixer.activateTool": "pint",
-	"Lua.telemetry.enable": false,
-	"java.configuration.runtimes": [
-		{
-			"name": "JavaSE-17",
-		"path": "/usr/lib/jvm/jdk-17",
-		"default": true
-		}
-	],
-} ]]
 
 return {
 	'neovim/nvim-lspconfig',
