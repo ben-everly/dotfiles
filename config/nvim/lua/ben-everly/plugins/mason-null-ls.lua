@@ -7,7 +7,15 @@ return {
     },
 	config = function()
 		require('mason-null-ls').setup {
-			handlers = {}
+			ensure_installed = {
+				'markdownlint',
+				'phpstan',
+				'blade-formatter',
+				'pint',
+				'prettierd',
+				'sql-formatter'
+			},
+			handlers = {},
 		}
 	end,
 }
