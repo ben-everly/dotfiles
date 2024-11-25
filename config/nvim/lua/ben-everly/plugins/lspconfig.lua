@@ -50,6 +50,13 @@ return {
 				border = "single"
 			},
 		})
+		local function is_null_ls_formatting_enabled(bufnr)
+			for _, client in ipairs(vim.lsp.get_clients({ bufnr = bufnr, name = 'null-ls' })) do
+				if client.server_capabilities.documentFormattingProvider then
+					return true
+				end
+			end
+		end
 		vim.api.nvim_create_autocmd('LspAttach', {
 			group = vim.api.nvim_create_augroup('UserLspConfig', {}),
 			callback = function(ev)
@@ -67,10 +74,7 @@ return {
 					vim.lsp.buf.format {
 						async = true,
 						filter = function(client)
-							if vim.lsp.get_active_clients({
-									bufnr = ev.buf,
-									name = 'null-ls',
-								})[1].server_capabilities.documentFormattingProvider then
+							if is_null_ls_formatting_enabled() then
 								return client.name == 'null-ls'
 							end
 							return true
@@ -81,10 +85,7 @@ return {
 					vim.lsp.buf.format {
 						async = true,
 						filter = function(client)
-							if vim.lsp.get_active_clients({
-									bufnr = ev.buf,
-									name = 'null-ls',
-								})[1].server_capabilities.documentRangeFormattingProvider then
+							if is_null_ls_formatting_enabled() then
 								return client.name == 'null-ls'
 							end
 							return true
