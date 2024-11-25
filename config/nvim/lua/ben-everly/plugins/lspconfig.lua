@@ -94,29 +94,5 @@ return {
 				end)
 			end,
 		})
-		local lspconfig = require 'lspconfig'
-		require('mason-lspconfig').setup_handlers {
-			function(server_name)
-				lspconfig[server_name].setup {}
-			end,
-			["lua_ls"] = function()
-				lspconfig.lua_ls.setup {
-					settings = {
-						Lua = {
-							diagnostics = {
-								globals = { "vim" }
-							},
-						},
-					},
-				}
-			end,
-			['sqls'] = function ()
-				lspconfig.sqls.setup{
-					on_attach = function(client, bufnr)
-						require('sqls').on_attach(client, bufnr)
-					end
-				}
-			end,
-		}
 	end,
 }
