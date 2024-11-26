@@ -11,14 +11,6 @@ return {
 		})
 		local octo = require('octo.commands').octo
 		vim.keymap.set('n', '<leader>fp', function () octo('pr', 'list') end, { silent = true })
-		vim.api.nvim_create_autocmd('FileType', {
-			pattern = {'octo'},
-			callback = function ()
-				vim.schedule(function ()
-					vim.keymap.set('i', '@', '@<C-x><C-o>', { silent = true, buffer = true })
-					vim.keymap.set('i', '#', '#<C-x><C-o>', { silent = true, buffer = true })
-				end)
-			end,
-		})
+		vim.keymap.set('n', '<leader>pc', function () octo('pr', 'create') end, { silent = true })
 	end,
 }
