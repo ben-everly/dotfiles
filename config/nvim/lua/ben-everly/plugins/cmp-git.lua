@@ -11,7 +11,7 @@ return {
 		'hrsh7th/nvim-cmp',
 		optional = true,
 		opts = function (_, opts)
-			table.insert(opts.sources, { name = 'git' })
+			table.insert(opts.sources, { name = 'git', group_index = 1 })
 		end,
 	},
 }

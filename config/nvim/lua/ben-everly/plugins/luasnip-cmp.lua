@@ -5,7 +5,7 @@ return {
 		'saadparwaiz1/cmp_luasnip',
 	},
 	opts = function (_, opts)
-		table.insert(opts.sources, { name = 'luasnip' })
+		table.insert(opts.sources, { name = 'luasnip', group_index = 1 })
 		opts.snippet = {
 			expand = function(args)
 				require('luasnip').lsp_expand(args.body)

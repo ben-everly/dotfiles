@@ -40,6 +40,8 @@ return {
 			}),
 			sources = cmp.config.sources({
 				{ name = 'nvim_lsp' },
+			}, {
+				{ name = 'buffer' },
 			}),
 		}
 	end
