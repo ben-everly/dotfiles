@@ -38,7 +38,6 @@ return {
 					end
 				end,
 			}),
-			sources = {},
 		}
 	end
 }
