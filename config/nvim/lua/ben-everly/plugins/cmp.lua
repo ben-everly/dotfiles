@@ -5,7 +5,7 @@ end
 
 return {
 	'hrsh7th/nvim-cmp',
-	opts = function(_, opts)
+	opts = function()
 		local cmp = require 'cmp'
 		return {
 			mapping = cmp.mapping.preset.insert({
