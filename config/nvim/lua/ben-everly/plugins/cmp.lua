@@ -5,44 +5,9 @@ end
 
 return {
 	'hrsh7th/nvim-cmp',
-	dependencies = {
-		'onsails/lspkind.nvim',
-	},
-	opts = function()
+	opts = function(_, opts)
 		local cmp = require 'cmp'
 		return {
-			formatting = {
-				format = require('lspkind').cmp_format({
-					mode = 'symbol',
-					symbol_map = {
-						Text = ' ',
-						Method = ' ',
-						Function = ' ',
-						Constructor = ' ',
-						Field = ' ',
-						Variable = ' ',
-						Class = ' ',
-						Interface = ' ',
-						Module = ' ',
-						Property = ' ',
-						Unit = ' ',
-						Value = ' ',
-						Enum = ' ',
-						Keyword = ' ',
-						Snippet = ' ',
-						Color = ' ',
-						File = ' ',
-						Reference = ' ',
-						Folder = ' ',
-						EnumMember = ' ',
-						Constant = ' ',
-						Struct = ' ',
-						Event = ' ',
-						Operator = ' ',
-						TypeParameter = ' ',
-					}
-				})
-			},
 			mapping = cmp.mapping.preset.insert({
 				['<C-k>'] = cmp.mapping.scroll_docs(-4),
 				['<C-j>'] = cmp.mapping.scroll_docs(4),
