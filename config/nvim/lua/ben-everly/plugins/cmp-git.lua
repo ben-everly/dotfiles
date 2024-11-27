@@ -5,7 +5,7 @@ return {
 			'hrsh7th/nvim-cmp',
 			'nvim-lua/plenary.nvim',
 		},
-		main = 'cmp_git',
+		opts = {},
 	},
 	{
 		'hrsh7th/nvim-cmp',
