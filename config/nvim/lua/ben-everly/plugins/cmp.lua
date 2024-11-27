@@ -38,9 +38,7 @@ return {
 					end
 				end,
 			}),
-			sources = {
-				{ name = 'buffer', group_index = 9 },
-			},
+			sources = {},
 		}
 	end
 }
