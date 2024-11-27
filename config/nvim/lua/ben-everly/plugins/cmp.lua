@@ -10,7 +10,6 @@ return {
 	},
 	opts = function()
 		local cmp = require 'cmp'
-		local ls = require 'luasnip'
 		return {
 			formatting = {
 				format = require('lspkind').cmp_format({
@@ -75,15 +74,9 @@ return {
 				end,
 			}),
 			sources = cmp.config.sources({
-				{ name = 'luasnip' },
 				{ name = 'nvim_lsp' },
 				{ name = 'lazydev', group_index = 0 },
 			}),
-			snippet = {
-				expand = function(args)
-					ls.lsp_expand(args.body)
-				end,
-			}
 		}
 	end
 }
