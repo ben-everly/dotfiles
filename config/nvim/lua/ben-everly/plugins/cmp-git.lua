@@ -1,8 +1,8 @@
 return {
 	{
 		'petertriho/cmp-git',
+		lazy = true,
 		dependencies = {
-			'hrsh7th/nvim-cmp',
 			'nvim-lua/plenary.nvim',
 		},
 		opts = {},
@@ -10,6 +10,9 @@ return {
 	{
 		'hrsh7th/nvim-cmp',
 		optional = true,
+		dependencies = {
+			'petertriho/cmp-git',
+		},
 		opts = function (_, opts)
 			if not opts.sources then opts.sources = {} end
 			table.insert(opts.sources, { name = 'git', group_index = 1 })
