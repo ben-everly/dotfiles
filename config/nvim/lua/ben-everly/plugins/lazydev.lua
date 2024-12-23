@@ -13,7 +13,7 @@ return {
 		'hrsh7th/nvim-cmp',
 		optional = true,
 		dependencies = {
-			'lazydev/lazydev.nvim',
+			'folke/lazydev.nvim',
 		},
 		opts = function (_, opts)
 			if not opts.sources then opts.sources = {} end
