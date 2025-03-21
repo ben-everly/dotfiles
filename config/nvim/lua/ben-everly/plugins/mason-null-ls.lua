@@ -15,6 +15,7 @@ return {
 				'prettierd',
 				'sql-formatter'
 			},
+			automatic_installation = false,
 			handlers = {},
 		}
 	end,
