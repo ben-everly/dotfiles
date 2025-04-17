@@ -38,6 +38,8 @@ fi
 # Initialize modules.
 source ${ZIM_HOME}/init.zsh
 
+alias ls='eza --group-directories-first --icons'
+
 zmodload -F zsh/terminfo +p:terminfo
 
 # ------------------------------
