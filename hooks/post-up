@@ -5,6 +5,8 @@ composer global -qn install
 vim -es -u $HOME/.vimrc +PlugInstall +qa
 bash $HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh
 
+systemctl --user enable -q --now $(dirname $(pwd))/.systemd/rclone-mount-google.service
+
 [ -d ~/.zsh/pure ] || git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 
 dconf load / < $(dirname $(pwd))/.gnome-settings.ini

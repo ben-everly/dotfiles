@@ -1,0 +1,13 @@
+[Unit]
+Description=Mount Google Drive using rclone
+After=network.target
+StartLimitIntervalSec=10
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+ExecStart=/home/beneverly/.local/bin/rclone-mount-google.sh
+
+[Install]
+WantedBy=default.target
