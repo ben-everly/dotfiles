@@ -7,7 +7,7 @@ StartLimitIntervalSec=10
 Type=simple
 Restart=always
 RestartSec=1
-ExecStart=/home/beneverly/.local/bin/rclone-mount-google.sh
+ExecStart=/home/beneverly/.local/bin/rclone-mount-google
 
 [Install]
 WantedBy=default.target

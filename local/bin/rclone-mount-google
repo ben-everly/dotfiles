@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 mkdir -p $HOME/Documents/google-drive
 chmod 777 $HOME/Documents/google-drive
 umount $HOME/Documents/google-drive
