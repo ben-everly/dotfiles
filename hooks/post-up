@@ -5,7 +5,10 @@ composer global -qn install
 vim -es -u $HOME/.vimrc +PlugInstall +qa
 bash $HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh
 
-systemctl --user enable -q --now $(dirname $(pwd))/.systemd/rclone-mount-google.service
+[ -d $HOME/markdown-notes ] || mkdir -p $HOME/markdown-notes
+rclone bisync google:.apps/Obsidian/Vault $HOME/markdown-notes --resync
+systemctl --user enable -q --now $(dirname $(pwd))/.systemd/rclone-bisync-google.service
+systemctl --user enable -q --now $(dirname $(pwd))/.systemd/rclone-bisync-google.timer
 
 [ -d ~/.zsh/pure ] || git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 

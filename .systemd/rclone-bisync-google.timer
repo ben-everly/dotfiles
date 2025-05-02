@@ -1,0 +1,10 @@
+[Unit]
+Description=Timer to Run Google Drive Sync
+Requires=rclone-bisync-google.service
+
+[Timer]
+Unit=rclone-bisync-google.service
+OnCalendar=*-*-* *:0,15,30,45:00
+
+[Install]
+WantedBy=timers.target

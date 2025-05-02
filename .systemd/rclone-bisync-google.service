@@ -1,0 +1,10 @@
+[Unit]
+Description=Sync Google Drive
+Wants=rclone-bisync-google.timer
+
+[Service]
+Type=oneshot
+ExecStart=rclone bisync google:.apps/Obsidian/Vault /home/beneverly/markdown-notes
+
+[Install]
+WantedBy=default.target
