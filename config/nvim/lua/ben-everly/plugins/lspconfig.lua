@@ -1,13 +1,3 @@
--- Unimplemented features:
-
--- Coc hover highlighting
--- vim.api.nvim_create_augroup('CocGroup', {})
---[[ vim.api.nvim_create_autocmd('CursorHold', {
-			group = 'CocGroup',
-			command = "silent call CocActionAsync('highlight')",
-			desc = 'Highlight symbol under cursor on CursorHold',
-}) ]]
-
 return {
 	'neovim/nvim-lspconfig',
 	config = function()
@@ -66,6 +56,26 @@ return {
 			group = vim.api.nvim_create_augroup('UserLspConfig', {}),
 			callback = function(ev)
 				vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+				for _, client in pairs(vim.lsp.get_clients({ bufnr = 0 })) do
+					if client.server_capabilities.documentHighlightProvider then
+						local lsp_document_highlight = vim.api.nvim_create_augroup('LspDocumentHighlight', {})
+						vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+							group = lsp_document_highlight,
+							buffer = ev.buf,
+							callback = function()
+								vim.lsp.buf.document_highlight()
+							end,
+						})
+						vim.api.nvim_create_autocmd('CursorMoved', {
+							group = lsp_document_highlight,
+							buffer = ev.buf,
+							callback = function()
+								vim.lsp.buf.clear_references()
+							end,
+						})
+					end
+				end
 
 				local opts = { buffer = ev.buf }
 				vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
