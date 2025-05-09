@@ -5,6 +5,7 @@ return {
 			extra_groups = {
 				'NormalFloat',
 				'NvimTreeNormal',
+				'FloatBorder',
 			},
 		})
 		vim.cmd.TransparentEnable()
