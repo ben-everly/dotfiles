@@ -39,6 +39,7 @@ fi
 source ${ZIM_HOME}/init.zsh
 
 alias ls='eza --group-directories-first --icons'
+alias -g ansible=$HOME/.ansible/pull/work-XPS-15-9520
 
 zmodload -F zsh/terminfo +p:terminfo
 
