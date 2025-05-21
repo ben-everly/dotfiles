@@ -53,9 +53,9 @@ return {
 				enable = true,
 				keymaps = {
 					init_selection = 'gnn',
-					scope_incremental = '<leader>.',
-					node_incremental = '<leader>;',
-					node_decremental = '<leader>,',
+					scope_incremental = '<c-.>',
+					node_incremental = '<c-;>',
+					node_decremental = '<c-,>',
 				},
 			},
 			-- TODO this should move to the textobjects config but
