@@ -72,7 +72,11 @@ return {
 						['ao'] = '@loop.outer',
 						['io'] = '@loop.inner',
 						['as'] = '@scope',
-						['al'] = '@statement.outer'
+						['al'] = '@statement.outer',
+						['a/'] = '@comment.outer',
+						['i/'] = '@comment.inner',
+						['a?'] = '@conditional.outer',
+						['i?'] = '@conditional.inner',
 					},
 				},
 				move = {
