@@ -3,7 +3,6 @@ vim.g.maplocalleader = ' '
 vim.keymap.set('n', '<C-t>', vim.cmd.enew)
 vim.keymap.set('n', '<C-.>', vim.cmd.bnext)
 vim.keymap.set('n', '<C-,>', vim.cmd.bprevious)
-vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]])
 vim.cmd([[
 vnoremap <silent> * :<C-U>
 \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
