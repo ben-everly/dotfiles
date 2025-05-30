@@ -37,13 +37,10 @@ return {
 			['v']  = {colors['purple']},
 			['V']  = {colors['purple']},
 			[''] = {colors['purple']},
-
-			-- libmodal
-			['WINDOW'] = {colors['red']},
 		}
 
 		local function mode_color ()
-			local mode = vim.g.libmodalActiveModeName or vim.api.nvim_get_mode().mode;
+			local mode = vim.api.nvim_get_mode().mode;
 			return modes[mode] and modes[mode][1] or colors['blue']
 		end
 
