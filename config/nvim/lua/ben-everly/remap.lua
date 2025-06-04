@@ -3,18 +3,23 @@ vim.g.maplocalleader = ' '
 vim.keymap.set('n', '<C-t>', vim.cmd.enew)
 vim.keymap.set('n', '<C-.>', vim.cmd.bnext)
 vim.keymap.set('n', '<C-,>', vim.cmd.bprevious)
-vim.cmd([[
-vnoremap <silent> * :<C-U>
-\let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-\gvy/<C-R>=&ic?'\c':'\C'<CR><C-R><C-R>=substitute(
-\escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
-\gVzv:call setreg('"', old_reg, old_regtype)<CR>
-vnoremap <silent> # :<C-U>
-\let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-\gvy?<C-R>=&ic?'\c':'\C'<CR><C-R><C-R>=substitute(
-\escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
-\gVzv:call setreg('"', old_reg, old_regtype)<CR>
-]])
+
+local function visual_search(direction)
+	local old_reg = vim.fn.getreg('"')
+	local old_regtype = vim.fn.getregtype('"')
+	vim.cmd('silent normal! y')
+	vim.fn.feedkeys(
+		direction
+		.. vim.fn.substitute(
+			vim.fn.escape(vim.fn.getreg('"'), [[\/.*$^~[]]),
+			[[\_s\+]], [[\\_s\\+]], "g"
+		)
+		.. "\r"
+	)
+	vim.fn.setreg('"', old_reg, old_regtype)
+end
+vim.keymap.set('v', '*', function() visual_search('/') end)
+vim.keymap.set('v', '#', function() visual_search('?') end)
 
 local qf_group = vim.api.nvim_create_augroup('qf', { clear = true })
 vim.api.nvim_create_autocmd('FileType', { pattern = 'qf', group = qf_group, callback = function()
