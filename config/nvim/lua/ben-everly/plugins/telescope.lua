@@ -7,6 +7,7 @@ return {
 		vim.keymap.set('n', '<leader>fF', builtin.git_files)
 		vim.keymap.set('n', '<leader>fg', builtin.live_grep)
 		vim.keymap.set('n', '<leader>fb', builtin.buffers)
+		vim.keymap.set('n', '<leader>fm', builtin.marks)
 		vim.keymap.set('n', '<leader>fh', builtin.help_tags)
 		vim.keymap.set('n', '<leader>fj', builtin.jumplist)
 		vim.keymap.set('n', '<leader>fr', builtin.registers)
@@ -29,7 +30,7 @@ return {
 		vim.keymap.set('n', '<leader>D', builtin.lsp_type_definitions)
 		require 'telescope'.setup {
 			defaults = {
-				layout_strategy='center',
+				layout_strategy = 'center',
 				sorting_strategy = 'ascending',
 				mappings = {
 					i = {
@@ -38,6 +39,18 @@ return {
 					},
 				},
 			},
+			pickers = {
+				marks = {
+					mappings = {
+						i = {
+							['<M-d>'] = require 'telescope.actions'.delete_mark,
+						},
+						n = {
+							['dd'] = require 'telescope.actions'.delete_mark,
+						}
+					},
+				},
+			}
 		}
 	end
 }
