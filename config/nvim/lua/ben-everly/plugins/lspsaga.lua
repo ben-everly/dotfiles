@@ -28,7 +28,7 @@ return {
 		vim.keymap.set('n', ']e', ':Lspsaga diagnostic_jump_next<CR>')
 		-- vim.keymap.set('n', 'gr', ':Lspsaga finder<CR>')
 		vim.keymap.set({ 'n', 'v' }, 'K', ':Lspsaga hover_doc<CR>')
-		vim.keymap.set('n', 'go', ':Lspsaga outline<CR>')
+		vim.keymap.set('n', '<c-b>', ':Lspsaga outline<CR>')
 		vim.keymap.set('n', '<leader>rn', ':Lspsaga rename<CR>')
 	end,
 	dependencies = {
