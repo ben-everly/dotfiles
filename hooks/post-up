@@ -14,9 +14,15 @@ systemctl --user enable -q --now $(dirname $(pwd))/.systemd/rclone-bisync-google
 
 dconf load / < $(dirname $(pwd))/.gnome-settings.ini
 
-# if file readable then make wallpaper
-if [ -f ~/Dropbox/wallpapers/dragon-tamer.jpg ]; then
-	gsettings set org.gnome.desktop.background picture-uri-dark "file://${HOME}/Dropbox/wallpapers/moon.jpg"
+if [ ! -d ~/.wallpaper ]; then
+	mkdir -p ~/.wallpaper
+fi
+WALLPAPER=milky-way.jpg
+if [ ! -f ~/.wallpaper/${WALLPAPER} ]; then
+	curl -L -o ~/.wallpaper/${WALLPAPER} https://images.pexels.com/photos/1169754/pexels-photo-1169754.jpeg?cs=srgb&dl=pexels-philippedonn-1169754.jpg&fm=jpg&_gl=1*e6514p*_ga*MTU1ODU4NDg2My4xNzUwMTc3Nzgx*_ga_8JE65Q40S6*czE3NTAxNzc3ODEkbzEkZzEkdDE3NTAxNzc4NzIkajMwJGwwJGgw
+fi
+if [ -f ~/.wallpaper/${WALLPAPER} ]; then
+	gsettings set org.gnome.desktop.background picture-uri-dark "file://${HOME}/.wallpaper/${WALLPAPER}"
 fi
 
 if [ -f ~/.local/share/font/FiraCodeNerdFont-Regular.ttf ]; then
