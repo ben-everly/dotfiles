@@ -2,7 +2,7 @@ local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
 config.color_scheme = 'Gruvbox Material (Gogh)'
-config.font = wezterm.font('FiraCode', { weight = 'Medium' })
+config.font = wezterm.font('JetBrainsMonoNerdFont')
 config.font_size = 12.0
 
 config.adjust_window_size_when_changing_font_size = false
@@ -15,7 +15,7 @@ config.inactive_pane_hsb = {
 }
 
 config.window_frame = {
-    font = wezterm.font('FiraCode', { weight = 'Bold' }),
+    font = wezterm.font('JetBrainsMonoNerdFont', { weight = 'Medium' }),
     font_size = 12.0,
     active_titlebar_bg = '#383838',
 }
