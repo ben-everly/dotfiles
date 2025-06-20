@@ -100,6 +100,19 @@ config.keys = {
 
     { key = 'PageUp',     mods = 'SHIFT',          action = act.ScrollByPage(-1) },
     { key = 'PageDown',   mods = 'SHIFT',          action = act.ScrollByPage(1) },
+
+    {
+        key = 'T',
+        mods = 'SHIFT|CTRL|ALT',
+        action = act.PromptInputLine {
+            description = 'Enter new name for tab',
+            action = wezterm.action_callback(function(window, pane, line)
+                if line and #line > 0 then
+                    window:active_tab():set_title(line)
+                end
+            end),
+        }
+    },
 }
 
 config.key_tables = {
