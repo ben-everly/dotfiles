@@ -24,12 +24,3 @@ fi
 if [ -f ~/.wallpaper/${WALLPAPER} ]; then
 	gsettings set org.gnome.desktop.background picture-uri-dark "file://${HOME}/.wallpaper/${WALLPAPER}"
 fi
-
-if [ ! -f ~/.local/share/fonts/FiraCodeNerdFont-Regular.ttf ]; then
-	echo 'here'
-	curl -L -O https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FiraCode.zip
-	mkdir ~/.local/share/fonts
-	unzip FiraCode.zip -d ~/.local/share/fonts
-	rm FiraCode.zip
-	fc-cache -f -v
-fi
