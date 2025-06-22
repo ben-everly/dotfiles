@@ -76,6 +76,9 @@ config.keys = {
     { key = 'L',          mods = 'SHIFT|ALT|CTRL', action = act.AdjustPaneSize { 'Right', 1 } },
     { key = 'K',          mods = 'SHIFT|ALT|CTRL', action = act.AdjustPaneSize { 'Up', 1 } },
     { key = 'J',          mods = 'SHIFT|ALT|CTRL', action = act.AdjustPaneSize { 'Down', 1 } },
+    { key = 'O',          mods = 'SHIFT|CTRL',     action = act.RotatePanes 'Clockwise' },
+    { key = 'I',          mods = 'SHIFT|CTRL',     action = act.RotatePanes 'CounterClockwise' },
+    { key = 'Z',          mods = 'SHIFT|CTRL',     action = act.TogglePaneZoomState },
 
     { key = 'C',          mods = 'SHIFT|CTRL',     action = act.CopyTo 'Clipboard' },
     { key = 'V',          mods = 'SHIFT|CTRL',     action = act.PasteFrom 'Clipboard' },
@@ -95,7 +98,6 @@ config.keys = {
     { key = 'P',          mods = 'SHIFT|CTRL',     action = act.ActivateCommandPalette },
     { key = 'R',          mods = 'SHIFT|CTRL',     action = act.ReloadConfiguration },
     { key = 'U',          mods = 'SHIFT|CTRL',     action = act.CharSelect { copy_on_select = true, copy_to = 'ClipboardAndPrimarySelection' } },
-    { key = 'Z',          mods = 'SHIFT|CTRL',     action = act.TogglePaneZoomState },
 
     { key = 'PageUp',     mods = 'SHIFT',          action = act.ScrollByPage(-1) },
     { key = 'PageDown',   mods = 'SHIFT',          action = act.ScrollByPage(1) },
