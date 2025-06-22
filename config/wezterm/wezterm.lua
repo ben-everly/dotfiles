@@ -22,7 +22,6 @@ config.window_frame = {
 
 config.colors = {
     tab_bar = {
-        inactive_tab_edge_hover = '#928374',
         active_tab = {
             bg_color = '#252525',
             fg_color = '#ebdbb2',
