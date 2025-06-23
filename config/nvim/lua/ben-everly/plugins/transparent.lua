@@ -4,10 +4,8 @@ return {
 		require('transparent').setup({
 			extra_groups = {
 				'NormalFloat',
-				'NvimTreeNormal',
 				'FloatBorder',
 			},
 		})
-		vim.cmd.TransparentEnable()
 	end,
 }

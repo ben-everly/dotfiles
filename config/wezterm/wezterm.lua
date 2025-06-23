@@ -20,6 +20,8 @@ config.window_frame = {
     active_titlebar_bg = '#383838',
 }
 
+config.text_background_opacity = 0.6
+
 config.colors = {
     tab_bar = {
         active_tab = {
