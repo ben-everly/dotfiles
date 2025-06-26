@@ -15,7 +15,7 @@ zmodule asdf
 #
 # Prompt
 #
-zmodule sindresorhus/pure --source async.zsh --source pure.zsh
+zmodule joke/zim-starship
 
 #
 # Completion
