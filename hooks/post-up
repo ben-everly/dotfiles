@@ -10,7 +10,9 @@ rclone bisync google:.apps/Obsidian/Vault $HOME/markdown-notes --resync
 systemctl --user enable -q --now $(dirname $(pwd))/.systemd/rclone-bisync-google.service
 systemctl --user enable -q --now $(dirname $(pwd))/.systemd/rclone-bisync-google.timer
 
-curl -sS https://starship.rs/install.sh | sh
+if ! command -v starship >/dev/null 2>&1; then
+	curl -sS https://starship.rs/install.sh | sh
+fi
 
 dconf load / < $(dirname $(pwd))/.gnome-settings.ini
 
