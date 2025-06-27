@@ -1,7 +1,5 @@
 #!/bin/zsh
 
-skip_global_compinit=1
-
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
 
@@ -25,11 +23,6 @@ ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 # ------------------
 
 ZIM_HOME=${HOME}/.zim
-# Download zimfw plugin manager if missing.
-if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
-  curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
-fi
-
 # Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
 if [[ ! ${ZIM_HOME}/init.zsh -nt ${HOME}/.zimrc ]]; then
   source ${ZIM_HOME}/zimfw.zsh init -q
@@ -87,5 +80,3 @@ bindkey '^k' history-substring-search-up
 bindkey '^j' history-substring-search-down
 
 precmd() { (retval=$?;tput cup "$LINES";exit $retval) }
-
-eval "$(zoxide init zsh)"

@@ -20,6 +20,8 @@ zmodule joke/zim-starship
 #
 # Completion
 #
+zmodule joke/zim-github-cli
+zmodule kiesman99/zim-zoxide
 zmodule zsh-users/zsh-completions --fpath src
 zmodule zimfw/fzf
 zmodule completion
