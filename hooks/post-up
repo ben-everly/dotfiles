@@ -30,6 +30,3 @@ fi
 if [[ ! -e ${HOME}/.zim/zimfw.zsh ]]; then
   curl -fsSL --create-dirs -o ${HOME}/.zim/zimfw.zsh https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
 fi
-
-zimfw clean -q
-zimfw update -q
