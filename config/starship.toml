@@ -66,6 +66,9 @@ symbol = " "
 format = "[$duration]($style) "
 style = "red"
 
+[[battery.display]]
+threshold = 20
+
 [os]
 disabled = false
 
