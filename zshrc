@@ -68,7 +68,7 @@ if which go >/dev/null; then
   path+=("$(go env GOPATH)/bin")
 fi
 
-if [ -f /home/beneverly/.oberd/env ]; then #oberd_env
+if [[ -f /home/beneverly/.oberd/env ]]; then #oberd_env
   source /home/beneverly/.oberd/env #oberd_env
 fi #oberd_env
 

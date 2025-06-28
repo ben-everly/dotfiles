@@ -5,26 +5,26 @@ composer global -qn install
 vim -es -u $HOME/.vimrc +PlugInstall +qa
 bash $HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh
 
-[ -d $HOME/markdown-notes ] || mkdir -p $HOME/markdown-notes
-rclone bisync google:.apps/Obsidian/Vault $HOME/markdown-notes --resync
+[[ -d $HOME/markdown-notes ]] || mkdir -p $HOME/markdown-notes
+rclone bisync google:.apps/Obsidian/Vault $HOME/markdown-notes --resync >/dev/null 2>&1
 systemctl --user enable -q --now $(dirname $(pwd))/.systemd/rclone-bisync-google.service
 systemctl --user enable -q --now $(dirname $(pwd))/.systemd/rclone-bisync-google.timer
 
 if ! command -v starship >/dev/null 2>&1; then
-	curl -sS https://starship.rs/install.sh | sh
+    curl -sS https://starship.rs/install.sh | sh
 fi
 
 dconf load / < $(dirname $(pwd))/.gnome-settings.ini
 
-if [ ! -d ~/.wallpaper ]; then
-	mkdir -p ~/.wallpaper
+if [[ ! -d ~/.wallpaper ]]; then
+    mkdir -p ~/.wallpaper
 fi
 WALLPAPER=milky-way.jpg
-if [ ! -f ~/.wallpaper/${WALLPAPER} ]; then
-	curl -L -o ~/.wallpaper/${WALLPAPER} https://images.pexels.com/photos/1169754/pexels-photo-1169754.jpeg?cs=srgb&dl=pexels-philippedonn-1169754.jpg&fm=jpg&_gl=1*e6514p*_ga*MTU1ODU4NDg2My4xNzUwMTc3Nzgx*_ga_8JE65Q40S6*czE3NTAxNzc3ODEkbzEkZzEkdDE3NTAxNzc4NzIkajMwJGwwJGgw
+if [[ ! -f ~/.wallpaper/${WALLPAPER} ]]; then
+    curl -L -o ~/.wallpaper/${WALLPAPER} https://images.pexels.com/photos/1169754/pexels-photo-1169754.jpeg?cs=srgb&dl=pexels-philippedonn-1169754.jpg&fm=jpg&_gl=1*e6514p*_ga*MTU1ODU4NDg2My4xNzUwMTc3Nzgx*_ga_8JE65Q40S6*czE3NTAxNzc3ODEkbzEkZzEkdDE3NTAxNzc4NzIkajMwJGwwJGgw
 fi
-if [ -f ~/.wallpaper/${WALLPAPER} ]; then
-	gsettings set org.gnome.desktop.background picture-uri-dark "file://${HOME}/.wallpaper/${WALLPAPER}"
+if [[ -f ~/.wallpaper/${WALLPAPER} ]]; then
+    gsettings set org.gnome.desktop.background picture-uri-dark "file://${HOME}/.wallpaper/${WALLPAPER}"
 fi
 
 if [[ ! -e ${HOME}/.zim/zimfw.zsh ]]; then
