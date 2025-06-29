@@ -89,9 +89,12 @@ return {
 					end
 					return false
 				end
-				local function format()
+				local function format(async)
+					if async == nil then
+						async = true
+					end
 					vim.lsp.buf.format {
-						async = false,
+						async = async,
 						filter = function(client)
 							if is_null_ls_formatting_enabled() then
 								return client.name == 'null-ls'
@@ -105,7 +108,10 @@ return {
 
 				vim.api.nvim_create_autocmd('BufWritePre', {
 					group = augroup,
-					callback = format,
+					buffer = ev.buf,
+					callback = function ()
+						format(false)
+					end,
 				})
 			end,
 		})
