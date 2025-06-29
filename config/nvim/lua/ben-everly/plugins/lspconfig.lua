@@ -44,6 +44,7 @@ return {
 		vim.api.nvim_create_autocmd('LspAttach', {
 			group = augroup,
 			callback = function(ev)
+				vim.api.nvim_clear_autocmds({ group = augroup, buffer = ev.buf })
 				vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
 				for _, client in pairs(vim.lsp.get_clients({ bufnr = 0 })) do
@@ -109,7 +110,7 @@ return {
 				vim.api.nvim_create_autocmd('BufWritePre', {
 					group = augroup,
 					buffer = ev.buf,
-					callback = function ()
+					callback = function()
 						format(false)
 					end,
 				})
