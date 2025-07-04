@@ -2,20 +2,20 @@ local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
 config.color_scheme = 'Gruvbox Material (Gogh)'
-config.font = wezterm.font('JetBrainsMonoNerdFont')
-config.font_size = 12.0
+config.font = wezterm.font('OperatorMonoLig')
+config.font_size = 13.0
 
 config.adjust_window_size_when_changing_font_size = false
 
 config.window_background_opacity = 0.75
 
 config.inactive_pane_hsb = {
-    saturation = 0.7,
-    brightness = 0.5,
+    saturation = 0.8,
+    brightness = 0.7,
 }
 
 config.window_frame = {
-    font = wezterm.font('JetBrainsMonoNerdFont', { weight = 'Medium' }),
+    font = wezterm.font('JetBrainsMonoNerdFont'),
     font_size = 12.0,
     active_titlebar_bg = '#383838',
 }
@@ -96,7 +96,7 @@ config.keys = {
     { key = ')',          mods = 'SHIFT|CTRL',     action = act.ResetFontSize },
     { key = 'D',          mods = 'SHIFT|CTRL',     action = act.DetachDomain 'CurrentPaneDomain' },
     { key = 'K',          mods = 'SHIFT|CTRL',     action = act.ClearScrollback 'ScrollbackOnly' },
-    { key = 'l',          mods = 'CTRL',           action = act.ShowDebugOverlay },
+    { key = 'l',          mods = 'ALT|CTRL',       action = act.ShowDebugOverlay },
     { key = 'P',          mods = 'SHIFT|CTRL',     action = act.ActivateCommandPalette },
     { key = 'R',          mods = 'SHIFT|CTRL',     action = act.ReloadConfiguration },
     { key = 'U',          mods = 'SHIFT|CTRL',     action = act.CharSelect { copy_on_select = true, copy_to = 'ClipboardAndPrimarySelection' } },
