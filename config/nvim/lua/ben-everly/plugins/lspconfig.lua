@@ -62,47 +62,6 @@ return {
 				vim.keymap.set("n", "<leader>Wl", function()
 					vim.print(vim.lsp.buf.list_workspace_folders())
 				end, opts)
-
-				local function is_null_ls_formatting_enabled()
-					if vim.lsp.get_clients({ name = "null-ls" }) == nil then
-						return false
-					end
-					local null_ls = require("null-ls")
-					for _, formatter in
-						pairs(null_ls.get_source({
-							method = null_ls.methods.FORMATTING,
-						}))
-					do
-						if formatter.filetypes[vim.bo.filetype] then
-							return true
-						end
-					end
-					return false
-				end
-				local function format(async)
-					if async == nil then
-						async = true
-					end
-					vim.lsp.buf.format({
-						async = async,
-						filter = function(client)
-							if is_null_ls_formatting_enabled() then
-								return client.name == "null-ls"
-							end
-							return true
-						end,
-					})
-				end
-				vim.keymap.set("n", "<c-f>", format, opts)
-				vim.keymap.set("v", "<c-f>", format, opts)
-
-				vim.api.nvim_create_autocmd("BufWritePre", {
-					group = augroup,
-					buffer = ev.buf,
-					callback = function()
-						format(false)
-					end,
-				})
 			end,
 		})
 	end,
