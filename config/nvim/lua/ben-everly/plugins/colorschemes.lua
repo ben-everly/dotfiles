@@ -1,29 +1,29 @@
 return {
 	{
-		'folke/tokyonight.nvim',
+		"folke/tokyonight.nvim",
 		lazy = true,
 		config = function()
-			vim.cmd.colorscheme 'tokyonight-night'
-			--tokyonight
-			--tokyonight-night
-			--tokyonight-storm
-			--tokyonight-day
-			--tokyonight-moon
+			vim.cmd.colorscheme("tokyonight-night")
+			-- tokyonight
+			-- tokyonight-night
+			-- tokyonight-storm
+			-- tokyonight-day
+			-- tokyonight-moon
 		end,
 	},
 	{
-		'morhetz/gruvbox',
+		"morhetz/gruvbox",
 		lazy = true,
 		config = function()
-			vim.cmd.colorscheme 'gruvbox'
+			vim.cmd.colorscheme("gruvbox")
 		end,
 	},
 	{
-		'sainnhe/gruvbox-material',
+		"sainnhe/gruvbox-material",
 		lazy = false,
 		priority = 1000,
-		config = function ()
-			vim.cmd.colorscheme 'gruvbox-material'
+		config = function()
+			vim.cmd.colorscheme("gruvbox-material")
 		end,
 	},
 }

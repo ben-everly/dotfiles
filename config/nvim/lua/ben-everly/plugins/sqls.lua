@@ -1,3 +1,1 @@
-return {
-	'nanotee/sqls.nvim'
-}
+return { "nanotee/sqls.nvim" }
