@@ -1,6 +1,16 @@
 return {
 	"neovim/nvim-lspconfig",
-	config = function()
+	config = function() end,
+	init = function()
+		vim.lsp.config["cssls"] = {
+			settings = {
+				css = {
+					lint = {
+						unknownAtRules = "ignore",
+					},
+				},
+			},
+		}
 		vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
 		vim.lsp.handlers["textDocument/signatureHelp"] =
 			vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
