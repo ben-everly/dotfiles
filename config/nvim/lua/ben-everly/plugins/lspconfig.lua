@@ -17,20 +17,18 @@ return {
 
 		vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
 		vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
-		local signs = {
-			Error = "󰀩",
-			Warn = "",
-			Hint = "󱧡",
-			Info = "󰭺",
-		}
-		for type, icon in pairs(signs) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-		end
 		vim.diagnostic.config({
 			virtual_text = { spacing = 2, prefix = "" },
 			severity_sort = true,
 			float = { source = true, float = "if_many", border = "single" },
+			signs = {
+				text = {
+					[vim.diagnostic.severity.ERROR] = "󰀩",
+					[vim.diagnostic.severity.WARN] = "",
+					[vim.diagnostic.severity.INFO] = "󰭺",
+					[vim.diagnostic.severity.HINT] = "󱧡",
+				},
+			},
 		})
 		local augroup = vim.api.nvim_create_augroup("UserLspConfig", {})
 		vim.api.nvim_create_autocmd("LspAttach", {
