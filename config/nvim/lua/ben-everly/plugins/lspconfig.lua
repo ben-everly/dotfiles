@@ -11,9 +11,6 @@ return {
 				},
 			},
 		}
-		vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
-		vim.lsp.handlers["textDocument/signatureHelp"] =
-			vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
 
 		vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
 		vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
