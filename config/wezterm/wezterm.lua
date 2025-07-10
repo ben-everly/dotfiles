@@ -90,7 +90,7 @@ config.keys = {
 		mods = "SHIFT|CTRL",
 		action = act.RotatePanes("CounterClockwise"),
 	},
-	{ key = "Z", mods = "SHIFT|CTRL", action = act.TogglePaneZoomState },
+	{ key = "M", mods = "SHIFT|CTRL", action = act.TogglePaneZoomState },
 
 	{ key = "C", mods = "SHIFT|CTRL", action = act.CopyTo("Clipboard") },
 	{ key = "V", mods = "SHIFT|CTRL", action = act.PasteFrom("Clipboard") },
