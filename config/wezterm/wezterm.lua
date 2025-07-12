@@ -34,6 +34,72 @@ config.window_frame = {
 }
 config.adjust_window_size_when_changing_font_size = false
 
+config.default_workspace = "~"
+local resurrect = wezterm.plugin.require("https://github.com/MLFlexer/resurrect.wezterm")
+resurrect.state_manager.periodic_save({
+	interval_seconds = 15 * 60,
+	save_workspaces = true,
+	save_windows = true,
+	save_tabs = true,
+})
+
+wezterm.on("resurrect.error", function(err)
+	wezterm.log_error("ERROR!")
+	wezterm.gui.gui_windows()[1]:toast_notification("resurrect", err, nil, 3000)
+end)
+
+local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
+
+workspace_switcher.workspace_formatter = function(label)
+	return wezterm.format({
+		{ Attribute = { Italic = true } },
+		{ Foreground = { Color = config.colors.ansi[3] } },
+		{ Background = { Color = config.colors.background } },
+		{ Text = "󱂬 : " .. label },
+	})
+end
+
+wezterm.on("smart_workspace_switcher.workspace_switcher.created", function(window, path, label)
+	window:gui_window():set_right_status(wezterm.format({
+		{ Attribute = { Intensity = "Bold" } },
+		{ Foreground = { Color = config.colors.ansi[5] } },
+		{ Text = basename(path) .. "  " },
+	}))
+	local workspace_state = resurrect.workspace_state
+
+	workspace_state.restore_workspace(resurrect.state_manager.load_state(label, "workspace"), {
+		window = window,
+		relative = true,
+		restore_text = true,
+
+		resize_window = false,
+		on_pane_restore = resurrect.tab_state.default_on_pane_restore,
+	})
+end)
+
+wezterm.on("smart_workspace_switcher.workspace_switcher.chosen", function(window, path, label)
+	wezterm.log_info(window)
+	window:gui_window():set_right_status(wezterm.format({
+		{ Attribute = { Intensity = "Bold" } },
+		{ Foreground = { Color = config.colors.ansi[5] } },
+		{ Text = basename(path) .. "  " },
+	}))
+end)
+
+wezterm.on("smart_workspace_switcher.workspace_switcher.selected", function(window, path, label)
+	wezterm.log_info(window)
+	local workspace_state = resurrect.workspace_state
+	resurrect.state_manager.save_state(workspace_state.get_workspace_state())
+	resurrect.state_manager.write_current_state(label, "workspace")
+end)
+
+wezterm.on("smart_workspace_switcher.workspace_switcher.start", function(window, _)
+	wezterm.log_info(window)
+end)
+wezterm.on("smart_workspace_switcher.workspace_switcher.canceled", function(window, _)
+	wezterm.log_info(window)
+end)
+
 config.disable_default_key_bindings = true
 local act = wezterm.action
 config.keys = {
@@ -143,9 +209,7 @@ config.keys = {
 	{
 		key = "S",
 		mods = "SHIFT|CTRL",
-		action = act.ShowLauncherArgs({
-			flags = "FUZZY|WORKSPACES",
-		}),
+		action = workspace_switcher.switch_workspace(),
 	},
 	{
 		key = "S", -- Or any other key you prefer
