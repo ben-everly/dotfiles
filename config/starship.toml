@@ -54,11 +54,11 @@ format = "[$symbol$version ]($style)"
 symbol = "󰏗 "
 
 [aws]
-format = '[$symbol$profile\($region\)(\[$duration\]) ]($style)'	
+format = '[$symbol$profile\($region\)(\[$duration\]) ]($style)'
 symbol = " "
 
 [gcloud]
-format = '[$symbol$account(@$domain)(\($region\)) ]($style)'	
+format = '[$symbol$account(@$domain)(\($region\)) ]($style)'
 symbol = " "
 
 [cmd_duration]
