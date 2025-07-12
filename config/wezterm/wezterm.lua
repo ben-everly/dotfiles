@@ -113,7 +113,6 @@ config.keys = {
 	},
 	{ key = "l", mods = "ALT|CTRL", action = act.ShowDebugOverlay },
 	{ key = "P", mods = "SHIFT|CTRL", action = act.ActivateCommandPalette },
-	{ key = "R", mods = "SHIFT|CTRL", action = act.ReloadConfiguration },
 	{
 		key = "U",
 		mods = "SHIFT|CTRL",
@@ -132,6 +131,25 @@ config.keys = {
 			action = wezterm.action_callback(function(window, pane, line)
 				if line and #line > 0 then
 					window:active_tab():set_title(line)
+				end
+			end),
+		}),
+	},
+	{
+		key = "S",
+		mods = "SHIFT|CTRL",
+		action = act.ShowLauncherArgs({
+			flags = "FUZZY|WORKSPACES",
+		}),
+	},
+	{
+		key = "S", -- Or any other key you prefer
+		mods = "SHIFT|CTRL|ALT",
+		action = wezterm.action.PromptInputLine({
+			description = "Enter new workspace name:",
+			action = wezterm.action_callback(function(window, pane, line)
+				if line then
+					wezterm.mux.rename_workspace(wezterm.mux.get_active_workspace(), line)
 				end
 			end),
 		}),
