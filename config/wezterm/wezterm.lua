@@ -1,33 +1,38 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
-config.color_scheme = "Gruvbox Material (Gogh)"
-config.font = wezterm.font("OperatorMonoLig")
-config.font_size = 13.0
+config.colors = wezterm.color.get_builtin_schemes()["Gruvbox Material (Gogh)"]
+config.colors.tab_bar = {
+	active_tab = { bg_color = config.colors.background, fg_color = config.colors.foreground },
+	inactive_tab = { bg_color = "#383838", fg_color = "#928374" },
+	inactive_tab_hover = { bg_color = "#383838", fg_color = config.colors.foreground },
+	new_tab = { bg_color = "#383838", fg_color = "#928374" },
+	new_tab_hover = { bg_color = "#383838", fg_color = config.colors.foreground },
+}
 
-config.adjust_window_size_when_changing_font_size = false
+config.window_frame = {
+	inactive_titlebar_bg = config.colors.background,
+	active_titlebar_bg = config.colors.background,
+	inactive_titlebar_fg = config.colors.foreground,
+	active_titlebar_fg = config.colors.foreground,
+}
+config.command_palette_bg_color = config.colors.background
+config.command_palette_fg_color = config.colors.foreground
+config.char_select_bg_color = config.colors.background
+config.char_select_fg_color = config.colors.tab_bar.active_tab.fg_color
 
 config.window_background_opacity = 0.75
-
+config.text_background_opacity = 0.6
 config.inactive_pane_hsb = { saturation = 0.8, brightness = 0.7 }
 
+config.font = wezterm.font("OperatorMonoLig")
+config.font_size = 13.0
 config.window_frame = {
 	font = wezterm.font("JetBrainsMonoNerdFont"),
 	font_size = 12.0,
 	active_titlebar_bg = "#383838",
 }
-
-config.text_background_opacity = 0.6
-
-config.colors = {
-	tab_bar = {
-		active_tab = { bg_color = "#252525", fg_color = "#ebdbb2" },
-		inactive_tab = { bg_color = "#383838", fg_color = "#928374" },
-		inactive_tab_hover = { bg_color = "#383838", fg_color = "#d5c4a1" },
-		new_tab = { bg_color = "#383838", fg_color = "#928374" },
-		new_tab_hover = { bg_color = "#383838", fg_color = "#d5c4a1" },
-	},
-}
+config.adjust_window_size_when_changing_font_size = false
 
 config.disable_default_key_bindings = true
 local act = wezterm.action
