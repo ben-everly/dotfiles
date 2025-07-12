@@ -111,11 +111,6 @@ config.keys = {
 		mods = "SHIFT|CTRL",
 		action = act.DetachDomain("CurrentPaneDomain"),
 	},
-	{
-		key = "K",
-		mods = "SHIFT|CTRL",
-		action = act.ClearScrollback("ScrollbackOnly"),
-	},
 	{ key = "l", mods = "ALT|CTRL", action = act.ShowDebugOverlay },
 	{ key = "P", mods = "SHIFT|CTRL", action = act.ActivateCommandPalette },
 	{ key = "R", mods = "SHIFT|CTRL", action = act.ReloadConfiguration },
