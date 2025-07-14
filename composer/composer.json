@@ -1,13 +1,12 @@
 {
     "require": {
-        "laravel/sail": "^1.18",
+        "laravel/sail": "*",
         "phing/phing": "*",
         "phpdocumentor/phpdocumentor": "*",
-        "phploc/phploc": "*",
         "phpunit/phpunit": "*",
-        "psy/psysh": "@stable",
-        "sebastian/phpcpd": "*",
-        "symfony/flex": "*"
+        "psy/psysh": "*",
+        "symfony/flex": "*",
+        "laravel/installer": "*"
     },
     "config": {
         "allow-plugins": {
