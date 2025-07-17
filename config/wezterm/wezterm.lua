@@ -37,10 +37,14 @@ config.adjust_window_size_when_changing_font_size = false
 config.default_workspace = "~"
 local resurrect = wezterm.plugin.require("https://github.com/MLFlexer/resurrect.wezterm")
 resurrect.state_manager.periodic_save({
-	interval_seconds = 15 * 60,
+	interval_seconds = 300,
 	save_workspaces = true,
 	save_windows = true,
 	save_tabs = true,
+})
+
+resurrect.state_manager.set_encryption({
+	enable = false,
 })
 
 wezterm.on("resurrect.error", function(err)
@@ -57,6 +61,10 @@ workspace_switcher.workspace_formatter = function(label)
 		{ Background = { Color = config.colors.background } },
 		{ Text = "󱂬 : " .. label },
 	})
+end
+
+local function basename(s)
+	return string.gsub(s, "(.*[/\\])(.*)", "%2")
 end
 
 wezterm.on("smart_workspace_switcher.workspace_switcher.created", function(window, path, label)
@@ -99,6 +107,8 @@ end)
 wezterm.on("smart_workspace_switcher.workspace_switcher.canceled", function(window, _)
 	wezterm.log_info(window)
 end)
+
+wezterm.on("gui-startup", resurrect.state_manager.resurrect_on_gui_startup)
 
 config.disable_default_key_bindings = true
 local act = wezterm.action
