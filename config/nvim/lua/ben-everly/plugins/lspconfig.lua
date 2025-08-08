@@ -28,13 +28,16 @@ return {
 			},
 		})
 		local augroup = vim.api.nvim_create_augroup("UserLspConfig", {})
-		vim.api.nvim_create_autocmd("LspAttach", {
+		vim.api.nvim_create_autocmd({ "LspAttach", "LspDetach" }, {
 			group = augroup,
 			callback = function(ev)
 				vim.api.nvim_clear_autocmds({ group = augroup, buffer = ev.buf })
 				vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
 				for _, client in pairs(vim.lsp.get_clients({ bufnr = ev.buf })) do
+					if ev.event == "LspDetach" and ev.data.client_id == client.id then
+						goto continue
+					end
 					if client.server_capabilities.documentHighlightProvider then
 						vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 							group = augroup,
@@ -51,6 +54,7 @@ return {
 							end,
 						})
 					end
+					::continue::
 				end
 
 				local opts = { buffer = ev.buf }
