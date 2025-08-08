@@ -6,7 +6,7 @@
         "phpunit/phpunit": "*",
         "psy/psysh": "*",
         "symfony/flex": "*",
-        "laravel/installer": "*"
+        "laravel/installer": "^5.16"
     },
     "config": {
         "allow-plugins": {
