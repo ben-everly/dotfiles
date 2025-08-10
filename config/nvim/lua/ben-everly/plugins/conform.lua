@@ -19,6 +19,7 @@ return {
 			lua = { "stylua" },
 			php = { "pint" },
 			blade = { "blade_formatter" },
+			markdown = { "prettierd", "markdownlint", "injected" },
 		},
 		default_format_opts = {
 			lsp_format = "fallback",
