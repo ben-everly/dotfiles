@@ -18,7 +18,7 @@ return {
 		formatters_by_ft = {
 			lua = { "stylua" },
 			php = { "pint" },
-			blade = { "blade_formatter" },
+			blade = { "blade-formatter" },
 			markdown = { "prettierd", "markdownlint", "injected" },
 		},
 		default_format_opts = {
