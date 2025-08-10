@@ -35,17 +35,16 @@ return {
 				vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
 				for _, client in pairs(vim.lsp.get_clients({ bufnr = ev.buf })) do
-					if ev.event == "LspDetach" and ev.data.client_id == client.id then
-						goto continue
-					end
 					if client.server_capabilities.documentHighlightProvider then
-						vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-							group = augroup,
-							buffer = ev.buf,
-							callback = function()
-								vim.lsp.buf.document_highlight()
-							end,
-						})
+						if not ev.event == "LspDetach" or not ev.data.client_id == client.id then
+							vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+								group = augroup,
+								buffer = ev.buf,
+								callback = function()
+									vim.lsp.buf.document_highlight()
+								end,
+							})
+						end
 						vim.api.nvim_create_autocmd("CursorMoved", {
 							group = augroup,
 							buffer = ev.buf,
@@ -54,7 +53,6 @@ return {
 							end,
 						})
 					end
-					::continue::
 				end
 
 				local opts = { buffer = ev.buf }
