@@ -8,6 +8,7 @@ return {
 				"blade-formatter",
 				"markdownlint",
 				"phpstan",
+				"phpmd",
 				"pint",
 				"prettierd",
 				"sql-formatter",
