@@ -5,13 +5,14 @@ return {
 	config = function()
 		require("mason-null-ls").setup({
 			ensure_installed = {
+				"blade-formatter",
 				"markdownlint",
 				"phpstan",
-				"blade-formatter",
 				"pint",
 				"prettierd",
 				"sql-formatter",
 				"stylua",
+				"taplo",
 			},
 			automatic_installation = false,
 			handlers = {},
