@@ -80,3 +80,6 @@ bindkey '^k' history-substring-search-up
 bindkey '^j' history-substring-search-down
 
 precmd() { (retval=$?;tput cup "$LINES";exit $retval) }
+
+# opencode
+export PATH=/home/beneverly/.opencode/bin:$PATH
