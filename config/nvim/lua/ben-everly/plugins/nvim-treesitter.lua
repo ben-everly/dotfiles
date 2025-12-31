@@ -105,6 +105,7 @@ return {
 		})
 		vim.opt.foldmethod = "expr"
 		vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
-		vim.opt.foldenable = false
+		vim.opt.foldlevel = 99
+		vim.opt.foldlevelstart = 99
 	end,
 }
