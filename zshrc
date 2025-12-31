@@ -30,6 +30,7 @@ fi
 
 # Initialize modules.
 source ${ZIM_HOME}/init.zsh
+unalias gh 2>/dev/null
 
 alias ls='eza --group-directories-first --icons'
 
