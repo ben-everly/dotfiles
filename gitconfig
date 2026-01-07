@@ -1,6 +1,7 @@
 [user]
 	name = Ben Everly
 	email = ben.everly@oberd.com
+	signingkey = /home/beneverly/.ssh/id_ed25519.pub
 [github]
 	user = ben-everly
 [alias]
@@ -66,3 +67,7 @@
 	insteadOf = "gist:"
 [init]
 	defaultBranch = main
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
