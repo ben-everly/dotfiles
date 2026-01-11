@@ -11,6 +11,7 @@ return {
 				"eslint",
 				"html",
 				"intelephense",
+				"phpactor",
 				"jsonls",
 				"laravel_ls",
 				"lemminx",
