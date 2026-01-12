@@ -2,16 +2,6 @@ return {
 	"neovim/nvim-lspconfig",
 	config = function() end,
 	init = function()
-		vim.lsp.config["cssls"] = {
-			settings = {
-				css = {
-					lint = {
-						unknownAtRules = "ignore",
-					},
-				},
-			},
-		}
-
 		vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
 		vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
 		vim.diagnostic.config({
