@@ -17,32 +17,26 @@ return {
 				},
 			},
 		})
+
 		local augroup = vim.api.nvim_create_augroup("UserLspConfig", {})
-		vim.api.nvim_create_autocmd({ "LspAttach", "LspDetach" }, {
+
+		vim.api.nvim_create_autocmd("LspAttach", {
 			group = augroup,
 			callback = function(ev)
-				vim.api.nvim_clear_autocmds({ group = augroup, buffer = ev.buf })
+				local client = vim.lsp.get_client_by_id(ev.data.client_id)
 				vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-				for _, client in pairs(vim.lsp.get_clients({ bufnr = ev.buf })) do
-					if client.server_capabilities.documentHighlightProvider then
-						if not ev.event == "LspDetach" or not ev.data.client_id == client.id then
-							vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-								group = augroup,
-								buffer = ev.buf,
-								callback = function()
-									vim.lsp.buf.document_highlight()
-								end,
-							})
-						end
-						vim.api.nvim_create_autocmd("CursorMoved", {
-							group = augroup,
-							buffer = ev.buf,
-							callback = function()
-								vim.lsp.buf.clear_references()
-							end,
-						})
-					end
+				if client and client.server_capabilities.documentHighlightProvider then
+					vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+						group = augroup,
+						buffer = ev.buf,
+						callback = vim.lsp.buf.document_highlight,
+					})
+					vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+						group = augroup,
+						buffer = ev.buf,
+						callback = vim.lsp.buf.clear_references,
+					})
 				end
 
 				local opts = { buffer = ev.buf }
@@ -55,6 +49,14 @@ return {
 				vim.keymap.set("n", "<leader>Wl", function()
 					vim.print(vim.lsp.buf.list_workspace_folders())
 				end, opts)
+			end,
+		})
+
+		vim.api.nvim_create_autocmd("LspDetach", {
+			group = augroup,
+			callback = function(ev)
+				vim.lsp.buf.clear_references()
+				vim.api.nvim_clear_autocmds({ group = augroup, buffer = ev.buf })
 			end,
 		})
 	end,
