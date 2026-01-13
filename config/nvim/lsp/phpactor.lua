@@ -16,6 +16,9 @@ return {
 
 		-- Keep Refactoring features enabled (Phpactor's strength)
 		["code_transform.enabled"] = true,
+
+		-- Stop prompting for .phpactor.json
+		["language_server_configuration.auto_config"] = false,
 	},
 	-- Use client-side filtering to ensure Intelephense wins on overlaps
 	on_attach = function(client, bufnr)
