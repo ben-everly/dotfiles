@@ -7,6 +7,16 @@ return {
 				parameterNames = { enabled = true },
 				variableTypes = { enabled = true },
 			},
+			codeLens = {
+				usages = { enable = true },
+				overrides = { enable = true },
+				parent = { enable = true },
+				references = { enable = true },
+				implementations = { enable = true },
+			},
+			client = {
+				codeLensProvider = "pest",
+			},
 		},
 	},
 	on_attach = function(client, bufnr)
@@ -17,6 +27,15 @@ return {
 
 		if client.server_capabilities.inlayHintProvider then
 			vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+		end
+
+		if client.server_capabilities.codeLensProvider then
+			vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+				buffer = bufnr,
+				callback = function()
+					vim.lsp.codelens.refresh({ bufnr = bufnr })
+				end,
+			})
 		end
 	end,
 }
