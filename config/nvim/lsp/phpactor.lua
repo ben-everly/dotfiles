@@ -19,6 +19,18 @@ return {
 
 		-- Stop prompting for .phpactor.json
 		["language_server_configuration.auto_config"] = false,
+
+		-- Indexer Tuning
+		["indexer.exclude_patterns"] = {
+			"/vendor/**/Tests/**/*",
+			"/vendor/**/tests/**/*",
+			"/vendor/composer/**/*",
+			"**/storage/**/*",
+			"**/node_modules/**/*",
+		},
+
+		-- Code Transformation
+		["code_transform.refactor.generate_mutator.fluent"] = true,
 	},
 	-- Use client-side filtering to ensure Intelephense wins on overlaps
 	on_attach = function(client, bufnr)
