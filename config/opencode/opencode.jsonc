@@ -92,54 +92,31 @@
     },
     "formatter": {
         "markdownlint": {
-            "command": [
-                "markdownlint",
-                "-qf",
-                "$FILE"
-            ],
-            "extensions": [
-                ".md",
-                ".markdown"
-            ],
+            "command": ["markdownlint", "-qf", "$FILE"],
+            "extensions": [".md", ".markdown"],
         },
         "pint": {
-            "command": [
-                "pint",
-                "-q",
-                "$FILE"
-            ],
-            "extensions": [
-                ".php"
-            ],
+            "command": ["pint", "-q", "$FILE"],
+            "extensions": [".php"],
         },
         "blade_formatter": {
-            "command": [
-                "blade-formatter",
-                "-w",
-                "$FILE"
-            ],
-            "extensions": [
-                ".blade.php"
-            ],
+            "command": ["blade-formatter", "-w", "$FILE"],
+            "extensions": [".blade.php"],
         },
         "stylua": {
-            "command": [
-                "stylua",
-                "$FILE"
-            ],
-            "extensions": [
-                ".lua"
-            ],
+            "command": ["stylua", "$FILE"],
+            "extensions": [".lua"],
+        },
+    },
+    "permission": {
+        "bash": {
+            "git push": "ask",
         },
     },
     "mcp": {
         "jira": {
             "type": "local",
-            "command": [
-                "npx",
-                "-y",
-                "@vjain419/mcp-atlassian"
-            ],
+            "command": ["npx", "-y", "@vjain419/mcp-atlassian"],
             "environment": {
                 "JIRA_URL": "https://universalresearchsolutions.atlassian.net",
                 "JIRA_USERNAME": "ben.everly@oberd.com",
