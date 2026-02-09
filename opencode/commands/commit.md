@@ -8,7 +8,7 @@ Commit the staged changes. I have prepared everything for you, all you need to d
 !`git diff --staged --quiet && git add . ; git diff --staged --quiet && echo "NO_CHANGES" || git diff --staged`
 ```
 
-If there are changes, generate a high-quality commit message based on the diff above and this extra context:
+If there are changes, generate a high-quality conventional commit message. Use the `conventional-commits` skill to ensure the message follows our specific standards. The message should be based on the diff above and this extra context:
 
 > $ARGUMENTS
 

@@ -1,6 +1,6 @@
 ---
 name: conventional-commits
-description: A guide for writing commit messages following the Conventional Commits specification. Use this skill when you need to create a commit message.
+description: A guide for writing commit messages following the Conventional Commits specification. Use this skill any time you need to create a commit message.
 ---
 
 Commit messages should follow **Conventional Commits** structure:
