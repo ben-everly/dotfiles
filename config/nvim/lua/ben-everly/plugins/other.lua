@@ -39,6 +39,45 @@ return {
 					context = "feature test",
 				},
 			},
+			hooks = {
+				filePickerBeforeShow = function(files)
+					local status, _ = pcall(require, "telescope")
+					if not status then
+						return files
+					end
+
+					local pickers = require("telescope.pickers")
+					local finders = require("telescope.finders")
+					local conf = require("telescope.config").values
+
+					pickers
+						.new({}, {
+							prompt_title = "Other Files",
+							finder = finders.new_table({
+								results = files,
+								entry_maker = function(entry)
+									local relative_path = vim.fn.fnamemodify(entry.filename, ":.")
+									local max_len = 50
+									if #relative_path > max_len then
+										relative_path = "..." .. string.sub(relative_path, -max_len + 3)
+									end
+
+									return {
+										value = entry,
+										display = string.format("%-15s | %s", entry.context, relative_path),
+										ordinal = entry.filename,
+										path = entry.filename,
+									}
+								end,
+							}),
+							sorter = conf.generic_sorter({}),
+							previewer = conf.file_previewer({}),
+						})
+						:find()
+
+					return false
+				end,
+			},
 		})
 		vim.keymap.set("n", "go", "<cmd>Other<CR>", { silent = true, desc = "Go to other file" })
 	end,
