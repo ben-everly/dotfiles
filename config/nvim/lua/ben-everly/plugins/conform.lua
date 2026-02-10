@@ -20,6 +20,8 @@ return {
 			php = { "pint" },
 			blade = { "blade-formatter" },
 			markdown = { "prettierd", "markdownlint", "injected" },
+			sql = { "sql-formatter" },
+			toml = { "taplo" },
 		},
 		default_format_opts = {
 			lsp_format = "fallback",
