@@ -49,7 +49,8 @@ return {
 				vim.keymap.set("n", "<leader>Wl", function()
 					vim.print(vim.lsp.buf.list_workspace_folders())
 				end, opts)
-				vim.keymap.set("n", "<leader>cl", vim.lsp.codelens.run, opts)
+				vim.keymap.set("n", "<leader>cl", vim.lsp.codelens.refresh, opts)
+				vim.keymap.set("n", "<leader>cx", vim.lsp.codelens.run, opts)
 			end,
 		})
 
