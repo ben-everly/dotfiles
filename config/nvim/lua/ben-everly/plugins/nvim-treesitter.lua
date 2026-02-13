@@ -22,6 +22,7 @@ return {
 				"git_config",
 				"git_rebase",
 				"go",
+				"graphql",
 				"vue",
 				"xml",
 				"regex",
