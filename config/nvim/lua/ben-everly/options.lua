@@ -35,3 +35,12 @@ vim.api.nvim_create_autocmd("FocusLost", {
 	group = autowrite_group,
 	command = "silent! wa",
 })
+
+local octo_no_swap_group = vim.api.nvim_create_augroup("octo_no_swap", { clear = true })
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPre" }, {
+	pattern = { "octo://*", "*/octo/null" },
+	group = octo_no_swap_group,
+	callback = function()
+		vim.opt_local.swapfile = false
+	end,
+})
