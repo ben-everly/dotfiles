@@ -39,6 +39,7 @@ return {
 				"xml",
 				"yuck",
 				"typescript",
+				"markdown",
 				"markdown_inline",
 			},
 			sync_install = true,
