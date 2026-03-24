@@ -3,6 +3,22 @@ return {
 	filetypes = { "php" },
 	settings = {
 		intelephense = {
+			files = {
+				maxSize = 500000,
+				exclude = {
+					"**/.git/**",
+					"**/.svn/**",
+					"**/.hg/**",
+					"**/CVS/**",
+					"**/.DS_Store/**",
+					"**/node_modules/**",
+					"**/bower_components/**",
+					"**/.history/**",
+					"**/vendor/**/{Tests,tests}/**",
+					"**/vendor/**/vendor/**",
+					"**/storage/**",
+				},
+			},
 			inlayHints = {
 				parameterNames = { enabled = true },
 				variableTypes = { enabled = true },
