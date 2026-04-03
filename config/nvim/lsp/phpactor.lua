@@ -1,26 +1,14 @@
 return {
-	cmd = { "phpactor", "language-server" },
-	filetypes = { "php" },
 	init_options = {
-		-- Disable Diagnostics
+		-- disable features that are better handled by intelephense
 		["language_server.diagnostics_on_update"] = false,
 		["language_server.diagnostics_on_open"] = false,
 		["language_server.diagnostics_on_save"] = false,
 		["language_server.diagnostic_outsource"] = false,
-
-		-- Disable Completion (Intelephense handles this)
 		["completion_worse.enabled"] = false,
-
-		-- Disable Hover (Avoid double popups)
 		["language_server.hover_label"] = false,
-
-		-- Keep Refactoring features enabled (Phpactor's strength)
 		["code_transform.enabled"] = true,
-
-		-- Stop prompting for .phpactor.json
 		["language_server_configuration.auto_config"] = false,
-
-		-- Indexer Tuning
 		["indexer.exclude_patterns"] = {
 			"/vendor/**/Tests/**/*",
 			"/vendor/**/tests/**/*",
@@ -28,13 +16,9 @@ return {
 			"**/storage/**/*",
 			"**/node_modules/**/*",
 		},
-
-		-- Code Transformation
 		["code_transform.refactor.generate_mutator.fluent"] = true,
 	},
-	-- Use client-side filtering to ensure Intelephense wins on overlaps
-	on_attach = function(client, bufnr)
-		-- Remove capabilities that Intelephense handles better
+	on_attach = function(client, _)
 		client.server_capabilities.completionProvider = false
 		client.server_capabilities.hoverProvider = false
 		client.server_capabilities.definitionProvider = false
