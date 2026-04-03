@@ -9,6 +9,7 @@ return {
 	opts = function()
 		local cmp = require("cmp")
 		return {
+			sources = {},
 			mapping = cmp.mapping.preset.insert({
 				["<C-k>"] = cmp.mapping.scroll_docs(-4),
 				["<C-j>"] = cmp.mapping.scroll_docs(4),
