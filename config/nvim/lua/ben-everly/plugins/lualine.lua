@@ -25,17 +25,17 @@ return {
 			["ic"] = { colors["green"] },
 			["n"] = { colors["blue"] },
 			["no"] = { colors["blue"] },
-			["r"] = { colors["blue"] },
-			["r?"] = { colors["blue"] },
-			["rm"] = { colors["blue"] },
-			["R"] = { colors["magenta"] },
-			["Rv"] = { colors["magenta"] },
-			["s"] = { colors["purple"] },
-			["S"] = { colors["purple"] },
-			[""] = { colors["purple"] },
-			["v"] = { colors["purple"] },
-			["V"] = { colors["purple"] },
-			[""] = { colors["purple"] },
+			["r"] = { colors["red"] },
+			["r?"] = { colors["red"] },
+			["rm"] = { colors["red"] },
+			["R"] = { colors["cyan"] },
+			["Rv"] = { colors["cyan"] },
+			["s"] = { colors["magenta"] },
+			["S"] = { colors["magenta"] },
+			[""] = { colors["magenta"] },
+			["v"] = { colors["magenta"] },
+			["V"] = { colors["magenta"] },
+			[""] = { colors["magenta"] },
 		}
 
 		local function mode_color()
@@ -64,17 +64,17 @@ return {
 				lualine_c = {
 					{
 						function()
-							return "▊"
+							return "▊▊"
 						end,
 						color = function()
 							return { fg = mode_color() }
 						end,
-						padding = { left = 0, right = 0 },
+						padding = { left = 0, right = 1 },
 					},
 					{
 						"filetype",
 						icon_only = true,
-						padding = { left = 1, right = 0 },
+						padding = { left = 0, right = 0 },
 					},
 					{ "filename", path = 1, padding = { left = 0, right = 1 } },
 					{ "progress" },
@@ -86,7 +86,6 @@ return {
 					},
 				},
 				lualine_x = {
-					{ "branch", icon = "" },
 					{
 						"diff",
 						symbols = {
@@ -95,11 +94,15 @@ return {
 							removed = " ",
 						},
 					},
+					{
+						"branch",
+						icon = "",
+					},
 					{ "selectioncount" },
 					{ "searchcount" },
 					{
 						function()
-							return "▊"
+							return "▊▊"
 						end,
 						color = function()
 							return { fg = mode_color() }
