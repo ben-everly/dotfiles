@@ -7,7 +7,6 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.lazyredraw = true
 vim.opt.autoread = true
-vim.opt.hidden = true
 vim.opt.startofline = false
 vim.opt.cursorline = true
 vim.opt.ignorecase = true
