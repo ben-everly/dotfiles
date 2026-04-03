@@ -3,11 +3,13 @@ return {
 	build = ":TSUpdate",
 	config = function()
 		require("nvim-treesitter").setup()
-		require("nvim-treesitter").install({
+
+		local ensure_installed = {
 			"html",
 			"php_only",
 			"php",
 			"bash",
+			"blade",
 			"css",
 			"javascript",
 			"lua",
@@ -37,6 +39,25 @@ return {
 			"typescript",
 			"markdown",
 			"markdown_inline",
+		}
+		local already_installed = require("nvim-treesitter.config").get_installed()
+		local to_install = vim.iter(ensure_installed)
+			:filter(function(parser)
+				return not vim.tbl_contains(already_installed, parser)
+			end)
+			:totable()
+
+		require("nvim-treesitter").install(to_install):await(function()
+			vim.schedule(function()
+				vim.cmd.doautoall("FileType")
+			end)
+		end)
+
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = "*",
+			callback = function()
+				pcall(vim.treesitter.start)
+			end,
 		})
 
 		vim.opt.foldmethod = "expr"
