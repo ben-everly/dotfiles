@@ -28,6 +28,8 @@ vim.opt.tabstop = 4
 vim.opt.clipboard = "unnamed,unnamedplus"
 vim.opt.autowriteall = true
 
+vim.cmd.colorscheme("gruvbox-material")
+
 local autowrite_group = vim.api.nvim_create_augroup("autowrite", { clear = true })
 vim.api.nvim_create_autocmd("FocusLost", {
 	pattern = "*",
