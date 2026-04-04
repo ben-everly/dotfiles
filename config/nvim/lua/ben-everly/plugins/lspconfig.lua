@@ -41,7 +41,7 @@ return {
 
 				local opts = { buffer = ev.buf }
 				vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-				vim.keymap.set({ "n", "v", "i" }, "<c-k>", function()
+				vim.keymap.set({ "n", "v", "i" }, "<c-s>", function()
 					vim.lsp.buf.signature_help({ border = "rounded" })
 				end, opts)
 				vim.keymap.set("n", "<leader>Wa", vim.lsp.buf.add_workspace_folder, opts)
