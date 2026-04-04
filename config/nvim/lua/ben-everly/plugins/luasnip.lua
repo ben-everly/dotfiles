@@ -1,6 +1,6 @@
 return {
 	"L3MON4D3/LuaSnip",
-	version = "v1.*",
+	version = "*",
 	config = function()
 		vim.keymap.set("n", "gs", require("luasnip.loaders").edit_snippet_files)
 		local ls = require("luasnip")
