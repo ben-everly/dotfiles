@@ -14,24 +14,5 @@ return {
 		vim.keymap.set("n", "<leader>dl", dap.step_into)
 		vim.keymap.set("n", "<leader>dh", dap.step_out)
 		vim.keymap.set("n", "<leader>dt", dap.repl.open)
-
-		dap.adapters.php = {
-			type = "executable",
-			command = "node",
-			args = {
-				"/home/beneverly/.local/lib/php-debug-client/out/phpDebug.js",
-			},
-		}
-
-		dap.configurations.php = {
-			{
-				type = "php",
-				request = "launch",
-				name = "Listen for Xdebug",
-				port = 9003,
-				log = true,
-				pathMappings = { ["/var/www/html/"] = "${workspaceFolder}" },
-			},
-		}
 	end,
 }
