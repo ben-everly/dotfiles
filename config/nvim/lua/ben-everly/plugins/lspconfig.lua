@@ -7,7 +7,7 @@ return {
 		vim.diagnostic.config({
 			virtual_text = { spacing = 2, prefix = "" },
 			severity_sort = true,
-			float = { source = true, float = "if_many", border = "single" },
+			float = { source = true, border = "single" },
 			signs = {
 				text = {
 					[vim.diagnostic.severity.ERROR] = "󰀩",
