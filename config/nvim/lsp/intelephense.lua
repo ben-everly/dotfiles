@@ -37,9 +37,5 @@ return {
 		-- disable features that are better handled by phpactor
 		client.server_capabilities.renameProvider = false
 		client.server_capabilities.codeActionProvider = false
-
-		if client.server_capabilities.inlayHintProvider then
-			vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-		end
 	end,
 }
