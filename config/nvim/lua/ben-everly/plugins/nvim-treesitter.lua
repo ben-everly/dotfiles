@@ -39,6 +39,7 @@ return {
 			"typescript",
 			"markdown",
 			"markdown_inline",
+			"latex",
 		}
 		local already_installed = require("nvim-treesitter.config").get_installed()
 		local to_install = vim.iter(ensure_installed)
