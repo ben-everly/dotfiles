@@ -1,6 +1,11 @@
 return {
 	"neovim/nvim-lspconfig",
-	config = function() end,
+	dependencies = { "saghen/blink.cmp" },
+	config = function()
+		vim.lsp.config("*", {
+			capabilities = require("blink.cmp").get_lsp_capabilities(),
+		})
+	end,
 	init = function()
 		vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
 		vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)

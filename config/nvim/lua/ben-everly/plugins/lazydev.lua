@@ -6,14 +6,20 @@ return {
 		opts = { library = { "~/.dotfiles/config/nvim/lua" } },
 	},
 	{
-		"hrsh7th/nvim-cmp",
+		"saghen/blink.cmp",
 		optional = true,
 		dependencies = { "folke/lazydev.nvim" },
-		opts = function(_, opts)
-			if not opts.sources then
-				opts.sources = {}
-			end
-			table.insert(opts.sources, { name = "lazydev", group_index = 0 })
-		end,
+		opts = {
+			sources = {
+				default = { "lazydev" },
+				providers = {
+					lazydev = {
+						name = "LazyDev",
+						module = "lazydev.integrations.blink",
+						score_offset = 100,
+					},
+				},
+			},
+		},
 	},
 }
