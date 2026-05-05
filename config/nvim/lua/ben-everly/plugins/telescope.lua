@@ -25,6 +25,7 @@ return {
 		vim.keymap.set("n", "<leader>fGS", builtin.git_stash)
 		vim.keymap.set("n", "<leader>b", builtin.treesitter)
 		vim.keymap.set("n", "<leader>fs", builtin.lsp_workspace_symbols)
+		vim.keymap.set("n", "<leader>fS", builtin.lsp_document_symbols)
 		vim.keymap.set("n", "<leader>fd", builtin.diagnostics)
 		vim.keymap.set("n", "<leader>fP", builtin.builtin)
 		vim.keymap.set("n", "<leader>fq", builtin.quickfix)

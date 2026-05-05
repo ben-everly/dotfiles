@@ -12,6 +12,7 @@ return {
 		vim.diagnostic.config({
 			virtual_text = { spacing = 2, prefix = "" },
 			severity_sort = true,
+			jump = { float = true },
 			float = { source = true, border = "single" },
 			signs = {
 				text = {
@@ -45,6 +46,9 @@ return {
 				end
 
 				local opts = { buffer = ev.buf }
+				vim.keymap.set("n", "K", function()
+					vim.lsp.buf.hover({ border = "single" })
+				end, opts)
 				vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 				vim.keymap.set({ "n", "v", "i" }, "<c-s>", function()
 					vim.lsp.buf.signature_help({ border = "rounded" })
