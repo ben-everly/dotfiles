@@ -4,6 +4,7 @@ return {
 		require("gitsigns").setup({
 			numhl = true,
 			linehl = false,
+			word_diff = true,
 			current_line_blame = true,
 			current_line_blame_opts = { virt_text_pos = "eol", delay = 100 },
 			on_attach = function(bufnr)
@@ -46,7 +47,7 @@ return {
 				end)
 				map("n", "<leader>gX", gs.reset_buffer)
 				map("n", "<leader>gu", gs.undo_stage_hunk)
-				map("n", "<leader>gp", gs.preview_hunk)
+				map("n", "<leader>gp", gs.preview_hunk_inline)
 				map("n", "<leader>GB", function()
 					gs.blame_line({ full = true })
 				end)
@@ -55,7 +56,7 @@ return {
 				map("n", "<leader>gD", function()
 					gs.diffthis("~")
 				end)
-				map("n", "<leader>gtd", gs.toggle_deleted)
+				map("n", "<leader>gP", gs.toggle_deleted)
 
 				map({ "o", "x" }, "ig", ":<C-U>Gitsigns select_hunk<CR>")
 			end,
