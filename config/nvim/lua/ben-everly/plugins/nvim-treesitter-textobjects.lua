@@ -36,8 +36,8 @@ return {
 		select_map("io", "@loop.inner")
 		select_map("as", "@scope")
 		select_map("al", "@statement.outer")
-		select_map("a/", "@comment.outer")
-		select_map("i/", "@comment.inner")
+		select_map("a#", "@comment.outer")
+		select_map("i#", "@comment.inner")
 		select_map("a?", "@conditional.outer")
 		select_map("i?", "@conditional.inner")
 
