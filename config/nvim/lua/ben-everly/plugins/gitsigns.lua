@@ -1,6 +1,14 @@
 return {
 	"lewis6991/gitsigns.nvim",
 	config = function()
+		local function set_hl()
+			vim.api.nvim_set_hl(0, "GitSignsAddInline", { link = "DiffAdd" })
+			vim.api.nvim_set_hl(0, "GitSignsChangeInline", { link = "DiffChange" })
+			vim.api.nvim_set_hl(0, "GitSignsDeleteInline", { link = "DiffDelete" })
+		end
+		set_hl()
+		vim.api.nvim_create_autocmd("ColorScheme", { callback = set_hl })
+
 		require("gitsigns").setup({
 			numhl = true,
 			linehl = false,
