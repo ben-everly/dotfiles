@@ -5,6 +5,8 @@ return {
 			vim.api.nvim_set_hl(0, "GitSignsAddInline", { link = "DiffAdd" })
 			vim.api.nvim_set_hl(0, "GitSignsChangeInline", { link = "DiffChange" })
 			vim.api.nvim_set_hl(0, "GitSignsDeleteInline", { link = "DiffDelete" })
+			local nontext = vim.api.nvim_get_hl(0, { name = "NonText", link = false })
+			vim.api.nvim_set_hl(0, "GitSignsCurrentLineBlame", { fg = nontext.fg, italic = true })
 		end
 		set_hl()
 		vim.api.nvim_create_autocmd("ColorScheme", { callback = set_hl })
