@@ -4,7 +4,7 @@ Requires=rclone-bisync-google.service
 
 [Timer]
 Unit=rclone-bisync-google.service
-OnCalendar=*-*-* *:0,15,30,45:00
+OnCalendar=*:0/5
 
 [Install]
 WantedBy=timers.target
