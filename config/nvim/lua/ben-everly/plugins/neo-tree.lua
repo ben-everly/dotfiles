@@ -11,4 +11,19 @@ return {
 		{ "<leader>n", "<cmd>Neotree toggle<cr>" },
 		{ "<leader>N", "<cmd>Neotree reveal<cr>" },
 	},
+	opts = {
+		filesystem = {
+			bind_to_cwd = false,
+			window = {
+				mappings = {
+					["~"] = {
+						function(state)
+							require("neo-tree.sources.filesystem").navigate(state, vim.uv.cwd())
+						end,
+						desc = "navigate to cwd",
+					},
+				},
+			},
+		},
+	},
 }
