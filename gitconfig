@@ -32,7 +32,6 @@
 	issue = "!f() { gh issue $@; }; f"
 [core]
 	editor = nvim
-	excludesFile = ~/.gitignore
 	autocrlf = input
 	pager = 'less'
 [color]
