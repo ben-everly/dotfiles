@@ -25,8 +25,17 @@ vim.opt.showmode = false
 vim.opt.updatetime = 300
 vim.opt.inccommand = "nosplit"
 vim.opt.tabstop = 4
-vim.opt.clipboard = "unnamed,unnamedplus"
 vim.opt.autowriteall = true
+
+local yank_to_clipboard_group = vim.api.nvim_create_augroup("yank_to_clipboard", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
+	group = yank_to_clipboard_group,
+	callback = function()
+		if vim.v.event.operator == "y" and vim.v.event.regname == "" then
+			vim.fn.setreg("+", vim.v.event.regcontents, vim.v.event.regtype)
+		end
+	end,
+})
 
 vim.cmd.colorscheme("gruvbox-material")
 
