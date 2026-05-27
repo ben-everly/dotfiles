@@ -119,6 +119,11 @@ config.keys = {
 		mods = "SHIFT|CTRL",
 		action = act.CloseCurrentTab({ confirm = true }),
 	},
+	{
+		key = "W",
+		mods = "SHIFT|CTRL|ALT",
+		action = act.CloseCurrentPane({ confirm = true }),
+	},
 	{ key = "!", mods = "SHIFT|CTRL", action = act.ActivateTab(0) },
 	{ key = "@", mods = "SHIFT|CTRL", action = act.ActivateTab(1) },
 	{ key = "#", mods = "SHIFT|CTRL", action = act.ActivateTab(2) },
