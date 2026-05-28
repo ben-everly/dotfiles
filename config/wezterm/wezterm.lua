@@ -53,6 +53,7 @@ wezterm.on("resurrect.error", function(err)
 end)
 
 local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
+local smart_splits = wezterm.plugin.require("https://github.com/mrjones2014/smart-splits.nvim")
 
 workspace_switcher.workspace_formatter = function(label)
 	return wezterm.format({
@@ -150,26 +151,6 @@ config.keys = {
 		mods = "SHIFT|ALT|CTRL",
 		action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }),
 	},
-	{ key = "H", mods = "SHIFT|CTRL", action = act.ActivatePaneDirection("Left") },
-	{ key = "L", mods = "SHIFT|CTRL", action = act.ActivatePaneDirection("Right") },
-	{ key = "K", mods = "SHIFT|CTRL", action = act.ActivatePaneDirection("Up") },
-	{ key = "J", mods = "SHIFT|CTRL", action = act.ActivatePaneDirection("Down") },
-	{
-		key = "H",
-		mods = "SHIFT|ALT|CTRL",
-		action = act.AdjustPaneSize({ "Left", 1 }),
-	},
-	{
-		key = "L",
-		mods = "SHIFT|ALT|CTRL",
-		action = act.AdjustPaneSize({ "Right", 1 }),
-	},
-	{ key = "K", mods = "SHIFT|ALT|CTRL", action = act.AdjustPaneSize({ "Up", 1 }) },
-	{
-		key = "J",
-		mods = "SHIFT|ALT|CTRL",
-		action = act.AdjustPaneSize({ "Down", 1 }),
-	},
 	{ key = "O", mods = "SHIFT|CTRL", action = act.RotatePanes("Clockwise") },
 	{
 		key = "I",
@@ -239,6 +220,11 @@ config.keys = {
 		}),
 	},
 }
+
+smart_splits.apply_to_config(config, {
+	direction_keys = { "h", "j", "k", "l" },
+	modifiers = { move = "CTRL", resize = "ALT" },
+})
 
 config.key_tables = {
 	copy_mode = {
