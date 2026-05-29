@@ -188,8 +188,8 @@ config.keys = {
 			copy_to = "ClipboardAndPrimarySelection",
 		}),
 	},
-	{ key = "PageUp", mods = "SHIFT", action = act.ScrollByPage(-1) },
-	{ key = "PageDown", mods = "SHIFT", action = act.ScrollByPage(1) },
+	{ key = "PageUp", mods = "SHIFT", action = act.ScrollByLine(-5) },
+	{ key = "PageDown", mods = "SHIFT", action = act.ScrollByLine(5) },
 	{
 		key = "T",
 		mods = "SHIFT|CTRL|ALT",
