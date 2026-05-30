@@ -60,6 +60,7 @@
 [status]
 	short = true
 	branch = true
+	showUntrackedFiles = all
 [url "git@github.com:"]
 	insteadOf = "gh:"
 [url "git@gist.github.com:"]
