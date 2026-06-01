@@ -1,7 +1,9 @@
 [user]
 	name = Ben Everly
-	email = ben.everly@oberd.com
+	email = benjamin.g.everly@gmail.com
 	signingkey = /home/beneverly/.ssh/id_ed25519.pub
+[includeIf "hasconfig:remote.*.url:git@github.com:oberd/**"]
+	path = ~/.gitconfig-oberd
 [github]
 	user = ben-everly
 [alias]
