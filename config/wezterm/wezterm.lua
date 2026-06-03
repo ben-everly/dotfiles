@@ -21,7 +21,7 @@ config.command_palette_fg_color = config.colors.foreground
 config.char_select_bg_color = config.colors.background
 config.char_select_fg_color = config.colors.tab_bar.active_tab.fg_color
 
-config.window_background_opacity = 0.75
+config.window_background_opacity = 0.85
 config.text_background_opacity = 0.6
 config.inactive_pane_hsb = { saturation = 0.8, brightness = 0.7 }
 
