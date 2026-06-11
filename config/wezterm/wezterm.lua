@@ -219,6 +219,17 @@ config.keys = {
 			end),
 		}),
 	},
+	{
+		key = "Q",
+		mods = "SHIFT|CTRL",
+		action = wezterm.action_callback(function(window)
+			-- Close every tab in the current window, which collapses a
+			-- single-window workspace and drops back to the previous one.
+			for _, tab in ipairs(window:mux_window():tabs()) do
+				window:perform_action(act.CloseCurrentTab({ confirm = false }), tab:active_pane())
+			end
+		end),
+	},
 }
 
 smart_splits.apply_to_config(config, {
