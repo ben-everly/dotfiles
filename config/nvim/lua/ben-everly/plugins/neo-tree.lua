@@ -14,6 +14,10 @@ return {
 	opts = {
 		filesystem = {
 			bind_to_cwd = false,
+			filtered_items = {
+				hide_dotfiles = false,
+				never_show = { "node_modules", "vendor", ".git" },
+			},
 			window = {
 				mappings = {
 					["~"] = {
