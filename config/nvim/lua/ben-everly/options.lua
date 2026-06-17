@@ -54,3 +54,18 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPre" }, {
 		vim.opt_local.swapfile = false
 	end,
 })
+
+-- Register directories with zoxide as we navigate to them (e.g. switching
+-- worktrees in Neogit) so they show up in wezterm's workspace switcher without
+-- needing a separate cd in the shell first.
+local zoxide_add_group = vim.api.nvim_create_augroup("zoxide_add", { clear = true })
+vim.api.nvim_create_autocmd("DirChanged", {
+	pattern = "*",
+	group = zoxide_add_group,
+	callback = function()
+		local dir = vim.v.event.cwd
+		if dir ~= "" and vim.fn.isdirectory(dir) == 1 and vim.fn.executable("zoxide") == 1 then
+			vim.system({ "zoxide", "add", "--", dir })
+		end
+	end,
+})
