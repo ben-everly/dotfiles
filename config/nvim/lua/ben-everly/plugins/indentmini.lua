@@ -4,6 +4,7 @@ return {
 	event = { "BufReadPost", "BufNewFile" },
 	opts = {
 		char = "▏",
+		exclude = { "markdown" },
 	},
 	init = function()
 		local function set_hl()
