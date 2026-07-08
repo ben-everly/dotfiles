@@ -2,7 +2,7 @@
 
 ## Output
 
-Keep output clear and concise. Avoid long explanations unless asked for.
+Output must be clear, concise and use as few words as possible. Avoid unnecessary explanations unless asked for.
 
 ## Worktrees
 
