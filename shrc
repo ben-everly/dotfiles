@@ -13,20 +13,37 @@ for file in ~/.sh/* ; do
     fi
 done
 
-if [ -d ~/.composer/vendor/bin ]; then
-    COMPOSER_MEMORY_LIMIT=-1
-    export COMPOSER_MEMORY_LIMIT
-    PATH=~/.composer/vendor/bin:$PATH
-fi
+# Prepend a directory to PATH unless it is already there. The directory need not
+# exist yet, so entries start working as soon as something creates them.
+prepend_path() {
+    [ -n "$1" ] || return 0
+    case ":$PATH:" in
+        *":$1:"*) return 0 ;;
+    esac
+    PATH="$1:$PATH"
+}
 
-if [ -d ~/.local/bin ]; then
-    PATH=~/.local/bin:$PATH
-fi
+export COMPOSER_MEMORY_LIMIT=-1
 
-if [ -d ~/.local/share/nvim/mason/bin ]; then
-    PATH=~/.local/share/nvim/mason/bin:$PATH
-fi
+export PNPM_HOME="$HOME/.local/share/pnpm"
 
-if which ruby >/dev/null && which gem >/dev/null; then
-    PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
-fi
+prepend_path ~/.composer/vendor/bin
+prepend_path ~/.local/bin
+prepend_path ~/.local/share/nvim/mason/bin
+prepend_path "$PNPM_HOME"
+prepend_path ~/.opencode/bin
+
+# Gem.user_dir is scoped to the Ruby ABI version, so take the newest version dir
+# present rather than paying ~180ms to ask Ruby which one is active. Older dirs
+# stay off PATH: their binstubs pin an interpreter that may no longer exist.
+# `find` avoids a glob, which zsh's default NOMATCH would make fatal here.
+_gem_bin=$(find "${XDG_DATA_HOME:-$HOME/.local/share}/gem/ruby" \
+    -mindepth 2 -maxdepth 2 -type d -name bin 2>/dev/null | sort -V | tail -n 1)
+prepend_path "$_gem_bin"
+unset _gem_bin
+
+# Send `go install` to a version-independent dir already on PATH, so Go tools
+# survive asdf version switches without consulting GOPATH. `go install` refuses a
+# cross-compile while GOBIN is set, so clear it for that one command:
+# `GOBIN= GOOS=darwin go install .`.
+export GOBIN="$HOME/.local/bin"

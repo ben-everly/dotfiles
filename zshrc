@@ -60,15 +60,6 @@ export WORDCHARS=${WORDCHARS//[\/]}
 
 typeset -U path
 
-export PNPM_HOME="/home/beneverly/.local/share/pnpm"
-path+=("$PNPM_HOME")
-if which ruby >/dev/null && which gem >/dev/null; then
-  path+=("$(ruby -r rubygems -e 'puts Gem.user_dir')/bin")
-fi
-if which go >/dev/null; then
-  path+=("$(go env GOPATH)/bin")
-fi
-
 if [[ -f /home/beneverly/.oberd/env ]]; then #oberd_env
   source /home/beneverly/.oberd/env #oberd_env
 fi #oberd_env
@@ -81,6 +72,3 @@ bindkey '^k' history-substring-search-up
 bindkey '^j' history-substring-search-down
 
 precmd() { (retval=$?;tput cup "$LINES";exit $retval) }
-
-# opencode
-export PATH=/home/beneverly/.opencode/bin:$PATH
