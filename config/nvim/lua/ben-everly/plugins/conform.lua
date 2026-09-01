@@ -22,6 +22,10 @@ return {
 			markdown = { "prettierd", "markdownlint", "injected" },
 			sql = { "sql-formatter" },
 			toml = { "taplo" },
+			javascript = { "prettierd" },
+			javascriptreact = { "prettierd" },
+			typescript = { "prettierd" },
+			typescriptreact = { "prettierd" },
 		},
 		formatters = {
 			injected = {
