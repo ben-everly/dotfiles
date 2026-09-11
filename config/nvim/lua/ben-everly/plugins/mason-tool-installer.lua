@@ -23,6 +23,7 @@ return {
 				"sqls",
 				"tailwindcss",
 				"ts_ls",
+				"vue_ls",
 				"yamlls",
 
 				-- Formatters
