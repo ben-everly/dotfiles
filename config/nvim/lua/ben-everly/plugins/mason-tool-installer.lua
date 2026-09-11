@@ -16,7 +16,7 @@ return {
 				"intelephense",
 				"phpactor",
 				"jsonls",
-				"laravel_ls",
+				"laravel_lsp",
 				"lemminx",
 				"lua_ls",
 				"pyright",
