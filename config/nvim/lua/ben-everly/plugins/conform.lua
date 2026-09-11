@@ -26,6 +26,7 @@ return {
 			javascriptreact = { "prettierd" },
 			typescript = { "prettierd" },
 			typescriptreact = { "prettierd" },
+			vue = { "prettierd" },
 		},
 		formatters = {
 			injected = {
