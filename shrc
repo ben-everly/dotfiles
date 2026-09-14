@@ -7,11 +7,15 @@ export EDITOR=nvim
 export PAGER=less
 export HISTCONTROL=ignoredups
 
-for file in ~/.sh/* ; do
-    if [ -f "$file" ]; then
-        source "$file"
-    fi
-done
+case $- in
+    *i*)
+        for file in ~/.sh/* ; do
+            if [ -f "$file" ]; then
+                source "$file"
+            fi
+        done
+        ;;
+esac
 
 # Prepend a directory to PATH unless it is already there. The directory need not
 # exist yet, so entries start working as soon as something creates them.
