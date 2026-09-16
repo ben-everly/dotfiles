@@ -17,6 +17,15 @@ return {
 		},
 	},
 	config = function()
+		-- On close, dbee restores its window layout after wiping buffers,
+		-- tripping treesitter's fold autocmd on an already-dead buffer id.
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = "dbee",
+			callback = function()
+				vim.opt_local.foldmethod = "manual"
+			end,
+		})
+
 		require("dbee").setup({
 			sources = {
 				require("dbee.sources").FileSource:new(vim.fn.expand("~/.config/dbee/connections.json")),
