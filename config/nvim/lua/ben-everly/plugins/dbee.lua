@@ -8,7 +8,13 @@ return {
 	end,
 	cmd = "Dbee",
 	keys = {
-		{ "<leader>s", function() require("dbee").toggle() end, desc = "Toggle dbee (SQL)" },
+		{
+			"<leader>s",
+			function()
+				require("dbee").toggle()
+			end,
+			desc = "Toggle dbee (SQL)",
+		},
 	},
 	config = function()
 		require("dbee").setup({
@@ -56,6 +62,23 @@ return {
 				mappings = {
 					{ key = "<CR>", mode = "", action = "show_result" },
 					{ key = "<C-c>", mode = "", action = "cancel_call" },
+					{
+						key = "yq",
+						mode = "n",
+						action = function()
+							-- call_log's hover preview truncates long queries, so pull
+							-- the untruncated query via the result API instead.
+							require("dbee").api.ui.call_log_do_action("show_result")
+							local call = require("dbee").api.ui.result_get_call()
+							if not call or not call.query or call.query == "" then
+								vim.notify("dbee: no query to yank", vim.log.levels.WARN)
+								return
+							end
+							vim.fn.setreg('"', call.query)
+							vim.fn.setreg("+", call.query)
+							vim.notify("dbee: yanked query")
+						end,
+					},
 				},
 			},
 		})
