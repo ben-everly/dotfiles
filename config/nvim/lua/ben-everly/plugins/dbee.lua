@@ -26,6 +26,30 @@ return {
 			end,
 		})
 
+		-- dbee fills registers with setreg(), which TextYankPost explicitly
+		-- doesn't fire for, so nothing listening for yanks sees dbee's.
+		-- Charwise to match the regtype setreg() would give.
+		local function background_yank(text, reg)
+			local buf = vim.api.nvim_create_buf(false, true)
+			vim.api.nvim_buf_set_lines(buf, 0, -1, false, vim.split(text, "\n", { plain = true }))
+			vim.bo[buf].filetype = "dbee"
+			vim.api.nvim_buf_call(buf, function()
+				-- 'virtualedit' would put $ past the last character, yanking a
+				-- trailing space. NONE is needed over "" to beat a global value.
+				vim.cmd("setlocal virtualedit=NONE")
+				vim.cmd(string.format('normal! gg0vG$"%sy', reg))
+			end)
+			vim.api.nvim_buf_delete(buf, { force = true })
+		end
+
+		local function yank_action(action)
+			return function()
+				local reg = vim.v.register
+				require("dbee").api.ui.result_do_action(action)
+				background_yank(vim.fn.getreg(reg), reg)
+			end
+		end
+
 		require("dbee").setup({
 			sources = {
 				require("dbee.sources").FileSource:new(vim.fn.expand("~/.config/dbee/connections.json")),
@@ -58,12 +82,12 @@ return {
 					{ key = "H", mode = "", action = "page_prev" },
 					{ key = "E", mode = "", action = "page_last" },
 					{ key = "F", mode = "", action = "page_first" },
-					{ key = "yaj", mode = "n", action = "yank_current_json" },
-					{ key = "yaj", mode = "v", action = "yank_selection_json" },
-					{ key = "yaJ", mode = "", action = "yank_all_json" },
-					{ key = "yac", mode = "n", action = "yank_current_csv" },
-					{ key = "yac", mode = "v", action = "yank_selection_csv" },
-					{ key = "yaC", mode = "", action = "yank_all_csv" },
+					{ key = "yaj", mode = "n", action = yank_action("yank_current_json") },
+					{ key = "yaj", mode = "v", action = yank_action("yank_selection_json") },
+					{ key = "yaJ", mode = "", action = yank_action("yank_all_json") },
+					{ key = "yac", mode = "n", action = yank_action("yank_current_csv") },
+					{ key = "yac", mode = "v", action = yank_action("yank_selection_csv") },
+					{ key = "yaC", mode = "", action = yank_action("yank_all_csv") },
 					{ key = "<C-c>", mode = "", action = "cancel_call" },
 				},
 			},
@@ -83,8 +107,7 @@ return {
 								vim.notify("dbee: no query to yank", vim.log.levels.WARN)
 								return
 							end
-							vim.fn.setreg('"', call.query)
-							vim.fn.setreg("+", call.query)
+							background_yank(call.query, vim.v.register)
 							vim.notify("dbee: yanked query")
 						end,
 					},
