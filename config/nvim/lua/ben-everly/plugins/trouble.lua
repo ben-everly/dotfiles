@@ -5,7 +5,6 @@ return {
 	---@module "trouble"
 	---@type trouble.Config
 	opts = {
-		-- land in the list so it can be worked through without a second keypress
 		focus = true,
 	},
 	keys = {
@@ -19,18 +18,15 @@ return {
 		{ "<leader>xq", "<cmd>Trouble qflist toggle<cr>", desc = "Quickfix list" },
 		{ "<leader>xl", "<cmd>Trouble loclist toggle<cr>", desc = "Location list" },
 		{
-			-- references/definitions/implementations in a sidebar that stays open,
-			-- unlike the telescope gr/gd/gi pickers
 			"<leader>xr",
 			"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
 			desc = "LSP references/definitions",
 		},
-		-- step through the trouble list when it's open, quickfix otherwise
 		{
 			"]q",
 			function()
 				if require("trouble").is_open() then
-					require("trouble").next({ jump = true })
+					vim.cmd("Trouble next jump=true")
 				else
 					local ok, err = pcall(vim.cmd.cnext)
 					if not ok then
@@ -44,7 +40,7 @@ return {
 			"[q",
 			function()
 				if require("trouble").is_open() then
-					require("trouble").prev({ jump = true })
+					vim.cmd("Trouble prev jump=true")
 				else
 					local ok, err = pcall(vim.cmd.cprev)
 					if not ok then

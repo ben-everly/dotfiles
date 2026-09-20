@@ -3,7 +3,6 @@ return {
 	dependencies = {
 		"nvim-neotest/nvim-nio",
 		"nvim-lua/plenary.nvim",
-		"antoinemadec/FixCursorHold.nvim",
 		"V13Axel/neotest-pest",
 	},
 	config = function()
