@@ -1,0 +1,10 @@
+{
+	// lazydev only adds a plugin to workspace.library once an open buffer
+	// references it, but lua_ls diagnoses the whole workspace -- so closed
+	// files report undefined-doc-name for every ---@type naming a plugin.
+	"diagnostics": {
+		"groupFileStatus": {
+			"luadoc": "Opened"
+		}
+	}
+}
