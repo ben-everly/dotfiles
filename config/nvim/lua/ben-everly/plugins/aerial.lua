@@ -4,6 +4,7 @@ return {
 		layout = { default_direction = "right", min_width = 30 },
 		attach_mode = "global",
 		show_guides = true,
+		autojump = true,
 	},
 	keys = {
 		{ "<C-b>", "<cmd>AerialToggle!<cr>", desc = "Toggle outline" },
