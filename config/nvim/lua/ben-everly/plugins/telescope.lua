@@ -3,6 +3,10 @@ return {
 	dependencies = "nvim-lua/plenary.nvim",
 	config = function()
 		local builtin = require("telescope.builtin")
+		-- send the whole picker result to trouble instead of picking one item
+		local open_with_trouble = function(...)
+			return require("trouble.sources.telescope").open(...)
+		end
 		vim.keymap.set("n", "<leader>ff", function()
 			if vim.fn.finddir(".git", vim.fn.getcwd() .. ";") ~= "" then
 				builtin.git_files()
@@ -43,7 +47,9 @@ return {
 					i = {
 						["<C-j>"] = "move_selection_next",
 						["<C-k>"] = "move_selection_previous",
+						["<C-t>"] = open_with_trouble,
 					},
+					n = { ["<C-t>"] = open_with_trouble },
 				},
 			},
 			pickers = {
