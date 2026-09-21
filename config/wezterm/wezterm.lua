@@ -86,7 +86,7 @@ wezterm.on("smart_workspace_switcher.workspace_switcher.created", function(windo
 	})
 end)
 
-wezterm.on("smart_workspace_switcher.workspace_switcher.chosen", function(window, path, label)
+wezterm.on("smart_workspace_switcher.workspace_switcher.chosen", function(window, path)
 	wezterm.log_info(window)
 	window:gui_window():set_right_status(wezterm.format({
 		{ Attribute = { Intensity = "Bold" } },
@@ -95,17 +95,17 @@ wezterm.on("smart_workspace_switcher.workspace_switcher.chosen", function(window
 	}))
 end)
 
-wezterm.on("smart_workspace_switcher.workspace_switcher.selected", function(window, path, label)
+wezterm.on("smart_workspace_switcher.workspace_switcher.selected", function(window, _, label)
 	wezterm.log_info(window)
 	local workspace_state = resurrect.workspace_state
 	resurrect.state_manager.save_state(workspace_state.get_workspace_state())
 	resurrect.state_manager.write_current_state(label, "workspace")
 end)
 
-wezterm.on("smart_workspace_switcher.workspace_switcher.start", function(window, _)
+wezterm.on("smart_workspace_switcher.workspace_switcher.start", function(window)
 	wezterm.log_info(window)
 end)
-wezterm.on("smart_workspace_switcher.workspace_switcher.canceled", function(window, _)
+wezterm.on("smart_workspace_switcher.workspace_switcher.canceled", function(window)
 	wezterm.log_info(window)
 end)
 
@@ -195,7 +195,7 @@ config.keys = {
 		mods = "SHIFT|CTRL|ALT",
 		action = act.PromptInputLine({
 			description = "Enter new name for tab",
-			action = wezterm.action_callback(function(window, pane, line)
+			action = wezterm.action_callback(function(window, _, line)
 				if line and #line > 0 then
 					window:active_tab():set_title(line)
 				end
@@ -212,7 +212,7 @@ config.keys = {
 		mods = "SHIFT|CTRL|ALT",
 		action = wezterm.action.PromptInputLine({
 			description = "Enter new workspace name:",
-			action = wezterm.action_callback(function(window, pane, line)
+			action = wezterm.action_callback(function(_, _, line)
 				if line then
 					wezterm.mux.rename_workspace(wezterm.mux.get_active_workspace(), line)
 				end

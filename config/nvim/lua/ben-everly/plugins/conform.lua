@@ -35,8 +35,8 @@ return {
 				},
 				-- dont mangle fenced code blocks nested in a blockquote where the code
 				-- contains a blank line
-				condition = function(self, ctx)
-					if not require("conform.formatters.injected").condition(self, ctx) then
+				condition = function(_, ctx)
+					if not require("conform.formatters.injected"):condition(ctx) then
 						return false
 					end
 					local fence, blank = false, false
@@ -66,6 +66,9 @@ return {
 					}, function(err, formatted)
 						if err then
 							return callback(err.message)
+						end
+						if not formatted then
+							return callback("pint returned no output")
 						end
 						if needs_opener then
 							local body = 1

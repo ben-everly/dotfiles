@@ -6,6 +6,7 @@ return {
 		"V13Axel/neotest-pest",
 	},
 	config = function()
+		---@diagnostic disable-next-line: missing-fields
 		require("neotest").setup({
 			adapters = { require("neotest-pest")({ parallel = 10 }) },
 		})
@@ -20,6 +21,7 @@ return {
 			require("neotest").run.run({ suite = true })
 		end)
 		vim.keymap.set("n", "<leader>td", function()
+			---@diagnostic disable-next-line: missing-fields
 			require("neotest").run.run({ strategy = "dap" })
 		end)
 		vim.keymap.set("n", "<leader>to", function()

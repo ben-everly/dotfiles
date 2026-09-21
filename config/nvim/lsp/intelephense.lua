@@ -33,7 +33,7 @@ return {
 			},
 		},
 	},
-	on_attach = function(client, bufnr)
+	on_attach = function(client)
 		-- disable features that are better handled by phpactor
 		client.server_capabilities.renameProvider = false
 		client.server_capabilities.codeActionProvider = false

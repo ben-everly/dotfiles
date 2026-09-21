@@ -2,6 +2,7 @@ return {
 	"coder/claudecode.nvim",
 	config = function()
 		require("claudecode").setup({
+			---@diagnostic disable-next-line: missing-fields
 			terminal = {
 				provider = "none",
 			},

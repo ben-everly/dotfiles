@@ -2,6 +2,7 @@ return {
 	"mrjones2014/smart-splits.nvim",
 	config = function()
 		local ss = require("smart-splits")
+		---@diagnostic disable-next-line: missing-fields
 		ss.setup({
 			multiplexer_integration = "wezterm",
 		})
