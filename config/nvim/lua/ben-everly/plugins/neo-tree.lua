@@ -13,6 +13,8 @@ return {
 	},
 	opts = {
 		filesystem = {
+			-- oil.nvim handles directory buffers instead.
+			hijack_netrw_behavior = "disabled",
 			bind_to_cwd = false,
 			filtered_items = {
 				hide_dotfiles = false,
