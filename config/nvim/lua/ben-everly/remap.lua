@@ -22,15 +22,6 @@ vim.keymap.set("v", "#", function()
 	visual_search("?")
 end)
 
-local qf_group = vim.api.nvim_create_augroup("qf", { clear = true })
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "qf",
-	group = qf_group,
-	callback = function()
-		vim.keymap.set("n", "<CR>", "<CR>:ccl<CR>", { buffer = true })
-	end,
-})
-
 local low = function(i)
 	return string.char(97 + i)
 end

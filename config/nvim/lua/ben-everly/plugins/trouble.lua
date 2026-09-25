@@ -2,6 +2,19 @@ return {
 	"folke/trouble.nvim",
 	cmd = "Trouble",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
+	init = function()
+		vim.api.nvim_create_autocmd("BufRead", {
+			group = vim.api.nvim_create_augroup("trouble_qflist", { clear = true }),
+			callback = function(ev)
+				if vim.bo[ev.buf].buftype == "quickfix" then
+					vim.schedule(function()
+						vim.cmd("cclose")
+						vim.cmd("Trouble qflist open")
+					end)
+				end
+			end,
+		})
+	end,
 	---@module "trouble"
 	---@type trouble.Config
 	opts = {
