@@ -36,6 +36,8 @@ prepend_path ~/.local/bin
 prepend_path ~/.local/share/nvim/mason/bin
 prepend_path "$PNPM_HOME"
 prepend_path ~/.opencode/bin
+# zim's asdf module only adds this in interactive zsh; GUI apps need it too.
+prepend_path "${ASDF_DATA_DIR:-$HOME/.asdf}/shims"
 
 # Gem.user_dir is scoped to the Ruby ABI version, so take the newest version dir
 # present rather than paying ~180ms to ask Ruby which one is active. Older dirs
