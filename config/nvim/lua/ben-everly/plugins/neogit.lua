@@ -28,6 +28,18 @@ return {
 			return open(self, kind)
 		end
 
+		-- The status buffer is wiped when it's left without Neogit's own close
+		-- (e.g. :q, :e, <C-o>), but the instance keeps the dead handle and any
+		-- in-flight refresh then errors trying to redraw it.
+		local redraw = Status.redraw
+		function Status:redraw(...)
+			if self.buffer and not vim.api.nvim_buf_is_valid(self.buffer.handle) then
+				self.buffer = nil
+				return
+			end
+			return redraw(self, ...)
+		end
+
 		vim.keymap.set("n", "<leader>gs", require("neogit").open)
 	end,
 }
