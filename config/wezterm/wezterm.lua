@@ -34,6 +34,8 @@ config.window_frame = {
 }
 config.adjust_window_size_when_changing_font_size = false
 
+config.swallow_mouse_click_on_window_focus = true
+
 config.default_workspace = "~"
 local resurrect = wezterm.plugin.require("https://github.com/MLFlexer/resurrect.wezterm")
 resurrect.state_manager.periodic_save({
