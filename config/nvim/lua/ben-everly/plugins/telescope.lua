@@ -32,6 +32,8 @@ return {
 		vim.keymap.set("n", "<leader>fS", builtin.lsp_document_symbols)
 		vim.keymap.set("n", "<leader>fd", builtin.diagnostics)
 		vim.keymap.set("n", "<leader>fP", builtin.builtin)
+		vim.keymap.set("n", "<leader>fc", builtin.commands, { desc = "Command palette" })
+		vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "Keymaps" })
 		vim.keymap.set("n", "<leader>fq", builtin.quickfix)
 		vim.keymap.set("n", "<leader>fl", builtin.loclist)
 		vim.keymap.set("n", "<leader>fa", builtin.resume)
@@ -42,6 +44,7 @@ return {
 		require("telescope").setup({
 			defaults = {
 				layout_strategy = "center",
+				layout_config = { width = 0.9 },
 				sorting_strategy = "ascending",
 				mappings = {
 					i = {
@@ -59,6 +62,9 @@ return {
 						i = { ["<M-d>"] = require("telescope.actions").delete_mark },
 						n = { ["dd"] = require("telescope.actions").delete_mark },
 					},
+				},
+				keymaps = {
+					entry_maker = require("telescope.make_entry").gen_from_keymaps({ width_lhs = 16 }),
 				},
 			},
 		})
