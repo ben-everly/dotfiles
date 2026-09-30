@@ -2,13 +2,13 @@ return {
 	"echasnovski/mini.surround",
 	version = false,
 	keys = {
-		{ "sa", mode = { "n", "v" }, desc = "Add surrounding" },
-		{ "sd", desc = "Delete surrounding" },
-		{ "sr", desc = "Replace surrounding" },
-		{ "sf", desc = "Find surrounding (right)" },
-		{ "sF", desc = "Find surrounding (left)" },
-		{ "sh", desc = "Highlight surrounding" },
-		{ "sn", desc = "Update n_lines" },
+		{ "sa", mode = { "n", "v" }, desc = "Surround: add" },
+		{ "sd", desc = "Surround: delete" },
+		{ "sr", desc = "Surround: replace" },
+		{ "sf", desc = "Surround: find right" },
+		{ "sF", desc = "Surround: find left" },
+		{ "sh", desc = "Surround: highlight" },
+		{ "sn", desc = "Surround: update n_lines" },
 	},
 	opts = {
 		custom_surroundings = {

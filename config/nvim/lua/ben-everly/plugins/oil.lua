@@ -13,7 +13,7 @@ return {
 		},
 	},
 	keys = {
-		{ "-", "<cmd>Oil<cr>", desc = "Open parent directory" },
-		{ "<leader>-", "<cmd>Oil --float<cr>", desc = "Open parent directory (float)" },
+		{ "-", "<cmd>Oil<cr>", desc = "Files: open parent directory" },
+		{ "<leader>-", "<cmd>Oil --float<cr>", desc = "Files: open parent directory (float)" },
 	},
 }

@@ -13,7 +13,7 @@ return {
 			function()
 				require("dbee").toggle()
 			end,
-			desc = "Toggle dbee (SQL)",
+			desc = "SQL: toggle dbee",
 		},
 	},
 	config = function()

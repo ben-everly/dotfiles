@@ -21,19 +21,19 @@ return {
 		focus = true,
 	},
 	keys = {
-		{ "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics (workspace)" },
-		{ "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Diagnostics (buffer)" },
+		{ "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics: workspace" },
+		{ "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Diagnostics: buffer" },
 		{
 			"<leader>xe",
 			"<cmd>Trouble diagnostics toggle filter.severity=vim.diagnostic.severity.ERROR<cr>",
-			desc = "Diagnostics (errors only)",
+			desc = "Diagnostics: errors only",
 		},
-		{ "<leader>xq", "<cmd>Trouble qflist toggle<cr>", desc = "Quickfix list" },
-		{ "<leader>xl", "<cmd>Trouble loclist toggle<cr>", desc = "Location list" },
+		{ "<leader>xq", "<cmd>Trouble qflist toggle<cr>", desc = "List: quickfix" },
+		{ "<leader>xl", "<cmd>Trouble loclist toggle<cr>", desc = "List: location" },
 		{
 			"<leader>xr",
 			"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-			desc = "LSP references/definitions",
+			desc = "LSP: references/definitions list",
 		},
 		{
 			"]q",
@@ -47,7 +47,7 @@ return {
 					end
 				end
 			end,
-			desc = "Next trouble/quickfix item",
+			desc = "List: next item",
 		},
 		{
 			"[q",
@@ -61,7 +61,7 @@ return {
 					end
 				end
 			end,
-			desc = "Previous trouble/quickfix item",
+			desc = "List: previous item",
 		},
 	},
 }

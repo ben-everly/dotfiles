@@ -3,9 +3,9 @@ return {
 	version = "v3.x.x",
 	lazy = false,
 	keys = {
-		{ "<leader>mm", "<cmd>Neominimap Toggle<cr>", desc = "Toggle minimap" },
-		{ "<leader>mt", "<cmd>Neominimap TabToggle<cr>", desc = "Toggle minimap for tab" },
-		{ "<leader>mf", "<cmd>Neominimap ToggleFocus<cr>", desc = "Toggle minimap focus" },
+		{ "<leader>mm", "<cmd>Neominimap Toggle<cr>", desc = "Minimap: toggle" },
+		{ "<leader>mt", "<cmd>Neominimap TabToggle<cr>", desc = "Minimap: toggle for tab" },
+		{ "<leader>mf", "<cmd>Neominimap ToggleFocus<cr>", desc = "Minimap: toggle focus" },
 	},
 	init = function()
 		vim.g.neominimap = {

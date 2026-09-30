@@ -2,12 +2,12 @@ return {
 	"L3MON4D3/LuaSnip",
 	version = "*",
 	config = function()
-		vim.keymap.set("n", "gs", require("luasnip.loaders").edit_snippet_files)
+		vim.keymap.set("n", "gs", require("luasnip.loaders").edit_snippet_files, { desc = "Snippet: edit files" })
 		local ls = require("luasnip")
 		vim.keymap.set({ "i", "s" }, "<c-e>", function()
 			if ls.choice_active() then
 				ls.change_choice(1)
 			end
-		end, { silent = true })
+		end, { silent = true, desc = "Snippet: cycle choice" })
 	end,
 }

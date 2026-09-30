@@ -79,6 +79,6 @@ return {
 				end,
 			},
 		})
-		vim.keymap.set("n", "go", "<cmd>Other<CR>", { silent = true, desc = "Go to other file" })
+		vim.keymap.set("n", "go", "<cmd>Other<CR>", { silent = true, desc = "Files: go to other file" })
 	end,
 }

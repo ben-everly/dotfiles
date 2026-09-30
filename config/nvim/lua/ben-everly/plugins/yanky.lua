@@ -3,26 +3,26 @@ return {
 	lazy = false,
 	opts = {},
 	keys = {
-		{ "p", "<Plug>(YankyPutAfter)", mode = { "n", "x" }, desc = "Put after" },
-		{ "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" }, desc = "Put before" },
-		{ "gp", "<Plug>(YankyGPutAfter)", mode = { "n", "x" }, desc = "GPut after" },
+		{ "p", "<Plug>(YankyPutAfter)", mode = { "n", "x" }, desc = "Yank: put after" },
+		{ "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" }, desc = "Yank: put before" },
+		{ "gp", "<Plug>(YankyGPutAfter)", mode = { "n", "x" }, desc = "Yank: gput after" },
 		{
 			"gP",
 			"<Plug>(YankyGPutBefore)",
 			mode = { "n", "x" },
-			desc = "GPut before",
+			desc = "Yank: gput before",
 		},
 		{
 			"<c-n>",
 			"<Plug>(YankyCycleForward)",
 			mode = { "n", "x" },
-			desc = "Cycle forward",
+			desc = "Yank: cycle forward",
 		},
 		{
 			"<c-p>",
 			"<Plug>(YankyCycleBackward)",
 			mode = { "n", "x" },
-			desc = "Cycle backward",
+			desc = "Yank: cycle backward",
 		},
 		{
 			"<leader>fy",
@@ -32,7 +32,7 @@ return {
 				telescope.extensions.yank_history.yank_history()
 			end,
 			mode = { "n", "x" },
-			desc = "Yank history",
+			desc = "Find: yank history",
 		},
 	},
 }

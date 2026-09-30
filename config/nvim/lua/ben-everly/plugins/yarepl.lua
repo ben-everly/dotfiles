@@ -56,7 +56,7 @@ return {
 					vim.api.nvim_feedkeys(vim.keycode("<Plug>(yarepl-send-operator)ip"), "m", false)
 				end
 			end,
-			desc = "Send paragraph to REPL",
+			desc = "REPL: send paragraph",
 		},
 		{
 			"<c-c><c-c>",
@@ -68,13 +68,13 @@ return {
 				end
 			end,
 			mode = "x",
-			desc = "Send selection to REPL",
+			desc = "REPL: send selection",
 		},
-		{ "<leader>rt", "<Plug>(yarepl-start-or-focus-or-hide)", desc = "Toggle REPL" },
-		{ "<leader>rl", "<Plug>(yarepl-send-line)", desc = "Send line to REPL" },
-		{ "<leader>rs", "<Plug>(yarepl-send-operator)", desc = "Send motion to REPL" },
-		{ "<leader>ra", "<cmd>Yarepl attach_buffer<cr>", desc = "Attach buffer to REPL" },
-		{ "<leader>rq", "<Plug>(yarepl-close)", desc = "Close REPL" },
+		{ "<leader>rt", "<Plug>(yarepl-start-or-focus-or-hide)", desc = "REPL: toggle" },
+		{ "<leader>rl", "<Plug>(yarepl-send-line)", desc = "REPL: send line" },
+		{ "<leader>rs", "<Plug>(yarepl-send-operator)", desc = "REPL: send motion" },
+		{ "<leader>ra", "<cmd>Yarepl attach_buffer<cr>", desc = "REPL: attach buffer" },
+		{ "<leader>rq", "<Plug>(yarepl-close)", desc = "REPL: close" },
 	},
 	config = function()
 		require("yarepl").setup({

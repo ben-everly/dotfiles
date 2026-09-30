@@ -13,38 +13,37 @@ return {
 			else
 				builtin.find_files()
 			end
-		end)
-		vim.keymap.set("n", "<leader>fF", builtin.find_files)
-		vim.keymap.set("n", "<leader>fg", builtin.live_grep)
-		vim.keymap.set("n", "<leader>fb", builtin.buffers)
-		vim.keymap.set("n", "<leader>fm", builtin.marks)
-		vim.keymap.set("n", "<leader>fh", builtin.help_tags)
-		vim.keymap.set("n", "<leader>fj", builtin.jumplist)
-		vim.keymap.set("n", "<leader>fr", builtin.registers)
-		vim.keymap.set("n", "<leader>f/", builtin.search_history)
-		vim.keymap.set("n", "<leader>gb", builtin.git_branches)
-		vim.keymap.set("n", "<leader>gl", builtin.git_commits)
-		vim.keymap.set("n", "<leader>gL", builtin.git_bcommits)
-		vim.keymap.set("n", "<leader>fGs", builtin.git_status)
-		vim.keymap.set("n", "<leader>fGS", builtin.git_stash)
-		vim.keymap.set("n", "<leader>b", builtin.treesitter)
-		vim.keymap.set("n", "<leader>fs", builtin.lsp_workspace_symbols)
-		vim.keymap.set("n", "<leader>fS", builtin.lsp_document_symbols)
-		vim.keymap.set("n", "<leader>fd", builtin.diagnostics)
-		vim.keymap.set("n", "<leader>fP", builtin.builtin)
-		vim.keymap.set("n", "<leader>fc", builtin.commands, { desc = "Command palette" })
-		vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "Keymaps" })
-		vim.keymap.set("n", "<leader>fq", builtin.quickfix)
-		vim.keymap.set("n", "<leader>fl", builtin.loclist)
-		vim.keymap.set("n", "<leader>fa", builtin.resume)
-		vim.keymap.set("n", "gd", builtin.lsp_definitions)
-		vim.keymap.set("n", "gr", builtin.lsp_references)
-		vim.keymap.set("n", "gi", builtin.lsp_implementations)
-		vim.keymap.set("n", "<leader>D", builtin.lsp_type_definitions)
+		end, { desc = "Find: files" })
+		vim.keymap.set("n", "<leader>fF", builtin.find_files, { desc = "Find: all files" })
+		vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Find: grep" })
+		vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find: buffers" })
+		vim.keymap.set("n", "<leader>fm", builtin.marks, { desc = "Find: marks" })
+		vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Find: help" })
+		vim.keymap.set("n", "<leader>fj", builtin.jumplist, { desc = "Find: jumplist" })
+		vim.keymap.set("n", "<leader>fr", builtin.registers, { desc = "Find: registers" })
+		vim.keymap.set("n", "<leader>f/", builtin.search_history, { desc = "Find: search history" })
+		vim.keymap.set("n", "<leader>gb", builtin.git_branches, { desc = "Git: branches" })
+		vim.keymap.set("n", "<leader>gl", builtin.git_commits, { desc = "Git: commits" })
+		vim.keymap.set("n", "<leader>gL", builtin.git_bcommits, { desc = "Git: buffer commits" })
+		vim.keymap.set("n", "<leader>fGs", builtin.git_status, { desc = "Git: status files" })
+		vim.keymap.set("n", "<leader>fGS", builtin.git_stash, { desc = "Git: stashes" })
+		vim.keymap.set("n", "<leader>b", builtin.treesitter, { desc = "Find: treesitter symbols" })
+		vim.keymap.set("n", "<leader>fs", builtin.lsp_workspace_symbols, { desc = "Find: workspace symbols" })
+		vim.keymap.set("n", "<leader>fS", builtin.lsp_document_symbols, { desc = "Find: document symbols" })
+		vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "Find: diagnostics" })
+		vim.keymap.set("n", "<leader>fP", builtin.builtin, { desc = "Find: pickers" })
+		vim.keymap.set("n", "<leader>fc", builtin.commands, { desc = "Find: commands" })
+		vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "Find: keymaps" })
+		vim.keymap.set("n", "<leader>fq", builtin.quickfix, { desc = "Find: quickfix" })
+		vim.keymap.set("n", "<leader>fl", builtin.loclist, { desc = "Find: loclist" })
+		vim.keymap.set("n", "<leader>fa", builtin.resume, { desc = "Find: resume last picker" })
+		vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "LSP: go to definition" })
+		vim.keymap.set("n", "gr", builtin.lsp_references, { desc = "LSP: go to references" })
+		vim.keymap.set("n", "gi", builtin.lsp_implementations, { desc = "LSP: go to implementation" })
+		vim.keymap.set("n", "<leader>D", builtin.lsp_type_definitions, { desc = "LSP: go to type definition" })
 		require("telescope").setup({
 			defaults = {
 				layout_strategy = "center",
-				layout_config = { width = 0.9 },
 				sorting_strategy = "ascending",
 				mappings = {
 					i = {
@@ -64,8 +63,12 @@ return {
 					},
 				},
 				keymaps = {
+					layout_config = { width = 0.9 },
+					-- the picker sizes the lhs column to the longest lhs (<Plug> maps run
+					-- 40+ chars), pushing desc off screen; width_lhs can't be set directly
 					entry_maker = require("telescope.make_entry").gen_from_keymaps({ width_lhs = 16 }),
 				},
+				commands = { layout_config = { width = 0.9 } },
 			},
 		})
 	end,

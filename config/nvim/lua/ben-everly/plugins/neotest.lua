@@ -13,19 +13,19 @@ return {
 
 		vim.keymap.set("n", "<leader>tt", function()
 			require("neotest").run.run()
-		end)
+		end, { desc = "Test: run nearest" })
 		vim.keymap.set("n", "<leader>tf", function()
 			require("neotest").run.run(vim.fn.expand("%"))
-		end)
+		end, { desc = "Test: run file" })
 		vim.keymap.set("n", "<leader>ts", function()
 			require("neotest").run.run({ suite = true })
-		end)
+		end, { desc = "Test: run suite" })
 		vim.keymap.set("n", "<leader>td", function()
 			---@diagnostic disable-next-line: missing-fields
 			require("neotest").run.run({ strategy = "dap" })
-		end)
+		end, { desc = "Test: debug nearest" })
 		vim.keymap.set("n", "<leader>to", function()
 			require("neotest").output.open({ enter = true })
-		end)
+		end, { desc = "Test: show output" })
 	end,
 }

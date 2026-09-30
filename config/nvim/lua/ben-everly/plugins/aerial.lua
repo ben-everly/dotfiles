@@ -7,7 +7,7 @@ return {
 		autojump = true,
 	},
 	keys = {
-		{ "<C-b>", "<cmd>AerialToggle!<cr>", desc = "Toggle outline" },
+		{ "<C-b>", "<cmd>AerialToggle!<cr>", desc = "Outline: toggle" },
 	},
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter",

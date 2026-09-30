@@ -7,8 +7,8 @@ return {
 		})
 	end,
 	init = function()
-		vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
-		vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
+		vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Diagnostics: show line" })
+		vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Diagnostics: to loclist" })
 		vim.diagnostic.config({
 			virtual_text = { spacing = 2, prefix = "" },
 			severity_sort = true,
@@ -45,23 +45,30 @@ return {
 					})
 				end
 
-				local opts = { buffer = ev.buf }
+				local function opts(desc)
+					return { buffer = ev.buf, desc = desc }
+				end
 				vim.keymap.set("n", "K", function()
 					vim.lsp.buf.hover({ border = "single" })
-				end, opts)
-				vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+				end, opts("LSP: hover"))
+				vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts("LSP: go to declaration"))
 				vim.keymap.set({ "n", "v", "i" }, "<c-s>", function()
 					vim.lsp.buf.signature_help({ border = "rounded" })
-				end, opts)
-				vim.keymap.set("n", "<leader>Wa", vim.lsp.buf.add_workspace_folder, opts)
-				vim.keymap.set("n", "<leader>Wr", vim.lsp.buf.remove_workspace_folder, opts)
+				end, opts("LSP: signature help"))
+				vim.keymap.set("n", "<leader>Wa", vim.lsp.buf.add_workspace_folder, opts("LSP: add workspace folder"))
+				vim.keymap.set(
+					"n",
+					"<leader>Wr",
+					vim.lsp.buf.remove_workspace_folder,
+					opts("LSP: remove workspace folder")
+				)
 				vim.keymap.set("n", "<leader>Wl", function()
 					vim.print(vim.lsp.buf.list_workspace_folders())
-				end, opts)
+				end, opts("LSP: list workspace folders"))
 				vim.keymap.set("n", "<leader>cl", function()
 					vim.lsp.codelens.enable(true)
-				end, opts)
-				vim.keymap.set("n", "<leader>cx", vim.lsp.codelens.run, opts)
+				end, opts("LSP: enable codelens"))
+				vim.keymap.set("n", "<leader>cx", vim.lsp.codelens.run, opts("LSP: run codelens"))
 			end,
 		})
 

@@ -8,8 +8,8 @@ return {
 	},
 	lazy = false,
 	keys = {
-		{ "<leader>n", "<cmd>Neotree toggle<cr>" },
-		{ "<leader>N", "<cmd>Neotree reveal<cr>" },
+		{ "<leader>n", "<cmd>Neotree toggle<cr>", desc = "Files: toggle tree" },
+		{ "<leader>N", "<cmd>Neotree reveal<cr>", desc = "Files: reveal in tree" },
 	},
 	opts = {
 		filesystem = {

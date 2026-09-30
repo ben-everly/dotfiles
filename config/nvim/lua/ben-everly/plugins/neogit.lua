@@ -40,6 +40,6 @@ return {
 			return redraw(self, ...)
 		end
 
-		vim.keymap.set("n", "<leader>gs", require("neogit").open)
+		vim.keymap.set("n", "<leader>gs", require("neogit").open, { desc = "Git: status" })
 	end,
 }

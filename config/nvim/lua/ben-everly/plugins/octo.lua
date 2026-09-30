@@ -12,14 +12,14 @@ return {
 			function()
 				require("octo.commands").octo("pr", "list")
 			end,
-			desc = "list PRs",
+			desc = "GitHub: list PRs",
 		},
 		{
 			"<leader>pc",
 			function()
 				require("octo.commands").octo("pr", "create")
 			end,
-			desc = "create PR",
+			desc = "GitHub: create PR",
 		},
 	},
 	opts = {

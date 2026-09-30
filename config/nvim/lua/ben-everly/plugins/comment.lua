@@ -7,7 +7,7 @@ return {
 
 			opleader = { line = "<leader>//", block = "<leader>/*" },
 		})
-		vim.keymap.set("v", "/*", "<Plug>(comment_toggle_blockwise_visual)")
-		vim.keymap.set("v", "//", "<Plug>(comment_toggle_linewise_visual)")
+		vim.keymap.set("v", "/*", "<Plug>(comment_toggle_blockwise_visual)", { desc = "Comment: toggle block" })
+		vim.keymap.set("v", "//", "<Plug>(comment_toggle_linewise_visual)", { desc = "Comment: toggle line" })
 	end,
 }

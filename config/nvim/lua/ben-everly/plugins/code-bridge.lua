@@ -7,13 +7,23 @@ return {
 			},
 		})
 
-		vim.keymap.set("n", "<leader>ct", ":CodeBridgeTmux<CR>", { desc = "Send file to claude" })
-		vim.keymap.set("v", "<leader>ct", ":CodeBridgeTmux<CR>", { desc = "Send selection to claude" })
-		vim.keymap.set("n", "<leader>cb", ":CodeBridgeTmuxAll<CR>", { desc = "Send all buffers to claude" })
+		vim.keymap.set("n", "<leader>ct", ":CodeBridgeTmux<CR>", { desc = "Claude: send file (tmux)" })
+		vim.keymap.set("v", "<leader>ct", ":CodeBridgeTmux<CR>", { desc = "Claude: send selection (tmux)" })
+		vim.keymap.set("n", "<leader>cb", ":CodeBridgeTmuxAll<CR>", { desc = "Claude: send all buffers (tmux)" })
 
-		vim.keymap.set("n", "<leader>ci", ":CodeBridgeTmuxInteractive<CR>", { desc = "Interactive prompt to claude" })
-		vim.keymap.set("n", "<leader>cd", ":CodeBridgeTmuxDiff<CR>", { desc = "Send git diff to claude" })
-		vim.keymap.set("n", "<leader>cr", ":CodeBridgeTmuxRecent<CR>", { desc = "Send recent files to claude" })
-		vim.keymap.set("n", "<leader>ce", ":CodeBridgeTmuxDiagnostics<CR>", { desc = "Send diagnostics to claude" })
+		vim.keymap.set(
+			"n",
+			"<leader>ci",
+			":CodeBridgeTmuxInteractive<CR>",
+			{ desc = "Claude: interactive prompt (tmux)" }
+		)
+		vim.keymap.set("n", "<leader>cd", ":CodeBridgeTmuxDiff<CR>", { desc = "Claude: send git diff (tmux)" })
+		vim.keymap.set("n", "<leader>cr", ":CodeBridgeTmuxRecent<CR>", { desc = "Claude: send recent files (tmux)" })
+		vim.keymap.set(
+			"n",
+			"<leader>ce",
+			":CodeBridgeTmuxDiagnostics<CR>",
+			{ desc = "Claude: send diagnostics (tmux)" }
+		)
 	end,
 }
