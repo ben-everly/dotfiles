@@ -43,6 +43,7 @@ return {
 		vim.keymap.set("n", "<leader>D", builtin.lsp_type_definitions, { desc = "LSP: go to type definition" })
 		require("telescope").setup({
 			defaults = {
+				layout_config = { width = 0.9 },
 				layout_strategy = "center",
 				sorting_strategy = "ascending",
 				mappings = {
@@ -63,9 +64,6 @@ return {
 					},
 				},
 				keymaps = {
-					layout_config = { width = 0.9 },
-					-- the picker sizes the lhs column to the longest lhs (<Plug> maps run
-					-- 40+ chars), pushing desc off screen; width_lhs can't be set directly
 					entry_maker = require("telescope.make_entry").gen_from_keymaps({ width_lhs = 16 }),
 				},
 				commands = { layout_config = { width = 0.9 } },
