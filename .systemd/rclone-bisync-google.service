@@ -4,6 +4,7 @@ Wants=rclone-bisync-google.timer
 
 [Service]
 Type=oneshot
+ExecStartPre=/bin/sh -c '[ -f %h/.cache/rclone/bisync/google_.apps_Obsidian_Vault..home_beneverly_markdown-notes.path1.lst ] || rclone bisync google:.apps/Obsidian/Vault %h/markdown-notes --resync'
 ExecStart=rclone bisync google:.apps/Obsidian/Vault /home/beneverly/markdown-notes --recover --resilient --max-lock 2m
 
 [Install]
