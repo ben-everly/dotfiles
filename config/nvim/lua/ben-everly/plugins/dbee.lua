@@ -17,14 +17,22 @@ return {
 		},
 	},
 	config = function()
-		-- On close, dbee restores its window layout after wiping buffers,
-		-- tripping treesitter's fold autocmd on an already-dead buffer id.
-		vim.api.nvim_create_autocmd("FileType", {
-			pattern = "dbee",
-			callback = function()
-				vim.opt_local.foldmethod = "manual"
-			end,
-		})
+		-- On close, dbee restores the window layout by setting each window's
+		-- options with vim.wo, which fires a global OptionSet. Treesitter's fold
+		-- handler then refreshes every buffer in its fold cache, which can still
+		-- hold a buffer dbee already wiped, and errors with "Invalid buffer id".
+		-- The restored values are the originals, so skipping OptionSet loses nothing.
+		local tools = require("dbee.layouts.tools")
+		local restore = tools.restore
+		tools.restore = function(...)
+			local eventignore = vim.go.eventignore
+			vim.go.eventignore = "OptionSet"
+			local ok, err = pcall(restore, ...)
+			vim.go.eventignore = eventignore
+			if not ok then
+				error(err, 0)
+			end
+		end
 
 		-- dbee fills registers with setreg(), which TextYankPost explicitly
 		-- doesn't fire for, so nothing listening for yanks sees dbee's.
