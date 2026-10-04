@@ -1,7 +1,9 @@
 return {
 	"gbprod/yanky.nvim",
 	lazy = false,
-	opts = {},
+	opts = {
+		system_clipboard = { sync_with_ring = false },
+	},
 	keys = {
 		{ "p", "<Plug>(YankyPutAfter)", mode = { "n", "x" }, desc = "Yank: put after" },
 		{ "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" }, desc = "Yank: put before" },
