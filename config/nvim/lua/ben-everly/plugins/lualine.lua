@@ -72,12 +72,6 @@ return {
 						end,
 						padding = { left = 0, right = 1 },
 					},
-					{
-						"filetype",
-						icon_only = true,
-						padding = { left = 0, right = 0 },
-					},
-					{ "filename", path = 1, padding = { left = 0, right = 1 } },
 					{ "progress" },
 					{ "location" },
 					{
@@ -115,7 +109,10 @@ return {
 				lualine_z = {},
 			},
 			tabline = {
-				lualine_c = { { "buffers", symbols = { alternate_file = "" } } },
+				lualine_c = {
+					{ "filetype", icon_only = true, padding = { left = 1, right = 0 } },
+					{ "filename", path = 1, padding = { left = 0, right = 1 } },
+				},
 				lualine_x = {
 					{
 						"tabs",
