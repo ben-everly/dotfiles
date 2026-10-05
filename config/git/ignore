@@ -1,4 +1,5 @@
 .DS_Store
 *.local
 **/.claude/settings.local.json
+**/.claude/estimation.md
 CLAUDE.local.md
