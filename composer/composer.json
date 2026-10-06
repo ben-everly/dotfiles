@@ -2,7 +2,6 @@
     "require": {
         "laravel/sail": "*",
         "phing/phing": "*",
-        "phpdocumentor/phpdocumentor": "*",
         "phpunit/phpunit": "*",
         "psy/psysh": "*",
         "symfony/flex": "*",
