@@ -12,6 +12,8 @@ return {
 		{ "<leader>N", "<cmd>Neotree reveal<cr>", desc = "Files: reveal in tree" },
 	},
 	opts = {
+		-- "nofile" covers sidebar/tool buffers (Neogit, aerial, Trouble, ...).
+		open_files_do_not_replace_types = { "terminal", "Trouble", "qf", "edgy", "nofile" },
 		filesystem = {
 			-- oil.nvim handles directory buffers instead.
 			hijack_netrw_behavior = "disabled",

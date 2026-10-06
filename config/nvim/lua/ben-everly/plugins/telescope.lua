@@ -45,6 +45,25 @@ return {
 			defaults = {
 				layout_config = { width = 0.9 },
 				layout_strategy = "center",
+				-- Don't replace special buffers (Neogit, aerial, qf, terminal, ...)
+				-- with the picked file; use another normal window in the tab, or
+				-- split if there isn't one. oil and help are fine to replace.
+				get_selection_window = function()
+					local bt = vim.bo.buftype
+					if bt == "" or bt == "acwrite" or bt == "help" then
+						return 0
+					end
+					for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+						if
+							vim.api.nvim_win_get_config(win).relative == ""
+							and vim.bo[vim.api.nvim_win_get_buf(win)].buftype == ""
+						then
+							return win
+						end
+					end
+					vim.cmd("vsplit")
+					return vim.api.nvim_get_current_win()
+				end,
 				sorting_strategy = "ascending",
 				mappings = {
 					i = {
