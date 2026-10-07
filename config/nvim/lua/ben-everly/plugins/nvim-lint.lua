@@ -9,21 +9,20 @@ return {
 			php = { "phpmd", "phpstan" },
 		}
 
-		-- Custom phpmd configuration
+		-- nvim-lint's builtin args use the PHPMD 2 positional CLI, which PHPMD 3 rejects.
 		local phpmd = lint.linters.phpmd
-		phpmd.args = {
-			"-",
-			"json",
-			function()
-				if vim.fn.filereadable("phpmd.xml") == 1 then
-					return "phpmd.xml"
-				elseif vim.fn.filereadable(vim.env.HOME .. "/.config/phpmd/phpmd.xml") == 1 then
-					return vim.env.HOME .. "/.config/phpmd/phpmd.xml"
-				else
-					return "cleancode,codesize,controversial,design,naming,unusedcode"
+		lint.linters.phpmd = function()
+			local args = { "analyze", "--format=json", "--no-progress" }
+			for _, ruleset in ipairs({ "phpmd.xml", vim.env.HOME .. "/.config/phpmd/phpmd.xml" }) do
+				if vim.fn.filereadable(ruleset) == 1 then
+					table.insert(args, "--ruleset=" .. ruleset)
+					break
 				end
-			end,
-		}
+			end
+			-- Symfony Console warns on "-" unless it is the last argument.
+			table.insert(args, "-")
+			return vim.tbl_extend("force", phpmd, { args = args })
+		end
 
 		vim.diagnostic.config({
 			underline = false,
