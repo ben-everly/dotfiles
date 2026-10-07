@@ -1,16 +1,7 @@
 {
     "require": {
-        "laravel/sail": "*",
-        "phing/phing": "*",
-        "phpdocumentor/phpdocumentor": "*",
-        "phpunit/phpunit": "*",
-        "psy/psysh": "*",
-        "symfony/flex": "*",
-        "laravel/installer": "^5.16"
-    },
-    "config": {
-        "allow-plugins": {
-            "symfony/flex": true
-        }
+        "cpx/cpx": "^2.1",
+        "laravel/installer": "^5.16",
+        "psy/psysh": "^0.12"
     }
 }

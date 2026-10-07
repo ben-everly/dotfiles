@@ -27,11 +27,12 @@ prepend_path() {
     PATH="$1:$PATH"
 }
 
+export COMPOSER_HOME="$HOME/.composer"
 export COMPOSER_MEMORY_LIMIT=-1
 
 export PNPM_HOME="$HOME/.local/share/pnpm"
 
-prepend_path ~/.composer/vendor/bin
+prepend_path "$COMPOSER_HOME/vendor/bin"
 prepend_path ~/.local/bin
 prepend_path ~/.local/share/nvim/mason/bin
 prepend_path "$PNPM_HOME"

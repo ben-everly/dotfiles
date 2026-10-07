@@ -33,6 +33,7 @@ source ${ZIM_HOME}/init.zsh
 unalias gh 2>/dev/null
 
 alias ls='eza --group-directories-first --icons'
+alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
 
 zmodload -F zsh/terminfo +p:terminfo
 
