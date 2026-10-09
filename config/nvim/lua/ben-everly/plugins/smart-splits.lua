@@ -1,5 +1,7 @@
 return {
 	"mrjones2014/smart-splits.nvim",
+	-- v3 moved wezterm support to an unstable backend plugin
+	tag = "v2.1.1-final",
 	config = function()
 		local ss = require("smart-splits")
 		---@diagnostic disable-next-line: missing-fields
