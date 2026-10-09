@@ -12,7 +12,11 @@ return {
 		vim.diagnostic.config({
 			virtual_text = { spacing = 2, prefix = "" },
 			severity_sort = true,
-			jump = { float = true },
+			jump = {
+				on_jump = function(_, bufnr)
+					vim.diagnostic.open_float({ bufnr = bufnr, scope = "cursor", focus = false })
+				end,
+			},
 			float = { source = true, border = "single" },
 			signs = {
 				text = {
