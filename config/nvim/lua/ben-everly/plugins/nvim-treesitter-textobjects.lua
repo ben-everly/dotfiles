@@ -4,6 +4,7 @@ return {
 		local ts_repeat_move = require("nvim-treesitter-textobjects.repeatable_move")
 		local ts_select = require("nvim-treesitter-textobjects.select")
 		local ts_move = require("nvim-treesitter-textobjects.move")
+		local ts_swap = require("nvim-treesitter-textobjects.swap")
 
 		require("nvim-treesitter-textobjects").setup({
 			select = {
@@ -91,5 +92,13 @@ return {
 		move_map("[F", ts_move.goto_previous_end, "@function.outer", "Motion: previous end of")
 		move_map("[C", ts_move.goto_previous_end, "@class.outer", "Motion: previous end of")
 		move_map("[O", ts_move.goto_previous_end, "@loop.outer", "Motion: previous end of")
+
+		-- Textobject swap
+		vim.keymap.set("n", "g>", function()
+			ts_swap.swap_next("@parameter.inner")
+		end, { desc = "Swap: next parameter" })
+		vim.keymap.set("n", "g<", function()
+			ts_swap.swap_previous("@parameter.inner")
+		end, { desc = "Swap: previous parameter" })
 	end,
 }
