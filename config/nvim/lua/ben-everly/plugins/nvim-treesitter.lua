@@ -37,6 +37,7 @@ return {
 			"vim",
 			"yuck",
 			"typescript",
+			"tsx",
 			"markdown",
 			"markdown_inline",
 			"latex",
