@@ -16,5 +16,11 @@ return {
 		vim.keymap.set("n", "<A-j>", ss.resize_down, { desc = "Window: resize down" })
 		vim.keymap.set("n", "<A-k>", ss.resize_up, { desc = "Window: resize up" })
 		vim.keymap.set("n", "<A-l>", ss.resize_right, { desc = "Window: resize right" })
+		vim.keymap.set("n", "<A-H>", function()
+			ss.resize_left(15)
+		end, { desc = "Window: resize left (big)" })
+		vim.keymap.set("n", "<A-L>", function()
+			ss.resize_right(15)
+		end, { desc = "Window: resize right (big)" })
 	end,
 }

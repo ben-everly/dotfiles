@@ -239,6 +239,21 @@ smart_splits.apply_to_config(config, {
 	modifiers = { move = "CTRL", resize = "ALT" },
 })
 
+-- Mirrors smart-splits' resize keys with a bigger step; passes through to nvim like the plugin does
+for key, direction in pairs({ h = "Left", l = "Right" }) do
+	table.insert(config.keys, {
+		key = key,
+		mods = "ALT|SHIFT",
+		action = wezterm.action_callback(function(win, pane)
+			if pane:get_user_vars().IS_NVIM == "true" or #win:active_tab():panes() == 1 then
+				win:perform_action(act.SendKey({ key = key, mods = "ALT|SHIFT" }), pane)
+			else
+				win:perform_action(act.AdjustPaneSize({ direction, 15 }), pane)
+			end
+		end),
+	})
+end
+
 config.key_tables = {
 	copy_mode = {
 		{ key = "Tab", mods = "NONE", action = act.CopyMode("MoveForwardWord") },
